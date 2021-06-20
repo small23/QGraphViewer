@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/resource">
+        <file>help/HELP1.png</file>
+        <file>help/HELP2.png</file>
+        <file>help/HELP3.png</file>
+        <file>help/HELP4.png</file>
+        <file>help/HELP5.png</file>
+        <file>help/HELP61.png</file>
+        <file>help/HELP62.png</file>
+        <file>help/HELP63.png</file>
+    </qresource>
+    <qresource prefix="/splash">
+        <file>splash.png</file>
+    </qresource>
+</RCC>
