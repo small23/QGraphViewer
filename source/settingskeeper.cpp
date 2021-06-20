@@ -3,27 +3,27 @@
 SettingsKeeper::SettingsKeeper(QObject *parent)
 	: QObject(parent)
 {
-	settings = new QSettings("KemSU","QGraphViewer");
-	if(!settings->contains("lastPath"))
-		settings->setValue("lastPath", "");
+	Settings = new QSettings("KemSU","QGraphViewer");
+	if(!Settings->contains("lastPath"))
+		Settings->setValue("lastPath", "");
 	else
-		lastPath = settings->value("lastPath").toString();
-	if (!settings->contains("quality"))
-		settings->setValue("quality", 90);
+		lastPath = Settings->value("lastPath").toString();
+	if (!Settings->contains("quality"))
+		Settings->setValue("quality", 90);
 	else
-		quality = settings->value("quality").toInt();
-	if (!settings->contains("scale"))
-		settings->setValue("scale", 6);
+		quality = Settings->value("quality").toInt();
+	if (!Settings->contains("scale"))
+		Settings->setValue("scale", 6);
 	else
-		scale = settings->value("scale").toDouble();
-	if (!settings->contains("imageType"))
-		settings->setValue("imageType", 0);
+		scale = Settings->value("scale").toDouble();
+	if (!Settings->contains("imageType"))
+		Settings->setValue("imageType", 0);
 	else
-		imageType = settings->value("imageType").toInt();
+		imageType = Settings->value("imageType").toInt();
 	
 }
 
-void SettingsKeeper::updatePath(QString path)
+void SettingsKeeper::UpdatePath(QString path)
 {
 	if (path == "") return;
 	if (path[path.size() - 1] != "/")
@@ -31,28 +31,25 @@ void SettingsKeeper::updatePath(QString path)
 	lastPath = path;
 }
 
-void SettingsKeeper::updateDrawParams(PlotParameters *params)
+void SettingsKeeper::UpdateDrawParams(PlotParameters *params)
 {
 	this->imageType = params->preferFormat;
 	this->scale = params->drawScale;
 	this->quality = params->drawQuality;
 }
 
-void SettingsKeeper::saveSettings()
+void SettingsKeeper::SaveSettings() const
 {
-	settings->setValue("lastPath", lastPath);
-	settings->setValue("imageType", imageType);
-	settings->setValue("scale", scale);
-	settings->setValue("quality", quality);
+	Settings->setValue("lastPath", lastPath);
+	Settings->setValue("imageType", imageType);
+	Settings->setValue("scale", scale);
+	Settings->setValue("quality", quality);
 }
 
-QString SettingsKeeper::getLastPath()
+QString SettingsKeeper::GetLastPath() const
 {
 	return lastPath;
 }
 
 SettingsKeeper::~SettingsKeeper()
-{
-
-	
-}
+= default;

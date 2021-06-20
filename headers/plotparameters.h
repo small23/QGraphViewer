@@ -16,8 +16,8 @@ public:
     //Обновляет параметры построения с указаной вкладки
     void updatePlotParams(int tabId);
     //Обновления цвета линии
-    void updateColors(int colorId, QColor color);
-    void setCountOfLines(int size);
+    void updateColors(int colorId, const QColor& color);
+    void setCountOfLines(int size) const;
     //Структура-хранилище настроек каждой линии
     struct UniversalLineParams{
         qreal width;

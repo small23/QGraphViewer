@@ -10,25 +10,25 @@ int main(int argc, char *argv[])
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling,true);
     QApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy());
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy());
-    QApplication a(argc, argv);
+    QApplication application(argc, argv);
 
-    QPixmap pixmap(":/splash/splash.png");
+    const QPixmap pixmap(":/splash/splash.png");
     QSplashScreen splash(pixmap);
     splash.setMask(pixmap.mask());
     splash.show();
-    a.processEvents();
-    a.setOrganizationName("KemSU");
-    a.setApplicationName("QGraphViewer");
+    QApplication::processEvents();
+    QApplication::setOrganizationName("KemSU");
+    QApplication::setApplicationName("QGraphViewer");
 	MainWindow w;
-    QString locale = QLocale::system().name();
+    const QString locale = QLocale::system().name();
     QTranslator qtTranslator;
     if (qtTranslator.load("qt_" + locale, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
-        a.installTranslator(&qtTranslator);
+	    QApplication::installTranslator(&qtTranslator);
     w.setLocale(QLocale::English);
     w.setStatusBar(nullptr);
     w.setFixedSize(w.size());
     w.setWindowTitle("QGraphViewer");
     w.show();
     splash.finish(&w);
-    return a.exec();
+    return QApplication::exec();
 }

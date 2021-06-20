@@ -21,7 +21,7 @@ PlotParameters::PlotParameters(Ui::MainWindow *uiInt, QWidget *parentInt)
 	tab2PlotParams->append(test);
 }
 
-void PlotParameters::updatePlotParams(int tabId)
+void PlotParameters::updatePlotParams(const int tabId)
 {
 	if (tabId == 1)
 	{
@@ -166,20 +166,20 @@ void PlotParameters::updatePlotParams(int tabId)
 
 }
 
-void PlotParameters::updateColors(int colorId, QColor color)
+void PlotParameters::updateColors(const int colorId, const QColor& color)
 {
 	if (colorId < 7)
 		tab1PlotParams[colorId - 1].color = color;
 	else if (colorId == 8)
 	{
-		int workingLine = ui->tab2ComboBoxLineSelector->currentIndex();
+		const int workingLine = ui->tab2ComboBoxLineSelector->currentIndex();
 		tab2PlotParams->data()[workingLine].color = color;
 	}
 	else if (colorId == 7)
 		tab2FermiLevel = color;
 }
 
-void PlotParameters::setCountOfLines(int size)
+void PlotParameters::setCountOfLines(int size) const
 {
 	UniversalLineParams temp;
 	temp.color = tab2PlotParams->at(0).color;

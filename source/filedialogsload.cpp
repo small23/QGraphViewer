@@ -15,38 +15,38 @@ void FileDialogsLoad::FileDialogMolTrajP2Load()
             tr("Plot files (*.dat);;All Files (*)"));
     for(int i=0; i<fileNames.count(); i++)
     {
-        QFileInfo file_info(fileNames[i]);
+        QFileInfo fileInfo(fileNames[i]);
 
-        if (file_info.fileName().toUpper().contains("TRAJGRAD.DAT"))
+        if (fileInfo.fileName().toUpper().contains("TRAJGRAD.DAT"))
             ui->tab1FileLine1->setText(fileNames[i]);
-        else if (file_info.fileName().toUpper().contains("MOLGRAPH"))
+        else if (fileInfo.fileName().toUpper().contains("MOLGRAPH"))
             ui->tab1FileLine2->setText(fileNames[i]);
-        else if (file_info.fileName().toUpper().contains("P2DCRYIN"))
+        else if (fileInfo.fileName().toUpper().contains("P2DCRYIN"))
             ui->tab1FileLine3->setText(fileNames[i]);
-        else if (file_info.fileName().toUpper().contains("SURFELFB"))
+        else if (fileInfo.fileName().toUpper().contains("SURFELFB"))
             ui->tab1FileLine4->setText(fileNames[i]);
-        else if (file_info.fileName().toUpper().contains("SURFGKIN"))
+        else if (fileInfo.fileName().toUpper().contains("SURFGKIN"))
             ui->tab1FileLine4->setText(fileNames[i]);
-        else if (file_info.fileName().toUpper().contains("SURFGRHO"))
+        else if (fileInfo.fileName().toUpper().contains("SURFGRHO"))
             ui->tab1FileLine4->setText(fileNames[i]);
-        else if (file_info.fileName().toUpper().contains("SURFKKIN"))
+        else if (fileInfo.fileName().toUpper().contains("SURFKKIN"))
             ui->tab1FileLine4->setText(fileNames[i]);
-        else if (file_info.fileName().toUpper().contains("SURFLAPM"))
+        else if (fileInfo.fileName().toUpper().contains("SURFLAPM"))
             ui->tab1FileLine4->setText(fileNames[i]);
-        else if (file_info.fileName().toUpper().contains("SURFLAPP"))
+        else if (fileInfo.fileName().toUpper().contains("SURFLAPP"))
             ui->tab1FileLine4->setText(fileNames[i]);
-        else if (file_info.fileName().toUpper().contains("SURFRHOO"))
+        else if (fileInfo.fileName().toUpper().contains("SURFRHOO"))
             ui->tab1FileLine4->setText(fileNames[i]);
-        else if (file_info.fileName().toUpper().contains("SURFSPDE"))
+        else if (fileInfo.fileName().toUpper().contains("SURFSPDE"))
             ui->tab1FileLine4->setText(fileNames[i]);
-        else if (file_info.fileName().toUpper().contains("SURFVIRI"))
+        else if (fileInfo.fileName().toUpper().contains("SURFVIRI"))
             ui->tab1FileLine4->setText(fileNames[i]);
-        else if (file_info.fileName().toUpper().contains("SURFELFB"))
+        else if (fileInfo.fileName().toUpper().contains("SURFELFB"))
             ui->tab1FileLine4->setText(fileNames[i]);
         else
-            QMessageBox::warning(this, tr("Ошибка добавления"), tr("Файл '") + file_info.fileName() + tr("' имеет нестандартное имя и не будет добавлен."));
+            QMessageBox::warning(this, tr("Ошибка добавления"), tr("Файл '") + fileInfo.fileName() + tr("' имеет нестандартное имя и не будет добавлен."));
 
-        settings->updatePath(file_info.absolutePath());
+        settings->UpdatePath(fileInfo.absolutePath());
         /*
     	QList<QString> temp = fileNames[i].split("/");
         if (temp[temp.count()-1].toUpper().contains("TRAJGRAD.DAT"))
@@ -97,7 +97,7 @@ void FileDialogsLoad::LoadFileButtonCliked(int id)
     if (fileName!="")
     {
         QFileInfo fileinfo(fileName);
-        settings->updatePath(fileinfo.absolutePath());
+        settings->UpdatePath(fileinfo.absolutePath());
         QString lineName;
         if (id>6)
            lineName = QString("tab2FileLine%1").arg(id-6);

@@ -131,15 +131,15 @@ BasicGraphBuild::BasicGraphBuild(PlotParameters* plotParams, const QFont& font, 
 	CompareScale = (yRange.upper - yRange.lower) / (xRange.upper - xRange.lower);
 	if (CompareScale < 1.01)
 	{
-		customPlot->setGeometry(30, 30, plotParams->drawRes, round(plotParams->drawRes * CompareScale));
-		customPlot->setMinimumSize(plotParams->drawRes, round(plotParams->drawRes * CompareScale));
-		customPlot->setMaximumSize(plotParams->drawRes, round(plotParams->drawRes * CompareScale));
+		customPlot->setGeometry(30, 30, plotParams->drawRes, static_cast<int>(round(plotParams->drawRes * CompareScale)));
+		customPlot->setMinimumSize(plotParams->drawRes, static_cast<int>(round(plotParams->drawRes * CompareScale)));
+		customPlot->setMaximumSize(plotParams->drawRes, static_cast<int>(round(plotParams->drawRes * CompareScale)));
 	}
 	else
 	{
-		customPlot->setGeometry(30, 30, round(plotParams->drawRes / CompareScale), plotParams->drawRes);
-		customPlot->setMinimumSize(round(plotParams->drawRes / CompareScale), plotParams->drawRes);
-		customPlot->setMaximumSize(round(plotParams->drawRes / CompareScale), plotParams->drawRes);
+		customPlot->setGeometry(30, 30, static_cast<int>(round(plotParams->drawRes / CompareScale)), plotParams->drawRes);
+		customPlot->setMinimumSize(static_cast<int>(round(plotParams->drawRes / CompareScale)), plotParams->drawRes);
+		customPlot->setMaximumSize(static_cast<int>(round(plotParams->drawRes / CompareScale)), plotParams->drawRes);
 	}
 
 	customPlot->xAxis2->setVisible(true);
@@ -297,7 +297,7 @@ void BasicGraphBuild::savePicture()
 
 
 		QFileInfo fileinfo(fileName);
-		settings->updatePath(fileinfo.absolutePath());
+		settings->UpdatePath(fileinfo.absolutePath());
 		if (success == false)
 		{
             QMessageBox::critical(this, tr("Ошибка сохранения"), tr("Не удалось сохранить изображение!"));
@@ -455,7 +455,6 @@ void BasicGraphBuild::draw_band(BandData* bandData, PlotParameters* plotParams, 
 	lines.push_back(0);
 	std::vector<MarchingSquares::levelPaths> result = contour->mkIsos(lines);
 
-	int colorDelimiterA = 0;
 	int colorDelimiterB = 0;
 	for (size_t i = 0; i < result.size(); i += 2)
 	{
@@ -473,7 +472,7 @@ void BasicGraphBuild::draw_band(BandData* bandData, PlotParameters* plotParams, 
 	else
 		hslBStep = 135.0 / (colorDelimiterB - 0);
 
-	colorDelimiterA = 0;
+	int colorDelimiterA = 0;
 
 	for (size_t i = 1; i < result.size(); i += 2)
 	{

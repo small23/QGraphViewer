@@ -23,8 +23,8 @@ public:
     FilesSaver();
     //Методы сохранения данных из различных источников
     bool saveBANDData(QString fileName, BandData* bandData, double zoneMin, double zoneMax, bool uhf);
-    bool saveDOSData(QString sourceFileLocation, BandData *bandData);
-    bool saveMAPNData(QString sourceFileLocation, BandData *bandData, int rotate);
+    bool SaveDosData(const QString& sourceFileLocation, BandData *bandData);
+    bool saveMAPNData(const QString& sourceFileLocation, BandData *bandData, int rotate);
     bool saveCryTopData();
     //Структура, сохраняющая возникающие ошибки при записи данных
     struct ErrorData
@@ -37,7 +37,7 @@ public:
 
 private:
     //Приватный метод сохранения файла с данными об уровне Ферми
-    bool saveLinFermi(QString path, BandData* bandData, double zoneMin, double zoneMax, bool uhf);
+    bool saveLinFermi(const QString& path, BandData* bandData, double zoneMin, double zoneMax, bool uhf);
 };
 
 #endif // FILESAVERCLASS_H

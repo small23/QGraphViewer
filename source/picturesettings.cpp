@@ -14,7 +14,7 @@ PictureSettings::PictureSettings(PlotParameters* params, SettingsKeeper* setting
     connect(ui->resetQualityButton,     SIGNAL(clicked()), this, SLOT(resetQuality()));
     connect(ui->resetScaleButton, SIGNAL(clicked()), this, SLOT(resetScale()));
     this->params=params;
-    ui->scaleSlider->setValue(params->drawScale);
+    ui->scaleSlider->setValue(static_cast<int>(params->drawScale));
     ui->qualitySlider->setValue(params->drawQuality);
     switch (params->preferFormat) {
     case 0:
@@ -32,12 +32,12 @@ PictureSettings::PictureSettings(PlotParameters* params, SettingsKeeper* setting
     }
 }
 
-void PictureSettings::resetQuality()
+void PictureSettings::resetQuality() const
 {
     ui->qualitySlider->setValue(90);
 }
 
-void PictureSettings::resetScale()
+void PictureSettings::resetScale() const
 {
     ui->scaleSlider->setValue(6);
 }
@@ -54,7 +54,7 @@ void PictureSettings::okButtonPushed()
         params->preferFormat=2;
     else
         params->preferFormat=0;
-    settings->updateDrawParams(params);
+    settings->UpdateDrawParams(params);
     this->close();
 }
 void PictureSettings::cancelButtonPushed()

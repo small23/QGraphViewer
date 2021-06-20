@@ -198,7 +198,7 @@ DOSGraphBuilder::DOSGraphBuilder(BandData* graphics, double borders[4], PlotPara
 	customPlot->setAttribute(Qt::WA_DeleteOnClose);
 }
 
-void DOSGraphBuilder::drawData(QVector<QVector<double>> data, QVector<double> axis, PlotParameters* params, int angle, int paramsShift, bool* showed)
+void DOSGraphBuilder::drawData(QVector<QVector<double>> data, const QVector<double>& axis, PlotParameters* params, const int angle, const int paramsShift, bool* showed) const
 {
 	QPen pen;
 	QVector<double> y;
@@ -302,7 +302,7 @@ void DOSGraphBuilder::savePicture()
 		}
 
 		QFileInfo fileinfo(fileName);
-		settings->updatePath(fileinfo.absolutePath());
+		settings->UpdatePath(fileinfo.absolutePath());
 		if (success == false)
 		{
 			QMessageBox::critical(this, "Ошибка сохранения", "Не удалось сохранить изображение!");

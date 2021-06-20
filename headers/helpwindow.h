@@ -14,7 +14,7 @@ class HelpWindow : public QWidget
 {
     Q_OBJECT
 public:
-    explicit HelpWindow(QPixmap hel,QRect windowLocation,QWidget *parent = nullptr);
+    explicit HelpWindow(const QPixmap& hel,QRect windowLocation,QWidget *parent = nullptr);
     //~HelpWindow();
     QGraphicsScene *scene;
     QGraphicsView *view;

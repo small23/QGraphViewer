@@ -10,12 +10,11 @@ int GraphicsData::GetAndParseMainData(QList<QString> fileFields, double cutOff)
     Trajgrad->clear();
     Atoms->clear();
     content->clear();
-    bool success;
     parsedFrameLoc=false;
     if (fileFields[3]!="")
     {
-        ReadFileFromFS(fileFields[3],content);
-        success=GetOffsetAndTransMatrix();
+        read_file_from_fs(fileFields[3],content);
+        bool success=GetOffsetAndTransMatrix();
         if (!success)
             return 0;
         for (int i=0; i<fileFields.size(); i++)
@@ -23,7 +22,7 @@ int GraphicsData::GetAndParseMainData(QList<QString> fileFields, double cutOff)
             if (fileFields[i]!="" && i!=4)
             {
                 content->clear();
-                ReadFileFromFS(fileFields[i],content);
+                read_file_from_fs(fileFields[i],content);
                 switch (i) {
                 case 0:
                     success=GetTrajgradMolgraphData(false);
@@ -140,7 +139,7 @@ bool GraphicsData::GetOffsetAndTransMatrix()
         {
             if (c.at(j)!="")
             {
-                tempD=c.at(j).toDouble(&convertsionPass);
+                c.at(j).toDouble(&convertsionPass);
                 if (convertsionPass==true)
                 {
                     offsetGraph(i,inMatrixPos)=c.at(j).toDouble();
@@ -161,7 +160,7 @@ bool GraphicsData::GetTrajgradMolgraphData(bool mode)
 {
 	long int posInList=0;
     UniversalLines line;// = new UniversalLines();
-    UniversalPoints point;// = new UniversalPoints();
+    UniversalPoints point{};// = new UniversalPoints();
     MatrixXd temp(3,1);
 
     while(posInList<content->count())
@@ -171,8 +170,8 @@ bool GraphicsData::GetTrajgradMolgraphData(bool mode)
 
         QList<QString> c = content->at(posInList).split(" ");
         c.removeAll("");
-        long int count = c.at(0).toDouble();
-        long int type = c.at(1).toDouble();
+        long int count = c.at(0).toInt();
+        long int type = c.at(1).toInt();
 
         for(int i=posInList+1; i<posInList+count+1; i++)
         {
@@ -223,16 +222,13 @@ bool GraphicsData::GetAtomsData(double cutOff)
 {
 	long int posInList=1;
     long int atoms=-1;
-    bool convertsionPass;
     UniversalLines line;// = new UniversalLines();
     MatrixXd temp(3,1);
     QList<QString> c = content->at(posInList).split(" ");
     line.x.clear();
     line.y.clear();
     c.removeAll("");
-    long int cellSize = c.at(0).toDouble();
 
-    posInList=posInList+cellSize+1;
     int i=0;
     while (i<content->count())
     {
@@ -248,9 +244,9 @@ bool GraphicsData::GetAtomsData(double cutOff)
 
     c=content->at(atoms+1).split(" ");
     c.removeAll("");
-    cellSize=c.at(0).toDouble();
+    long int cellSize=c.at(0).toLong();
     atoms+=2;
-    for (int i=atoms; i<atoms+cellSize; i++)
+    for (i=atoms; i<atoms+cellSize; i++)
     {
         c=content->at(i).split(" ");
         c.removeAll("");
@@ -268,5 +264,5 @@ bool GraphicsData::GetAtomsData(double cutOff)
         }
     }
     Atoms->append(line);
-    return 1;
+    return true;
 }

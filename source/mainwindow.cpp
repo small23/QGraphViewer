@@ -82,7 +82,7 @@ MainWindow::MainWindow(QWidget* parent)
 
 MainWindow::~MainWindow()
 {
-	settings->saveSettings();
+	settings->SaveSettings();
 	delete ui;
 }
 
@@ -110,16 +110,16 @@ void MainWindow::garbageCollector()
 	}
 }
 
-void MainWindow::ColorChangeButtonClicked(int id)
+void MainWindow::colorChangeButtonClicked(int id) const
 {
 	QColorDialog colorPickerMenu;
-	QRect windowLocation = geometry();
+	const QRect windowLocation = geometry();
 	colorPickerMenu.setGeometry(windowLocation.x() + 100, windowLocation.y() + 50, 522, 393);
 	colorPickerMenu.exec();
-	QColor choosenColor = colorPickerMenu.selectedColor();
+	const QColor choosenColor = colorPickerMenu.selectedColor();
 	if (!choosenColor.isValid()) return;
-	QPixmap colorIcon = iconDrawer->drawIcon(choosenColor);
-	QString colorLabelName = QString("ColorLable%1").arg(id);
+	const QPixmap colorIcon = iconDrawer->draw_icon(choosenColor);
+	const QString colorLabelName = QString("ColorLable%1").arg(id);
 	QLabel* colorLabel = findChild<QLabel*>(colorLabelName);
 	if (colorLabel != nullptr)
 	{
@@ -131,7 +131,7 @@ void MainWindow::ColorChangeButtonClicked(int id)
 	}
 }
 
-void MainWindow::DeleteFileStringButtonClicked(int id)
+void MainWindow::deleteFileStringButtonClicked(int id) const
 {
 	QString lineName;
 	if (id < 7)
@@ -152,20 +152,19 @@ void MainWindow::DeleteFileStringButtonClicked(int id)
 	}
 }
 
-void MainWindow::HelpButtonClicked(int id)
+void MainWindow::helpButtonClicked(int id)
 {
+	const QRect windowLocation = geometry();
 	if (id == 2)
 	{
-		QRect windowLocation = geometry();
 		HelpMatrixWidget* a = new HelpMatrixWidget(ui, windowLocation);
 		a->installEventFilter(a);
 	}
 	else
 	{
-		QRect windowLocation = geometry();
-		QString helpFile = QString(":resource/help/HELP%1.png").arg(id);
-		QPixmap hel = QPixmap(helpFile);
-		HelpWindow(hel, windowLocation, this);
+		const QString helpFile = QString(":resource/help/HELP%1.png").arg(id);
+		const QPixmap helpPixmap = QPixmap(helpFile);
+		HelpWindow(helpPixmap, windowLocation, this);
 	}
 }
 
@@ -236,7 +235,7 @@ void MainWindow::plotButtonTab1Clicked()
 	
 	if (ui->tab1FileLine6->text() != "")
 	{
-		ReadFileFromFS(ui->tab1FileLine6->text(), content);
+		read_file_from_fs(ui->tab1FileLine6->text(), content);
 		bandData->ParseData(content, ui->tab1uhf->isChecked());
 	}
 	else
@@ -244,7 +243,7 @@ void MainWindow::plotButtonTab1Clicked()
 
 	if (ui->tab1FileLine4->text() != "")
 	{
-		ReadFileFromFS(ui->tab1FileLine4->text(), content);
+		read_file_from_fs(ui->tab1FileLine4->text(), content);
 		surfData->ParseData(content);
 	}
 	else
@@ -306,13 +305,13 @@ void MainWindow::LoadFileConvertXfXButtonPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Open file"), settings->getLastPath(),
+        tr("Open file"), settings->GetLastPath(),
 		"*.f25 (*.f25);;All Files (*)");
 	if (fileName != "")
 	{
 		QFileInfo fileinfo(fileName);
-		settings->updatePath(fileinfo.absolutePath());
-		ReadFileFromFS(fileName, content);
+		settings->UpdatePath(fileinfo.absolutePath());
+		read_file_from_fs(fileName, content);
 	}
 	else
     {
@@ -340,13 +339,13 @@ void MainWindow::tab3LoadFilesConvertDOSButtonPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Open file"), settings->getLastPath(),
+        tr("Open file"), settings->GetLastPath(),
 		"*.f25 (*.f25);;All Files (*)");
 	if (fileName != "")
 	{
 		QFileInfo fileinfo(fileName);
-		settings->updatePath(fileinfo.absolutePath());
-		ReadFileFromFS(fileName, content);
+		settings->UpdatePath(fileinfo.absolutePath());
+		read_file_from_fs(fileName, content);
 	}
 	else
     {
@@ -358,7 +357,7 @@ void MainWindow::tab3LoadFilesConvertDOSButtonPressed()
 	delete content;
 	if (bandData->outputCOHP.count() > 0 || bandData->outputCOOP.count() > 0 || bandData->outputDOSS.count() > 0)
 	{
-		bool success = filesSaver->saveDOSData(fileName, bandData);
+		bool success = filesSaver->SaveDosData(fileName, bandData);
 		if (success == false)
 		{
             QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + filesSaver->errorData.ErrorFile + tr("' не удается открыть для записи!"));
@@ -374,13 +373,13 @@ void MainWindow::tab3SurfF25ButtonPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	QString file_name = QFileDialog::getOpenFileName(this,
-        tr("Open file"), settings->getLastPath(),
+        tr("Open file"), settings->GetLastPath(),
 		"*.f25 (*.f25);;All Files (*)");
 	if (file_name != "")
 	{
 		QFileInfo file_info(file_name);
-		settings->updatePath(file_info.absolutePath());
-		ReadFileFromFS(file_name, content);
+		settings->UpdatePath(file_info.absolutePath());
+		read_file_from_fs(file_name, content);
 	}
 	else
     {
@@ -408,18 +407,18 @@ void MainWindow::tab3SurfConvertButtonPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Open file"), settings->getLastPath(),
+        tr("Open file"), settings->GetLastPath(),
 		"*.dat (*.dat);;All Files (*)");
 	if (fileName != "")
 	{
 		QFileInfo fileinfo(fileName);
-		settings->updatePath(fileinfo.absolutePath());
-		ReadFileFromFS(fileName, content);
+		settings->UpdatePath(fileinfo.absolutePath());
+		read_file_from_fs(fileName, content);
 	}
 	else
     {
+		delete content;
 		return;
-        delete content;
     }
 
 	surfData->ParseData(content);
@@ -470,13 +469,13 @@ void MainWindow::tab3ButtonCrystalToTopondPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Open file"), settings->getLastPath(),
+        tr("Open file"), settings->GetLastPath(),
 		"Output file (*.outp);;All Files (*)");
 	if (fileName != "")
 	{
 		QFileInfo fileinfo(fileName);
-		settings->updatePath(fileinfo.absolutePath());
-		ReadFileFromFS(fileName, content);
+		settings->UpdatePath(fileinfo.absolutePath());
+		read_file_from_fs(fileName, content);
 	}
 	else
     {
@@ -521,13 +520,13 @@ void MainWindow::tab3ButtonTopondToCrystalPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Open file"), settings->getLastPath(),
+        tr("Open file"), settings->GetLastPath(),
 		"Output file (*.outp);;All Files (*)");
 	if (fileName != "")
 	{
 		QFileInfo fileinfo(fileName);
-		settings->updatePath(fileinfo.absolutePath());
-		ReadFileFromFS(fileName, content);
+		settings->UpdatePath(fileinfo.absolutePath());
+		read_file_from_fs(fileName, content);
 	}
 	else
     {
@@ -574,8 +573,8 @@ void MainWindow::tab2buttonDrawZoneStructPressed()
 	{
 		{
 			QFileInfo fileinfo(ui->tab2FileLine1->text());
-			settings->updatePath(fileinfo.absolutePath());
-			ReadFileFromFS(ui->tab2FileLine1->text(), content);
+			settings->UpdatePath(fileinfo.absolutePath());
+			read_file_from_fs(ui->tab2FileLine1->text(), content);
 		}
 	}
 	else
@@ -630,22 +629,22 @@ void MainWindow::tab2UpdateShowLine(int i)
 {
 	plotParams->updatePlotParams(2);
 	if (ui->tab2CheckBoxShow1->isChecked())
-		ui->tab2ComboBoxLineSelector->setItemData(ui->tab2ComboBoxLineSelector->currentIndex(), QBrush(Qt::red), Qt::TextColorRole);
+		ui->tab2ComboBoxLineSelector->setItemData(ui->tab2ComboBoxLineSelector->currentIndex(), QBrush(Qt::red), Qt::ForegroundRole); //TextColorRole
 	else
-		ui->tab2ComboBoxLineSelector->setItemData(ui->tab2ComboBoxLineSelector->currentIndex(), QBrush(Qt::black), Qt::TextColorRole);
+		ui->tab2ComboBoxLineSelector->setItemData(ui->tab2ComboBoxLineSelector->currentIndex(), QBrush(Qt::black), Qt::ForegroundRole);
 }
 
 void MainWindow::tab2LoadFilef25DOSSPressed()
 {
 	QString fileName = QFileDialog::getOpenFileName(this,
-		tr("Open file"), settings->getLastPath(),
+		tr("Open file"), settings->GetLastPath(),
 		tr("f25 files (*.f25);;All Files (*)"));
 	if (fileName != "")
 	{
 		QList<QString>* content = new QList<QString>();
-		ReadFileFromFS(fileName, content);
+		read_file_from_fs(fileName, content);
 		QFileInfo fileinfo(fileName);
-		settings->updatePath(fileinfo.absolutePath());
+		settings->UpdatePath(fileinfo.absolutePath());
 		ui->tab2FileLine2->setText(fileName);
 		QVector<int> count = bandData->CountData(content);
 		if (count[0] > 0 || count[1] > 0 || count[2] > 0)
@@ -682,7 +681,7 @@ void MainWindow::tab2ComboBoxLineSelectorIndexChanged(int selected)
 		disconnect(ui->tab2SpinnerLineMultiplier, SIGNAL(valueChanged(QString)), this, SLOT(tab2UpdateParams(QString)));
 		ui->tab2SpinnerLineWidth->setValue(plotParams->tab2PlotParams->at(selected).width);
 		ui->tab2SpinnerLineWidth->update();
-		ui->ColorLable8->setPixmap(iconDrawer->drawIcon(plotParams->tab2PlotParams->at(selected).color));
+		ui->ColorLable8->setPixmap(iconDrawer->draw_icon(plotParams->tab2PlotParams->at(selected).color));
 		ui->ColorLable8->update();
 		ui->tab2CheckBoxShow1->setChecked(plotParams->tab2PlotParams->at(selected).show);
 		ui->tab2CheckBoxShow1->update();
@@ -702,9 +701,9 @@ void MainWindow::tab2ButtonDrawDOSPressed()
 	QList<QString>* content = new QList<QString>();
 	if (ui->tab2FileLine2->text() != "")
 	{
-		ReadFileFromFS(ui->tab2FileLine2->text(), content);
+		read_file_from_fs(ui->tab2FileLine2->text(), content);
 		QFileInfo fileinfo(ui->tab2FileLine2->text());
-		settings->updatePath(fileinfo.absolutePath());
+		settings->UpdatePath(fileinfo.absolutePath());
 	}
 	else
 	{
@@ -763,13 +762,13 @@ void MainWindow::tab2PushButtonPDOSLoadPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Open file"), settings->getLastPath(),
+        tr("Open file"), settings->GetLastPath(),
 		"Output file (*.out);;All Files (*)");
 	if (fileName != "")
 	{
-		ReadFileFromFS(fileName, content);
+		read_file_from_fs(fileName, content);
 		QFileInfo fileinfo(fileName);
-		settings->updatePath(fileinfo.absolutePath());
+		settings->UpdatePath(fileinfo.absolutePath());
 	}
 	else
     {
@@ -786,12 +785,12 @@ void MainWindow::tab2PushButtonPDOSLoadPressed()
 	}
 
 	fileName = QFileDialog::getSaveFileName(nullptr,
-        tr("Сохранить данные"), settings->getLastPath()+"PDOS.xlsx",
+        tr("Сохранить данные"), settings->GetLastPath()+"PDOS.xlsx",
         tr("Excel file (*.xlsx);;All Files (*)"));
 	if (fileName != "")
 	{
 		QFileInfo fileinfo(fileName);
-		settings->updatePath(fileinfo.absolutePath());
+		settings->UpdatePath(fileinfo.absolutePath());
 		QXlsx::Document xlsx;
         xlsx.write(1, 1, tr("№ атома"));
         xlsx.write(1, 2, tr("Атом"));

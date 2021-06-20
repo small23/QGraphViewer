@@ -12,7 +12,7 @@ class ColorIconDrawer
 public:
     ColorIconDrawer();
     //Метод отрисовки новых иконок, принимает на вход цвет
-    QPixmap drawIcon(QColor color);
+    static QPixmap draw_icon(const QColor& color);
 };
 
 #endif // COLORICONDRAWER_H

@@ -1,9 +1,6 @@
 #include "crystaltopondconvertors.h"
 
-CrystalTopondConvertors::CrystalTopondConvertors()
-{
-
-}
+CrystalTopondConvertors::CrystalTopondConvertors() = default;
 
 bool CrystalTopondConvertors::ConvertCrystalToTopond(QList<QString> *content)
 {

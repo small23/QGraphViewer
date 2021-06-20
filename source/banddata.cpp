@@ -1,5 +1,5 @@
 #include "banddata.h"
-#include "math.h"
+#include "cmath"
 
 BandData::BandData(): borders{}, fermi(0), type(0), nothing(0), interval(0)
 {
@@ -107,9 +107,8 @@ void BandData::clear()
 
 void BandData::parse_band_data(QList<QString> *content, QVector<long> *indexListBAND)
 {
-    long int countX, countY;
     QString c = content->at(indexListBAND->at(0));
-    countY=c.mid(9,4).toInt();
+    long int countY=c.mid(9,4).toInt();
     for (int i=0; i<countY; i++)
     {
         QVector<double> a;
@@ -119,7 +118,7 @@ void BandData::parse_band_data(QList<QString> *content, QVector<long> *indexList
     for (int i=0; i<indexListBAND->count(); i++)
     {
         c=content->at(indexListBAND->at(i));
-        countX=c.mid(15,3).toInt();
+        long int  countX=c.mid(15,3).toInt();
 
         c.remove(0,18);
         QTextStream getBasicData(&c);
@@ -165,10 +164,10 @@ void BandData::parse_band_data(QList<QString> *content, QVector<long> *indexList
 
 void BandData::parse_dccp_data(QList<QString> *content, QVector<long> *indexList, QVector<QVector<double>> *output, QVector<double> *oX)
 {
-    long int countX=0, countY;
+    long int countX=0;
     double startX;
     QString c = content->at(indexList->at(0));
-    countY=c.mid(9,4).toInt();
+    long int countY=c.mid(9,4).toInt();
     c=content->at(indexList->at(0)+1);
     QTextStream getStartXData(&c);
     getStartXData >>nothing  >> startX;

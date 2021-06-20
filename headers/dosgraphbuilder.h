@@ -33,8 +33,8 @@ private slots:
 
 private:
     //Метод отрисовки данных на графике
-    void drawData(QVector<QVector<double>> data, QVector<double> axis, PlotParameters* params, int angle, int
-                  paramsShift, bool* showed);
+    void drawData(QVector<QVector<double>> data, const QVector<double>& axis, PlotParameters* params, int angle, int
+                  paramsShift, bool* showed) const;
     QCustomPlot *customPlot;
     PlotParameters* plotParams;
     QWidget* parent;

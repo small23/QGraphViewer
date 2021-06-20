@@ -22,8 +22,8 @@ public:
 private slots:
     void okButtonPushed();
     void cancelButtonPushed();
-    void resetQuality();
-    void resetScale();
+    void resetQuality() const;
+    void resetScale() const;
 
 private:
     Ui::PictureSettings *ui;

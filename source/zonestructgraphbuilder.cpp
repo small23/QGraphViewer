@@ -232,7 +232,7 @@ void ZoneStructGraphBuilder::savePicture()
 
 
 		QFileInfo fileinfo(fileName);
-		settings->updatePath(fileinfo.absolutePath());
+		settings->UpdatePath(fileinfo.absolutePath());
 		if (success == false)
 		{
             QMessageBox::critical(this, tr("Ошибка сохранения"), tr("Не удалось сохранить изображение!"));

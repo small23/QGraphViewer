@@ -1,10 +1,6 @@
 #include "surfdata.h"
 
-SurfData::SurfData()
-{
-
-
-}
+SurfData::SurfData() = default;
 
 void SurfData::ParseData(QList<QString> *content)
 {

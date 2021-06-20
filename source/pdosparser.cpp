@@ -38,7 +38,7 @@ QVector<QVector<AtomTypes>> PdosParser::getAtomData(QList<QString> *content)
     for (int i=dataBegin; i<dataEnd; i++)
     {
         b=content->at(i).mid(0,4);
-        int tempD = b.toDouble(&convertsionPass);
+        b.toDouble(&convertsionPass);
         if (convertsionPass==true)
         {
             cellsAtomsLocation.append(i-1);
@@ -54,7 +54,7 @@ QVector<QVector<AtomTypes>> PdosParser::getAtomData(QList<QString> *content)
             atoms.clear();
             AtomTypes data;
             b=content->at(cellsAtomsLocation.at(ii));
-            data.number=b.mid(0,4).toDouble();
+            data.number=b.mid(0,4).toInt();
             data.name=b.mid(4,3);
             b=content->at(cellsAtomsLocation.at(ii)+1);
             data.begin=lastNumber;
@@ -64,7 +64,7 @@ QVector<QVector<AtomTypes>> PdosParser::getAtomData(QList<QString> *content)
                 b=content->at(i);
                 if (QString::compare(b.mid(36,2),data.type)==0)
                 {
-                    data.end=b.mid(31,4).toDouble();
+                    data.end=b.mid(31,4).toInt();
                     lastNumber=data.end+1;
                 }
                 else if (QString::compare(b.mid(36,2),"  ")!=0)
@@ -72,7 +72,7 @@ QVector<QVector<AtomTypes>> PdosParser::getAtomData(QList<QString> *content)
                     atoms.append(data);
                     data.begin=atoms.at(atoms.count()-1).end+1;
                     data.type=b.mid(36,2);
-                    data.end=b.mid(31,4).toDouble();
+                    data.end=b.mid(31,4).toInt();
                     if (data.end==0) return atomsContainer;
                     data.name=atoms.at(atoms.count()-1).name;
                     data.number=atoms.at(atoms.count()-1).number;
@@ -84,7 +84,7 @@ QVector<QVector<AtomTypes>> PdosParser::getAtomData(QList<QString> *content)
         {
             long int delta=atoms.at(atoms.count()-1).end-atoms.at(0).begin+1;
             b=content->at(cellsAtomsLocation.at(ii));
-            atoms.data()[0].number=b.mid(0,4).toDouble();
+            atoms.data()[0].number=b.mid(0,4).toInt();
             atoms.data()[0].name=b.mid(4,3);
             atoms.data()[0].begin+=delta;
             atoms.data()[0].end+=delta;

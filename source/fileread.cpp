@@ -1,6 +1,6 @@
 #include "fileread.h"
 
-void ReadFileFromFS(QString filename,QList<QString> *content)
+void read_file_from_fs(const QString& filename,QList<QString> *content)
 {
     content->clear();
     QFile file(filename);

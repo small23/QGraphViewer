@@ -58,11 +58,11 @@ public Q_SLOTS:
     //Обработчики нажатий на кнопки формы
 private Q_SLOTS:
     //...смены цвета линнии графика
-    void ColorChangeButtonClicked(int id);
+    void colorChangeButtonClicked(int id) const;
     //...очищения строки пути к файлу
-    void DeleteFileStringButtonClicked(int id);
+    void deleteFileStringButtonClicked(int id) const;
     //...вызова графической справки
-    void HelpButtonClicked(int id);
+    void helpButtonClicked(int id);
     //...построения графика во вкладе 1 (basicgraphbuild)
     void plotButtonTab1Clicked();
     //...смены шрифта надписей на графике

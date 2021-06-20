@@ -2,7 +2,7 @@
 #include "QScrollBar"
 
 
-HelpWindow::HelpWindow(QPixmap hel,QRect windowLocation,QWidget *parent) : QWidget(parent)
+HelpWindow::HelpWindow(const QPixmap& hel, const QRect windowLocation,QWidget *parent) : QWidget(parent)
 {
     scene = new QGraphicsScene();
     view = new QGraphicsView();

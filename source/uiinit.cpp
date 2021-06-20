@@ -1,7 +1,7 @@
 #include "uiinit.h"
 #include "ui_mainwindow.h"
 #include "QObject"
-#include "Delegator.h"
+#include "delegator.h"
 #include "plotparameters.h"
 
 auto lineTypesLang ={QComboBox::tr("Сплошная"), QComboBox::tr("Тире"), QComboBox::tr("Точка"), QComboBox::tr("Точка-тире")};
@@ -30,7 +30,7 @@ void setupUiFields(Ui::MainWindow* ui)
     ui->tab1FontSize->setLocale(QLocale::English);
 
     //QDoubleValidator *localValidator = new QDoubleValidator();
-    QRegExpValidator* localValidator = new QRegExpValidator(QRegExp("[+-]?\\d*[\\.]?\\d+"));
+    QRegExpValidator* localValidator = new QRegExpValidator(QRegExp(R"([+-]?\d*[\.]?\d+)"));
     //localValidator->setLocale(QLocale::English);
 
     ui->tab1AtomsCutOff->setValidator(localValidator);
