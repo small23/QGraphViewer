@@ -11,7 +11,7 @@
 #include "QFileDialog"
 #include "QTextStream"
 #include "QMessageBox"
-#include "SettingsKeeper.h"
+#include "settingsKeeper.h"
 
 #include "xlsxdocument.h"
 

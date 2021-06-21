@@ -263,10 +263,11 @@ public:
     QLabel *tab4CompileDate;
     QFrame *line;
     QPushButton *tab4LicenceMIT;
-    QButtonGroup *LoadFileButtonGroup;
-    QButtonGroup *HelpButtonGroup;
-    QButtonGroup *DeleteButtonGroup;
+    QPushButton *tab4ChangelogButton;
     QButtonGroup *ColorButtonGroup;
+    QButtonGroup *HelpButtonGroup;
+    QButtonGroup *LoadFileButtonGroup;
+    QButtonGroup *DeleteButtonGroup;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -1337,7 +1338,7 @@ public:
         tab4QtAbout->setGeometry(QRect(590, 400, 81, 23));
         tab4CompileDate = new QLabel(tab_4);
         tab4CompileDate->setObjectName(QString::fromUtf8("tab4CompileDate"));
-        tab4CompileDate->setGeometry(QRect(250, 400, 251, 21));
+        tab4CompileDate->setGeometry(QRect(420, 420, 251, 31));
         line = new QFrame(tab_4);
         line->setObjectName(QString::fromUtf8("line"));
         line->setGeometry(QRect(220, 20, 20, 401));
@@ -1346,6 +1347,9 @@ public:
         tab4LicenceMIT = new QPushButton(tab_4);
         tab4LicenceMIT->setObjectName(QString::fromUtf8("tab4LicenceMIT"));
         tab4LicenceMIT->setGeometry(QRect(504, 400, 81, 23));
+        tab4ChangelogButton = new QPushButton(tab_4);
+        tab4ChangelogButton->setObjectName(QString::fromUtf8("tab4ChangelogButton"));
+        tab4ChangelogButton->setGeometry(QRect(420, 400, 75, 23));
         tabWidget->addTab(tab_4, QString());
         MainWindow->setCentralWidget(centralwidget);
 
@@ -1569,6 +1573,7 @@ public:
         tab4QtAbout->setText(QCoreApplication::translate("MainWindow", "\320\236 \321\201\321\200\320\265\320\264\320\265 Qt", nullptr));
         tab4CompileDate->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         tab4LicenceMIT->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\320\263\320\273\320\260\321\210\320\265\320\275\320\270\320\265", nullptr));
+        tab4ChangelogButton->setText(QCoreApplication::translate("MainWindow", "\320\230\320\267\320\274\320\265\320\275\320\265\320\275\320\270\321\217", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_4), QCoreApplication::translate("MainWindow", "\320\236 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\320\274\320\265", nullptr));
         (void)MainWindow;
     } // retranslateUi

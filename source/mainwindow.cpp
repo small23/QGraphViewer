@@ -36,23 +36,21 @@ MainWindow::MainWindow(QWidget* parent)
 	tmr->setInterval(5000); 
 	connect(tmr, SIGNAL(timeout()), this, SLOT(garbageCollector())); 
 	tmr->start();
-
-	
 	
     connect(ui->tab3AtomsConvertButton,     SIGNAL(clicked()),                  this,       SLOT(atomsConvertButtonPressed()));
     connect(ui->tab3AtomsSearchButton,      SIGNAL(clicked()),                  this,       SLOT(atomsSearchButtonPressed()));
-    connect(ui->tab3LoadFileConvertXfX,     SIGNAL(clicked()),                  this,       SLOT(LoadFileConvertXfXButtonPressed()));
-    connect(ui->tab3LoadFilesConvertDOS,    SIGNAL(clicked()),                  this,       SLOT(tab3LoadFilesConvertDOSButtonPressed()));
+    connect(ui->tab3LoadFileConvertXfX,     SIGNAL(clicked()),                  this,       SLOT(loadFileConvertXfXButtonPressed()));
+    connect(ui->tab3LoadFilesConvertDOS,    SIGNAL(clicked()),                  this,       SLOT(tab3LoadFilesConvertDosButtonPressed()));
     connect(ui->tab3SurfF25Button,          SIGNAL(clicked()),                  this,       SLOT(tab3SurfF25ButtonPressed()));
     connect(ui->tab3SurfConvertButton,      SIGNAL(clicked()),                  this,       SLOT(tab3SurfConvertButtonPressed()));
     connect(ui->tab3ButtonCrystalToTopond,  SIGNAL(clicked()),                  this,       SLOT(tab3ButtonCrystalToTopondPressed()));
     connect(ui->tab3ButtonTopondToCrystal,  SIGNAL(clicked()),                  this,       SLOT(tab3ButtonTopondToCrystalPressed()));
-    connect(ui->tab2buttonDrawZoneStruct,   SIGNAL(clicked()),                  this,       SLOT(tab2buttonDrawZoneStructPressed()));
-    connect(ui->ColorButtonGroup,           SIGNAL(buttonClicked(int)),         this,       SLOT(ColorChangeButtonClicked(int)));
-    connect(ui->DeleteButtonGroup,          SIGNAL(buttonClicked(int)),         this,       SLOT(DeleteFileStringButtonClicked(int)));
-    connect(ui->HelpButtonGroup,            SIGNAL(buttonClicked(int)),         this,       SLOT(HelpButtonClicked(int)));
-    connect(ui->LoadFileButtonGroup,        SIGNAL(buttonClicked(int)),         fileDiag,   SLOT(LoadFileButtonCliked(int)));
-    connect(ui->tab1LoadFilesTjMolP2,       SIGNAL(clicked()),                  fileDiag,   SLOT(FileDialogMolTrajP2Load()));
+    connect(ui->tab2buttonDrawZoneStruct,   SIGNAL(clicked()),                  this,       SLOT(tab2ButtonDrawZoneStructPressed()));
+    connect(ui->ColorButtonGroup,           SIGNAL(buttonClicked(int)),         this,       SLOT(colorChangeButtonClicked(int)));
+    connect(ui->DeleteButtonGroup,          SIGNAL(buttonClicked(int)),         this,       SLOT(deleteFileStringButtonClicked(int)));
+    connect(ui->HelpButtonGroup,            SIGNAL(buttonClicked(int)),         this,       SLOT(helpButtonClicked(int)));
+    connect(ui->LoadFileButtonGroup,        SIGNAL(buttonClicked(int)),         fileDiag,   SLOT(loadFileButtonCliked(int)));
+    connect(ui->tab1LoadFilesTjMolP2,       SIGNAL(clicked()),                  fileDiag,   SLOT(fileDialogMolTrajP2Load()));
     connect(ui->tab1PlotGraphic,            SIGNAL(clicked()),                  this,       SLOT(plotButtonTab1Clicked()));
     connect(ui->tab1FontChangeButton,       SIGNAL(clicked()),                  this,       SLOT(fontChangeButtonPressed()));
     connect(ui->tab2SpinnerLineWidth,       SIGNAL(valueChanged(QString)),      this,       SLOT(tab2UpdateParams(QString)));
@@ -60,13 +58,14 @@ MainWindow::MainWindow(QWidget* parent)
     connect(ui->tab2CheckBoxShow1,          SIGNAL(stateChanged(int)),          this,       SLOT(tab2UpdateShowLine(int)));
     connect(ui->tab2SpinnerLineMultiplier,  SIGNAL(valueChanged(QString)),      this,       SLOT(tab2UpdateParams(QString)));
     connect(ui->tab2ComboBoxLineSelector,   SIGNAL(currentIndexChanged(int)),   this,       SLOT(tab2ComboBoxLineSelectorIndexChanged(int)));
-    connect(ui->tab2ButtonDrawDOS,          SIGNAL(clicked()),                  this,       SLOT(tab2ButtonDrawDOSPressed()));
+    connect(ui->tab2ButtonDrawDOS,          SIGNAL(clicked()),                  this,       SLOT(tab2ButtonDrawDosPressed()));
     connect(ui->tab2BushButtonSetFont,      SIGNAL(clicked()),                  this,       SLOT(tab2BushButtonSetFontPressed()));
     connect(ui->tab4QtAbout,                SIGNAL(clicked()),                  this,       SLOT(tab4QtAbout()));
-    connect(ui->tab2LoadFilef25DOSS,        SIGNAL(clicked()),                  this,       SLOT(tab2LoadFilef25DOSSPressed()));
-    connect(ui->tab4LicenceMIT,             SIGNAL(clicked()),                  this,       SLOT(tab4LicenceMIT()));
-    connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),                  this,       SLOT(tab2PushButtonPDOSLoadPressed()));	
-    //connect(ui->menuPictureSetup,			 SIGNAL(triggered()),				   this,       SLOT(showPictureSettings()));
+    connect(ui->tab2LoadFilef25DOSS,        SIGNAL(clicked()),                  this,       SLOT(tab2LoadFilef25DossPressed()));
+    connect(ui->tab4LicenceMIT,             SIGNAL(clicked()),                  this,       SLOT(tab4LicenceMit()));
+    connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),                  this,       SLOT(tab2PushButtonPdosLoadPressed()));
+    connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),                  this,       SLOT(tab2PushButtonPdosLoadPressed()));
+    connect(ui->tab4ChangelogButton,        SIGNAL(clicked()),                  this,       SLOT(tab4Changelog()));
 
 	//Корректировочный коэффициент масштабирования
 	//графиков на дисплеях с масштабом !=100%
@@ -88,13 +87,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::showPictureSettings()
 {
-    if (form!=nullptr)
+    if (formPictureSettings!=nullptr)
     {
-        form->close();
-        delete form;
+        formPictureSettings->close();
+        delete formPictureSettings;
     }
-    form = new PictureSettings(plotParams, settings,this);
-	form->show();
+    formPictureSettings = new PictureSettings(plotParams, settings,this);
+    formPictureSettings->show();
 }
 
 void MainWindow::garbageCollector() const
@@ -218,7 +217,6 @@ void MainWindow::plotButtonTab1Clicked()
 		default:
 			break;
 		}
-
 
 		graphicsData->clear();
         delete content;
@@ -620,7 +618,7 @@ void MainWindow::tab2ButtonDrawZoneStructPressed()
         QMessageBox::warning(this, tr("Ошибка парсинга"), tr("В предоставленном файле отсутсвуют необходимые данные или файл поврежден!"));
 }
 
-void MainWindow::tab2UpdateParams([[maybe_unused]] QString i) const
+void MainWindow::tab2UpdateParams(QString i) const
 {
 	plotParams->updatePlotParams(2);
 }
@@ -756,6 +754,17 @@ void MainWindow::tab4LicenceMit()
         "ОТВЕТСТВЕННОСТИ ПО КАКИМ-ЛИБО ИСКАМ, ЗА УЩЕРБ ИЛИ ПО ИНЫМ ТРЕБОВАНИЯМ, В ТОМ ЧИСЛЕ, ПРИ ДЕЙСТВИИ КОНТРАКТА, ДЕЛИКТЕ "
         "ИЛИ ИНОЙ СИТУАЦИИ, ВОЗНИКШИМ ИЗ-ЗА ИСПОЛЬЗОВАНИЯ ПРОГРАММНОГО ОБЕСПЕЧЕНИЯ ИЛИ ИНЫХ ДЕЙСТВИЙ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ.");
     QMessageBox::information(this, tr("Лицензионное соглашение"), text);
+}
+
+void MainWindow::tab4Changelog()
+{
+    if (formChangelog!=nullptr)
+    {
+        formChangelog->close();
+        delete formChangelog;
+    }
+    formChangelog = new changelog(this);
+    formChangelog->show();
 }
 
 void MainWindow::tab2PushButtonPdosLoadPressed()

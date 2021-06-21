@@ -33,6 +33,7 @@ win32 {
 RC_ICONS = ./resources/Logos/logo.ico
 
 SOURCES += \
+    source/changelog.cpp \
     source/settingskeeper.cpp \
     source/atomconversion.cpp \
     source/banddata.cpp \
@@ -59,6 +60,7 @@ SOURCES += \
     source/zonestructgraphbuilder.cpp
 
 HEADERS += \
+    headers/changelog.h \
     headers/delegator.h \
     headers/settingsKeeper.h \
     headers/structuresHeaders.h \
@@ -82,13 +84,15 @@ HEADERS += \
     headers/plotparameters.h \
     headers/qcustomplot.h \
     headers/surfdata.h \
-    headers/ui_mainwindow.h \
-    headers/ui_picturesettings.h \
+    ui_mainwindow.h \
+    ui_picturesettings.h \
     headers/uiinit.h \
     headers/zonestructgraphbuilder.h
 
 FORMS += \
-    ui/mainwindow.ui
+    ui/changelog.ui \
+    ui/mainwindow.ui\
+    ui/picturesettings.ui
 
 INCLUDEPATH += $$PWD/headers
 INCLUDEPATH += $$PWD/ui
@@ -108,5 +112,4 @@ RESOURCES += \
     resources/Logos.qrc
 
 DISTFILES += \
-    distfiles/qcustomplot.qch \
-    Новая папка/qcustomplot.qch
+    distfiles/qcustomplot.qch

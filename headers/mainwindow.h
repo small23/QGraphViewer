@@ -34,6 +34,7 @@
 #include "settingsKeeper.h"
 #include "ui_mainwindow.h"
 #include "mathsymbols.h"
+#include "changelog.h"
 
 
 
@@ -106,13 +107,15 @@ private Q_SLOTS:
     //Обработчик вызова таймера очистки памяти от графиков
     void garbageCollector() const;
 
+    void tab4Changelog();
 	
 private:
     //Указатели на классы-обработчики и хранилища
     SettingsKeeper *settings;
     //UI
     Ui::MainWindow *ui;
-    PictureSettings *form = nullptr;
+    PictureSettings *formPictureSettings = nullptr;
+    changelog *formChangelog = nullptr;
     QFont tab1GraphFont;
     QFont tab2GraphFont;
     GraphicsData *graphicsData;
