@@ -1,8 +1,8 @@
 #include "atomconversion.h"
 
-AtomConversion::AtomConversion(Ui::MainWindow* _ui, SettingsKeeper* settings, QWidget* parent) : QWidget(parent)
+AtomConversion::AtomConversion(Ui::MainWindow* uiExt, SettingsKeeper* settings, QWidget* parent) : QWidget(parent)
 {
-	ui = _ui;
+	ui = uiExt;
 	this->settings = settings;
 }
 

@@ -179,7 +179,7 @@ void setUiColorLabels(Ui::MainWindow* ui)
     colorIcon.fill(Qt::transparent);
     QPainter p(&colorIcon);
     p.setRenderHint(QPainter::Antialiasing, true);
-const QPen pen(Qt::transparent, 2);
+    const QPen pen(Qt::transparent, 2);
     p.setPen(pen);
     QBrush brush(Qt::black);
     p.setBrush(brush);
