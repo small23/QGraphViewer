@@ -10,18 +10,18 @@ void AtomConversion::convertAtoms()
 {
 	QVector<QVector<double>> res = convert();
 
-	if (res.size() == 0)
+	if (res.isEmpty())
 	{
 		QMessageBox::critical(this, tr("Ошибка сохранения"), tr("Нет данных для сохранения!"));
 		return;
 	}
-	QString fileName = QFileDialog::getSaveFileName(nullptr,
-	                                                tr("Сохранить данные"), settings->GetLastPath() + "Atoms.txt",
-	                                                "Text file (*.txt);;All Files (*)");
+	const QString fileName = QFileDialog::getSaveFileName(nullptr,
+	                                                      tr("Сохранить данные"), settings->getLastPath() + "Atoms.txt",
+	                                                      "Text file (*.txt);;All Files (*)");
 	if (fileName != "")
 	{
-		const QFileInfo file_info(fileName);
-		settings->UpdatePath(file_info.absolutePath());
+		const QFileInfo fileInfo(fileName);
+		settings->updatePath(fileInfo.absolutePath());
 		QFile file(fileName);
 		if (file.open(QIODevice::WriteOnly | QIODevice::Text))
 		{
@@ -29,8 +29,8 @@ void AtomConversion::convertAtoms()
 
 			for (int i = 0; i < res.count(); i++)
 			{
-				QString output = (QString::number(res[i][0], 'g', 8) + " " + QString::number(res[i][1], 'g', 8) + " " +
-					QString::number(res[i][2], 'g', 8) + "\n");
+				QString output = QString::number(res[i][0], 'g', 8) + " " + QString::number(res[i][1], 'g', 8) + " " +
+					QString::number(res[i][2], 'g', 8) + "\n";
 				stream << output;
 			}
 
@@ -39,7 +39,7 @@ void AtomConversion::convertAtoms()
 	}
 }
 
-QVector<QVector<double>> AtomConversion::convert()
+QVector<QVector<double>> AtomConversion::convert() const
 {
 	Eigen::MatrixXd atomsRotationMatrix(3, 3);
 	Eigen::MatrixXd atomTemp(3, 1);
@@ -52,8 +52,8 @@ QVector<QVector<double>> AtomConversion::convert()
 			atomsRotationMatrix(i, j) = ui->tab3RotationTable->item(i, j)->text().toDouble();
 		}
 	}
-	QString str = ui->tab3TextEditAtoms->toPlainText();
-	QStringList b = str.split("\n");
+	const QString str = ui->tab3TextEditAtoms->toPlainText();
+	const QStringList b = str.split("\n");
 	for (int i = 0; i < b.count(); i++)
 	{
 		QStringList c = b.at(i).split(" ");
@@ -63,7 +63,7 @@ QVector<QVector<double>> AtomConversion::convert()
 			atomTemp(0, 0) = c.at(0).toDouble();
 			atomTemp(1, 0) = c.at(1).toDouble();
 			atomTemp(2, 0) = c.at(2).toDouble();
-			atomTemp = (atomsRotationMatrix.inverse() * atomTemp);
+			atomTemp = atomsRotationMatrix.inverse() * atomTemp;
 			res.append({atomTemp(0, 0), atomTemp(1, 0), atomTemp(2, 0)});
 		}
 	}
@@ -96,7 +96,7 @@ void AtomConversion::convertAndSearchAtoms()
 			atomTemp(1, 0) = c.at(1).toDouble();
 			atomTemp(2, 0) = c.at(2).toDouble();
 			if (ui->tab3RadioButtonAtomsSet1->isChecked() == false)
-				atomTemp = (atomsRotationMatrix.inverse() * atomTemp);
+				atomTemp = atomsRotationMatrix.inverse() * atomTemp;
 			res.append({atomTemp(0, 0), atomTemp(1, 0), atomTemp(2, 0)});
 		}
 	}
@@ -131,14 +131,14 @@ void AtomConversion::convertAndSearchAtoms()
 			}
 			else
 			{
-				Eigen::MatrixXd matrix_xd(3, 1);
-				matrix_xd(0, 0) = res[i][0] - resElem[j][0];
-				matrix_xd(1, 0) = res[i][1] - resElem[j][1];
-				matrix_xd(2, 0) = res[i][2] - resElem[j][2];
-				matrix_xd = atomsRotationMatrix.inverse() * matrix_xd;
-				n1 = matrix_xd(0, 0);
-				n2 = matrix_xd(1, 0);
-				n3 = matrix_xd(2, 0);
+				Eigen::MatrixXd matrixXd(3, 1);
+				matrixXd(0, 0) = res[i][0] - resElem[j][0];
+				matrixXd(1, 0) = res[i][1] - resElem[j][1];
+				matrixXd(2, 0) = res[i][2] - resElem[j][2];
+				matrixXd = atomsRotationMatrix.inverse() * matrixXd;
+				n1 = matrixXd(0, 0);
+				n2 = matrixXd(1, 0);
+				n3 = matrixXd(2, 0);
 			}
 			if (fabs(round(n1) - n1) < 0.001 && fabs(round(n2) - n2) < 0.001 && fabs(round(n3) - n3) < 0.001)
 			{
@@ -165,13 +165,13 @@ void AtomConversion::convertAndSearchAtoms()
 		QStringList() << "№ исх. ат." << "N ат. в элм. яч." << "n1" << "n2" << "n3");
 	if (ui->tab3ConvertedAtomsTable->rowCount() > 0)
 	{
-		QString fileName = QFileDialog::getSaveFileName(nullptr,
-		                                                tr("Сохранить данные"), settings->GetLastPath() + "Atoms.xlsx",
-		                                                "Excel file (*.xlsx);;All Files (*)");
+		const QString fileName = QFileDialog::getSaveFileName(nullptr,
+		                                                      tr("Сохранить данные"), settings->getLastPath() + "Atoms.xlsx",
+		                                                      "Excel file (*.xlsx);;All Files (*)");
 		if (fileName != "")
 		{
-			QFileInfo fileinfo(fileName);
-			settings->UpdatePath(fileinfo.absolutePath());
+			const QFileInfo fileinfo(fileName);
+			settings->updatePath(fileinfo.absolutePath());
 			QXlsx::Document xlsx;
 			xlsx.write(1, 1, tr("№ Исходного атома"));
 			xlsx.write(1, 2, tr("№ Атома в эл. яч."));
@@ -192,7 +192,7 @@ void AtomConversion::convertAndSearchAtoms()
 			xlsx.setColumnWidth(4, 5);
 			xlsx.setColumnWidth(5, 5);
 			QApplication::processEvents();
-			bool success = xlsx.saveAs(fileName); // save the document as 'Test.xlsx'
+			const bool success = xlsx.saveAs(fileName); // save the document as 'Test.xlsx'
 			if (success != true)
 			{
 				QMessageBox::critical(this, tr("Ошибка сохранения"),

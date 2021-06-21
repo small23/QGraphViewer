@@ -1,7 +1,7 @@
 #include "basicgraphbuild.h"
 
-BasicGraphBuild::BasicGraphBuild(PlotParameters* plotParams, const QFont& font, bool hideAxis, int buildType, bool uhf, SettingsKeeper* settings,
-	GraphicsData* graphics, SurfData* surfaceData, BandData* bandData, int angle, QWidget* parent) : QWidget(parent)
+BasicGraphBuild::BasicGraphBuild(PlotParameters* plotParams, const QFont& font, const bool hideAxis, const int buildType, const bool uhf, SettingsKeeper* settings,
+	GraphicsData* graphics, SurfData* surfaceData, BandData* bandData, const int angle, QWidget* parent) : QWidget(parent)
 {
 	customPlot = new QCustomPlot();
 	QCPCurve* newCurve;
@@ -13,9 +13,9 @@ BasicGraphBuild::BasicGraphBuild(PlotParameters* plotParams, const QFont& font, 
 	if (plotParams->tab1PlotParams[6].show)
 	{
 		if (surfaceData->oF.count() != 0)
-			draw_surface(surfaceData, plotParams, angle);
+			drawSurface(surfaceData, plotParams, angle);
 		if (bandData->outputMAPN.count() != 0)
-			draw_band(bandData, plotParams, buildType, uhf, angle);
+			drawBand(bandData, plotParams, buildType, uhf, angle);
 	}
 
 	drawDataLines(plotParams, graphics->Trajgrad, 0, angle);
@@ -126,8 +126,8 @@ BasicGraphBuild::BasicGraphBuild(PlotParameters* plotParams, const QFont& font, 
 			break;
 		}
 	}
-	QCPRange xRange = customPlot->xAxis->range();
-	QCPRange yRange = customPlot->yAxis->range();
+	const QCPRange xRange = customPlot->xAxis->range();
+	const QCPRange yRange = customPlot->yAxis->range();
 	CompareScale = (yRange.upper - yRange.lower) / (xRange.upper - xRange.lower);
 	if (CompareScale < 1.01)
 	{
@@ -189,7 +189,7 @@ BasicGraphBuild::BasicGraphBuild(PlotParameters* plotParams, const QFont& font, 
 	customPlot->setAttribute(Qt::WA_DeleteOnClose);
 }
 
-void BasicGraphBuild::drawDataLines(PlotParameters* plotParams, QList<UniversalLines>* data, int index, int angle)
+void BasicGraphBuild::drawDataLines(PlotParameters* plotParams, QList<UniversalLines>* data, const int index, const int angle) const
 {
 	QPen pen;
 	pen.setStyle(plotParams->tab1PlotParams[index].style);
@@ -240,7 +240,7 @@ void BasicGraphBuild::drawDataLines(PlotParameters* plotParams, QList<UniversalL
 	}
 }
 
-void BasicGraphBuild::contextMenuRequest(QPoint pos)
+void BasicGraphBuild::contextMenuRequest(const QPoint pos)
 {
 	QMenu* menu = new QMenu(this);
 	menu->setAttribute(Qt::WA_DeleteOnClose);
@@ -271,14 +271,14 @@ void BasicGraphBuild::savePicture()
 		break;
 	}
 
-	QString fileName = QFileDialog::getSaveFileName(this,
-		tr("Сохранить график"), settings->lastPath + filenameOnly,
-		fileFormats);
+	const QString fileName = QFileDialog::getSaveFileName(this,
+	                                                      tr("Сохранить график"), settings->lastPath + filenameOnly,
+	                                                      fileFormats);
 	if (fileName != "")
 	{
-		double h = static_cast<double>(customPlot->height());
-		double w = static_cast<double>(customPlot->width());
-		double scale = plotParams->drawScale / (h > w ? h / 600.0 : w / 600.0) / 2;
+		const double h = static_cast<double>(customPlot->height());
+		const double w = static_cast<double>(customPlot->width());
+		const double scale = plotParams->drawScale / (h > w ? h / 600.0 : w / 600.0) / 2;
 		bool success = false;
 		switch (plotParams->preferFormat)
 		{
@@ -296,17 +296,16 @@ void BasicGraphBuild::savePicture()
 		}
 
 
-		QFileInfo fileinfo(fileName);
-		settings->UpdatePath(fileinfo.absolutePath());
+		const QFileInfo fileinfo(fileName);
+		settings->updatePath(fileinfo.absolutePath());
 		if (success == false)
 		{
             QMessageBox::critical(this, tr("Ошибка сохранения"), tr("Не удалось сохранить изображение!"));
-			return;
 		}
 	}
 }
 
-void BasicGraphBuild::draw_surface(SurfData* surfData, PlotParameters* plotParams, int angle)
+void BasicGraphBuild::drawSurface(SurfData* surfData, PlotParameters* plotParams, const int angle) const
 {
 
 	QPen pen;
@@ -330,7 +329,7 @@ void BasicGraphBuild::draw_surface(SurfData* surfData, PlotParameters* plotParam
 		surfData->oY.at(surfData->oY.count() - 1));
 	std::vector<double> lines;
 	double tempLineParam = 100;
-	int colorDelimiter = 0;;
+	int colorDelimiter = 0;
 	double hslA = 249;
 	double hslB = 0;
 
@@ -357,7 +356,7 @@ void BasicGraphBuild::draw_surface(SurfData* surfData, PlotParameters* plotParam
 	bool shiftB = false;
 	if (colorDelimiterB > 8)
 	{
-		hslBStep = 135.0 / (colorDelimiterB - 3);
+		hslBStep = 135.0 / static_cast<double>(colorDelimiterB - 3);
 		colorDelimiterB -= 3;
 		shiftB = true;
 	}
@@ -366,27 +365,27 @@ void BasicGraphBuild::draw_surface(SurfData* surfData, PlotParameters* plotParam
 
 	for (size_t i = 1; i < result.size(); i += 2)
 	{
-		if (result[i].size() > 0)
+		if (!result[i].empty())
 			colorDelimiterA++;
 	}
 	if (colorDelimiterA > 8)
 	{
-		hslAStep = (135.0 - 270.0) / (colorDelimiterA - 3);
+		hslAStep = (135.0 - 270.0) / static_cast<double>(colorDelimiterA - 3);
 		colorDelimiterA -= 3;
 		shiftA = true;
 	}
 	else
 		hslAStep = (135.0 - 270.0) / (colorDelimiterA - 0);
 	if (surfData->oX.size() >= 2 && surfData->oY.size() >= 2)
-		draw_data_isolines(plotParams, result, &hslA, &hslB, &hslAStep,
-	                   &hslBStep, surfData->oX, surfData->oY, shiftA, shiftB,
-	                   colorDelimiterA, colorDelimiterB, angle, surfData->oX.at(1) - surfData->oX.at(0), 
-		surfData->oY.at(1) - surfData->oY.at(0));
+		drawDataIsolines(plotParams, result, &hslA, &hslB, &hslAStep,
+		                   &hslBStep, surfData->oX, surfData->oY, shiftA, shiftB,
+		                   colorDelimiterA, colorDelimiterB, angle, surfData->oX.at(1) - surfData->oX.at(0), 
+		                   surfData->oY.at(1) - surfData->oY.at(0));
 
 	delete contour;
 }
 
-void BasicGraphBuild::draw_band(BandData* bandData, PlotParameters* plotParams, int buildType, bool uhf, int angle)
+void BasicGraphBuild::drawBand(BandData* bandData, PlotParameters* plotParams, const int buildType, const bool uhf, const int angle) const
 {
 	QPen pen;
 
@@ -438,7 +437,7 @@ void BasicGraphBuild::draw_band(BandData* bandData, PlotParameters* plotParams, 
 		bandData->oYTempMapn.at(bandData->oYTempMapn.count() - 1));
 	std::vector<double> lines;
 	double tempLineParam = 100;
-	int colorDelimiter = 0;;
+	int colorDelimiter = 0;
 	double hslA = 270;
 	double hslB = 0;
 
@@ -458,7 +457,7 @@ void BasicGraphBuild::draw_band(BandData* bandData, PlotParameters* plotParams, 
 	int colorDelimiterB = 0;
 	for (size_t i = 0; i < result.size(); i += 2)
 	{
-		if (result[i].size() > 0)
+		if (!result[i].empty())
 			colorDelimiterB++;
 	}
 	bool shiftA = false;
@@ -476,7 +475,7 @@ void BasicGraphBuild::draw_band(BandData* bandData, PlotParameters* plotParams, 
 
 	for (size_t i = 1; i < result.size(); i += 2)
 	{
-		if (result[i].size() > 0)
+		if (!result[i].empty())
 			colorDelimiterA++;
 	}
 	if (colorDelimiterA > 8)
@@ -488,18 +487,18 @@ void BasicGraphBuild::draw_band(BandData* bandData, PlotParameters* plotParams, 
 	else
 		hslAStep = (135.0 - 270.0) / (colorDelimiterA - 0);
 	if (bandData->oYTempMapn.size()>1 && bandData->oXTempMapn.size() > 1)
-		draw_data_isolines(plotParams, result, &hslA, &hslB, &hslAStep, &hslBStep,
-	                   bandData->oXTempMapn, bandData->oYTempMapn, shiftA, shiftB,
-	                   colorDelimiterB, colorDelimiterA, angle, bandData->oXTempMapn.at(1)- bandData->oXTempMapn.at(0),
-		bandData->oYTempMapn.at(1) - bandData->oYTempMapn.at(0));
+		drawDataIsolines(plotParams, result, &hslA, &hslB, &hslAStep, &hslBStep,
+		                   bandData->oXTempMapn, bandData->oYTempMapn, shiftA, shiftB,
+		                   colorDelimiterB, colorDelimiterA, angle, bandData->oXTempMapn.at(1)- bandData->oXTempMapn.at(0),
+		                   bandData->oYTempMapn.at(1) - bandData->oYTempMapn.at(0));
 
 	delete contour;
 }
 
-void BasicGraphBuild::draw_data_isolines(PlotParameters* plotParams, std::vector<MarchingSquares::levelPaths> result,
-	double* hslA, double* hslB, double* hslAStep, double* hslBStep, const QVector<double>& oXTemp, const QVector<double>
+void BasicGraphBuild::drawDataIsolines(PlotParameters* plotParams, std::vector<MarchingSquares::levelPaths> result,
+	double* hslA, double* hslB,const double* hslAStep, const double* hslBStep, const QVector<double>& oXTemp, const QVector<double>
 	& oYTemp, bool shiftA, bool shiftB,
-	int hslABorder, int hslBBorder, int angle, double stepX, double stepY)
+	int hslABorder, int hslBBorder, int angle, double stepX, double stepY) const
 {
 	QPen pen;
 
@@ -526,7 +525,7 @@ void BasicGraphBuild::draw_data_isolines(PlotParameters* plotParams, std::vector
 			{
 				pen.setStyle(Qt::PenStyle::SolidLine);
 				QColor temp;
-				temp.setHsv((int)*hslB, 255, 255);
+				temp.setHsv(static_cast<int>(*hslB), 255, 255);
 				pen.setColor(temp);
 				newCurve1->setPen(pen);
 			}
@@ -537,7 +536,7 @@ void BasicGraphBuild::draw_data_isolines(PlotParameters* plotParams, std::vector
 			{
 				pen.setStyle(Qt::PenStyle::DashLine);
 				QColor temp;
-				temp.setHsv((int)*hslA, 255, 255);
+				temp.setHsv(static_cast<int>(*hslA), 255, 255);
 				pen.setColor(temp);
 				newCurve2->setPen(pen);
 			}

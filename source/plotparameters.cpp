@@ -12,13 +12,26 @@ PlotParameters::PlotParameters(Ui::MainWindow *uiInt, QWidget *parentInt)
 	}
 	UniversalLineParams test;
 	test.color = QColor(0, 0, 0);
-    test.width = 2;
+	test.width = 2;
 	test.style = Qt::PenStyle::SolidLine;
 	test.styleId = 0;
 	test.show = false;
 	test.multiplier = 1;
 	tab2PlotParams = new QVector<UniversalLineParams>();
 	tab2PlotParams->append(test);
+	tab2ShowOx = false;
+	tab2FxInverse = false;
+	tab1surfaceDivider = 0;
+	tab1surfacePrecision = 0;
+	tab1surfaceWidth = 0;
+	zeroShift = false;
+	uhf = false;
+	colorContours = false;
+	drawRes = 0;
+	tab2FermiLevelWidth = 0;
+	tab2ShowFermiLine = false;
+	tab2OyTicks = false;
+	tab2OxTicks = false;
 }
 
 void PlotParameters::updatePlotParams(const int tabId)
@@ -126,7 +139,7 @@ void PlotParameters::updatePlotParams(const int tabId)
 	}
 	else if (tabId == 2)
 	{
-		int workingLine = ui->tab2ComboBoxLineSelector->currentIndex();
+		const int workingLine = ui->tab2ComboBoxLineSelector->currentIndex();
 		tab2PlotParams->data()[workingLine].width = ui->tab2SpinnerLineWidth->value();
 		switch (ui->tab2ComboBoxLineType->currentIndex()) {
 		case 0:

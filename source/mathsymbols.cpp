@@ -13,7 +13,7 @@ MathSymbols::~MathSymbols()
 	delete map;
 }
 
-void MathSymbols::initMap()
+void MathSymbols::initMap() const
 {
 	QStringList test = { "\\alpha",
 "α",

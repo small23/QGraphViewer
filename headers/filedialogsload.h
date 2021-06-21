@@ -25,10 +25,10 @@ private:
 public slots:
     //Публичные слоты для вызова из под MainWindow
     //Слот обработки кнопки загрузки данных MOLGRAPH\TRAJGRAD
-    void FileDialogMolTrajP2Load();
+    void fileDialogMolTrajP2Load();
     //Обработчик остальных кнопок загрузки в остальных участках форм
     //ID - идентификатор кнопки
-    void LoadFileButtonCliked(int id);
+    void loadFileButtonCliked(int id);
 
 };
 

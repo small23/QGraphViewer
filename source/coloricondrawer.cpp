@@ -3,7 +3,7 @@
 ColorIconDrawer::ColorIconDrawer() = default;
 
 
-QPixmap ColorIconDrawer::draw_icon(const QColor& color)
+QPixmap ColorIconDrawer::drawIcon(const QColor& color)
 {
     QPixmap colorIcon(16,16);
     colorIcon.fill(Qt::transparent);

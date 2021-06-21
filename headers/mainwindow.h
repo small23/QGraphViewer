@@ -48,7 +48,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    QProgressDialog* process_dialog;
+    //QProgressDialog* processDialog;
 
 public Q_SLOTS:
     //Слот вызова меню настроек качества
@@ -68,13 +68,13 @@ private Q_SLOTS:
     //...смены шрифта надписей на графике
     void fontChangeButtonPressed();
     //...конвертации координат атомов (
-    void atomsConvertButtonPressed();
+    void atomsConvertButtonPressed() const;
     //...конвертации и поиска атомов в ячейках
-    void atomsSearchButtonPressed();
+    void atomsSearchButtonPressed() const;
     //...конвертации и сохранения X=f(x)-координат
-    void LoadFileConvertXfXButtonPressed();
+    void loadFileConvertXfXButtonPressed();
     //...конвертации и сохранения DOS-файлов
-    void tab3LoadFilesConvertDOSButtonPressed();
+    void tab3LoadFilesConvertDosButtonPressed();
     //...конвертации и сохранения поверхностей из *.f25 файлов
     void tab3SurfF25ButtonPressed();
     //...конвертации и сохранения поверхностей из стандартных файлов
@@ -84,27 +84,27 @@ private Q_SLOTS:
     //...конвертации и сохранения файлов-конфигураций Topond в Crystal
     void tab3ButtonTopondToCrystalPressed();
     //...построения графика зоонной структуры во вкладе 2 (ZoneStructGraphBuilder)
-    void tab2buttonDrawZoneStructPressed();
+    void tab2ButtonDrawZoneStructPressed();
     //...обновления параметров построения линии выбранной в окне настройки линии (вкладка 2)
-    void tab2UpdateParams(QString i);
+    void tab2UpdateParams(QString i) const;
     //...обновления параметров отображения линии на графике и подсветка линии
-    void tab2UpdateShowLine(int i);
+    void tab2UpdateShowLine(int i) const;
     //...загрузки, чтения содержимого f25 dos файлов и вывода содержимого в дроп-лист номера графика
-    void tab2LoadFilef25DOSSPressed();
+    void tab2LoadFilef25DossPressed();
     //...обработчик смены выбранной линни графика и отображение его настроек
-    void tab2ComboBoxLineSelectorIndexChanged(int selected);
+    void tab2ComboBoxLineSelectorIndexChanged(int selected) const;
     //...построения DOS графика во вкладке 2 (DOSGraphBuilder)
-    void tab2ButtonDrawDOSPressed();
+    void tab2ButtonDrawDosPressed();
     //...вызова функции выбора шрифта на 2 вкладке
     void tab2BushButtonSetFontPressed();
     //...вызова окна про версию Qt
     void tab4QtAbout();
     //...вызова окна лицензии
-    void tab4LicenceMIT();
+    void tab4LicenceMit();
     //...загрузки файла PDOS, обработки данных и вывода результатов в таблицу
-    void tab2PushButtonPDOSLoadPressed();
+    void tab2PushButtonPdosLoadPressed();
     //Обработчик вызова таймера очистки памяти от графиков
-    void garbageCollector();
+    void garbageCollector() const;
 
 	
 private:
@@ -121,13 +121,13 @@ private:
     FilesSaver *filesSaver;
     PdosParser *pdosParser;
     QString compilationTime;
-    CrystalTopondConvertors *CTConvertor;
+    CrystalTopondConvertors *ctConvertor;
     PlotParameters *plotParams;
     ColorIconDrawer *iconDrawer;
     QTimer* tmr;
-    QVector<BasicGraphBuild*> *GraphsA;
-    QVector<DOSGraphBuilder*> *GraphsB;
-    QVector<ZoneStructGraphBuilder*> *GraphsC;
+    QVector<BasicGraphBuild*> *graphsA;
+    QVector<DOSGraphBuilder*> *graphsB;
+    QVector<ZoneStructGraphBuilder*> *graphsC;
     MathSymbols* symbols;
     AtomConversion* atomsConvert;
 };

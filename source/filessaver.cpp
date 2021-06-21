@@ -4,7 +4,7 @@
 FilesSaver::FilesSaver() = default;
 
 
-bool FilesSaver::SaveDosData(const QString& sourceFileLocation, BandData *bandData)
+bool FilesSaver::saveDosData(const QString& sourceFileLocation, BandData *bandData)
 {
     for (int ii=0; ii<3; ii++)
     {
@@ -13,21 +13,21 @@ bool FilesSaver::SaveDosData(const QString& sourceFileLocation, BandData *bandDa
         switch (ii)
         {
         case 0:
-            data=&(bandData->outputCOHP);
+            data=&bandData->outputCOHP;
             folderName="COHP";
             break;
 
         case 1:
-            data=&(bandData->outputCOOP);
+            data=&bandData->outputCOOP;
             folderName="COOP";
             break;
 
         case 2:
-            data=&(bandData->outputDOSS);
+            data=&bandData->outputDOSS;
             folderName="DOSS";
             break;
         default:
-            return 0;
+            return false;
         }
         if (data->count()>0)
         {
@@ -67,7 +67,7 @@ bool FilesSaver::SaveDosData(const QString& sourceFileLocation, BandData *bandDa
                 {
                     errorData.ErrorReason=0;
                     errorData.ErrorFile=sourceFileLocation;
-                    return 0;
+                    return false;
                 }
             }
             pathFull=path+"/Fermi.txt";
@@ -85,19 +85,19 @@ bool FilesSaver::SaveDosData(const QString& sourceFileLocation, BandData *bandDa
             {
                 errorData.ErrorReason=0;
                 errorData.ErrorFile=sourceFileLocation;
-                return 0;
+                return false;
             }
         }
 
     }
-    return 1;
+    return true;
 }
 
-bool FilesSaver::saveBANDData(QString fileName, BandData *bandData, double zoneMin, double zoneMax, bool uhf)
+bool FilesSaver::saveBandData(QString fileName, BandData *bandData, const double zoneMin, const double zoneMax, const bool uhf)
 {
-    QFileInfo info(fileName);
-    QString path = info.absolutePath() + "/Band";
-    QDir dir(path);
+	const QFileInfo info(fileName);
+	const QString path = info.absolutePath() + "/Band";
+	const QDir dir(path);
     if (!dir.exists())
         dir.mkpath(".");
     if (!uhf)
@@ -123,18 +123,18 @@ bool FilesSaver::saveBANDData(QString fileName, BandData *bandData, double zoneM
             {
                 errorData.ErrorReason = 0;
                 errorData.ErrorFile = fileName;
-                return 0;
+                return false;
             }
         }
     }
     else
     {
         QString pathTemp = path + "/Band_1/";
-        QDir dir(pathTemp);
-        if (!dir.exists())
-            dir.mkpath(".");
+        QDir baseDir(pathTemp);
+        if (!baseDir.exists())
+            baseDir.mkpath(".");
         bool sucsess = saveLinFermi(pathTemp, bandData, zoneMin, zoneMax, uhf);
-        if (!sucsess) return 0;
+        if (!sucsess) return false;
     	for (int i = 0; i < bandData->outputBAND.count(); i++)
         {
             fileName = pathTemp + QString::number(i + 1) + ".txt";
@@ -156,15 +156,15 @@ bool FilesSaver::saveBANDData(QString fileName, BandData *bandData, double zoneM
             {
                 errorData.ErrorReason = 0;
                 errorData.ErrorFile = fileName;
-                return 0;
+                return false;
             }
         }
         pathTemp = path + "/Band_2/";
-        dir.setPath(pathTemp);
-        if (!dir.exists())
-            dir.mkpath(".");
+        baseDir.setPath(pathTemp);
+        if (!baseDir.exists())
+            baseDir.mkpath(".");
         sucsess = saveLinFermi(pathTemp, bandData, zoneMin, zoneMax, uhf);
-        if (!sucsess) return 0;
+        if (!sucsess) return false;
         for (int i = 0; i < bandData->outputBAND.count(); i++)
         {
             fileName = pathTemp + QString::number(i + 1) + ".txt";
@@ -240,9 +240,9 @@ bool FilesSaver::saveLinFermi(const QString& path, BandData *bandData, const dou
     return true;
 }
 
-bool FilesSaver::saveMAPNData(const QString& sourceFileLocation, BandData *bandData, int rotate)
+bool FilesSaver::saveMapnData(const QString& sourceFileLocation, BandData *bandData, const int rotate)
 {
-    bandData->RotateData(rotate);
+    bandData->rotateData(rotate);
     QProgressDialog progressBar;
     progressBar.setValue(0);
     progressBar.setRange(0,bandData->outputMAPN.count());
@@ -255,7 +255,7 @@ bool FilesSaver::saveMAPNData(const QString& sourceFileLocation, BandData *bandD
     for (int i=0; i<pathTemp.count()-1; i++)
         path+=pathTemp.at(i)+"/";
     path+="Ro";
-    QDir dir(path);
+    const QDir dir(path);
     if (!dir.exists())
         dir.mkpath(".");
     for(int i=0; i<bandData->outputMAPN.count(); i++)
@@ -284,7 +284,7 @@ bool FilesSaver::saveMAPNData(const QString& sourceFileLocation, BandData *bandD
             break;
         default:
             progressBar.close();
-            return 0;
+            return false;
         }
 
         QXlsx::Document xlsx;
@@ -300,21 +300,21 @@ bool FilesSaver::saveMAPNData(const QString& sourceFileLocation, BandData *bandD
 //            saveDoc->moveToThread(thread);
 //            thread->start();
 //            while (thread->isRunning());
-        bool success=xlsx.saveAs(pathFull); // save the document as 'Test.xlsx'
+        const bool success=xlsx.saveAs(pathFull); // save the document as 'Test.xlsx'
         if (success!=true)
         {
             progressBar.close();
             errorData.ErrorReason=0;
             errorData.ErrorFile=sourceFileLocation;
-            return 0;
+            return false;
         }
     }
     progressBar.close();
-    return 1;
+    return true;
 }
 
 bool FilesSaver::saveCryTopData()
 {
 
-    return 1;
+    return true;
 }

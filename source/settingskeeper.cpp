@@ -23,7 +23,7 @@ SettingsKeeper::SettingsKeeper(QObject *parent)
 	
 }
 
-void SettingsKeeper::UpdatePath(QString path)
+void SettingsKeeper::updatePath(QString path)
 {
 	if (path == "") return;
 	if (path[path.size() - 1] != "/")
@@ -31,14 +31,14 @@ void SettingsKeeper::UpdatePath(QString path)
 	lastPath = path;
 }
 
-void SettingsKeeper::UpdateDrawParams(PlotParameters *params)
+void SettingsKeeper::updateDrawParams(PlotParameters *params)
 {
 	this->imageType = params->preferFormat;
 	this->scale = params->drawScale;
 	this->quality = params->drawQuality;
 }
 
-void SettingsKeeper::SaveSettings() const
+void SettingsKeeper::saveSettings() const
 {
 	Settings->setValue("lastPath", lastPath);
 	Settings->setValue("imageType", imageType);
@@ -46,7 +46,7 @@ void SettingsKeeper::SaveSettings() const
 	Settings->setValue("quality", quality);
 }
 
-QString SettingsKeeper::GetLastPath() const
+QString SettingsKeeper::getLastPath() const
 {
 	return lastPath;
 }

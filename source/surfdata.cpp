@@ -2,7 +2,7 @@
 
 SurfData::SurfData() = default;
 
-void SurfData::ParseData(QList<QString> *content)
+void SurfData::parseData(QList<QString> *content)
 {
     oX.clear();
     oY.clear();
@@ -61,11 +61,11 @@ void SurfData::clear()
     oF.clear();
 }
 
-void SurfData::RotateData(int angle)
+void SurfData::rotateData(const int angle)
 {
     QVector<double> temp = oF;
-    QVector<double> tempX = oX;
-    QVector<double> tempY = oY;
+    const QVector<double> tempX = oX;
+    const QVector<double> tempY = oY;
 
     switch (angle)
     {
@@ -76,7 +76,7 @@ void SurfData::RotateData(int angle)
         {
             for (int j=0; j<oY.count(); j++)
             {
-                oF[i*oY.count()+j]=(temp[(oY.count()-j-1)*oX.count()+i]);
+                oF[i*oY.count()+j]=temp[(oY.count()-j-1)*oX.count()+i];
             }
         }
         oX.clear();
@@ -105,7 +105,7 @@ void SurfData::RotateData(int angle)
         {
             for (int j=0; j<oY.count(); j++)
             {
-                oF[i*oY.count()+j]=(temp[(j+1)*oX.count()-1-i]);
+                oF[i*oY.count()+j]=temp[(j+1)*oX.count()-1-i];
             }
         }
         oX.clear();
@@ -123,7 +123,6 @@ void SurfData::RotateData(int angle)
             }
         }
         break;
-    default:
-        return;
+    default: ;
     }
 }

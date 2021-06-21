@@ -12,6 +12,6 @@ class MathSymbols : public QObject
 public:
 	MathSymbols(QObject *parent);
 	~MathSymbols();
-	void initMap();
+	void initMap() const;
 	QMap<QString, QString> *map;
 };

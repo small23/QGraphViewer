@@ -2,7 +2,7 @@
 
 CrystalTopondConvertors::CrystalTopondConvertors() = default;
 
-bool CrystalTopondConvertors::ConvertCrystalToTopond(QList<QString> *content)
+bool CrystalTopondConvertors::convertCrystalToTopond(QList<QString> *content)
 {
     int coords=-1,counter=0;
     QString c;
@@ -18,7 +18,7 @@ bool CrystalTopondConvertors::ConvertCrystalToTopond(QList<QString> *content)
         counter++;
     }
     if (coords==-1)
-        return 0;
+        return false;
     QTextStream getData(&c);
     for (int i=0; i<3; i++)
     {
@@ -33,11 +33,11 @@ bool CrystalTopondConvertors::ConvertCrystalToTopond(QList<QString> *content)
         atoms.append(tempAtomLine);
     }
 
-    double AB = sqrt(pow(atoms[0][0]-atoms[1][0],2)+pow(atoms[0][1]-atoms[1][1],2)+pow(atoms[0][2]-atoms[1][2],2));
-    double CB = sqrt(pow(atoms[2][0]-atoms[1][0],2)+pow(atoms[2][1]-atoms[1][1],2)+pow(atoms[2][2]-atoms[1][2],2));
+    double ab = sqrt(pow(atoms[0][0]-atoms[1][0],2)+pow(atoms[0][1]-atoms[1][1],2)+pow(atoms[0][2]-atoms[1][2],2));
+    double cb = sqrt(pow(atoms[2][0]-atoms[1][0],2)+pow(atoms[2][1]-atoms[1][1],2)+pow(atoms[2][2]-atoms[1][2],2));
 
-    AB*=0.529177208;
-    CB*=0.529177208;
+    ab*=0.529177208;
+    cb*=0.529177208;
 
     output.append("TOPO\nPL2D\n0\n");
     output.append(QString::number(atoms[0][0])+","+QString::number(atoms[0][1])+","+QString::number(atoms[0][2])+"\n");
@@ -46,14 +46,14 @@ bool CrystalTopondConvertors::ConvertCrystalToTopond(QList<QString> *content)
     output.append("0\n");
     output.append(QString::number(atoms[2][0])+","+QString::number(atoms[2][1])+","+QString::number(atoms[2][2])+"\n");
     output.append("3\n0\n60,15.0\n1                          ICONT=1\n");
-    output.append("0,"+QString::number(AB, 'f',4)+",0.05\n");
-    output.append("0,"+QString::number(CB, 'f',4)+",0.05\n");
+    output.append("0,"+QString::number(ab, 'f',4)+",0.05\n");
+    output.append("0,"+QString::number(cb, 'f',4)+",0.05\n");
     output.append("1,1,1,1,1,1,1,1,1,1,1,0    IFU 1-11 set to 1\nName\n0.55                       SCALE=0.55\n0.1,0.1,0                  TOLER=0.1, TR1=0.1, IPLANE=0\n");
     output.append("2.2,1,1,1                  THR=2.2, IL vector all set to 1\n36,0                       NPATH=36, NEXTR=0\nEND");
-    return 1;
+    return true;
 }
 
-bool CrystalTopondConvertors::ConvertTopondToCrystal(QList<QString> *content)
+bool CrystalTopondConvertors::convertTopondToCrystal(QList<QString> *content)
 {
     int xAxis=-1, coords=-1,counter=0;
     QString c;
@@ -71,9 +71,9 @@ bool CrystalTopondConvertors::ConvertTopondToCrystal(QList<QString> *content)
         counter++;
     }
     if (coords==-1)
-        return 0;
+        return false;
     if (xAxis==-1)
-        return 0;
+        return false;
     QTextStream getData(&c);
     for (int i=0; i<3; i++)
     {
@@ -177,5 +177,5 @@ bool CrystalTopondConvertors::ConvertTopondToCrystal(QList<QString> *content)
     output.append(QString::number(ABM)+" "+QString::number(CDM)+" "+QString::number(ADM)+" "+QString::number(BCM)+"\n");
     output.append("END");
 
-    return 1;
+    return true;
 }

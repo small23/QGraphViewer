@@ -14,9 +14,9 @@ public:
     QVector<double> oX, oY, oRepeatX, oRepeatY, oF;
     //QVector<QVector<double>> oF;
     //Парсер данных
-    void ParseData(QList<QString> *content);
+    void parseData(QList<QString> *content);
     //Поворот данных на угол 0-270 градусов
-    void RotateData(int angle);
+    void rotateData(int angle);
     void clear();
 };
 

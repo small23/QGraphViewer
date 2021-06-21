@@ -1,6 +1,6 @@
 #include "dosgraphbuilder.h"
 
-DOSGraphBuilder::DOSGraphBuilder(BandData* graphics, double borders[4], PlotParameters* params, QFont font, int angle, SettingsKeeper* settings, MathSymbols *symbols, int currentGraphic, QWidget* parent) : QWidget(parent)
+DOSGraphBuilder::DOSGraphBuilder(BandData* graphics, double borders[4], PlotParameters* params, QFont font, const int angle, SettingsKeeper* settings, MathSymbols *symbols, const int currentGraphic, QWidget* parent) : QWidget(parent)
 {
 	this->settings = settings;
 	customPlot = new QCustomPlot();
@@ -45,8 +45,8 @@ DOSGraphBuilder::DOSGraphBuilder(BandData* graphics, double borders[4], PlotPara
 	customPlot->setMinimumSize(params->drawRes, params->drawRes);
 	customPlot->setMaximumSize(params->drawRes, params->drawRes);
 
-	QVector<double> TickValues;
-	QVector<QString> TickLabels;
+	QVector<double> tickValues;
+	QVector<QString> tickLabels;
 
 	customPlot->xAxis->grid()->setVisible(false);
 	customPlot->yAxis->grid()->setVisible(false);
@@ -226,13 +226,8 @@ void DOSGraphBuilder::drawData(QVector<QVector<double>> data, const QVector<doub
 			case 0:
 				newCurve->addData(axis, y);
 				break;
-			case 1:
-				newCurve->addData(y, axis);
-				break;
-			case 2:
-				newCurve->addData(y, axis);
-				break;
 			default:
+				newCurve->addData(y, axis);
 				break;
 			}
 			
@@ -246,7 +241,7 @@ void DOSGraphBuilder::drawData(QVector<QVector<double>> data, const QVector<doub
 }
 
 
-void DOSGraphBuilder::contextMenuRequest(QPoint pos)
+void DOSGraphBuilder::contextMenuRequest(const QPoint pos)
 {
 	QMenu* menu = new QMenu(this);
 	menu->setAttribute(Qt::WA_DeleteOnClose);
@@ -277,14 +272,14 @@ void DOSGraphBuilder::savePicture()
 		break;
 	}
 
-	QString fileName = QFileDialog::getSaveFileName(this,
-		tr("Сохранить график"), settings->lastPath+filenameOnly,
-		fileFormats);
+	const QString fileName = QFileDialog::getSaveFileName(this,
+	                                                      tr("Сохранить график"), settings->lastPath+filenameOnly,
+	                                                      fileFormats);
 	if (fileName != "")
 	{
-		double h = static_cast<double>(customPlot->height());
-		double w = static_cast<double>(customPlot->width());
-		double scale = plotParams->drawScale / (h > w ? h / 600.0 : w / 600.0) / 2;
+		const double h = static_cast<double>(customPlot->height());
+		const double w = static_cast<double>(customPlot->width());
+		const double scale = plotParams->drawScale / (h > w ? h / 600.0 : w / 600.0) / 2;
 		bool success = false;
 		switch (plotParams->preferFormat)
 		{
@@ -301,12 +296,11 @@ void DOSGraphBuilder::savePicture()
 			break;
 		}
 
-		QFileInfo fileinfo(fileName);
-		settings->UpdatePath(fileinfo.absolutePath());
+		const QFileInfo fileinfo(fileName);
+		settings->updatePath(fileinfo.absolutePath());
 		if (success == false)
 		{
 			QMessageBox::critical(this, "Ошибка сохранения", "Не удалось сохранить изображение!");
-			return;
 		}
 	}
 }

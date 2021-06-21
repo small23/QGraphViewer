@@ -13,12 +13,12 @@ class SettingsKeeper : public QObject
 public:
 	SettingsKeeper(QObject* parent);
     //Обновление параметров
-	void UpdatePath(QString path);
-	void UpdateDrawParams(PlotParameters* params);
+	void updatePath(QString path);
+	void updateDrawParams(PlotParameters* params);
     //Класс записи данных в реестр
-	void SaveSettings() const;
+	void saveSettings() const;
     //Параметры
-	QString GetLastPath() const;
+	QString getLastPath() const;
 	~SettingsKeeper();
 	QString lastPath = "";
 	int quality = 90;

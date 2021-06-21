@@ -14,8 +14,8 @@ class CrystalTopondConvertors
 {
 public:
     CrystalTopondConvertors();
-    bool ConvertCrystalToTopond(QList<QString> *content);
-    bool ConvertTopondToCrystal(QList<QString> *content);
+    bool convertCrystalToTopond(QList<QString> *content);
+    bool convertTopondToCrystal(QList<QString> *content);
     QString output;
 };
 

@@ -29,7 +29,7 @@ public:
 
 private:
     //Вспомогательнй метод конвертации координат
-     QVector<QVector<double>> convert();
+     QVector<QVector<double>> convert() const;
     SettingsKeeper* settings;
     Ui::MainWindow *ui;
 };

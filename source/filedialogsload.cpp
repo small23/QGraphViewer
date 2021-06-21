@@ -8,7 +8,7 @@
     this->settings = settings;
 }
 
-void FileDialogsLoad::FileDialogMolTrajP2Load()
+void FileDialogsLoad::fileDialogMolTrajP2Load()
 {
     QList<QString> fileNames = QFileDialog::getOpenFileNames(this,
             tr("Open file"), settings->lastPath,
@@ -46,7 +46,7 @@ void FileDialogsLoad::FileDialogMolTrajP2Load()
         else
             QMessageBox::warning(this, tr("Ошибка добавления"), tr("Файл '") + fileInfo.fileName() + tr("' имеет нестандартное имя и не будет добавлен."));
 
-        settings->UpdatePath(fileInfo.absolutePath());
+        settings->updatePath(fileInfo.absolutePath());
         /*
     	QList<QString> temp = fileNames[i].split("/");
         if (temp[temp.count()-1].toUpper().contains("TRAJGRAD.DAT"))
@@ -81,7 +81,7 @@ void FileDialogsLoad::FileDialogMolTrajP2Load()
     }
 }
 
-void FileDialogsLoad::LoadFileButtonCliked(int id)
+void FileDialogsLoad::loadFileButtonCliked(const int id)
 {
     QString fileName;
     if (id==5)
@@ -96,8 +96,8 @@ void FileDialogsLoad::LoadFileButtonCliked(int id)
 
     if (fileName!="")
     {
-        QFileInfo fileinfo(fileName);
-        settings->UpdatePath(fileinfo.absolutePath());
+	    const QFileInfo fileinfo(fileName);
+        settings->updatePath(fileinfo.absolutePath());
         QString lineName;
         if (id>6)
            lineName = QString("tab2FileLine%1").arg(id-6);

@@ -1,6 +1,5 @@
 #include "uiinit.h"
 #include "ui_mainwindow.h"
-#include "QObject"
 #include "delegator.h"
 #include "plotparameters.h"
 
@@ -44,10 +43,10 @@ void setupUiFields(Ui::MainWindow* ui)
     ui->tab3ZoneStructYMax->setValidator(localValidator);
 
 
-    QFont font("Arial", 9, QFont::Thin);
+    const QFont font("Arial", 9, QFont::Thin);
 
-    int columnWidth=53;
-    int rowHeight=8;
+    const int columnWidth=53;
+    const int rowHeight=8;
 
 
     ui->tab3RotationTable->setRowCount(3);
@@ -104,13 +103,13 @@ void setupUiFields(Ui::MainWindow* ui)
     ui->tab2PDOSNumbersTable->setHorizontalHeaderLabels(QStringList() << "№ атома" << "Атом" << "Тип" << "Число ф-й" << "№ нач." <<"№ кон.");
     ui->tab2PDOSNumbersTable->horizontalHeader()->setFont(font);
 
-    QPixmap pixmap(":logos/Logos/qcp-logo.png");
+    const QPixmap pixmap(":logos/Logos/qcp-logo.png");
     ui->tab4QCustomPlotLabel->setPixmap(pixmap);
 
-    QPixmap pixmap2(":logos/Logos/Qt_logo_2016.svg.png");
+    const QPixmap pixmap2(":logos/Logos/Qt_logo_2016.svg.png");
     ui->tab4QtLogo->setPixmap(pixmap2);
 
-    QPixmap pixmap3(":logos/Logos/QXlsx-Desktop.png");
+    const QPixmap pixmap3(":logos/Logos/QXlsx-Desktop.png");
     ui->tab4QXlsxLogo->setPixmap(pixmap3);
 
     ui->tab4CompileDate->setText(QString("Дата сборки: %1, %2").arg(__DATE__).arg(__TIME__));
@@ -180,7 +179,7 @@ void setUiColorLabels(Ui::MainWindow* ui)
     colorIcon.fill(Qt::transparent);
     QPainter p(&colorIcon);
     p.setRenderHint(QPainter::Antialiasing, true);
-    QPen pen(Qt::transparent, 2);
+const QPen pen(Qt::transparent, 2);
     p.setPen(pen);
     QBrush brush(Qt::black);
     p.setBrush(brush);

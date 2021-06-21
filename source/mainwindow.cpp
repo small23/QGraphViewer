@@ -12,16 +12,16 @@ MainWindow::MainWindow(QWidget* parent)
 	graphicsData = new GraphicsData();
 	bandData = new BandData();
 	surfData = new SurfData();
-	CTConvertor = new CrystalTopondConvertors();
+	ctConvertor = new CrystalTopondConvertors();
 	filesSaver = new FilesSaver();
 	plotParams = new PlotParameters(ui, this);
 	iconDrawer = new ColorIconDrawer();
 	pdosParser = new PdosParser();
 	symbols = new MathSymbols(this);
 	atomsConvert = new AtomConversion(ui, settings);
-	GraphsA = new QVector<BasicGraphBuild*>();
-	GraphsB = new QVector<DOSGraphBuilder*>();
-	GraphsC = new QVector<ZoneStructGraphBuilder*>();
+	graphsA = new QVector<BasicGraphBuild*>();
+	graphsB = new QVector<DOSGraphBuilder*>();
+	graphsC = new QVector<ZoneStructGraphBuilder*>();
 
 	ui->setupUi(this);
 	setupUiFields(ui);
@@ -71,7 +71,7 @@ MainWindow::MainWindow(QWidget* parent)
 	//Корректировочный коэффициент масштабирования
 	//графиков на дисплеях с масштабом !=100%
 	QScreen* srn = QApplication::screens().at(0);
-	auto b= srn->availableSize();
+	const auto b= srn->availableSize();
 	auto height = b.height()*0.90;
 	if (height > 600) height = 600;
 	plotParams->drawRes = height;
@@ -82,7 +82,7 @@ MainWindow::MainWindow(QWidget* parent)
 
 MainWindow::~MainWindow()
 {
-	settings->SaveSettings();
+	settings->saveSettings();
 	delete ui;
 }
 
@@ -97,20 +97,20 @@ void MainWindow::showPictureSettings()
 	form->show();
 }
 
-void MainWindow::garbageCollector()
+void MainWindow::garbageCollector() const
 {
-	for (int i = 0; i < GraphsC->size(); i++)
+	for (int i = 0; i < graphsC->size(); i++)
 	{
-		if (GraphsC->at(i)->isClosed())
+		if (graphsC->at(i)->isClosed())
 		{
-			delete GraphsC->at(i);
-			GraphsC->removeAt(i);
+			delete graphsC->at(i);
+			graphsC->removeAt(i);
 			i = 0;
 		}
 	}
 }
 
-void MainWindow::colorChangeButtonClicked(int id) const
+void MainWindow::colorChangeButtonClicked(const int id) const
 {
 	QColorDialog colorPickerMenu;
 	const QRect windowLocation = geometry();
@@ -118,7 +118,7 @@ void MainWindow::colorChangeButtonClicked(int id) const
 	colorPickerMenu.exec();
 	const QColor choosenColor = colorPickerMenu.selectedColor();
 	if (!choosenColor.isValid()) return;
-	const QPixmap colorIcon = iconDrawer->draw_icon(choosenColor);
+	const QPixmap colorIcon = ColorIconDrawer::drawIcon(choosenColor);
 	const QString colorLabelName = QString("ColorLable%1").arg(id);
 	QLabel* colorLabel = findChild<QLabel*>(colorLabelName);
 	if (colorLabel != nullptr)
@@ -131,7 +131,7 @@ void MainWindow::colorChangeButtonClicked(int id) const
 	}
 }
 
-void MainWindow::deleteFileStringButtonClicked(int id) const
+void MainWindow::deleteFileStringButtonClicked(const int id) const
 {
 	QString lineName;
 	if (id < 7)
@@ -152,7 +152,7 @@ void MainWindow::deleteFileStringButtonClicked(int id) const
 	}
 }
 
-void MainWindow::helpButtonClicked(int id)
+void MainWindow::helpButtonClicked(const int id)
 {
 	const QRect windowLocation = geometry();
 	if (id == 2)
@@ -198,7 +198,7 @@ void MainWindow::plotButtonTab1Clicked()
 	plotParams->updatePlotParams(1);
 	QList<QString>* content = new QList<QString>();
 
-	int success = graphicsData->GetAndParseMainData(fields, ui->tab1AtomsCutOff->text().toDouble());
+	const int success = graphicsData->getAndParseMainData(fields, ui->tab1AtomsCutOff->text().toDouble());
 	if (success != 1)
 	{
 		switch (success)
@@ -221,7 +221,7 @@ void MainWindow::plotButtonTab1Clicked()
 
 
 		graphicsData->clear();
-        delete(content);
+        delete content;
 		return;
 	}
 	
@@ -235,16 +235,16 @@ void MainWindow::plotButtonTab1Clicked()
 	
 	if (ui->tab1FileLine6->text() != "")
 	{
-		read_file_from_fs(ui->tab1FileLine6->text(), content);
-		bandData->ParseData(content, ui->tab1uhf->isChecked());
+		readFileFromFs(ui->tab1FileLine6->text(), content);
+		bandData->parseData(content, ui->tab1uhf->isChecked());
 	}
 	else
 		bandData->clear();
 
 	if (ui->tab1FileLine4->text() != "")
 	{
-		read_file_from_fs(ui->tab1FileLine4->text(), content);
-		surfData->ParseData(content);
+		readFileFromFs(ui->tab1FileLine4->text(), content);
+		surfData->parseData(content);
 	}
 	else
 		surfData->clear();
@@ -279,9 +279,9 @@ void MainWindow::plotButtonTab1Clicked()
 void MainWindow::fontChangeButtonPressed() {
 	bool ok;
 	QFontDialog test;
-	const auto window_location = geometry();
-	test.setGeometry(window_location.x() + 100, window_location.y() + 50, 480, 360);
-	QFont font = QFontDialog::getFont(&ok, tab1GraphFont);//QFontDialog::getFont(&ok, tab1GraphFont, this);
+	const auto windowLocation = geometry();
+	test.setGeometry(windowLocation.x() + 100, windowLocation.y() + 50, 480, 360);
+	const QFont font = QFontDialog::getFont(&ok, tab1GraphFont);//QFontDialog::getFont(&ok, tab1GraphFont, this);
 	if (ok) {
 		tab1GraphFont = font;
 		ui->tab1FontSize->setValue(font.pointSize());
@@ -291,27 +291,27 @@ void MainWindow::fontChangeButtonPressed() {
 	}
 }
 
-void MainWindow::atomsConvertButtonPressed()
+void MainWindow::atomsConvertButtonPressed() const
 {
 	atomsConvert->convertAtoms();
 }
 
-void MainWindow::atomsSearchButtonPressed()
+void MainWindow::atomsSearchButtonPressed() const
 {
 	atomsConvert->convertAndSearchAtoms();
 }
 
-void MainWindow::LoadFileConvertXfXButtonPressed()
+void MainWindow::loadFileConvertXfXButtonPressed()
 {
 	QList<QString>* content = new QList<QString>();
-	QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Open file"), settings->GetLastPath(),
-		"*.f25 (*.f25);;All Files (*)");
+	const QString fileName = QFileDialog::getOpenFileName(this,
+	                                                      tr("Open file"), settings->getLastPath(),
+	                                                      "*.f25 (*.f25);;All Files (*)");
 	if (fileName != "")
 	{
-		QFileInfo fileinfo(fileName);
-		settings->UpdatePath(fileinfo.absolutePath());
-		read_file_from_fs(fileName, content);
+		const QFileInfo fileinfo(fileName);
+		settings->updatePath(fileinfo.absolutePath());
+		readFileFromFs(fileName, content);
 	}
 	else
     {
@@ -319,11 +319,11 @@ void MainWindow::LoadFileConvertXfXButtonPressed()
 		return;
     }
 
-	bandData->ParseData(content, ui->tab3uhfZoneStruct);
+	bandData->parseData(content, ui->tab3uhfZoneStruct);
 	delete content;
 	if (bandData->outputBAND.count() > 0)
 	{
-		bool success = filesSaver->saveBANDData(fileName, bandData, ui->tab3ZoneStructYMin->text().toDouble(), ui->tab3ZoneStructYMax->text().toDouble(), ui->tab3uhfZoneStruct->isChecked());
+		const bool success = filesSaver->saveBandData(fileName, bandData, ui->tab3ZoneStructYMin->text().toDouble(), ui->tab3ZoneStructYMax->text().toDouble(), ui->tab3uhfZoneStruct->isChecked());
 		if (success == false)
 		{
             QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + filesSaver->errorData.ErrorFile + tr("' не удается открыть для записи!"));
@@ -335,17 +335,17 @@ void MainWindow::LoadFileConvertXfXButtonPressed()
         QMessageBox::warning(this, tr("Ошибка парсинга"), tr("В предоставленном файле отсутствуют необходимые данные или файл поврежден!"));
 }
 
-void MainWindow::tab3LoadFilesConvertDOSButtonPressed()
+void MainWindow::tab3LoadFilesConvertDosButtonPressed()
 {
 	QList<QString>* content = new QList<QString>();
-	QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Open file"), settings->GetLastPath(),
-		"*.f25 (*.f25);;All Files (*)");
+	const QString fileName = QFileDialog::getOpenFileName(this,
+	                                                      tr("Open file"), settings->getLastPath(),
+	                                                      "*.f25 (*.f25);;All Files (*)");
 	if (fileName != "")
 	{
-		QFileInfo fileinfo(fileName);
-		settings->UpdatePath(fileinfo.absolutePath());
-		read_file_from_fs(fileName, content);
+		const QFileInfo fileinfo(fileName);
+		settings->updatePath(fileinfo.absolutePath());
+		readFileFromFs(fileName, content);
 	}
 	else
     {
@@ -353,11 +353,11 @@ void MainWindow::tab3LoadFilesConvertDOSButtonPressed()
 		return;
     }
 
-	bandData->ParseData(content);
+	bandData->parseData(content);
 	delete content;
 	if (bandData->outputCOHP.count() > 0 || bandData->outputCOOP.count() > 0 || bandData->outputDOSS.count() > 0)
 	{
-		bool success = filesSaver->SaveDosData(fileName, bandData);
+		const bool success = filesSaver->saveDosData(fileName, bandData);
 		if (success == false)
 		{
             QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + filesSaver->errorData.ErrorFile + tr("' не удается открыть для записи!"));
@@ -372,14 +372,14 @@ void MainWindow::tab3LoadFilesConvertDOSButtonPressed()
 void MainWindow::tab3SurfF25ButtonPressed()
 {
 	QList<QString>* content = new QList<QString>();
-	QString file_name = QFileDialog::getOpenFileName(this,
-        tr("Open file"), settings->GetLastPath(),
-		"*.f25 (*.f25);;All Files (*)");
-	if (file_name != "")
+	const QString fileName = QFileDialog::getOpenFileName(this,
+	                                                       tr("Open file"), settings->getLastPath(),
+	                                                       "*.f25 (*.f25);;All Files (*)");
+	if (fileName != "")
 	{
-		QFileInfo file_info(file_name);
-		settings->UpdatePath(file_info.absolutePath());
-		read_file_from_fs(file_name, content);
+		const QFileInfo fileInfo(fileName);
+		settings->updatePath(fileInfo.absolutePath());
+		readFileFromFs(fileName, content);
 	}
 	else
     {
@@ -387,11 +387,11 @@ void MainWindow::tab3SurfF25ButtonPressed()
 		return;
     }
 
-	bandData->ParseData(content, ui->tab3uhff25->isChecked());
+	bandData->parseData(content, ui->tab3uhff25->isChecked());
 	delete content;
 	if (bandData->outputMAPN.count() > 0)
 	{
-		bool success = filesSaver->saveMAPNData(file_name, bandData, ui->tab3SurfRotationSelector->currentIndex() * 90);
+		const bool success = filesSaver->saveMapnData(fileName, bandData, ui->tab3SurfRotationSelector->currentIndex() * 90);
 		if (success == false)
 		{
             QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + filesSaver->errorData.ErrorFile + tr("' не удается открыть для записи!"));
@@ -406,14 +406,14 @@ void MainWindow::tab3SurfF25ButtonPressed()
 void MainWindow::tab3SurfConvertButtonPressed()
 {
 	QList<QString>* content = new QList<QString>();
-	QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Open file"), settings->GetLastPath(),
-		"*.dat (*.dat);;All Files (*)");
+	const QString fileName = QFileDialog::getOpenFileName(this,
+	                                                      tr("Open file"), settings->getLastPath(),
+	                                                      "*.dat (*.dat);;All Files (*)");
 	if (fileName != "")
 	{
-		QFileInfo fileinfo(fileName);
-		settings->UpdatePath(fileinfo.absolutePath());
-		read_file_from_fs(fileName, content);
+		const QFileInfo fileinfo(fileName);
+		settings->updatePath(fileinfo.absolutePath());
+		readFileFromFs(fileName, content);
 	}
 	else
     {
@@ -421,11 +421,11 @@ void MainWindow::tab3SurfConvertButtonPressed()
 		return;
     }
 
-	surfData->ParseData(content);
+	surfData->parseData(content);
 	delete content;
 	if (surfData->oF.count() > 0)
 	{
-		surfData->RotateData(ui->tab3SurfRotationSelector->currentIndex() * 90);
+		surfData->rotateData(ui->tab3SurfRotationSelector->currentIndex() * 90);
 		QProgressDialog progressBar;
 		progressBar.setValue(0);
 		progressBar.setRange(0, 1);
@@ -438,10 +438,10 @@ void MainWindow::tab3SurfConvertButtonPressed()
 		for (int i = 0; i < pathTemp.count() - 1; i++)
 			path += pathTemp.at(i) + "/";
 		path += "TOPOND";
-		QDir dir(path);
+		const QDir dir(path);
 		if (!dir.exists())
 			dir.mkpath(".");
-		QString pathFull = path + "/" + pathTemp[pathTemp.count() - 1].mid(4, 4) + "-" + QString::number(
+		const QString pathFull = path + "/" + pathTemp[pathTemp.count() - 1].mid(4, 4) + "-" + QString::number(
 			ui->tab3SurfRotationSelector->currentIndex() * 90) + ".xlsx";
 		QXlsx::Document xlsx;
 		for (int j = 0; j < surfData->oF.count(); j++)
@@ -451,7 +451,7 @@ void MainWindow::tab3SurfConvertButtonPressed()
 			xlsx.write(j + 1, 3, surfData->oF[j]);
 		}
 		QApplication::processEvents();
-		bool success = xlsx.saveAs(pathFull); // save the document as 'Test.xlsx'
+		const bool success = xlsx.saveAs(pathFull); // save the document as 'Test.xlsx'
 		if (success != true)
 		{
 			progressBar.close();
@@ -468,14 +468,14 @@ void MainWindow::tab3SurfConvertButtonPressed()
 void MainWindow::tab3ButtonCrystalToTopondPressed()
 {
 	QList<QString>* content = new QList<QString>();
-	QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Open file"), settings->GetLastPath(),
-		"Output file (*.outp);;All Files (*)");
+	const QString fileName = QFileDialog::getOpenFileName(this,
+	                                                      tr("Open file"), settings->getLastPath(),
+	                                                      "Output file (*.outp);;All Files (*)");
 	if (fileName != "")
 	{
-		QFileInfo fileinfo(fileName);
-		settings->UpdatePath(fileinfo.absolutePath());
-		read_file_from_fs(fileName, content);
+		const QFileInfo fileinfo(fileName);
+		settings->updatePath(fileinfo.absolutePath());
+		readFileFromFs(fileName, content);
 	}
 	else
     {
@@ -483,11 +483,11 @@ void MainWindow::tab3ButtonCrystalToTopondPressed()
 		return;
     }
 
-	CTConvertor->ConvertCrystalToTopond(content);
+	ctConvertor->convertCrystalToTopond(content);
 
 	delete content;
 
-	if (CTConvertor->output != "")
+	if (ctConvertor->output != "")
 	{
 		QString path;
 		QString name;
@@ -502,7 +502,7 @@ void MainWindow::tab3ButtonCrystalToTopondPressed()
 		{
 			// We're going to streaming text to the file
 			QTextStream stream(&file);
-			stream << CTConvertor->output;
+			stream << ctConvertor->output;
 			file.close();
 		}
 		else
@@ -519,25 +519,25 @@ void MainWindow::tab3ButtonCrystalToTopondPressed()
 void MainWindow::tab3ButtonTopondToCrystalPressed()
 {
 	QList<QString>* content = new QList<QString>();
-	QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Open file"), settings->GetLastPath(),
-		"Output file (*.outp);;All Files (*)");
+	const QString fileName = QFileDialog::getOpenFileName(this,
+	                                                      tr("Open file"), settings->getLastPath(),
+	                                                      "Output file (*.outp);;All Files (*)");
 	if (fileName != "")
 	{
-		QFileInfo fileinfo(fileName);
-		settings->UpdatePath(fileinfo.absolutePath());
-		read_file_from_fs(fileName, content);
+		const QFileInfo fileinfo(fileName);
+		settings->updatePath(fileinfo.absolutePath());
+		readFileFromFs(fileName, content);
 	}
 	else
     {
         delete content;
 		return;
     }
-	CTConvertor->ConvertTopondToCrystal(content);
+	ctConvertor->convertTopondToCrystal(content);
 
 	delete content;
 
-	if (CTConvertor->output != "")
+	if (ctConvertor->output != "")
 	{
 		QString path;
 		QString name;
@@ -552,7 +552,7 @@ void MainWindow::tab3ButtonTopondToCrystalPressed()
 		{
 			// We're going to streaming text to the file
 			QTextStream stream(&file);
-			stream << CTConvertor->output;
+			stream << ctConvertor->output;
 			file.close();
 		}
 		else
@@ -566,15 +566,15 @@ void MainWindow::tab3ButtonTopondToCrystalPressed()
         QMessageBox::warning(this, tr("Ошибка парсинга"), tr("В предоставленном файле отсутствуют необходимые данные или файл поврежден!"));
 }
 
-void MainWindow::tab2buttonDrawZoneStructPressed()
+void MainWindow::tab2ButtonDrawZoneStructPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	if (ui->tab2FileLine1->text() != "")
 	{
 		{
-			QFileInfo fileinfo(ui->tab2FileLine1->text());
-			settings->UpdatePath(fileinfo.absolutePath());
-			read_file_from_fs(ui->tab2FileLine1->text(), content);
+			const QFileInfo fileinfo(ui->tab2FileLine1->text());
+			settings->updatePath(fileinfo.absolutePath());
+			readFileFromFs(ui->tab2FileLine1->text(), content);
 		}
 	}
 	else
@@ -583,7 +583,7 @@ void MainWindow::tab2buttonDrawZoneStructPressed()
         QMessageBox::warning(this, tr("Ошибка загрузки"), tr("Не указан файл построения!"));
 		return;
 	}
-	bandData->ParseData(content);
+	bandData->parseData(content);
 
 	delete content;
 
@@ -599,8 +599,8 @@ void MainWindow::tab2buttonDrawZoneStructPressed()
 			for (int i = 0; i < 2; i++)
 			{
 				numbersToBuild[0] = bandData->oXBand[bandData->oXBand.size() / 2 * i];
-				numbersToBuild[1] = bandData->oXBand[(bandData->oXBand.size() / 2) * (i + 1) - 1];
-				GraphsC->append(new ZoneStructGraphBuilder(bandData, ui->tab2ZoneStructYMin->text().toDouble(),
+				numbersToBuild[1] = bandData->oXBand[bandData->oXBand.size() / 2 * (i + 1) - 1];
+				graphsC->append(new ZoneStructGraphBuilder(bandData, ui->tab2ZoneStructYMin->text().toDouble(),
 					ui->tab2ZoneStructYMax->text().toDouble(), ui->tab2LineKPoints->text(),
                     plotParams, tab2GraphFont, numbersToBuild, QString(("Зонная структура " + std::to_string(i + 1)).c_str()), settings, symbols, this));
 			}
@@ -609,7 +609,7 @@ void MainWindow::tab2buttonDrawZoneStructPressed()
 		{
 			numbersToBuild[0] = 0;
 			numbersToBuild[1] = bandData->oXBand[bandData->oXBand.size() - 1];
-			GraphsC->append(new ZoneStructGraphBuilder(bandData, ui->tab2ZoneStructYMin->text().toDouble(),
+			graphsC->append(new ZoneStructGraphBuilder(bandData, ui->tab2ZoneStructYMin->text().toDouble(),
 				ui->tab2ZoneStructYMax->text().toDouble(), ui->tab2LineKPoints->text(),
                 plotParams, tab2GraphFont, numbersToBuild, tr("Зонная структура"), settings, symbols, this));
 		}
@@ -620,12 +620,12 @@ void MainWindow::tab2buttonDrawZoneStructPressed()
         QMessageBox::warning(this, tr("Ошибка парсинга"), tr("В предоставленном файле отсутсвуют необходимые данные или файл поврежден!"));
 }
 
-void MainWindow::tab2UpdateParams(QString i)
+void MainWindow::tab2UpdateParams([[maybe_unused]] QString i) const
 {
 	plotParams->updatePlotParams(2);
 }
 
-void MainWindow::tab2UpdateShowLine(int i)
+void MainWindow::tab2UpdateShowLine(int i) const
 {
 	plotParams->updatePlotParams(2);
 	if (ui->tab2CheckBoxShow1->isChecked())
@@ -634,22 +634,22 @@ void MainWindow::tab2UpdateShowLine(int i)
 		ui->tab2ComboBoxLineSelector->setItemData(ui->tab2ComboBoxLineSelector->currentIndex(), QBrush(Qt::black), Qt::ForegroundRole);
 }
 
-void MainWindow::tab2LoadFilef25DOSSPressed()
+void MainWindow::tab2LoadFilef25DossPressed()
 {
-	QString fileName = QFileDialog::getOpenFileName(this,
-		tr("Open file"), settings->GetLastPath(),
-		tr("f25 files (*.f25);;All Files (*)"));
+	const QString fileName = QFileDialog::getOpenFileName(this,
+	                                                      tr("Open file"), settings->getLastPath(),
+	                                                      tr("f25 files (*.f25);;All Files (*)"));
 	if (fileName != "")
 	{
 		QList<QString>* content = new QList<QString>();
-		read_file_from_fs(fileName, content);
-		QFileInfo fileinfo(fileName);
-		settings->UpdatePath(fileinfo.absolutePath());
+		readFileFromFs(fileName, content);
+		const QFileInfo fileinfo(fileName);
+		settings->updatePath(fileinfo.absolutePath());
 		ui->tab2FileLine2->setText(fileName);
-		QVector<int> count = bandData->CountData(content);
+		QVector<int> count = bandData->countData(content);
 		if (count[0] > 0 || count[1] > 0 || count[2] > 0)
 		{
-			int sum = count[0] + count[1] + count[2];
+			const int sum = count[0] + count[1] + count[2];
 			ui->tab2ComboBoxLineSelector->clear();
 			plotParams->setCountOfLines(sum);
 			for (int i = 0; i < count[0]; i++)
@@ -671,7 +671,7 @@ void MainWindow::tab2LoadFilef25DOSSPressed()
 	}
 }
 
-void MainWindow::tab2ComboBoxLineSelectorIndexChanged(int selected)
+void MainWindow::tab2ComboBoxLineSelectorIndexChanged(const int selected) const
 {
 	if (selected != -1)
 	{
@@ -681,7 +681,7 @@ void MainWindow::tab2ComboBoxLineSelectorIndexChanged(int selected)
 		disconnect(ui->tab2SpinnerLineMultiplier, SIGNAL(valueChanged(QString)), this, SLOT(tab2UpdateParams(QString)));
 		ui->tab2SpinnerLineWidth->setValue(plotParams->tab2PlotParams->at(selected).width);
 		ui->tab2SpinnerLineWidth->update();
-		ui->ColorLable8->setPixmap(iconDrawer->draw_icon(plotParams->tab2PlotParams->at(selected).color));
+		ui->ColorLable8->setPixmap(ColorIconDrawer::drawIcon(plotParams->tab2PlotParams->at(selected).color));
 		ui->ColorLable8->update();
 		ui->tab2CheckBoxShow1->setChecked(plotParams->tab2PlotParams->at(selected).show);
 		ui->tab2CheckBoxShow1->update();
@@ -696,14 +696,14 @@ void MainWindow::tab2ComboBoxLineSelectorIndexChanged(int selected)
 	}
 }
 
-void MainWindow::tab2ButtonDrawDOSPressed()
+void MainWindow::tab2ButtonDrawDosPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	if (ui->tab2FileLine2->text() != "")
 	{
-		read_file_from_fs(ui->tab2FileLine2->text(), content);
-		QFileInfo fileinfo(ui->tab2FileLine2->text());
-		settings->UpdatePath(fileinfo.absolutePath());
+		readFileFromFs(ui->tab2FileLine2->text(), content);
+		const QFileInfo fileinfo(ui->tab2FileLine2->text());
+		settings->updatePath(fileinfo.absolutePath());
 	}
 	else
 	{
@@ -712,7 +712,7 @@ void MainWindow::tab2ButtonDrawDOSPressed()
 		return;
 	}
 
-	bandData->ParseData(content);
+	bandData->parseData(content);
 	plotParams->updatePlotParams(2);
 	double borders[4] = { ui->tab2DOSXMin->text().toDouble(),ui->tab2DOSXMax->text().toDouble(),ui->tab2DOSYMin->text().toDouble(),ui->tab2DOSYMax->text().toDouble() };
 	if (bandData->outputCOHP.count() > 0 || bandData->outputDOSS.count() > 0 || bandData->outputCOOP.count() > 0)
@@ -725,10 +725,10 @@ void MainWindow::tab2ButtonDrawDOSPressed()
 void MainWindow::tab2BushButtonSetFontPressed()
 {
 	bool ok;
-	QFontDialog test;
-	QRect windowLocation = geometry();
-	test.setGeometry(windowLocation.x() + 100, windowLocation.y() + 50, 480, 360);
-	QFont font = test.getFont(&ok, tab2GraphFont);//QFontDialog::getFont(&ok, tab1GraphFont, this);
+	QFontDialog fontDialog;
+	const QRect windowLocation = geometry();
+	fontDialog.setGeometry(windowLocation.x() + 100, windowLocation.y() + 50, 480, 360);
+	const QFont font = fontDialog.getFont(&ok, tab2GraphFont);//QFontDialog::getFont(&ok, tab1GraphFont, this);
 	if (ok) {
 		tab2GraphFont = font;
 	}
@@ -742,9 +742,9 @@ void MainWindow::tab4QtAbout()
 	QMessageBox::aboutQt(this);
 }
 
-void MainWindow::tab4LicenceMIT()
+void MainWindow::tab4LicenceMit()
 {
-    QString text = tr("Лицензия MIT\n\nCopyright © 2020 КемГУ\n\nДанная лицензия разрешает лицам, получившим копию данного программного"
+	const QString text = tr("Лицензия MIT\n\nCopyright © 2020 КемГУ\n\nДанная лицензия разрешает лицам, получившим копию данного программного"
 		" обеспечения и сопутствующей документации (в дальнейшем именуемыми «Программное Обеспечение»), безвозмездно"
 		" использовать Программное Обеспечение без ограничений, включая неограниченное право на использование, копирование,"
 		" изменение, слияние, публикацию, распространение, сублицензирование и/или продажу копий Программного Обеспечения, "
@@ -758,17 +758,17 @@ void MainWindow::tab4LicenceMIT()
     QMessageBox::information(this, tr("Лицензионное соглашение"), text);
 }
 
-void MainWindow::tab2PushButtonPDOSLoadPressed()
+void MainWindow::tab2PushButtonPdosLoadPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Open file"), settings->GetLastPath(),
+        tr("Open file"), settings->getLastPath(),
 		"Output file (*.out);;All Files (*)");
 	if (fileName != "")
 	{
-		read_file_from_fs(fileName, content);
-		QFileInfo fileinfo(fileName);
-		settings->UpdatePath(fileinfo.absolutePath());
+		readFileFromFs(fileName, content);
+		const QFileInfo fileinfo(fileName);
+		settings->updatePath(fileinfo.absolutePath());
 	}
 	else
     {
@@ -776,7 +776,7 @@ void MainWindow::tab2PushButtonPDOSLoadPressed()
 		return;
     }
 
-	QVector<QVector<AtomTypes>> data = pdosParser->getAtomData(content);
+	const QVector<QVector<AtomTypes>> data = pdosParser->getAtomData(content);
 	delete content;
 	if (data.count() <= 0)
 	{
@@ -785,12 +785,12 @@ void MainWindow::tab2PushButtonPDOSLoadPressed()
 	}
 
 	fileName = QFileDialog::getSaveFileName(nullptr,
-        tr("Сохранить данные"), settings->GetLastPath()+"PDOS.xlsx",
+        tr("Сохранить данные"), settings->getLastPath()+"PDOS.xlsx",
         tr("Excel file (*.xlsx);;All Files (*)"));
 	if (fileName != "")
 	{
-		QFileInfo fileinfo(fileName);
-		settings->UpdatePath(fileinfo.absolutePath());
+		const QFileInfo fileinfo(fileName);
+		settings->updatePath(fileinfo.absolutePath());
 		QXlsx::Document xlsx;
         xlsx.write(1, 1, tr("№ атома"));
         xlsx.write(1, 2, tr("Атом"));
@@ -819,7 +819,7 @@ void MainWindow::tab2PushButtonPDOSLoadPressed()
 		xlsx.setColumnWidth(4, 15);
 		xlsx.setColumnWidth(5, 50);
 		QApplication::processEvents();
-		bool success = xlsx.saveAs(fileName); // save the document as 'Test.xlsx'
+		const bool success = xlsx.saveAs(fileName); // save the document as 'Test.xlsx'
 		if (success != true)
 		{
             QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + fileName + tr("' не удается открыть для записи!"));

@@ -15,13 +15,13 @@ public:
     BandData();
     //Метод парсинга данных из файла
     //Content содержит строки файла с данными, UHF определяет режим работы парсера
-    void ParseData(QList<QString> *content, bool uhf=false);
+    void parseData(QList<QString> *content, bool uhf=false);
     //Метод обеспечивает поворот СК на величину до 270 градусов с шагом 90
-    void RotateData(int angle);
+    void rotateData(int angle);
     //Метод очистки данных
     void clear();
     //Метод посчета количества данных, хранящихся в классе
-    QVector<int>  CountData(QList<QString> *content);
+    static QVector<int>  countData(QList<QString> *content);
     //Переменные-хранилища обработанных данных
     QVector<QVector<double>> outputBAND, outputDOSS, outputCOHP, outputCOOP, outputMAPN;
     //Переменные-хранилища содержащие данные по СК
@@ -35,9 +35,9 @@ public:
 private:
     double nothing, interval;
     //Внутренние методы парсинга данных
-    void parse_band_data(QList<QString> *content, QVector<long> *indexList0BAND);
-    void parse_dccp_data(QList<QString> *content, QVector<long> *indexList, QVector<QVector<double>> *output, QVector<double> *oX);
-    void parse_mapn_data(QList<QString> *content, QVector<long> *indexList, bool uhf);
+    void parseBandData(QList<QString> *content, QVector<long> *indexList0Band);
+    void parseDccpData(QList<QString> *content, QVector<long> *indexList, QVector<QVector<double>> *output, QVector<double> *oX);
+    void parseMapnData(QList<QString> *content, QVector<long> *indexList, bool uhf);
 
 };
 

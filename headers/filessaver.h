@@ -22,10 +22,10 @@ class FilesSaver
 public:
     FilesSaver();
     //Методы сохранения данных из различных источников
-    bool saveBANDData(QString fileName, BandData* bandData, double zoneMin, double zoneMax, bool uhf);
-    bool SaveDosData(const QString& sourceFileLocation, BandData *bandData);
-    bool saveMAPNData(const QString& sourceFileLocation, BandData *bandData, int rotate);
-    bool saveCryTopData();
+    bool saveBandData(QString fileName, BandData* bandData, double zoneMin, double zoneMax, bool uhf);
+    bool saveDosData(const QString& sourceFileLocation, BandData *bandData);
+    bool saveMapnData(const QString& sourceFileLocation, BandData *bandData, int rotate);
+    static bool saveCryTopData();
     //Структура, сохраняющая возникающие ошибки при записи данных
     struct ErrorData
     {

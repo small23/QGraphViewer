@@ -23,7 +23,7 @@ class PdosParser : public QWidget
 public:
     explicit PdosParser(QWidget *parent = nullptr);
 
-    QVector<QVector<AtomTypes>> getAtomData(QList<QString> *content);
+    QVector<QVector<AtomTypes>> getAtomData(QList<QString> *content) const;
 };
 
 #endif // PDOSPARSER_H

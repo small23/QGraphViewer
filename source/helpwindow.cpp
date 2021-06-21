@@ -9,10 +9,10 @@ HelpWindow::HelpWindow(const QPixmap& hel, const QRect windowLocation,QWidget *p
     scene->addPixmap(hel);
     view->setScene(scene);
     //colorPickerMenu.setGeometry(windowLocation.x()+100,windowLocation.y()+50,522,393);
-	int centreX = windowLocation.x() + windowLocation.width() / 2;
-	int centreY = windowLocation.y() + windowLocation.height() / 2;
-	int height = hel.height() < 700 ? hel.height() + 10 : 700;
-	int width = hel.width() + 20;
+    const int centreX = windowLocation.x() + windowLocation.width() / 2;
+    const int centreY = windowLocation.y() + windowLocation.height() / 2;
+    const int height = hel.height() < 700 ? hel.height() + 10 : 700;
+    const int width = hel.width() + 20;
 	int x = centreX - width / 2;
 	int y = centreY - height / 2;
 

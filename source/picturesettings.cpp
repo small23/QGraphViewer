@@ -54,7 +54,7 @@ void PictureSettings::okButtonPushed()
         params->preferFormat=2;
     else
         params->preferFormat=0;
-    settings->UpdateDrawParams(params);
+    settings->updateDrawParams(params);
     this->close();
 }
 void PictureSettings::cancelButtonPushed()

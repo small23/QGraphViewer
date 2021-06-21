@@ -27,7 +27,7 @@ public:
     }
     //Метод парсинга данных, на вход принимается содержимое файла dat, и уровень отсечки
     //атомов после поворота в плоскость
-    int GetAndParseMainData(QList<QString> fileFields, double cutOff);
+    int getAndParseMainData(QList<QString> fileFields, double cutOff);
     //метод очистки класса от данных
     void clear();
     //переменные-хранилища данных
@@ -48,9 +48,9 @@ private:
     MatrixXd offsetGraph;
     QList<QString> *content;
     //Вспомогательные переменные конвертации и получения данных
-    bool GetOffsetAndTransMatrix();
-    bool GetTrajgradMolgraphData(bool mode);
-    bool GetAtomsData(double cutOff);
+    bool getOffsetAndTransMatrix();
+    bool getTrajgradMolgraphData(bool mode);
+    bool getAtomsData(double cutOff);
 };
 
 #endif // GRAPHICSDATA_H

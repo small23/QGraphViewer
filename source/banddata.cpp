@@ -5,7 +5,7 @@ BandData::BandData(): borders{}, fermi(0), type(0), nothing(0), interval(0)
 {
 }
 
-QVector<int> BandData::CountData(QList<QString> *content)
+QVector<int> BandData::countData(QList<QString> *content)
 {
     int i=0;
     QVector<int> counter;
@@ -29,13 +29,13 @@ QVector<int> BandData::CountData(QList<QString> *content)
     return counter;
 }
 
-void BandData::ParseData(QList<QString> *content, bool uhf)
+void BandData::parseData(QList<QString> *content, const bool uhf)
 {
-	auto* indexListBAND = new QVector<long>();
-    auto* indexListDOSS = new QVector<long>();
-    auto* indexListCOHP = new QVector<long>();
-    auto* indexListCOOP = new QVector<long>();
-    auto* indexListMAPN = new QVector<long>();
+	auto* indexListBand = new QVector<long>();
+    auto* indexListDoss = new QVector<long>();
+    auto* indexListCohp = new QVector<long>();
+    auto* indexListCoop = new QVector<long>();
+    auto* indexListMapn = new QVector<long>();
 
     clear();
 
@@ -43,40 +43,40 @@ void BandData::ParseData(QList<QString> *content, bool uhf)
     while (i<content->count())
     {
         if (content->at(i).contains("BAND")){
-            indexListBAND->append(i);
+            indexListBand->append(i);
         }
         else if (content->at(i).contains("DOSS")){
-            indexListDOSS->append(i);
+            indexListDoss->append(i);
         }
         else if (content->at(i).contains("COHP")){
-            indexListCOHP->append(i);
+            indexListCohp->append(i);
         }
         else if (content->at(i).contains("COOP")){
-            indexListCOOP->append(i);
+            indexListCoop->append(i);
         }
         else if (content->at(i).contains("MAPN")){
-            indexListMAPN->append(i);
+            indexListMapn->append(i);
         }
         i++;
     }
 
-    if(indexListBAND->count()>0)
-        parse_band_data(content, indexListBAND);
+    if(indexListBand->count()>0)
+        parseBandData(content, indexListBand);
 
-    if(indexListCOHP->count()>0)
-        parse_dccp_data(content, indexListCOHP, &outputCOHP, &oXCohp);
-    if(indexListCOOP->count()>0)
-        parse_dccp_data(content, indexListCOOP, &outputCOOP, &oXCoop);
-    if(indexListMAPN->count()>0)
-        parse_mapn_data(content, indexListMAPN, uhf);
-    if (indexListDOSS->count() > 0)
-        parse_dccp_data(content, indexListDOSS, &outputDOSS, &oXDoss);
+    if(indexListCohp->count()>0)
+        parseDccpData(content, indexListCohp, &outputCOHP, &oXCohp);
+    if(indexListCoop->count()>0)
+        parseDccpData(content, indexListCoop, &outputCOOP, &oXCoop);
+    if(indexListMapn->count()>0)
+        parseMapnData(content, indexListMapn, uhf);
+    if (indexListDoss->count() > 0)
+        parseDccpData(content, indexListDoss, &outputDOSS, &oXDoss);
 
-    delete indexListBAND;
-    delete indexListDOSS;
-    delete indexListCOHP;
-    delete indexListCOOP;
-    delete indexListMAPN;
+    delete indexListBand;
+    delete indexListDoss;
+    delete indexListCohp;
+    delete indexListCoop;
+    delete indexListMapn;
 
 }
 
@@ -105,20 +105,20 @@ void BandData::clear()
     borders[1] = -999999;
 }
 
-void BandData::parse_band_data(QList<QString> *content, QVector<long> *indexListBAND)
+void BandData::parseBandData(QList<QString> *content, QVector<long> *indexList0Band)
 {
-    QString c = content->at(indexListBAND->at(0));
-    long int countY=c.mid(9,4).toInt();
+    QString c = content->at(indexList0Band->at(0));
+    const long int countY=c.mid(9,4).toInt();
     for (int i=0; i<countY; i++)
     {
         QVector<double> a;
         outputBAND.append(a);
     }
 
-    for (int i=0; i<indexListBAND->count(); i++)
+    for (int i=0; i<indexList0Band->count(); i++)
     {
-        c=content->at(indexListBAND->at(i));
-        long int  countX=c.mid(15,3).toInt();
+        c=content->at(indexList0Band->at(i));
+        const long int  countX=c.mid(15,3).toInt();
 
         c.remove(0,18);
         QTextStream getBasicData(&c);
@@ -126,10 +126,10 @@ void BandData::parse_band_data(QList<QString> *content, QVector<long> *indexList
 
         QVector<double> test;
         QString input;
-        long int strCount=ceil((double(countX*countY)/6)); //ceil
+        const long int strCount=ceil(static_cast<double>(countX * countY)/6); //ceil
         for (int j=0; j<strCount; j++)
         {
-            input+=content->at(indexListBAND->at(i)+3+j);
+            input+=content->at(indexList0Band->at(i)+3+j);
         }
 
         QTextStream stream(&input);
@@ -162,12 +162,12 @@ void BandData::parse_band_data(QList<QString> *content, QVector<long> *indexList
     fermi=fermi*27.21138602;
 }
 
-void BandData::parse_dccp_data(QList<QString> *content, QVector<long> *indexList, QVector<QVector<double>> *output, QVector<double> *oX)
+void BandData::parseDccpData(QList<QString> *content, QVector<long> *indexList, QVector<QVector<double>> *output, QVector<double> *oX)
 {
     long int countX=0;
     double startX;
     QString c = content->at(indexList->at(0));
-    long int countY=c.mid(9,4).toInt();
+    const long int countY=c.mid(9,4).toInt();
     c=content->at(indexList->at(0)+1);
     QTextStream getStartXData(&c);
     getStartXData >>nothing  >> startX;
@@ -183,7 +183,7 @@ void BandData::parse_dccp_data(QList<QString> *content, QVector<long> *indexList
         interval*=27.21138602;
         QVector<double> test;
         QString input;
-        long int strCount=ceil((double(countX*countY)/6));
+        const long int strCount=ceil(static_cast<double>(countX * countY)/6);
         for (int j=0; j<strCount; j++)
         {
             input+=content->at(indexList->at(i)+3+j);
@@ -216,7 +216,7 @@ void BandData::parse_dccp_data(QList<QString> *content, QVector<long> *indexList
     fermi=fermi*27.21138602;
 }
 
-void BandData::parse_mapn_data(QList<QString> *content, QVector<long> *indexList, bool uhf)
+void BandData::parseMapnData(QList<QString> *content, QVector<long> *indexList, const bool uhf)
 {
     long int countX=0, countY=0;
     double intervX, intervY;
@@ -243,7 +243,7 @@ void BandData::parse_mapn_data(QList<QString> *content, QVector<long> *indexList
         c=content->at(indexList->at(i));
         QVector<double> test;
         QString input;
-        long int strCount=ceil((double(countX*countY)/6));
+        const long int strCount=ceil(static_cast<double>(countX * countY)/6);
         for (int j=0; j<strCount; j++)
         {
             input+=content->at(indexList->at(i)+3+j);
@@ -293,7 +293,7 @@ void BandData::parse_mapn_data(QList<QString> *content, QVector<long> *indexList
         if (oXTempMapn.count()==0)
             oXTempMapn.append(0);
         else
-            oXTempMapn.append((oXTempMapn.at(oXTempMapn.count()-1)+intervX / 0.529177208) );
+            oXTempMapn.append(oXTempMapn.at(oXTempMapn.count()-1)+intervX / 0.529177208 );
     }
 
     for(int j=0; j<countY; j++)
@@ -301,7 +301,7 @@ void BandData::parse_mapn_data(QList<QString> *content, QVector<long> *indexList
         if (oYTempMapn.count()==0)
             oYTempMapn.append(0);
         else
-            oYTempMapn.append((oYTempMapn.at(oYTempMapn.count()-1)+intervY / 0.529177208) );
+            oYTempMapn.append(oYTempMapn.at(oYTempMapn.count()-1)+intervY / 0.529177208 );
     }
 
     for (int i=0; i<countY; i++)
@@ -314,11 +314,11 @@ void BandData::parse_mapn_data(QList<QString> *content, QVector<long> *indexList
     }
 }
 
-void BandData::RotateData(int angle)
+void BandData::rotateData(const int angle)
 {
     QVector<QVector<double>> temp = outputMAPN;
-    QVector<double> tempX = oXTempMapn;
-    QVector<double> tempY = oYTempMapn;
+    const QVector<double> tempX = oXTempMapn;
+    const QVector<double> tempY = oYTempMapn;
 
     switch (angle)
     {
@@ -330,7 +330,7 @@ void BandData::RotateData(int angle)
             for (int j=0; j<oYTempMapn.count(); j++)
             {
                 for (int ii=0; ii<outputMAPN.count(); ii++)
-                    outputMAPN[ii][i*oYTempMapn.count()+j]=(temp[ii][(oYTempMapn.count()-j-1)*oXTempMapn.count()+i]);
+                    outputMAPN[ii][i*oYTempMapn.count()+j]=temp[ii][(oYTempMapn.count()-j-1)*oXTempMapn.count()+i];
             }
         }
         oXTempMapn.clear();
@@ -361,7 +361,7 @@ void BandData::RotateData(int angle)
             for (int j=0; j<oYTempMapn.count(); j++)
             {
                 for (int ii=0; ii<outputMAPN.count(); ii++)
-                    outputMAPN[ii][i*oYTempMapn.count()+j]=(temp[ii][(j+1)*oXTempMapn.count()-1-i]);
+                    outputMAPN[ii][i*oYTempMapn.count()+j]=temp[ii][(j+1)*oXTempMapn.count()-1-i];
             }
         }
         oXTempMapn.clear();
@@ -379,7 +379,5 @@ void BandData::RotateData(int angle)
             }
         }
         break;
-    default:
-        return;
     }
 }

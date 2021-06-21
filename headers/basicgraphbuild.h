@@ -45,14 +45,14 @@ private:
     QCustomPlot *customPlot;
     PlotParameters* plotParams;
     //Внутренние методы отрисовки различных данных
-    void draw_surface(SurfData* surfData, PlotParameters* plotParams, int angle);
-    void draw_band(BandData* bandData, PlotParameters* plotParams, int buildType, bool uhf, int angle);
-    void draw_data_isolines(PlotParameters* plotParams,
+    void drawSurface(SurfData* surfData, PlotParameters* plotParams, int angle) const;
+    void drawBand(BandData* bandData, PlotParameters* plotParams, int buildType, bool uhf, int angle) const;
+    void drawDataIsolines(PlotParameters* plotParams,
                             std::vector<MarchingSquares::levelPaths> result,
-                            double* hslA, double* hslB, double* hslAStep, double* hslBStep, const QVector<double>& oXTemp,
+                            double* hslA, double* hslB, const double* hslAStep, const double* hslBStep, const QVector<double>& oXTemp,
                             const QVector<double>& oYTemp, bool
-                            shiftA, bool shiftB, int hslABorder, int hslBBorder, int angle, double stepX, double stepY);
-    void drawDataLines(PlotParameters* plotParams, QList<UniversalLines>* Trajgrad, int index, int angle);
+                            shiftA, bool shiftB, int hslABorder, int hslBBorder, int angle, double stepX, double stepY) const;
+    void drawDataLines(PlotParameters* plotParams, QList<UniversalLines>* Trajgrad, int index, int angle) const;
     SettingsKeeper* settings;
 
 };

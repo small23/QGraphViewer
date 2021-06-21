@@ -1,20 +1,19 @@
 #include "helpmatrixwidget.h"
-#include "QFontDialog"
 #include "QDebug"
 
-HelpMatrixWidget::HelpMatrixWidget(Ui::MainWindow *uiInt, QRect windowLocation, QWidget *parent) : QGraphicsView(parent)
+HelpMatrixWidget::HelpMatrixWidget(Ui::MainWindow *uiInt, const QRect windowLocation, QWidget *parent) : QGraphicsView(parent)
 {
     scene = new QGraphicsScene();
     //view = new QGraphicsView();
-    QString helpFile = QString(":resource/help/HELP2.png");
-    QPixmap hel = QPixmap(helpFile);
+    const QString helpFile = QString(":resource/help/HELP2.png");
+    const QPixmap hel = QPixmap(helpFile);
     scene->addPixmap(hel);
     this->setScene(scene);
 
-	int centreX = windowLocation.x() + windowLocation.width() / 2;
-	int centreY = windowLocation.y() + windowLocation.height() / 2;
-	int height = hel.height() + 10;
-	int width = hel.width() + 20;
+    const int centreX = windowLocation.x() + windowLocation.width() / 2;
+    const int centreY = windowLocation.y() + windowLocation.height() / 2;
+    const int height = hel.height() + 10;
+    const int width = hel.width() + 20;
 	int x = centreX - width / 2;
 	int y = centreY - height / 2;
 

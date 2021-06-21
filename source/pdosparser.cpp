@@ -5,7 +5,7 @@ PdosParser::PdosParser(QWidget *parent) : QWidget(parent)
 
 }
 
-QVector<QVector<AtomTypes>> PdosParser::getAtomData(QList<QString> *content)
+QVector<QVector<AtomTypes>> PdosParser::getAtomData(QList<QString> *content) const
 {
     QList<QString> c;
     QString b;
@@ -82,7 +82,7 @@ QVector<QVector<AtomTypes>> PdosParser::getAtomData(QList<QString> *content)
         }
         else
         {
-            long int delta=atoms.at(atoms.count()-1).end-atoms.at(0).begin+1;
+	        const long int delta=atoms.at(atoms.count()-1).end-atoms.at(0).begin+1;
             b=content->at(cellsAtomsLocation.at(ii));
             atoms.data()[0].number=b.mid(0,4).toInt();
             atoms.data()[0].name=b.mid(4,3);
