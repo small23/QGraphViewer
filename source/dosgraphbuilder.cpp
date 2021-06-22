@@ -194,8 +194,16 @@ DOSGraphBuilder::DOSGraphBuilder(BandData* graphics, double borders[4], PlotPara
 
 	customPlot->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(customPlot, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequest(QPoint)));
+	connect(customPlot, SIGNAL(destroyed(QObject*)), this, SLOT(deletionOnClose()));
+
 	customPlot->show();
 	customPlot->setAttribute(Qt::WA_DeleteOnClose);
+}
+
+void DOSGraphBuilder::deletionOnClose()
+{
+	this->deleteLater();
+	return;
 }
 
 void DOSGraphBuilder::drawData(QVector<QVector<double>> data, const QVector<double>& axis, PlotParameters* params, const int angle, const int paramsShift, bool* showed) const

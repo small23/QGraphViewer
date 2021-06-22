@@ -184,9 +184,18 @@ BasicGraphBuild::BasicGraphBuild(PlotParameters* plotParams, const QFont& font, 
 
 	customPlot->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(customPlot, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequest(QPoint)));
+	connect(customPlot, SIGNAL(destroyed(QObject*)), this, SLOT(deletionOnClose()));
+
 	customPlot->show();
 	customPlot->setAttribute(Qt::WA_DeleteOnClose);
 }
+
+void BasicGraphBuild::deletionOnClose()
+{
+	this->deleteLater();
+	return;
+}
+
 
 void BasicGraphBuild::drawDataLines(PlotParameters* plotParams, QList<UniversalLines>* data, const int index, const int angle) const
 {

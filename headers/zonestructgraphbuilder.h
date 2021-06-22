@@ -26,8 +26,8 @@ public:
     //buildNumbers - ограничители уровня ферми
     explicit ZoneStructGraphBuilder(BandData *graphics, double min, double max, QString kPoints, PlotParameters *params, QFont font,
                                     double buildNumbers[2], QString title, SettingsKeeper* settings, MathSymbols *symbols, QWidget *parent = nullptr);
-    bool isClosed();
-	~ZoneStructGraphBuilder();
+
+	//~ZoneStructGraphBuilder();
 	
 private slots:
     //Слоты для обработки эвентов от мыши
@@ -35,7 +35,7 @@ private slots:
     void contextMenuRequest(QPoint pos);
     //Обработка эвента сохранения изображения
     void savePicture();
-
+    void deletionOnClose();
 private:
     QCustomPlot *customPlot;
     PlotParameters* plotParams;

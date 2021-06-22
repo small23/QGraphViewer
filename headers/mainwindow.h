@@ -104,8 +104,6 @@ private Q_SLOTS:
     void tab4LicenceMit();
     //...загрузки файла PDOS, обработки данных и вывода результатов в таблицу
     void tab2PushButtonPdosLoadPressed();
-    //Обработчик вызова таймера очистки памяти от графиков
-    void garbageCollector() const;
 
     void tab4Changelog();
 	

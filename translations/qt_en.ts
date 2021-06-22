@@ -445,7 +445,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="2289"/>
         <location filename="../ui/mainwindow.ui" line="3882"/>
-        <location filename="../source/mainwindow.cpp" line="612"/>
+        <location filename="../source/mainwindow.cpp" line="616"/>
         <source>Зонная структура</source>
         <translation>Zone structure</translation>
     </message>
@@ -782,158 +782,158 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="175"/>
-        <location filename="../source/mainwindow.cpp" line="181"/>
-        <location filename="../source/mainwindow.cpp" line="188"/>
-        <location filename="../source/mainwindow.cpp" line="206"/>
-        <location filename="../source/mainwindow.cpp" line="209"/>
-        <location filename="../source/mainwindow.cpp" line="212"/>
-        <location filename="../source/mainwindow.cpp" line="215"/>
-        <location filename="../source/mainwindow.cpp" line="228"/>
-        <location filename="../source/mainwindow.cpp" line="333"/>
-        <location filename="../source/mainwindow.cpp" line="367"/>
-        <location filename="../source/mainwindow.cpp" line="401"/>
-        <location filename="../source/mainwindow.cpp" line="463"/>
-        <location filename="../source/mainwindow.cpp" line="514"/>
-        <location filename="../source/mainwindow.cpp" line="564"/>
-        <location filename="../source/mainwindow.cpp" line="618"/>
-        <location filename="../source/mainwindow.cpp" line="719"/>
-        <location filename="../source/mainwindow.cpp" line="792"/>
+        <location filename="../source/mainwindow.cpp" line="179"/>
+        <location filename="../source/mainwindow.cpp" line="185"/>
+        <location filename="../source/mainwindow.cpp" line="192"/>
+        <location filename="../source/mainwindow.cpp" line="210"/>
+        <location filename="../source/mainwindow.cpp" line="213"/>
+        <location filename="../source/mainwindow.cpp" line="216"/>
+        <location filename="../source/mainwindow.cpp" line="219"/>
+        <location filename="../source/mainwindow.cpp" line="232"/>
+        <location filename="../source/mainwindow.cpp" line="337"/>
+        <location filename="../source/mainwindow.cpp" line="371"/>
+        <location filename="../source/mainwindow.cpp" line="405"/>
+        <location filename="../source/mainwindow.cpp" line="467"/>
+        <location filename="../source/mainwindow.cpp" line="518"/>
+        <location filename="../source/mainwindow.cpp" line="568"/>
+        <location filename="../source/mainwindow.cpp" line="622"/>
+        <location filename="../source/mainwindow.cpp" line="723"/>
+        <location filename="../source/mainwindow.cpp" line="796"/>
         <source>Ошибка парсинга</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="175"/>
+        <location filename="../source/mainwindow.cpp" line="179"/>
         <source>Не указан ни один файл для построения!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="181"/>
+        <location filename="../source/mainwindow.cpp" line="185"/>
         <source>Не указаны файлы с данными для построения!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="188"/>
+        <location filename="../source/mainwindow.cpp" line="192"/>
         <source>Не указан файл *.outp, Molgrath/Trajgrad/P2dcrynp не будут построены!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="206"/>
+        <location filename="../source/mainwindow.cpp" line="210"/>
         <source>В файле .outp отсутствуют необходимые данные или файл поврежден!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="209"/>
+        <location filename="../source/mainwindow.cpp" line="213"/>
         <source>В файле Trajgrad.dat отсутствуют необходимые данные или файл поврежден!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="212"/>
+        <location filename="../source/mainwindow.cpp" line="216"/>
         <source>В файле Molgrapf.dat отсутствуют необходимые данные или файл поврежден!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="215"/>
+        <location filename="../source/mainwindow.cpp" line="219"/>
         <source>В файле P2dcrynp.dat отсутствуют необходимые данные или файл поврежден!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="228"/>
+        <location filename="../source/mainwindow.cpp" line="232"/>
         <source>Не указан файл *.outp!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="306"/>
-        <location filename="../source/mainwindow.cpp" line="340"/>
-        <location filename="../source/mainwindow.cpp" line="374"/>
-        <location filename="../source/mainwindow.cpp" line="408"/>
-        <location filename="../source/mainwindow.cpp" line="470"/>
-        <location filename="../source/mainwindow.cpp" line="521"/>
-        <location filename="../source/mainwindow.cpp" line="638"/>
-        <location filename="../source/mainwindow.cpp" line="774"/>
+        <location filename="../source/mainwindow.cpp" line="310"/>
+        <location filename="../source/mainwindow.cpp" line="344"/>
+        <location filename="../source/mainwindow.cpp" line="378"/>
+        <location filename="../source/mainwindow.cpp" line="412"/>
+        <location filename="../source/mainwindow.cpp" line="474"/>
+        <location filename="../source/mainwindow.cpp" line="525"/>
+        <location filename="../source/mainwindow.cpp" line="642"/>
+        <location filename="../source/mainwindow.cpp" line="778"/>
         <source>Open file</source>
         <translation type="unfinished">Open file</translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="327"/>
-        <location filename="../source/mainwindow.cpp" line="361"/>
-        <location filename="../source/mainwindow.cpp" line="395"/>
-        <location filename="../source/mainwindow.cpp" line="456"/>
-        <location filename="../source/mainwindow.cpp" line="508"/>
-        <location filename="../source/mainwindow.cpp" line="558"/>
-        <location filename="../source/mainwindow.cpp" line="834"/>
+        <location filename="../source/mainwindow.cpp" line="331"/>
+        <location filename="../source/mainwindow.cpp" line="365"/>
+        <location filename="../source/mainwindow.cpp" line="399"/>
+        <location filename="../source/mainwindow.cpp" line="460"/>
+        <location filename="../source/mainwindow.cpp" line="512"/>
+        <location filename="../source/mainwindow.cpp" line="562"/>
+        <location filename="../source/mainwindow.cpp" line="838"/>
         <source>Ошибка сохранения</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="327"/>
-        <location filename="../source/mainwindow.cpp" line="361"/>
-        <location filename="../source/mainwindow.cpp" line="395"/>
-        <location filename="../source/mainwindow.cpp" line="456"/>
-        <location filename="../source/mainwindow.cpp" line="508"/>
-        <location filename="../source/mainwindow.cpp" line="558"/>
-        <location filename="../source/mainwindow.cpp" line="834"/>
+        <location filename="../source/mainwindow.cpp" line="331"/>
+        <location filename="../source/mainwindow.cpp" line="365"/>
+        <location filename="../source/mainwindow.cpp" line="399"/>
+        <location filename="../source/mainwindow.cpp" line="460"/>
+        <location filename="../source/mainwindow.cpp" line="512"/>
+        <location filename="../source/mainwindow.cpp" line="562"/>
+        <location filename="../source/mainwindow.cpp" line="838"/>
         <source>&apos;%1&apos; не удается открыть для записи!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="330"/>
-        <location filename="../source/mainwindow.cpp" line="364"/>
-        <location filename="../source/mainwindow.cpp" line="398"/>
-        <location filename="../source/mainwindow.cpp" line="460"/>
-        <location filename="../source/mainwindow.cpp" line="511"/>
-        <location filename="../source/mainwindow.cpp" line="561"/>
-        <location filename="../source/mainwindow.cpp" line="836"/>
+        <location filename="../source/mainwindow.cpp" line="334"/>
+        <location filename="../source/mainwindow.cpp" line="368"/>
+        <location filename="../source/mainwindow.cpp" line="402"/>
+        <location filename="../source/mainwindow.cpp" line="464"/>
+        <location filename="../source/mainwindow.cpp" line="515"/>
+        <location filename="../source/mainwindow.cpp" line="565"/>
+        <location filename="../source/mainwindow.cpp" line="840"/>
         <source>Данные обработаны</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="330"/>
-        <location filename="../source/mainwindow.cpp" line="364"/>
-        <location filename="../source/mainwindow.cpp" line="398"/>
-        <location filename="../source/mainwindow.cpp" line="460"/>
-        <location filename="../source/mainwindow.cpp" line="511"/>
-        <location filename="../source/mainwindow.cpp" line="561"/>
-        <location filename="../source/mainwindow.cpp" line="836"/>
+        <location filename="../source/mainwindow.cpp" line="334"/>
+        <location filename="../source/mainwindow.cpp" line="368"/>
+        <location filename="../source/mainwindow.cpp" line="402"/>
+        <location filename="../source/mainwindow.cpp" line="464"/>
+        <location filename="../source/mainwindow.cpp" line="515"/>
+        <location filename="../source/mainwindow.cpp" line="565"/>
+        <location filename="../source/mainwindow.cpp" line="840"/>
         <source>Данные обработаны и сохранены!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="333"/>
-        <location filename="../source/mainwindow.cpp" line="367"/>
-        <location filename="../source/mainwindow.cpp" line="401"/>
-        <location filename="../source/mainwindow.cpp" line="463"/>
-        <location filename="../source/mainwindow.cpp" line="514"/>
-        <location filename="../source/mainwindow.cpp" line="564"/>
+        <location filename="../source/mainwindow.cpp" line="337"/>
+        <location filename="../source/mainwindow.cpp" line="371"/>
+        <location filename="../source/mainwindow.cpp" line="405"/>
+        <location filename="../source/mainwindow.cpp" line="467"/>
+        <location filename="../source/mainwindow.cpp" line="518"/>
+        <location filename="../source/mainwindow.cpp" line="568"/>
         <source>В предоставленном файле отсутствуют необходимые данные или файл поврежден!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="581"/>
-        <location filename="../source/mainwindow.cpp" line="709"/>
+        <location filename="../source/mainwindow.cpp" line="585"/>
+        <location filename="../source/mainwindow.cpp" line="713"/>
         <source>Ошибка загрузки</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="581"/>
-        <location filename="../source/mainwindow.cpp" line="709"/>
+        <location filename="../source/mainwindow.cpp" line="585"/>
+        <location filename="../source/mainwindow.cpp" line="713"/>
         <source>Не указан файл построения!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="618"/>
-        <location filename="../source/mainwindow.cpp" line="719"/>
-        <location filename="../source/mainwindow.cpp" line="792"/>
+        <location filename="../source/mainwindow.cpp" line="622"/>
+        <location filename="../source/mainwindow.cpp" line="723"/>
+        <location filename="../source/mainwindow.cpp" line="796"/>
         <source>В предоставленном файле отсутсвуют необходимые данные или файл поврежден!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="639"/>
+        <location filename="../source/mainwindow.cpp" line="643"/>
         <source>f25 files (*.f25);;All Files (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="745"/>
+        <location filename="../source/mainwindow.cpp" line="749"/>
         <source>Лицензия MIT
 
 Copyright © 2020 КемГУ
@@ -946,56 +946,56 @@ Copyright © 2020 КемГУ
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="756"/>
+        <location filename="../source/mainwindow.cpp" line="760"/>
         <source>Лицензионное соглашение</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="797"/>
+        <location filename="../source/mainwindow.cpp" line="801"/>
         <source>Сохранить данные</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="798"/>
+        <location filename="../source/mainwindow.cpp" line="802"/>
         <source>Excel file (*.xlsx);;All Files (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="804"/>
-        <location filename="../source/mainwindow.cpp" line="860"/>
+        <location filename="../source/mainwindow.cpp" line="808"/>
+        <location filename="../source/mainwindow.cpp" line="864"/>
         <source>№ атома</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="805"/>
-        <location filename="../source/mainwindow.cpp" line="860"/>
+        <location filename="../source/mainwindow.cpp" line="809"/>
+        <location filename="../source/mainwindow.cpp" line="864"/>
         <source>Атом</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="806"/>
-        <location filename="../source/mainwindow.cpp" line="860"/>
+        <location filename="../source/mainwindow.cpp" line="810"/>
+        <location filename="../source/mainwindow.cpp" line="864"/>
         <source>Тип</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="807"/>
-        <location filename="../source/mainwindow.cpp" line="860"/>
+        <location filename="../source/mainwindow.cpp" line="811"/>
+        <location filename="../source/mainwindow.cpp" line="864"/>
         <source>Число ф-й</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="808"/>
+        <location filename="../source/mainwindow.cpp" line="812"/>
         <source>Номера баз. ф-й</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="860"/>
+        <location filename="../source/mainwindow.cpp" line="864"/>
         <source>N нач.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="860"/>
+        <location filename="../source/mainwindow.cpp" line="864"/>
         <source>N кон.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1066,7 +1066,7 @@ Copyright © 2020 КемГУ
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/picturesettings.cpp" line="10"/>
+        <location filename="../source/picturesettings.cpp" line="13"/>
         <source>Настройки</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1234,7 +1234,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/changelog.cpp" line="11"/>
+        <location filename="../source/changelog.cpp" line="16"/>
         <source>Список изменений</source>
         <translation type="unfinished"></translation>
     </message>

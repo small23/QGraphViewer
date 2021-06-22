@@ -36,11 +36,6 @@ MainWindow::MainWindow(QWidget* parent)
 	tab2GraphFont.setFamily("Times New Roman");
 	tab2GraphFont.setPointSize(18);
 
-	tmr = new QTimer(this); 
-	tmr->setInterval(5000); 
-	connect(tmr, SIGNAL(timeout()), this, SLOT(garbageCollector())); 
-	tmr->start();
-	
     connect(ui->tab3AtomsConvertButton,     SIGNAL(clicked()),                    this,       SLOT(atomsConvertButtonPressed()));
     connect(ui->tab3AtomsSearchButton,      SIGNAL(clicked()),                    this,       SLOT(atomsSearchButtonPressed()));
     connect(ui->tab3LoadFileConvertXfX,     SIGNAL(clicked()),                    this,       SLOT(loadFileConvertXfXButtonPressed()));
@@ -98,19 +93,6 @@ void MainWindow::showPictureSettings()
     }
     formPictureSettings = new PictureSettings(plotParams, settings,this);
     formPictureSettings->show();
-}
-
-void MainWindow::garbageCollector() const
-{
-	for (int i = 0; i < graphsC->size(); i++)
-	{
-		if (graphsC->at(i)->isClosed())
-		{
-			delete graphsC->at(i);
-			graphsC->removeAt(i);
-			i = 0;
-		}
-	}
 }
 
 void MainWindow::colorChangeButtonClicked(const int id) const

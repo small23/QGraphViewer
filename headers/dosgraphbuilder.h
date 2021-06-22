@@ -30,6 +30,7 @@ private slots:
     void contextMenuRequest(QPoint pos);
     //Обработка эвента сохранения изображения
     void savePicture();
+    void deletionOnClose();
 
 private:
     //Метод отрисовки данных на графике

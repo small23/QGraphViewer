@@ -36,6 +36,7 @@ private slots:
     void contextMenuRequest(QPoint pos);
     //Обработка эвента сохранения изображения
     void savePicture();
+    void deletionOnClose();
 
 private:
     QWidget* parent;

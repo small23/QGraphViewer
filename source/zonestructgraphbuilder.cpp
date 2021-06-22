@@ -169,10 +169,17 @@ ZoneStructGraphBuilder::ZoneStructGraphBuilder(BandData* graphics, double min, d
 
 	customPlot->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(customPlot, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequest(QPoint)));
-
+	connect(customPlot, SIGNAL(destroyed(QObject*)), this, SLOT(deletionOnClose()));
+	
 	customPlot->setWindowTitle(title);
 	customPlot->show();
-	//customPlot->setAttribute(Qt::WA_DeleteOnClose);
+	customPlot->setAttribute(Qt::WA_DeleteOnClose);
+}
+
+void ZoneStructGraphBuilder::deletionOnClose()
+{
+	this->deleteLater();
+	return;
 }
 
 void ZoneStructGraphBuilder::contextMenuRequest(QPoint pos)
@@ -240,23 +247,4 @@ void ZoneStructGraphBuilder::savePicture()
 		}
 	}
 }
-
-bool ZoneStructGraphBuilder::isClosed()
-{
-	if (customPlot->window()->effectiveWinId() == 0)
-	{
-		return true;
-	}
-	else
-		return false;
-}
-
-ZoneStructGraphBuilder::~ZoneStructGraphBuilder()
-{
-	customPlot->clearGraphs();
-	customPlot->clearItems();
-	customPlot->clearPlottables();
-	delete customPlot;
-}
-
 
