@@ -7,6 +7,7 @@
 
 #include "QVector"
 #include "QTextStream"
+#include "cmath"
 
 class BandData
 {

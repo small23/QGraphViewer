@@ -1,5 +1,4 @@
 #include "banddata.h"
-#include "cmath"
 
 BandData::BandData(): borders{}, fermi(0), type(0), nothing(0), interval(0)
 {
@@ -379,5 +378,6 @@ void BandData::rotateData(const int angle)
             }
         }
         break;
+    default: ;
     }
 }

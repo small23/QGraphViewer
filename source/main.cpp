@@ -19,9 +19,6 @@ int main(int argc, char *argv[])
     QApplication::setApplicationName("QGraphViewer");
 	MainWindow w;
     const QString locale = QLocale::system().name();
-    QTranslator qtTranslator;
-    if (qtTranslator.load("qt_" + locale, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
-	    QApplication::installTranslator(&qtTranslator);
     w.setLocale(QLocale::English);
     w.setStatusBar(nullptr);
     w.setFixedSize(w.size());

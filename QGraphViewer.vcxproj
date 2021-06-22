@@ -131,7 +131,7 @@
     <ClCompile Include="source\atomconversion.cpp" />
     <ClCompile Include="source\banddata.cpp" />
     <ClCompile Include="source\basicgraphbuild.cpp" />
-    <ClCompile Include="changelog.cpp" />
+    <ClCompile Include="source\changelog.cpp" />
     <ClCompile Include="source\coloricondrawer.cpp" />
     <ClCompile Include="source\contour.cpp" />
     <ClCompile Include="source\crystaltopondconvertors.cpp" />
@@ -209,7 +209,7 @@
       
       
     </QtMoc>
-    <QtMoc Include="changelog.h">
+    <QtMoc Include="headers\changelog.h">
       
       
       
@@ -339,7 +339,7 @@
     <ClInclude Include="headers\structuresHeaders.h" />
     <ClInclude Include="headers\surfdata.h" />
     
-    <ClInclude Include="ui_picturesettings.h" />
+    
     <ClInclude Include="headers\uiinit.h" />
     <ClInclude Include="libs\QXlsx\header\xlsxabstractooxmlfile.h" />
     <ClInclude Include="libs\QXlsx\header\xlsxabstractooxmlfile_p.h" />
@@ -463,13 +463,14 @@
     
     
     
+    
   </ItemGroup>
   <ItemGroup>
-    <None Include="translations\EN.ts" />
-    <None Include="translations\RU.ts" />
+    <None Include="translations\qt_en.ts" />
+    <None Include="translations\qt_ru.ts" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="changelog.ui">
+    <QtUic Include="ui\changelog.ui">
       
       
       
@@ -481,6 +482,17 @@
       
     </QtUic>
     <QtUic Include="ui\mainwindow.ui">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtUic>
+    <QtUic Include="ui\picturesettings.ui">
       
       
       
@@ -525,13 +537,12 @@
     <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Logos</InitFuncName><InitFuncName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Logos</InitFuncName></QtRcc>
     <None Include="resources\Logos\QXlsx-Desktop.png" />
     <None Include="resources\Logos\Qt_logo_2016.svg.png" />
+    <None Include="resources\Logos\logo.ico" />
     <None Include="resources\Logos\qcp-logo.png" />
     <None Include="resources\splash.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="distfiles\qcustomplot.qch" />
-    <None Include="папка\qcustomplot.qch" />
-    <None Include="Новая" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include=".\QGraphViewer_resource.rc" />

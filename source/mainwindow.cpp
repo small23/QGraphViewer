@@ -7,6 +7,10 @@ MainWindow::MainWindow(QWidget* parent)
 	: QMainWindow(parent)
 	, ui(new Ui::MainWindow)
 {
+	QTranslator qtTranslator;
+	qtTranslator.load("qt_en", QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+	QApplication::installTranslator(&qtTranslator);
+	
 	settings = new SettingsKeeper(this);
 	FileDialogsLoad* fileDiag = new FileDialogsLoad(ui, this, settings);
 	graphicsData = new GraphicsData();
@@ -324,7 +328,7 @@ void MainWindow::loadFileConvertXfXButtonPressed()
 		const bool success = filesSaver->saveBandData(fileName, bandData, ui->tab3ZoneStructYMin->text().toDouble(), ui->tab3ZoneStructYMax->text().toDouble(), ui->tab3uhfZoneStruct->isChecked());
 		if (success == false)
 		{
-            QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + filesSaver->errorData.ErrorFile + tr("' не удается открыть для записи!"));
+			QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'%1' не удается открыть для записи!").arg(filesSaver->errorData.ErrorFile));//QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + filesSaver->errorData.ErrorFile + tr("' не удается открыть для записи!"));
 			return;
 		}
         QMessageBox::information(this, tr("Данные обработаны"), tr("Данные обработаны и сохранены!"));
@@ -358,7 +362,7 @@ void MainWindow::tab3LoadFilesConvertDosButtonPressed()
 		const bool success = filesSaver->saveDosData(fileName, bandData);
 		if (success == false)
 		{
-            QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + filesSaver->errorData.ErrorFile + tr("' не удается открыть для записи!"));
+            QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'%1' не удается открыть для записи!").arg(filesSaver->errorData.ErrorFile));//QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + filesSaver->errorData.ErrorFile + tr("' не удается открыть для записи!"));
 			return;
 		}
         QMessageBox::information(this, tr("Данные обработаны"), tr("Данные обработаны и сохранены!"));
@@ -392,8 +396,8 @@ void MainWindow::tab3SurfF25ButtonPressed()
 		const bool success = filesSaver->saveMapnData(fileName, bandData, ui->tab3SurfRotationSelector->currentIndex() * 90);
 		if (success == false)
 		{
-            QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + filesSaver->errorData.ErrorFile + tr("' не удается открыть для записи!"));
-			return;
+            QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'%1' не удается открыть для записи!").arg(filesSaver->errorData.ErrorFile));//QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + filesSaver->errorData.ErrorFile + tr("' не удается открыть для записи!"));
+            return;
 		}
         QMessageBox::information(this, tr("Данные обработаны"), tr("Данные обработаны и сохранены!"));
 	}
@@ -453,7 +457,7 @@ void MainWindow::tab3SurfConvertButtonPressed()
 		if (success != true)
 		{
 			progressBar.close();
-            QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + pathFull + tr("' не удается открыть для записи!"));
+            QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'%1' не удается открыть для записи!").arg(pathFull));
 			return;
 		}
 		progressBar.close();
@@ -505,7 +509,7 @@ void MainWindow::tab3ButtonCrystalToTopondPressed()
 		}
 		else
 		{
-            QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + path + tr("' не удается открыть для записи!"));
+			QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'%1' не удается открыть для записи!").arg(path));
 			return;
 		}
         QMessageBox::information(this, tr("Данные обработаны"), tr("Данные обработаны и сохранены!"));
@@ -555,7 +559,7 @@ void MainWindow::tab3ButtonTopondToCrystalPressed()
 		}
 		else
 		{
-            QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + path + tr("' не удается открыть для записи!"));
+			QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'%1' не удается открыть для записи!").arg(path));
 			return;
 		}
         QMessageBox::information(this, tr("Данные обработаны"), tr("Данные обработаны и сохранены!"));
@@ -831,7 +835,7 @@ void MainWindow::tab2PushButtonPdosLoadPressed()
 		const bool success = xlsx.saveAs(fileName); // save the document as 'Test.xlsx'
 		if (success != true)
 		{
-            QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + fileName + tr("' не удается открыть для записи!"));
+			QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'%1' не удается открыть для записи!").arg(fileName));
 		}
         QMessageBox::information(this, tr("Данные обработаны"), tr("Данные обработаны и сохранены!"));
 	}

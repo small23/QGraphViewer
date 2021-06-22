@@ -69,7 +69,6 @@ BasicGraphBuild::BasicGraphBuild(PlotParameters* plotParams, const QFont& font, 
 			y = graphics->Atoms->at(0).y;
 			break;
 		case 90:
-			//for (int j = data->at(i).x.size()-1; j >= 0; j--)
 			for (int j = 0; j < graphics->Atoms->at(0).x.size(); j++)
 				y.append(graphics->Atoms->at(0).x[j]);
 
@@ -211,7 +210,6 @@ void BasicGraphBuild::drawDataLines(PlotParameters* plotParams, QList<UniversalL
 				y = data->at(i).y;
 				break;
 			case 90:
-				//for (int j = data->at(i).x.size()-1; j >= 0; j--)
 				for (int j = 0; j < data->at(i).x.size(); j++)
 					y.append(data->at(i).x[j]);
 

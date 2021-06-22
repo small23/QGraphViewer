@@ -104,8 +104,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 TRANSLATIONS += \
-    translations/RU.ts \
-    translations/EN.ts
+    translations/qt_en.ts \
+    translations/qt_ru.ts
 
 RESOURCES += \
     resources/HELPS.qrc \
