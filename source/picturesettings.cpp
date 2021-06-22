@@ -6,6 +6,9 @@ PictureSettings::PictureSettings(PlotParameters* params, SettingsKeeper* setting
     ui(new Ui::PictureSettings)
 {
     ui->setupUi(this);
+    QTranslator qtTranslator;
+    qtTranslator.load("qt_en", QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    QApplication::installTranslator(&qtTranslator);
     this->settings = settings;
     this->setWindowTitle(tr("Настройки"));
 	
