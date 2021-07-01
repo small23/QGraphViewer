@@ -125,17 +125,17 @@ void BandData::parseBandData(QList<QString> *content, QVector<long> *indexList0B
 
         QVector<double> test;
         QString input;
-        const long int strCount=ceil(static_cast<double>(countX * countY)/6); //ceil
+        const long int strCount=static_cast<long>(ceil(static_cast<double>(countX * countY) / 6)); //ceil
         for (int j=0; j<strCount; j++)
         {
             input+=content->at(indexList0Band->at(i)+3+j);
         }
 
         QTextStream stream(&input);
-        double tempN;
         while(!stream.atEnd())
         {
-            stream>>tempN;
+	        double tempN;
+	        stream>>tempN;
             test.append(tempN*27.21138602);
         }
 
@@ -182,7 +182,7 @@ void BandData::parseDccpData(QList<QString> *content, QVector<long> *indexList, 
         interval*=27.21138602;
         QVector<double> test;
         QString input;
-        const long int strCount=ceil(static_cast<double>(countX * countY)/6);
+        const long int strCount= static_cast<long>(ceil(static_cast<double>(countX * countY)/6));
         for (int j=0; j<strCount; j++)
         {
             input+=content->at(indexList->at(i)+3+j);
@@ -242,7 +242,7 @@ void BandData::parseMapnData(QList<QString> *content, QVector<long> *indexList, 
         c=content->at(indexList->at(i));
         QVector<double> test;
         QString input;
-        const long int strCount=ceil(static_cast<double>(countX * countY)/6);
+        const long int strCount= static_cast<long>(ceil(static_cast<double>(countX * countY)/6));
         for (int j=0; j<strCount; j++)
         {
             input+=content->at(indexList->at(i)+3+j);

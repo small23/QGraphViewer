@@ -159,7 +159,10 @@ DOSGraphBuilder::DOSGraphBuilder(BandData* graphics, double borders[4], PlotPara
 			if (params->tab2OxName.contains(symbols->map->keys().at(i)))
 				params->tab2OxName = params->tab2OxName.replace(symbols->map->keys().at(i), symbols->map->values().at(i));
 		}
-		customPlot->xAxis->setLabel(params->tab2OxName);
+		if (angle==0)
+			customPlot->xAxis->setLabel(params->tab2OxName);
+		else
+			customPlot->yAxis->setLabel(params->tab2OxName);
 	}
 
 	if (params->tab2OyName != "")
@@ -169,7 +172,10 @@ DOSGraphBuilder::DOSGraphBuilder(BandData* graphics, double borders[4], PlotPara
 			if (params->tab2OyName.contains(symbols->map->keys().at(i)))
 				params->tab2OyName = params->tab2OyName.replace(symbols->map->keys().at(i), symbols->map->values().at(i));
 		}
-		customPlot->yAxis->setLabel(params->tab2OyName);
+		if (angle == 0)
+			customPlot->yAxis->setLabel(params->tab2OyName);
+		else
+			customPlot->xAxis->setLabel(params->tab2OyName);
 	}
 
 	customPlot->xAxis2->setVisible(true);
