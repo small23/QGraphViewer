@@ -16,19 +16,19 @@ void QeGraph::draw(QeDos* data)
 	double ymin = 999999999999;
 	double ymax = -99999999999;
 
-	for (int i=1; i<data->pdos[0].size(); i++)
+	for (int i=1; i<data->pdos[0][0].size(); i++)
 	{
-		for (int j=0; j<data->pdos.size(); j++)
+		for (int j=0; j<data->pdos[0].size(); j++)
 		{
-			newCurve->addData(data->pdos[j][0], data->pdos[j][i]);
-			if (xmin > data->pdos[j][0])
-				xmin = data->pdos[j][0];
-			if (xmax < data->pdos[j][0])
-				xmax = data->pdos[j][0];
-			if (ymin > data->pdos[j][i])
-				ymin = data->pdos[j][i];
-			if (ymax < data->pdos[j][i])
-				ymax = data->pdos[j][i];
+			newCurve->addData(data->pdos[0][j][0], data->pdos[0][j][i]);
+			if (xmin > data->pdos[0][j][0])
+				xmin = data->pdos[0][j][0];
+			if (xmax < data->pdos[0][j][0])
+				xmax = data->pdos[0][j][0];
+			if (ymin > data->pdos[0][j][i])
+				ymin = data->pdos[0][j][i];
+			if (ymax < data->pdos[0][j][i])
+				ymax = data->pdos[0][j][i];
 		}
 		newCurve->addData(qQNaN(), qQNaN());
 	}

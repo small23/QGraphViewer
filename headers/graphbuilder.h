@@ -8,6 +8,7 @@
 #include "settingsKeeper.h"
 //#include "mainwindow.h"
 #include "constantsandstrings.h"
+#include "QSvgGenerator"
 
 class GraphBuilder : public QWidget
 {

@@ -32,6 +32,9 @@ PictureSettings::PictureSettings(PlotParameters* params, SettingsKeeper* setting
     case 2:
         ui->bmpRadioButton->setChecked(true);
         break;
+    case 3:
+        ui->pdfRadioButton->setChecked(true);
+        break;
     default:
         ui->pngRadioButton->setChecked(true);
         break;
@@ -58,6 +61,8 @@ void PictureSettings::okButtonPushed()
         params->preferFormat=1;
     else if (ui->bmpRadioButton->isChecked())
         params->preferFormat=2;
+    else if (ui->pdfRadioButton->isChecked())
+        params->preferFormat = 3;
     else
         params->preferFormat=0;
     settings->updateDrawParams(params);

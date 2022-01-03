@@ -19,14 +19,17 @@ class HelpMatrixWidget : public QGraphicsView
 {
     Q_OBJECT
 public:
-    explicit HelpMatrixWidget(Ui::MainWindow *ui, QRect windowLocation, QWidget *parent = nullptr);
+    explicit HelpMatrixWidget(Ui::MainWindow *ui, QRect windowLocation, qreal devScaleRatio, QRect desktopSize, QWidget *parent = nullptr);
     QGraphicsScene *scene;
     //QGraphicsView *view;
     Ui::MainWindow *ui;
 public slots:
     void mouseDoubleClickEvent(QMouseEvent * e) override;
 
-
+private:
+    int origScaleW = 744;
+    int origScaleH = 588;
+    double scaleRatioError = 1;
 };
 
 #endif // HELPMATRIXWIDGET_H

@@ -12,6 +12,7 @@
 #include <Eigen/Geometry>
 #include "fileread.h"
 #include "QMessageBox"
+#include <QSvgGenerator>
 
 using namespace Eigen;
 class GraphicsData

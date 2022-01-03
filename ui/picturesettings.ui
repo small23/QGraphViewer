@@ -325,7 +325,7 @@
   <widget class="QRadioButton" name="pngRadioButton">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>100</x>
      <y>101</y>
      <width>51</width>
      <height>21</height>
@@ -344,7 +344,7 @@
   <widget class="QRadioButton" name="jpgRadioButton">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>150</x>
      <y>101</y>
      <width>51</width>
      <height>21</height>
@@ -363,7 +363,7 @@
   <widget class="QRadioButton" name="bmpRadioButton">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>200</x>
      <y>101</y>
      <width>51</width>
      <height>21</height>
@@ -399,6 +399,25 @@
    </property>
    <property name="alignment">
     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="pdfRadioButton">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>101</y>
+     <width>51</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>PDF</string>
    </property>
   </widget>
  </widget>

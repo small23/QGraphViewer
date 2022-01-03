@@ -21,6 +21,7 @@ GraphBuilder::GraphBuilder(SettingsKeeper* settings, const QString& title, PlotP
     customPlot->yAxis->setTickLabelFont(font);
     customPlot->xAxis->setLabelFont(font);
     customPlot->yAxis->setLabelFont(font);
+    customPlot->setLocale(QLocale::English);
 }
 
 void GraphBuilder::draw(){
@@ -59,6 +60,10 @@ void GraphBuilder::savePicture()
         filenameOnly = customPlot->windowTitle() + ".bmp";
         fileFormats = "BMP file (*.bmp);All Files (*)";
         break;
+    case 3:
+        filenameOnly = customPlot->windowTitle() + ".pdf";
+        fileFormats = "PDF Vector file (*.pdf);All Files (*)";
+        break;
     default:
         break;
     }
@@ -72,7 +77,8 @@ void GraphBuilder::savePicture()
         const double w = static_cast<double>(customPlot->width());
         const double scale = plotParams->drawScale / (h > w ? h / static_cast<double>(GRAPH_SCALE) : w / static_cast<double>(GRAPH_SCALE)) / 2;
         bool success = false;
-        switch (plotParams->preferFormat)
+
+    	switch (plotParams->preferFormat)
         {
         case 0:
             success = customPlot->savePng(fileName, customPlot->width(), customPlot->height(), scale);
@@ -82,6 +88,9 @@ void GraphBuilder::savePicture()
             break;
         case 2:
             success = customPlot->saveBmp(fileName, customPlot->width(), customPlot->height(), scale);
+            break;
+        case 3:
+            success = customPlot->savePdf(fileName, customPlot->width(), customPlot->height(), QCP::epNoCosmetic);
             break;
         default:
             break;

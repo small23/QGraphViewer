@@ -44,6 +44,7 @@ public:
     QRadioButton *jpgRadioButton;
     QRadioButton *bmpRadioButton;
     QLabel *label_7;
+    QRadioButton *pdfRadioButton;
 
     void setupUi(QDialog *PictureSettings)
     {
@@ -134,21 +135,25 @@ public:
         label_6->setFont(font1);
         pngRadioButton = new QRadioButton(PictureSettings);
         pngRadioButton->setObjectName(QString::fromUtf8("pngRadioButton"));
-        pngRadioButton->setGeometry(QRect(110, 101, 51, 21));
+        pngRadioButton->setGeometry(QRect(100, 101, 51, 21));
         pngRadioButton->setFont(font1);
         jpgRadioButton = new QRadioButton(PictureSettings);
         jpgRadioButton->setObjectName(QString::fromUtf8("jpgRadioButton"));
-        jpgRadioButton->setGeometry(QRect(160, 101, 51, 21));
+        jpgRadioButton->setGeometry(QRect(150, 101, 51, 21));
         jpgRadioButton->setFont(font1);
         bmpRadioButton = new QRadioButton(PictureSettings);
         bmpRadioButton->setObjectName(QString::fromUtf8("bmpRadioButton"));
-        bmpRadioButton->setGeometry(QRect(210, 101, 51, 21));
+        bmpRadioButton->setGeometry(QRect(200, 101, 51, 21));
         bmpRadioButton->setFont(font1);
         label_7 = new QLabel(PictureSettings);
         label_7->setObjectName(QString::fromUtf8("label_7"));
         label_7->setGeometry(QRect(30, 100, 61, 21));
         label_7->setFont(font1);
         label_7->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        pdfRadioButton = new QRadioButton(PictureSettings);
+        pdfRadioButton->setObjectName(QString::fromUtf8("pdfRadioButton"));
+        pdfRadioButton->setGeometry(QRect(250, 101, 51, 21));
+        pdfRadioButton->setFont(font1);
 
         retranslateUi(PictureSettings);
         QObject::connect(okButton, SIGNAL(clicked()), PictureSettings, SLOT(accept()));
@@ -174,6 +179,7 @@ public:
         jpgRadioButton->setText(QCoreApplication::translate("PictureSettings", "JPG", nullptr));
         bmpRadioButton->setText(QCoreApplication::translate("PictureSettings", "BMP", nullptr));
         label_7->setText(QCoreApplication::translate("PictureSettings", "\320\244\320\276\321\200\320\274\320\260\321\202", nullptr));
+        pdfRadioButton->setText(QCoreApplication::translate("PictureSettings", "PDF", nullptr));
     } // retranslateUi
 
 };

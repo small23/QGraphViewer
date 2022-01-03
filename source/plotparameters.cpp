@@ -41,12 +41,12 @@ PlotParameters::PlotParameters(Ui::MainWindow* uiInt, QWidget* parentInt)
 	tab5FermiLevelColor = QColor(0, 0, 0);;
 	tab5PlotParams = new QVector<UniversalLineParams>();
 	tab5PlotParams->append(test2);
-	tab5ShowOx = false;
-	tab5FxInverse = false;
 	tab5FermiLevelWidth = 0;
 	tab5ShowFermiLine = false;
 	tab5OyTicks = false;
 	tab5OxTicks = false;
+
+	tab5LinesCounter = new QVector<int>();
 }
 
 void PlotParameters::updatePlotParams(const int tabId)
@@ -190,7 +190,32 @@ void PlotParameters::updatePlotParams(const int tabId)
 	}
 	else if (tabId == 5)
 	{
-		//tab5FermiLevelColor = QColor(0, 0, 0);;
+		int workingLine = ui->tab5ComboBoxLineSelector->currentIndex();
+		for (int i = 0; i < ui->tab5LoadFilecomboBox->currentIndex(); i++)
+			workingLine += this->tab5LinesCounter->at(i);
+		tab5PlotParams->data()[workingLine].width = ui->tab5SpinnerLineWidth->value();
+		tab5PlotParams->data()[workingLine].show = ui->tab5CheckBoxShow1->isChecked();
+		tab5PlotParams->data()[workingLine].multiplier = ui->tab5SpinnerLineMultiplier->value();
+		switch (ui->tab5ComboBoxLineType->currentIndex()) {
+		case 0:
+			tab5PlotParams->data()[workingLine].style = Qt::PenStyle::SolidLine;
+			tab5PlotParams->data()[workingLine].styleId = 0;
+			break;
+		case 1:
+			tab5PlotParams->data()[workingLine].style = Qt::PenStyle::DashLine;
+			tab5PlotParams->data()[workingLine].styleId = 1;
+			break;
+		case 2:
+			tab5PlotParams->data()[workingLine].style = Qt::PenStyle::DotLine;
+			tab5PlotParams->data()[workingLine].styleId = 2;
+			break;
+		case 3:
+			tab5PlotParams->data()[workingLine].style = Qt::PenStyle::DashDotLine;
+			tab5PlotParams->data()[workingLine].styleId = 3;
+			break;
+		default:
+			break;
+		}
 		tab5FermiLevelWidth = ui->tab5SpinnerBoxFermiLevelWidth->value();
 		tab5ShowFermiLine = ui->tab5CheckBoxFermiLevel->isChecked();
 		tab5FermiLevel = ui->tab5DOSFerm->text().toDouble();
@@ -205,7 +230,6 @@ void PlotParameters::updatePlotParams(const int tabId)
 		tab5yMax = ui->tab5DOSYMax->text().toDouble();
 		tab5yMinZs = ui->tab5ZoneStructYMin->text().toDouble();
 		tab5yMaxZs = ui->tab5ZoneStructYMax->text().toDouble();
-
 	}
 
 	tab2zeroShift = ui->tab2ZeroShift->isChecked();
@@ -224,9 +248,18 @@ void PlotParameters::updateColors(const int colorId, const QColor& color)
 	}
 	else if (colorId == 7)
 		tab2FermiLevel = color;
+	else if (colorId == 9)
+	{
+		int workingLine = ui->tab5ComboBoxLineSelector->currentIndex();
+		for (int i = 0; i < ui->tab5LoadFilecomboBox->currentIndex(); i++)
+			workingLine += this->tab5LinesCounter->at(i);
+		tab5PlotParams->data()[workingLine].color = color;
+	}
+	else if (colorId == 10)
+		tab5FermiLevelColor = color;
 }
 
-void PlotParameters::setCountOfLines(int size) const
+void PlotParameters::tab2SetCountOfLines(int size) const
 {
 	UniversalLineParams temp;
 	temp.color = tab2PlotParams->at(0).color;
@@ -247,5 +280,29 @@ void PlotParameters::setCountOfLines(int size) const
 		temp2.show = false;
 		temp2.multiplier = 1;
 		tab2PlotParams->append(temp2);
+	}
+}
+
+void PlotParameters::tab5SetCountOfLines(int size) const
+{
+	UniversalLineParams temp;
+	temp.color = tab5PlotParams->at(0).color;
+	temp.show = tab5PlotParams->at(0).show;
+	temp.style = tab5PlotParams->at(0).style;
+	temp.width = tab5PlotParams->at(0).width;
+	temp.styleId = tab5PlotParams->at(0).styleId;
+	temp.multiplier = tab5PlotParams->at(0).multiplier;
+	tab5PlotParams->clear();
+	tab5PlotParams->append(temp);
+	for (int i = 1; i < size; i++)
+	{
+		UniversalLineParams temp2;
+		temp2.color = QColor(0, 0, 0);
+		temp2.width = 2;
+		temp2.style = Qt::PenStyle::SolidLine;
+		temp2.styleId = 0;
+		temp2.show = false;
+		temp2.multiplier = 1;
+		tab5PlotParams->append(temp2);
 	}
 }

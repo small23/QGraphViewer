@@ -13,10 +13,10 @@ int main(int argc, char *argv[])
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 
     QApplication application(argc, argv);
-    QTranslator qtTranslator;
-    auto a = QLibraryInfo::TranslationsPath;
-    qtTranslator.load("qt_en.qm", QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-    application.installTranslator(&qtTranslator);
+    //QTranslator qtTranslator;
+    //auto a = QLibraryInfo::TranslationsPath;
+    //qtTranslator.load("qt_en.qm", QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    //application.installTranslator(&qtTranslator);
     const QPixmap pixmap(":/splash/splash.png");
     QSplashScreen splash(pixmap);
     splash.setMask(pixmap.mask());

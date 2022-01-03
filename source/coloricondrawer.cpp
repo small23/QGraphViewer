@@ -29,5 +29,6 @@ QPixmap ColorIconDrawer::drawIcon(const QColor& color, qreal devPixRat)
 	INNER_CIRQ * SCALE_FACTOR, INNER_CIRQ * SCALE_FACTOR);
     colorIcon.setDevicePixelRatio(devPixRat);
     QPixmap colorIconOut = colorIcon.scaled(ICON_SIZE * devPixRat, ICON_SIZE * devPixRat, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    colorIconOut.setDevicePixelRatio(devPixRat);
     return colorIconOut;
 }

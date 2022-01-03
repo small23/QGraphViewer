@@ -4745,9 +4745,6 @@
       <string>QE</string>
      </attribute>
      <widget class="QGroupBox" name="groupBox_53">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
       <property name="geometry">
        <rect>
         <x>225</x>
@@ -4816,24 +4813,6 @@
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="tab5FileLine2">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>50</y>
-         <width>161</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-         <pointsize>9</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
        </property>
       </widget>
       <widget class="QLineEdit" name="tab5DOSXMin">
@@ -5082,7 +5061,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QPushButton" name="deleteButton8_3">
+      <widget class="QPushButton" name="deleteButton10">
        <property name="geometry">
         <rect>
          <x>185</x>
@@ -5124,11 +5103,18 @@
         <string>0</string>
        </property>
       </widget>
+      <widget class="QComboBox" name="tab5LoadFilecomboBox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>161</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
      </widget>
      <widget class="QGroupBox" name="groupBox_55">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
       <property name="geometry">
        <rect>
         <x>450</x>
@@ -6101,7 +6087,7 @@
          <string>0</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="deleteButton7_3">
+       <widget class="QPushButton" name="deleteButton9">
         <property name="geometry">
          <rect>
           <x>185</x>
@@ -6150,6 +6136,9 @@
       </widget>
      </widget>
      <widget class="QGroupBox" name="groupBox_63">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -6358,7 +6347,7 @@
         <string>Загрузить</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="deleteButton6_4">
+      <widget class="QPushButton" name="deleteButton11">
        <property name="enabled">
         <bool>false</bool>
        </property>
@@ -6660,9 +6649,6 @@
       </widget>
      </widget>
      <widget class="QGroupBox" name="groupBox_64">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
       <property name="geometry">
        <rect>
         <x>225</x>
@@ -6922,9 +6908,9 @@ p, li { white-space: pre-wrap; }
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="LoadFileButtonGroup"/>
   <buttongroup name="ColorButtonGroup"/>
   <buttongroup name="DeleteButtonGroup"/>
   <buttongroup name="HelpButtonGroup"/>
-  <buttongroup name="LoadFileButtonGroup"/>
  </buttongroups>
 </ui>

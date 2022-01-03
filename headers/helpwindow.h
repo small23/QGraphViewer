@@ -17,7 +17,7 @@ class HelpWindow : public QWidget
 {
     Q_OBJECT
 public:
-    explicit HelpWindow(const QPixmap& hel,QRect windowLocation,QWidget *parent = nullptr);
+    explicit HelpWindow(const QPixmap& hel,QRect windowLocation, qreal devScaleRatio, QRect desktopSize,QWidget *parent = nullptr);
     //~HelpWindow();
     QGraphicsScene *scene;
     QGraphicsView *view;

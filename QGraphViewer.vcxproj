@@ -67,11 +67,11 @@
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <QtInstall>Qt_5.12.2_x64</QtInstall>
-    <QtModules>core;core-private;gui;gui-private;widgets;printsupport</QtModules>
+    <QtModules>core;core-private;gui;gui-private;svg;widgets;printsupport</QtModules>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <QtInstall>Qt_5.12.2_x64</QtInstall>
-    <QtModules>core;core-private;gui;gui-private;widgets;printsupport</QtModules>
+    <QtModules>core;core-private;gui;gui-private;svg;widgets;printsupport</QtModules>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />
@@ -117,7 +117,7 @@
       <WarningLevel>0</WarningLevel>
     </Midl>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DEPRECATED_WARNINGS;QT_DEPRECATED_WARNINGS;NDEBUG;QT_NO_DEBUG;QT_PRINTSUPPORT_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DEPRECATED_WARNINGS;QT_DEPRECATED_WARNINGS;NDEBUG;QT_NO_DEBUG;QT_SVG_LIB;QT_PRINTSUPPORT_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <QtMoc>
       <CompilerFlavor>msvc</CompilerFlavor>
@@ -176,7 +176,7 @@
       <WarningLevel>0</WarningLevel>
     </Midl>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DEPRECATED_WARNINGS;QT_DEPRECATED_WARNINGS;QT_PRINTSUPPORT_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DEPRECATED_WARNINGS;QT_DEPRECATED_WARNINGS;QT_SVG_LIB;QT_PRINTSUPPORT_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <QtRcc>
       <Compression>default</Compression>
@@ -199,8 +199,7 @@
     </QtUic>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="QeDos.cpp" />
-    <ClCompile Include="qegraph.cpp" />
+    <ClCompile Include="source\qedos.cpp" />
     <ClCompile Include="source\atomconversion.cpp" />
     <ClCompile Include="source\banddata.cpp" />
     <ClCompile Include="source\basicgraph.cpp" />
@@ -223,6 +222,7 @@
     <ClCompile Include="source\picturesettings.cpp" />
     <ClCompile Include="source\plotparameters.cpp" />
     <ClCompile Include="source\qcustomplot.cpp" />
+    <ClCompile Include="source\qegraph.cpp" />
     <ClCompile Include="source\settingskeeper.cpp" />
     <ClCompile Include="source\surfdata.cpp" />
     <ClCompile Include="source\uiinit.cpp" />
@@ -262,8 +262,7 @@
     <ClCompile Include="source\zonegraph.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="QeDos.h" />
-    <ClInclude Include="qegraph.h" />
+    <ClInclude Include="headers\qedos.h" />
     <QtMoc Include="headers\atomconversion.h">
     </QtMoc>
     <ClInclude Include="headers\banddata.h" />
@@ -300,6 +299,7 @@
     </QtMoc>
     <QtMoc Include="headers\qcustomplot.h">
     </QtMoc>
+    <ClInclude Include="headers\qegraph.h" />
     <QtMoc Include="headers\settingsKeeper.h">
     </QtMoc>
     <ClInclude Include="headers\structuresHeaders.h" />

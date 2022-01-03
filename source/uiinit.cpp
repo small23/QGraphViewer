@@ -32,6 +32,10 @@ void setupUiFields(Ui::MainWindow* ui)
     ui->tab2ComboBoxLineType->addItems(pointTypesSecondLang);
     ui->tab2ComboBoxLineSelector->addItems({"1"});
 
+    ui->tab5ComboBoxDosRotate->addItems(rotateTypesLang);
+    ui->tab5ComboBoxLineType->addItems(pointTypesSecondLang);
+    ui->tab5ComboBoxLineSelector->addItems({ "1" });
+
     ui->tab1FontSize->setLocale(QLocale::English);
 
     //QDoubleValidator *localValidator = new QDoubleValidator();
@@ -48,6 +52,14 @@ void setupUiFields(Ui::MainWindow* ui)
     ui->tab3ZoneStructYMin->setValidator(localValidator);
     ui->tab3ZoneStructYMax->setValidator(localValidator);
 
+    ui->tab5DOSXMin->setValidator(localValidator);
+    ui->tab5DOSXMax->setValidator(localValidator);
+    ui->tab5DOSYMin->setValidator(localValidator);
+    ui->tab5DOSYMax->setValidator(localValidator);
+    ui->tab5ZoneStructYMin->setValidator(localValidator);
+    ui->tab5ZoneStructYMax->setValidator(localValidator);
+    ui->tab5DOSFerm->setValidator(localValidator);
+    ui->tab5DOSShift->setValidator(localValidator);
 
     const QFont font("Arial", 9, QFont::Thin);
 
@@ -92,7 +104,6 @@ void setupUiFields(Ui::MainWindow* ui)
     ui->tab3ConvertedAtomsTable->setColumnWidth(3,33);
     ui->tab3ConvertedAtomsTable->setColumnWidth(4,33);
     ui->tab3ConvertedAtomsTable->horizontalHeader()->setStretchLastSection(true);
-    //ui->tab3ConvertedAtomsTable->verticalHeader()->setStretchLastSection(true);
 
 
     ui->tab2PDOSNumbersTable->setColumnCount(6);
@@ -117,22 +128,15 @@ void setupUiFields(Ui::MainWindow* ui)
     
     QPixmap pixmap(":logos/Logos/qcp-logo.png");
     pixmap.setDevicePixelRatio(devPixRat);
-    // set a scaled pixmap to a w x h window keeping its aspect ratio 
     ui->tab4QCustomPlotLabel->setPixmap(pixmap.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-	//ui->tab4QCustomPlotLabel->setPixmap(pixmap);
-    //ui->tab4QCustomPlotLabel->adjustSize();
 
     QPixmap pixmap2(":logos/Logos/Qt_logo_2016.svg.png");
     pixmap2.setDevicePixelRatio(devPixRat);
     ui->tab4QtLogo->setPixmap(pixmap2.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-	//ui->tab4QtLogo->setPixmap(pixmap2);
-    //ui->tab4QtLogo->adjustSize();
 
     QPixmap pixmap3(":logos/Logos/QXlsx-Desktop.png");
     pixmap3.setDevicePixelRatio(devPixRat);
     ui->tab4QXlsxLogo->setPixmap(pixmap3.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-    //ui->tab4QXlsxLogo->setPixmap(pixmap3);
-    //ui->tab4QXlsxLogo->adjustSize();
 
     ui->tab4CompileDate->setText(STR_BuildDate.arg(__DATE__).arg(__TIME__));
 
@@ -142,8 +146,12 @@ void setupUiFields(Ui::MainWindow* ui)
 
 void setUiButtonsGroups(Ui::MainWindow* ui)
 {
+    //ui->tab5LoadFilecomboBox->view()->setMinimumWidth(400);
     ui->DeleteButtonGroup->addButton(ui->deleteButton7);
     ui->DeleteButtonGroup->addButton(ui->deleteButton8);
+    ui->DeleteButtonGroup->addButton(ui->deleteButton9);
+    ui->DeleteButtonGroup->addButton(ui->deleteButton10);
+    ui->DeleteButtonGroup->addButton(ui->deleteButton11);
 
     ui->DeleteButtonGroup->setId(ui->deleteButton1,1);
     ui->DeleteButtonGroup->setId(ui->deleteButton2,2);
@@ -153,9 +161,14 @@ void setUiButtonsGroups(Ui::MainWindow* ui)
     ui->DeleteButtonGroup->setId(ui->deleteButton6,6);
     ui->DeleteButtonGroup->setId(ui->deleteButton7,7);
     ui->DeleteButtonGroup->setId(ui->deleteButton8,8);
+    ui->DeleteButtonGroup->setId(ui->deleteButton9, 9);
+    ui->DeleteButtonGroup->setId(ui->deleteButton10, 10);
+    ui->DeleteButtonGroup->setId(ui->deleteButton11, 11);
 
     ui->ColorButtonGroup->addButton(ui->tab2ColorButtonFermiL);
     ui->ColorButtonGroup->addButton(ui->tab2ColorButton1);
+    ui->ColorButtonGroup->addButton(ui->tab5ColorButtonFermiL);
+    ui->ColorButtonGroup->addButton(ui->tab5ColorButton1);
 
     ui->ColorButtonGroup->setId(ui->tab1ColorButtonTrajgrad,1);
     ui->ColorButtonGroup->setId(ui->tab1ColorButtonAtomBass1,2);
@@ -165,6 +178,8 @@ void setUiButtonsGroups(Ui::MainWindow* ui)
     ui->ColorButtonGroup->setId(ui->tab1ColorButtonAtoms,6);
     ui->ColorButtonGroup->setId(ui->tab2ColorButtonFermiL,7);
     ui->ColorButtonGroup->setId(ui->tab2ColorButton1,8);
+    ui->ColorButtonGroup->setId(ui->tab5ColorButton1, 9);
+    ui->ColorButtonGroup->setId(ui->tab5ColorButtonFermiL, 10);
 
     ui->HelpButtonGroup->addButton(ui->helpButton2);
     ui->HelpButtonGroup->addButton(ui->helpButton3);
@@ -192,7 +207,7 @@ void setUiButtonsGroups(Ui::MainWindow* ui)
 void setUiColorLabels(Ui::MainWindow* ui)
 {
 
-    QPixmap colorIcon = ColorIconDrawer::drawIcon(Qt::black, qApp->devicePixelRatio());;
+    QPixmap colorIcon = ColorIconDrawer::drawIcon(Qt::black, qApp->devicePixelRatio());
     ui->ColorLable1->setPixmap(colorIcon);
     ui->ColorLable2->setPixmap(colorIcon);
     ui->ColorLable3->setPixmap(colorIcon);
@@ -201,6 +216,8 @@ void setUiColorLabels(Ui::MainWindow* ui)
     ui->ColorLable6->setPixmap(colorIcon);
     ui->ColorLable7->setPixmap(colorIcon);
     ui->ColorLable8->setPixmap(colorIcon);
+    ui->ColorLable9->setPixmap(colorIcon);
+    ui->ColorLable10->setPixmap(colorIcon);
     ui->ColorLable1->update();
     ui->ColorLable2->update();
     ui->ColorLable3->update();
@@ -209,4 +226,6 @@ void setUiColorLabels(Ui::MainWindow* ui)
     ui->ColorLable6->update();
     ui->ColorLable7->update();
     ui->ColorLable8->update();
+    ui->ColorLable9->update();
+    ui->ColorLable10->update();
 }

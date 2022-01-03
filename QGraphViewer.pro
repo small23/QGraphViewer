@@ -1,4 +1,4 @@
-QT       += core gui #opengl
+QT       += core gui svg#opengl
 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
@@ -36,36 +36,10 @@ SOURCES += \
     $$files("source/*.cpp", true)
 
 HEADERS += \
-    headers/basicgraph.h \
-    headers/changelog.h \
-    headers/delegator.h \
-    headers/settingsKeeper.h \
-    headers/structuresHeaders.h \
-    headers/atomconversion.h \
-    headers/banddata.h \
-    headers/coloricondrawer.h \
-    headers/contour.h \
-    headers/crystaltopondconvertors.h \
-    headers/dosgraph.h \
-    headers/filedialogsload.h \
-    headers/fileread.h \
-    headers/filessaver.h \
-    headers/graphicsdata.h \
-    headers/helpmatrixwidget.h \
-    headers/helpwindow.h \
-    headers/mainwindow.h \
-    headers/mathsymbols.h \
-    headers/pdosparser.h \
-    headers/picturesettings.h \
-    headers/plotparameters.h \
-    headers/qcustomplot.h \
-    headers/surfdata.h \
-    headers/graphbuilder.h \
+    $$files("headers/*.h", true) \
     ui_mainwindow.h \
     ui_picturesettings.h \
-    headers/uiinit.h \
-    headers/zonegraph.h \
-    headers/constantsandstrings.h
+
 
 FORMS += \
     ui/changelog.ui \

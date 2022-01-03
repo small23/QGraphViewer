@@ -20,7 +20,8 @@ public:
     void updatePlotParams(int tabId);
     //Обновления цвета линии
     void updateColors(int colorId, const QColor& color);
-    void setCountOfLines(int size) const;
+    void tab2SetCountOfLines(int size) const;
+    void tab5SetCountOfLines(int size) const;
     //Структура-хранилище настроек каждой линии
     struct UniversalLineParams{
         qreal width;
@@ -71,6 +72,7 @@ public:
     double tab5yMax;
     double tab5yMinZs;
     double tab5yMaxZs;
+    QVector<int>* tab5LinesCounter;
 
 
 private:

@@ -64,7 +64,16 @@ MainWindow::MainWindow(QWidget* parent)
     connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),                    this,       SLOT(tab2PushButtonPdosLoadPressed()));
     connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),                    this,       SLOT(tab2PushButtonPdosLoadPressed()));
     connect(ui->tab4ChangelogButton,        SIGNAL(clicked()),                    this,       SLOT(tab4Changelog()));
-	//connect(ui->tab5_loadQeDos,			  SIGNAL(clicked()),					  this,		  SLOT(tab5QeDosLoad()));
+	connect(ui->tab5SpinnerLineWidth,		  SIGNAL(valueChanged(QString)),		  this,		  SLOT(tab5UpdateParams(QString)));
+	connect(ui->tab5ComboBoxLineType,		  SIGNAL(currentIndexChanged(QString)), this,		  SLOT(tab5UpdateParams(QString)));
+	connect(ui->tab5CheckBoxShow1,          SIGNAL(stateChanged(int)),			  this,		  SLOT(tab5UpdateShowLine(int)));
+	connect(ui->tab5SpinnerLineMultiplier,  SIGNAL(valueChanged(QString)),		  this,		  SLOT(tab5UpdateParams(QString)));
+	connect(ui->tab5ComboBoxLineSelector,   SIGNAL(currentIndexChanged(int)),	  this,		  SLOT(tab5ComboBoxLineSelectorIndexChanged(int)));
+	connect(ui->tab5BushButtonSetFont, SIGNAL(clicked()), this, SLOT(tab5BushButtonSetFontPressed()));
+	connect(ui->tab5LoadFilefQEDOSS, SIGNAL(clicked()), this, SLOT(tab5LoadFileDossPressed()));
+	connect(ui->tab5ButtonDrawDOS, SIGNAL(clicked()), this,SLOT(tab5DrawDosPressed()));
+	connect(ui->tab5LoadFilecomboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5UpdateParamsFile(int)));
+
 
 	//Корректировочный коэффициент масштабирования
 	//графиков на дисплеях с масштабом !=100%
@@ -77,8 +86,7 @@ MainWindow::MainWindow(QWidget* parent)
 	plotParams->drawScale = settings->scale;
 	plotParams->preferFormat = settings->imageType;
 
-	const QString locale = QLocale::system().name();
-	//this->setLocale(QLocale::English);
+	
 	this->setStatusBar(nullptr);
 	this->setFixedSize(this->size());
 	this->setWindowTitle("QGraphViewer");
@@ -130,8 +138,26 @@ void MainWindow::deleteFileStringButtonClicked(const int id) const
 	QString lineName;
 	if (id < 7)
 		lineName = QString("tab1FileLine%1").arg(id);
-	else
+	else if (id == 8 || id == 7)
 		lineName = QString("tab2FileLine%1").arg(id - 6);
+	else if (id > 8)
+	{
+		if (id!=10)
+			lineName = QString("tab5FileLine%1").arg(id - 8);
+		else
+		{
+			disconnect(ui->tab5ComboBoxLineSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5ComboBoxLineSelectorIndexChanged(int)));
+			disconnect(ui->tab5LoadFilecomboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5UpdateParamsFile(int)));
+			ui->tab5LoadFilecomboBox->clear();
+			ui->tab5ComboBoxLineSelector->clear();
+			plotParams->tab5SetCountOfLines(1);
+			ui->tab5ComboBoxLineSelector->addItem("1");
+			ui->tab5ComboBoxLineSelector->setCurrentIndex(0);
+			connect(ui->tab5ComboBoxLineSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5ComboBoxLineSelectorIndexChanged(int)));
+			connect(ui->tab5LoadFilecomboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5UpdateParamsFile(int)));
+		}
+	}
+		
 	QLineEdit* lineEdit = findChild<QLineEdit*>(lineName);
 	if (lineEdit != nullptr)
 	{
@@ -139,9 +165,16 @@ void MainWindow::deleteFileStringButtonClicked(const int id) const
 		if (id == 8)
 		{
 			ui->tab2ComboBoxLineSelector->clear();
-			plotParams->setCountOfLines(1);
+			plotParams->tab2SetCountOfLines(1);
 			ui->tab2ComboBoxLineSelector->addItem("1");
 			ui->tab2ComboBoxLineSelector->setCurrentIndex(0);
+		}
+		if (id == 10)
+		{
+			ui->tab5ComboBoxLineSelector->clear();
+			plotParams->tab5SetCountOfLines(1);
+			ui->tab5ComboBoxLineSelector->addItem("1");
+			ui->tab5ComboBoxLineSelector->setCurrentIndex(0);
 		}
 	}
 }
@@ -151,14 +184,14 @@ void MainWindow::helpButtonClicked(const int id)
 	const QRect windowLocation = geometry();
 	if (id == 2)
 	{
-		HelpMatrixWidget* a = new HelpMatrixWidget(ui, windowLocation);
+		HelpMatrixWidget* a = new HelpMatrixWidget(ui, windowLocation, qApp->devicePixelRatio(), QApplication::desktop()->screenGeometry());
 		a->installEventFilter(a);
 	}
 	else
 	{
 		const QString helpFile = QString(":resource/help/HELP%1.png").arg(id);
 		const QPixmap helpPixmap = QPixmap(helpFile);
-		HelpWindow(helpPixmap, windowLocation, this);
+		HelpWindow(helpPixmap, windowLocation, qApp->devicePixelRatio(), QApplication::desktop()->screenGeometry(),this);
 	}
 }
 
@@ -641,7 +674,7 @@ void MainWindow::tab2LoadFilef25DossPressed()
 		{
 			const int sum = count[0] + count[1] + count[2];
 			ui->tab2ComboBoxLineSelector->clear();
-			plotParams->setCountOfLines(sum);
+			plotParams->tab2SetCountOfLines(sum);
 			for (int i = 0; i < count[0]; i++)
 				ui->tab2ComboBoxLineSelector->addItem(QString::number(i + 1) + ": COHP");
 			for (int i = 0; i < count[1]; i++)
@@ -653,7 +686,7 @@ void MainWindow::tab2LoadFilef25DossPressed()
 		else
 		{
 			ui->tab2ComboBoxLineSelector->clear();
-			plotParams->setCountOfLines(1);
+			plotParams->tab2SetCountOfLines(1);
 			ui->tab2ComboBoxLineSelector->addItem("1");
 			ui->tab2ComboBoxLineSelector->setCurrentIndex(0);
 		}
@@ -762,8 +795,151 @@ void MainWindow::tab5QeDosLoad()
 		delete content;
 		return;
 	}
-	qeDosData->parseData(content);
+	qeDosData->parseDataNew(content);
 	(new QeGraph(settings, "Plot", plotParams, tab2GraphFont, this))->draw(qeDosData);
+}
+
+void MainWindow::tab5UpdateParams(QString i)
+{
+	plotParams->updatePlotParams(5);
+}
+
+void MainWindow::tab5UpdateShowLine(int i)
+{
+	int selected = ui->tab5ComboBoxLineSelector->currentIndex();
+	for (int i = 0; i < ui->tab5LoadFilecomboBox->currentIndex(); i++)
+		selected += plotParams->tab5LinesCounter->at(i);
+	plotParams->updatePlotParams(5);
+	if (ui->tab5CheckBoxShow1->isChecked())
+		ui->tab5ComboBoxLineSelector->setItemData(selected, QBrush(Qt::red), Qt::ForegroundRole); //TextColorRole
+	else
+		ui->tab5ComboBoxLineSelector->setItemData(selected, QBrush(Qt::black), Qt::ForegroundRole);
+}
+
+void MainWindow::tab5ComboBoxLineSelectorIndexChanged(int selected)
+{
+	if (!plotParams->tab5LinesCounter->isEmpty())
+	{
+		for (int i = 0; i < ui->tab5LoadFilecomboBox->currentIndex(); i++)
+			selected += plotParams->tab5LinesCounter->at(i);
+	}
+
+	if (selected != -1)
+	{
+		disconnect(ui->tab5SpinnerLineWidth, SIGNAL(valueChanged(QString)), this, SLOT(tab5UpdateParams(QString)));
+		disconnect(ui->tab5ComboBoxLineType, SIGNAL(currentIndexChanged(QString)), this, SLOT(tab5UpdateParams(QString)));
+		disconnect(ui->tab5CheckBoxShow1, SIGNAL(stateChanged(int)), this, SLOT(tab5UpdateShowLine(int)));
+		disconnect(ui->tab5SpinnerLineMultiplier, SIGNAL(valueChanged(QString)), this, SLOT(tab5UpdateParams(QString)));
+		ui->tab5SpinnerLineWidth->setValue(plotParams->tab5PlotParams->at(selected).width);
+		ui->tab5SpinnerLineWidth->update();
+		ui->ColorLable9->setPixmap(ColorIconDrawer::drawIcon(plotParams->tab5PlotParams->at(selected).color, qApp->devicePixelRatio()));
+		ui->ColorLable10->update();
+		ui->tab5CheckBoxShow1->setChecked(plotParams->tab5PlotParams->at(selected).show);
+		ui->tab5CheckBoxShow1->update();
+		ui->tab5ComboBoxLineType->setCurrentIndex(plotParams->tab5PlotParams->at(selected).styleId);
+		ui->tab5ComboBoxLineType->update();
+		ui->tab5SpinnerLineMultiplier->setValue(plotParams->tab5PlotParams->at(selected).multiplier);
+		ui->tab5SpinnerLineMultiplier->update();
+		connect(ui->tab5SpinnerLineWidth, SIGNAL(valueChanged(QString)), this, SLOT(tab5UpdateParams(QString)));
+		connect(ui->tab5ComboBoxLineType, SIGNAL(currentIndexChanged(QString)), this, SLOT(tab5UpdateParams(QString)));
+		connect(ui->tab5CheckBoxShow1, SIGNAL(stateChanged(int)), this, SLOT(tab5UpdateShowLine(int)));
+		connect(ui->tab5SpinnerLineMultiplier, SIGNAL(valueChanged(QString)), this, SLOT(tab5UpdateParams(QString)));
+	}
+}
+
+void MainWindow::tab5BushButtonSetFontPressed()
+{
+	bool ok;
+	QFontDialog fontDialog;
+	const QRect windowLocation = geometry();
+	fontDialog.setGeometry(windowLocation.x() + 100, windowLocation.y() + 50, 480, 360);
+	const QFont font = fontDialog.getFont(&ok, tab5GraphFont);//QFontDialog::getFont(&ok, tab1GraphFont, this);
+	if (ok) {
+		tab5GraphFont = font;
+	}
+	else {
+
+	}
+}
+
+void MainWindow::tab5LoadFileDossPressed()
+{
+	const QStringList fileNames = QFileDialog::getOpenFileNames(this,
+		STR_Dialog_OpenFile, settings->getLastPath(),
+		tr("All Files (*)"));
+	if (!fileNames.isEmpty())
+	{
+		disconnect(ui->tab5ComboBoxLineSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5ComboBoxLineSelectorIndexChanged(int)));
+		disconnect(ui->tab5LoadFilecomboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5UpdateParamsFile(int)));
+		int linesCount = 0;
+		ui->tab5LoadFilecomboBox->clear();
+		ui->tab5ComboBoxLineSelector->clear();
+		plotParams->tab5LinesCounter->clear();
+		for (auto fileName : fileNames)
+		{
+			QList<QString>* content = new QList<QString>();
+			readFileFromFs(fileName, content);
+			const QFileInfo fileinfo(fileName);
+			settings->updatePath(fileinfo.absolutePath());
+			ui->tab5LoadFilecomboBox->addItem(fileName);
+			int count = qeDosData->count(content);
+			linesCount += count;
+			QFileInfo file = QFileInfo(fileName);
+			plotParams->tab5LinesCounter->append(count);
+			delete content;
+		}
+		connect(ui->tab5ComboBoxLineSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5ComboBoxLineSelectorIndexChanged(int)));
+		connect(ui->tab5LoadFilecomboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5UpdateParamsFile(int)));
+		plotParams->tab5SetCountOfLines(linesCount);
+		ui->tab5LoadFilecomboBox->setCurrentIndex(0);
+		tab5UpdateParamsFile(0);
+	}
+}
+
+void MainWindow::tab5DrawDosPressed()
+{
+	for (int i=0; i< ui->tab5LoadFilecomboBox->count(); i++)
+	{
+		QString filePath = ui->tab5LoadFilecomboBox->itemText(i);
+		QList<QString>* content = new QList<QString>();
+		if (filePath != "")
+		{
+			readFileFromFs(filePath, content);
+			const QFileInfo fileinfo(filePath);
+			settings->updatePath(fileinfo.absolutePath());
+		}
+		else
+		{
+			delete content;
+			return;
+		}
+		qeDosData->clear();
+		qeDosData->parseAppend(content);
+		(new QeGraph(settings, "Plot", plotParams, tab5GraphFont, this))->draw(qeDosData);
+	}
+
+}
+
+void MainWindow::tab5UpdateParamsFile(int selected)
+{
+	if (selected != -1)
+	{
+		int shift = 0;
+		for (int i = 0; i < ui->tab5LoadFilecomboBox->currentIndex(); i++)
+			shift += plotParams->tab5LinesCounter->at(i);
+		disconnect(ui->tab5ComboBoxLineSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5ComboBoxLineSelectorIndexChanged(int)));
+		ui->tab5ComboBoxLineSelector->clear();
+		for (int i = 0; i < plotParams->tab5LinesCounter->at(selected); i++)
+		{
+			ui->tab5ComboBoxLineSelector->addItem(QString::number(i + 1));
+			if (plotParams->tab5PlotParams->at(shift+i).show)
+				ui->tab5ComboBoxLineSelector->setItemData(i, QBrush(Qt::red), Qt::ForegroundRole); //TextColorRole
+		}
+		connect(ui->tab5ComboBoxLineSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5ComboBoxLineSelectorIndexChanged(int)));
+		ui->tab5ComboBoxLineSelector->setCurrentIndex(0);
+
+		tab5ComboBoxLineSelectorIndexChanged(0);
+	}
 }
 
 void MainWindow::tab2PushButtonPdosLoadPressed()

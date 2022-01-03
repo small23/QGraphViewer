@@ -7,17 +7,23 @@
 #include "QScrollBar"
 
 
-HelpWindow::HelpWindow(const QPixmap& hel, const QRect windowLocation,QWidget *parent) : QWidget(parent)
+HelpWindow::HelpWindow(const QPixmap& hel, const QRect windowLocation, qreal devScaleRatio, QRect desktopSize,QWidget *parent) : QWidget(parent)
 {
     scene = new QGraphicsScene();
     view = new QGraphicsView();
-    scene->addPixmap(hel);
+    int h = hel.height();
+    int w = hel.width();
+    h = h * (96.0 * devScaleRatio / 300.0);
+    QPixmap outHel = hel.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    outHel.setDevicePixelRatio(devScaleRatio);
+	scene->addPixmap(outHel);
     view->setScene(scene);
-    //colorPickerMenu.setGeometry(windowLocation.x()+100,windowLocation.y()+50,522,393);
+    int sizeLimWidth = desktopSize.width() - desktopSize.width() * 0.1;
+    int sizeLimHeight = desktopSize.height() - desktopSize.height() * 0.1;
     const int centreX = windowLocation.x() + windowLocation.width() / 2;
     const int centreY = windowLocation.y() + windowLocation.height() / 2;
-    const int height = hel.height() < 700 ? hel.height() + 10 : 700;
-    const int width = hel.width() + 20;
+    const int height = (outHel.height() / devScaleRatio) < (sizeLimHeight) ? (outHel.height()/ devScaleRatio) + 10 : sizeLimHeight;
+    const int width = (outHel.width() / devScaleRatio) < (sizeLimWidth) ? (outHel.width() / devScaleRatio) + 20 : sizeLimWidth;
 	int x = centreX - width / 2;
 	int y = centreY - height / 2;
 

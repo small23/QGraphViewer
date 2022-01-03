@@ -110,6 +110,14 @@ private Q_SLOTS:
     void tab4Changelog();
 
     void tab5QeDosLoad();
+
+    void tab5UpdateParams(QString i);
+    void tab5UpdateShowLine(int i);
+    void tab5ComboBoxLineSelectorIndexChanged(int selected);
+    void tab5BushButtonSetFontPressed();
+    void tab5LoadFileDossPressed();
+    void tab5DrawDosPressed();
+    void tab5UpdateParamsFile(int selected);
 	
 private:
     //Указатели на классы-обработчики и хранилища
@@ -120,6 +128,7 @@ private:
     changelog *formChangelog = nullptr;
     QFont tab1GraphFont;
     QFont tab2GraphFont;
+    QFont tab5GraphFont;
     GraphicsData *graphicsData;
     BandData *bandData;
     SurfData *surfData;
@@ -133,5 +142,6 @@ private:
     MathSymbols* symbols;
     AtomConversion* atomsConvert;
 	FileDialogsLoad*	fileDiag;
+
 };
 #endif // MAINWINDOW_H
