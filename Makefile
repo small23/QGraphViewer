@@ -124,16 +124,11 @@ Makefile: QGraphViewer.pro ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\win32-msvc
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_axserver_private.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_bluetooth.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_bluetooth_private.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_bodymovin_private.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_bootstrap_private.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_charts.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_charts_private.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_concurrent.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_concurrent_private.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_core.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_core_private.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_datavisualization.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_datavisualization_private.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_dbus.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_dbus_private.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_designer.pri \
@@ -175,8 +170,6 @@ Makefile: QGraphViewer.pro ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\win32-msvc
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_positioningquick_private.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_printsupport.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_printsupport_private.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_purchasing.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_purchasing_private.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_qml.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_qml_private.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_qmldebug_private.pri \
@@ -189,16 +182,6 @@ Makefile: QGraphViewer.pro ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\win32-msvc
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3d.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3d_private.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3dassetimport.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3drender.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3drender_private.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3druntimerender.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3dutils.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3dutils_private.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick_private.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quickcontrols2.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri \
@@ -236,8 +219,6 @@ Makefile: QGraphViewer.pro ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\win32-msvc
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_uiplugin.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_uitools.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_uitools_private.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_virtualkeyboard.pri \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_vulkan_support_private.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_webchannel.pri \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_webchannel_private.pri \
@@ -293,7 +274,6 @@ Makefile: QGraphViewer.pro ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\win32-msvc
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\features\yacc.prf \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\features\lex.prf \
 		QGraphViewer.pro \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\lib\Qt5Charts.prl \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\lib\Qt5PrintSupport.prl \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\lib\Qt5Widgets.prl \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\lib\Qt5Gui.prl \
@@ -302,7 +282,6 @@ Makefile: QGraphViewer.pro ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\win32-msvc
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\features\build_pass.prf \
 		resources\HELPS.qrc \
 		resources\Logos.qrc \
-		..\..\..\IDE\Qt\5.15.2\msvc2019_64\lib\Qt5Chartsd.prl \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\lib\Qt5PrintSupportd.prl \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\lib\Qt5Widgetsd.prl \
 		..\..\..\IDE\Qt\5.15.2\msvc2019_64\lib\Qt5Guid.prl \
@@ -349,16 +328,11 @@ Makefile: QGraphViewer.pro ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\win32-msvc
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_axserver_private.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_bluetooth.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_bluetooth_private.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_bodymovin_private.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_bootstrap_private.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_charts.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_charts_private.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_concurrent.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_concurrent_private.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_core.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_core_private.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_datavisualization.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_datavisualization_private.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_dbus.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_dbus_private.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_designer.pri:
@@ -400,8 +374,6 @@ Makefile: QGraphViewer.pro ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\win32-msvc
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_positioningquick_private.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_printsupport.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_printsupport_private.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_purchasing.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_purchasing_private.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_qml.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_qml_private.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_qmldebug_private.pri:
@@ -414,16 +386,6 @@ Makefile: QGraphViewer.pro ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\win32-msvc
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3d.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3d_private.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3dassetimport.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3drender.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3drender_private.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3druntimerender.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3dutils.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick3dutils_private.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quick_private.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quickcontrols2.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri:
@@ -461,8 +423,6 @@ Makefile: QGraphViewer.pro ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\win32-msvc
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_uiplugin.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_uitools.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_uitools_private.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_virtualkeyboard.pri:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_vulkan_support_private.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_webchannel.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\modules\qt_lib_webchannel_private.pri:
@@ -518,7 +478,6 @@ libs\QXlsx\QXlsx.pri:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\features\yacc.prf:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\features\lex.prf:
 QGraphViewer.pro:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\lib\Qt5Charts.prl:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\lib\Qt5PrintSupport.prl:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\lib\Qt5Widgets.prl:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\lib\Qt5Gui.prl:
@@ -527,7 +486,6 @@ QGraphViewer.pro:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\mkspecs\features\build_pass.prf:
 resources\HELPS.qrc:
 resources\Logos.qrc:
-..\..\..\IDE\Qt\5.15.2\msvc2019_64\lib\Qt5Chartsd.prl:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\lib\Qt5PrintSupportd.prl:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\lib\Qt5Widgetsd.prl:
 ..\..\..\IDE\Qt\5.15.2\msvc2019_64\lib\Qt5Guid.prl:

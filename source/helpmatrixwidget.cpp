@@ -1,4 +1,9 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
 #include "helpmatrixwidget.h"
+
+#include "constantsandstrings.h"
 #include "QDebug"
 
 HelpMatrixWidget::HelpMatrixWidget(Ui::MainWindow *uiInt, const QRect windowLocation, QWidget *parent) : QGraphicsView(parent)
@@ -24,7 +29,7 @@ HelpMatrixWidget::HelpMatrixWidget(Ui::MainWindow *uiInt, const QRect windowLoca
 		width, height);
     this->setMaximumSize(hel.width()+20,hel.height()+10);
     this->setMinimumSize(hel.width()+20,hel.height()+10);
-    this->setWindowTitle(tr("Help"));
+    this->setWindowTitle(STR_Window_Help);
     this->setAttribute(Qt::WA_DeleteOnClose);
     ui=uiInt;
     this->show();

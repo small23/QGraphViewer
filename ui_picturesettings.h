@@ -50,6 +50,8 @@ public:
         if (PictureSettings->objectName().isEmpty())
             PictureSettings->setObjectName(QString::fromUtf8("PictureSettings"));
         PictureSettings->resize(325, 176);
+        PictureSettings->setMinimumSize(QSize(325, 176));
+        PictureSettings->setMaximumSize(QSize(325, 176));
         QFont font;
         font.setFamily(QString::fromUtf8("Arial"));
         PictureSettings->setFont(font);

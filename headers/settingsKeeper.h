@@ -1,3 +1,6 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
 #pragma once
 
 #include <QObject>
@@ -24,6 +27,7 @@ public:
 	int quality = 90;
 	double scale = 6;
 	int imageType = 0;
+	QString lang = "";
 
 private:
 	QSettings* Settings;

@@ -1,25 +1,25 @@
-#include "changelog.h"
-#include "ui_changelog.h"
-#include "QTranslator"
-#include "QLibraryInfo"
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
 
-changelog::changelog(QWidget *parent) :
+#include "changelog.h"
+
+changelog::changelog(SettingsKeeper *settings, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::changelog)
 {
     ui->setupUi(this);
     QTranslator qtTranslator;
-    qtTranslator.load("qt_en", QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    qtTranslator.load(settings->lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     QApplication::installTranslator(&qtTranslator);
     const QPixmap pixmap2(":logos/Logos/logo.ico");
     ui->logo->setPixmap(pixmap2);
-    this->setWindowTitle(tr("Список изменений"));
+    this->setWindowTitle(STR_Window_Changelog);
     connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(cancelButtonPushed()));
 }
 
 void changelog::cancelButtonPushed()
 {
-    this->close();
+    this->hide();
 }
 
 changelog::~changelog()

@@ -1,5 +1,7 @@
-#include "mainwindow.h"
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
 
+#include "mainwindow.h"
 
 //Конструктор класса, инициализация необходимых классов,
 //настройка интерфейса, восстановление предыдущх настроек
@@ -7,15 +9,14 @@ MainWindow::MainWindow(QWidget* parent)
 	: QMainWindow(parent)
 	, ui(new Ui::MainWindow)
 {
-	QTranslator qtTranslator;
-	qtTranslator.load("qt_en", QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-	QApplication::installTranslator(&qtTranslator);
-	
 	settings = new SettingsKeeper(this);
-	FileDialogsLoad* fileDiag = new FileDialogsLoad(ui, this, settings);
+	
+	//qApp->installTranslator(&qtTranslator);
+	fileDiag = new FileDialogsLoad(ui, this, settings);
 	graphicsData = new GraphicsData();
 	bandData = new BandData();
 	surfData = new SurfData();
+	qeDosData = new QeDos();
 	ctConvertor = new CrystalTopondConvertors();
 	filesSaver = new FilesSaver();
 	plotParams = new PlotParameters(ui, this);
@@ -23,9 +24,7 @@ MainWindow::MainWindow(QWidget* parent)
 	pdosParser = new PdosParser();
 	symbols = new MathSymbols(this);
 	atomsConvert = new AtomConversion(ui, settings);
-	graphsA = new QVector<BasicGraphBuild*>();
-	graphsB = new QVector<DOSGraphBuilder*>();
-	graphsC = new QVector<ZoneStructGraphBuilder*>();
+	formChangelog = new changelog(settings, this);
 
 	ui->setupUi(this);
 	setupUiFields(ui);
@@ -65,17 +64,26 @@ MainWindow::MainWindow(QWidget* parent)
     connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),                    this,       SLOT(tab2PushButtonPdosLoadPressed()));
     connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),                    this,       SLOT(tab2PushButtonPdosLoadPressed()));
     connect(ui->tab4ChangelogButton,        SIGNAL(clicked()),                    this,       SLOT(tab4Changelog()));
+	//connect(ui->tab5_loadQeDos,			  SIGNAL(clicked()),					  this,		  SLOT(tab5QeDosLoad()));
 
 	//Корректировочный коэффициент масштабирования
 	//графиков на дисплеях с масштабом !=100%
 	QScreen* srn = QApplication::screens().at(0);
 	const auto b= srn->availableSize();
 	auto height = b.height()*0.90;
-	if (height > 600) height = 600;
+	if (height > GRAPH_SCALE) height = GRAPH_SCALE;
 	plotParams->drawRes = static_cast<int>(height);
 	plotParams->drawQuality = settings->quality;
 	plotParams->drawScale = settings->scale;
 	plotParams->preferFormat = settings->imageType;
+
+	const QString locale = QLocale::system().name();
+	//this->setLocale(QLocale::English);
+	this->setStatusBar(nullptr);
+	this->setFixedSize(this->size());
+	this->setWindowTitle("QGraphViewer");
+
+	this->show();
 }
 
 MainWindow::~MainWindow()
@@ -92,7 +100,8 @@ void MainWindow::showPictureSettings()
         delete formPictureSettings;
     }
     formPictureSettings = new PictureSettings(plotParams, settings,this);
-    formPictureSettings->show();
+    formPictureSettings->setModal(true);
+    formPictureSettings->exec();
 }
 
 void MainWindow::colorChangeButtonClicked(const int id) const
@@ -103,7 +112,7 @@ void MainWindow::colorChangeButtonClicked(const int id) const
 	colorPickerMenu.exec();
 	const QColor choosenColor = colorPickerMenu.selectedColor();
 	if (!choosenColor.isValid()) return;
-	const QPixmap colorIcon = ColorIconDrawer::drawIcon(choosenColor);
+	const QPixmap colorIcon = ColorIconDrawer::drawIcon(choosenColor,qApp->devicePixelRatio());
 	const QString colorLabelName = QString("ColorLable%1").arg(id);
 	QLabel* colorLabel = findChild<QLabel*>(colorLabelName);
 	if (colorLabel != nullptr)
@@ -158,20 +167,20 @@ void MainWindow::plotButtonTab1Clicked()
 	//Проверки на безопастность и наличие файлов
 	if (ui->tab1FileLine1->text()+ ui->tab1FileLine2->text()+ ui->tab1FileLine3->text()+ ui->tab1FileLine4->text()+ ui->tab1FileLine5->text()+ ui->tab1FileLine6->text() == "")
 	{
-        QMessageBox::warning(this, tr("Ошибка парсинга"), tr("Не указан ни один файл для построения!"));
+        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoFilesToDraw);
 		return;
 	}
 
 	if (ui->tab1FileLine1->text() + ui->tab1FileLine2->text() + ui->tab1FileLine3->text() + ui->tab1FileLine4->text() + ui->tab1FileLine6->text() == "" && ui->tab1FileLine5->text()!="")
 	{
-        QMessageBox::warning(this, tr("Ошибка парсинга"), tr("Не указаны файлы с данными для построения!"));
+        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoDatafiles);
 		return;
 	}
 
 	if (ui->tab1FileLine1->text() + ui->tab1FileLine2->text() + ui->tab1FileLine3->text() != "" &&
 		ui->tab1FileLine5->text() =="" && ui->tab1FileLine4->text() + ui->tab1FileLine6->text() != "")
 	{
-        QMessageBox::warning(this, tr("Ошибка парсинга"), tr("Не указан файл *.outp, Molgrath/Trajgrad/P2dcrynp не будут построены!"));
+        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoOutpFileWithTransMatrix);
 	}
 
 	//Сохранение путей до файлов в единый массив для передачи в парсер
@@ -189,16 +198,16 @@ void MainWindow::plotButtonTab1Clicked()
 		switch (success)
 		{
 		case 0:
-            QMessageBox::warning(this, tr("Ошибка парсинга"), tr("В файле .outp отсутствуют необходимые данные или файл поврежден!"));
+            QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_CorruptDataOutp);
 			break;
 		case -1:
-            QMessageBox::warning(this, tr("Ошибка парсинга"), tr("В файле Trajgrad.dat отсутствуют необходимые данные или файл поврежден!"));
+            QMessageBox::warning(this, STR_ErrorTitle_ParsingError,STR_ErrorMessage_CorruptDataTrajgrad);
 			break;
 		case -2:
-            QMessageBox::warning(this, tr("Ошибка парсинга"), tr("В файле Molgrapf.dat отсутствуют необходимые данные или файл поврежден!"));
+            QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_CorruptDataMolgraph);
 			break;
 		case -3:
-            QMessageBox::warning(this, tr("Ошибка парсинга"), tr("В файле P2dcrynp.dat отсутствуют необходимые данные или файл поврежден!"));
+            QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_CorruptDataMolgraph2);
 			break;
 		default:
 			break;
@@ -211,7 +220,7 @@ void MainWindow::plotButtonTab1Clicked()
 	
 	if(fields[0]+ fields[1]+ fields[2]!="" && fields[3]=="" && ui->tab1FileLine6->text() == "" && ui->tab1FileLine4->text() == "")
 	{
-        QMessageBox::warning(this, tr("Ошибка парсинга"), tr("Не указан файл *.outp!"));
+        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoOutpFileWithTransMatrixStopDraw);
         delete content;
 		return;
 	}
@@ -244,18 +253,17 @@ void MainWindow::plotButtonTab1Clicked()
 			{
 				for (int i = 0; i < bandData->outputMAPN.count(); i++)
 				{
-					new BasicGraphBuild(plotParams, tab1GraphFont, ui->tab1ShowAxis->isChecked(), i, ui->tab1uhf->isChecked(),
-						settings, graphicsData, surfData, bandData, ui->tab1ComboBoxRotate->currentIndex()*90, this);
+                    (new BasicGraph(settings, STR_GraphTitle_PlotDefaultName, plotParams, tab1GraphFont, this))->draw( ui->tab1ShowAxis->isChecked(),
+                             i, ui->tab1uhf->isChecked(), graphicsData, surfData, bandData, ui->tab1ComboBoxRotate->currentIndex() * 90);
 				}
-
 			}
 			else
-				new BasicGraphBuild(plotParams, tab1GraphFont, ui->tab1ShowAxis->isChecked(), 0,
-					ui->tab1uhf->isChecked(), settings, graphicsData, surfData, bandData, ui->tab1ComboBoxRotate->currentIndex() * 90, this);
+                (new BasicGraph(settings, STR_GraphTitle_PlotDefaultName, plotParams, tab1GraphFont, this))->draw(ui->tab1ShowAxis->isChecked(),
+                         0, ui->tab1uhf->isChecked(), graphicsData, surfData, bandData, ui->tab1ComboBoxRotate->currentIndex() * 90);
 		}
 		else
-			new BasicGraphBuild(plotParams, tab1GraphFont, ui->tab1ShowAxis->isChecked(), 0, ui->tab1uhf->isChecked(),
-				settings, graphicsData, surfData, bandData, ui->tab1ComboBoxRotate->currentIndex() * 90, this);
+            (new BasicGraph(settings, STR_GraphTitle_PlotDefaultName, plotParams, tab1GraphFont, this))->draw(ui->tab1ShowAxis->isChecked(),
+                     0, ui->tab1uhf->isChecked(), graphicsData, surfData, bandData, ui->tab1ComboBoxRotate->currentIndex() * 90);
 	}
 
 }
@@ -288,8 +296,7 @@ void MainWindow::atomsSearchButtonPressed() const
 void MainWindow::loadFileConvertXfXButtonPressed()
 {
 	QList<QString>* content = new QList<QString>();
-	const QString fileName = QFileDialog::getOpenFileName(this,
-	                                                      tr("Open file"), settings->getLastPath(),
+	const QString fileName = QFileDialog::getOpenFileName(this, STR_Dialog_OpenFile, settings->getLastPath(),
 	                                                      "*.f25 (*.f25);;All Files (*)");
 	if (fileName != "")
 	{
@@ -310,20 +317,20 @@ void MainWindow::loadFileConvertXfXButtonPressed()
 		const bool success = filesSaver->saveBandData(fileName, bandData, ui->tab3ZoneStructYMin->text().toDouble(), ui->tab3ZoneStructYMax->text().toDouble(), ui->tab3uhfZoneStruct->isChecked());
 		if (success == false)
 		{
-			QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'%1' не удается открыть для записи!").arg(filesSaver->errorData.ErrorFile));//QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + filesSaver->errorData.ErrorFile + tr("' не удается открыть для записи!"));
+			QMessageBox::critical(this, STR_ErrorTitle_SaveError, STR_ErrorMessage_CantOpenFileForWrite.arg(filesSaver->errorData.ErrorFile));//QMessageBox::critical(this, STR_ErrorTitle_SaveError, tr("'") + filesSaver->errorData.ErrorFile + tr("' не удается открыть для записи!"));
 			return;
 		}
-        QMessageBox::information(this, tr("Данные обработаны"), tr("Данные обработаны и сохранены!"));
+        QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
 	}
 	else
-        QMessageBox::warning(this, tr("Ошибка парсинга"), tr("В предоставленном файле отсутствуют необходимые данные или файл поврежден!"));
+        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 }
 
 void MainWindow::tab3LoadFilesConvertDosButtonPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	const QString fileName = QFileDialog::getOpenFileName(this,
-	                                                      tr("Open file"), settings->getLastPath(),
+	                                                      STR_Dialog_OpenFile, settings->getLastPath(),
 	                                                      "*.f25 (*.f25);;All Files (*)");
 	if (fileName != "")
 	{
@@ -344,20 +351,20 @@ void MainWindow::tab3LoadFilesConvertDosButtonPressed()
 		const bool success = filesSaver->saveDosData(fileName, bandData);
 		if (success == false)
 		{
-            QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'%1' не удается открыть для записи!").arg(filesSaver->errorData.ErrorFile));//QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + filesSaver->errorData.ErrorFile + tr("' не удается открыть для записи!"));
+            QMessageBox::critical(this, STR_ErrorTitle_SaveError, STR_ErrorMessage_CantOpenFileForWrite.arg(filesSaver->errorData.ErrorFile));
 			return;
 		}
-        QMessageBox::information(this, tr("Данные обработаны"), tr("Данные обработаны и сохранены!"));
+        QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
 	}
 	else
-        QMessageBox::warning(this, tr("Ошибка парсинга"), tr("В предоставленном файле отсутствуют необходимые данные или файл поврежден!"));
+        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 }
 
 void MainWindow::tab3SurfF25ButtonPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	const QString fileName = QFileDialog::getOpenFileName(this,
-	                                                       tr("Open file"), settings->getLastPath(),
+	                                                       STR_Dialog_OpenFile, settings->getLastPath(),
 	                                                       "*.f25 (*.f25);;All Files (*)");
 	if (fileName != "")
 	{
@@ -378,20 +385,20 @@ void MainWindow::tab3SurfF25ButtonPressed()
 		const bool success = filesSaver->saveMapnData(fileName, bandData, ui->tab3SurfRotationSelector->currentIndex() * 90);
 		if (success == false)
 		{
-            QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'%1' не удается открыть для записи!").arg(filesSaver->errorData.ErrorFile));//QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'") + filesSaver->errorData.ErrorFile + tr("' не удается открыть для записи!"));
+            QMessageBox::critical(this, STR_ErrorTitle_SaveError, STR_ErrorMessage_CantOpenFileForWrite.arg(filesSaver->errorData.ErrorFile));
             return;
 		}
-        QMessageBox::information(this, tr("Данные обработаны"), tr("Данные обработаны и сохранены!"));
+        QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
 	}
 	else
-        QMessageBox::warning(this, tr("Ошибка парсинга"), tr("В предоставленном файле отсутствуют необходимые данные или файл поврежден!"));
+        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 }
 
 void MainWindow::tab3SurfConvertButtonPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	const QString fileName = QFileDialog::getOpenFileName(this,
-	                                                      tr("Open file"), settings->getLastPath(),
+	                                                      STR_Dialog_OpenFile, settings->getLastPath(),
 	                                                      "*.dat (*.dat);;All Files (*)");
 	if (fileName != "")
 	{
@@ -439,21 +446,21 @@ void MainWindow::tab3SurfConvertButtonPressed()
 		if (success != true)
 		{
 			progressBar.close();
-            QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'%1' не удается открыть для записи!").arg(pathFull));
+            QMessageBox::critical(this, STR_ErrorTitle_SaveError, STR_ErrorMessage_CantOpenFileForWrite.arg(pathFull));
 			return;
 		}
 		progressBar.close();
-        QMessageBox::information(this, tr("Данные обработаны"), tr("Данные обработаны и сохранены!"));
+        QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
 	}
 	else
-        QMessageBox::warning(this, tr("Ошибка парсинга"), tr("В предоставленном файле отсутствуют необходимые данные или файл поврежден!"));
+        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 }
 
 void MainWindow::tab3ButtonCrystalToTopondPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	const QString fileName = QFileDialog::getOpenFileName(this,
-	                                                      tr("Open file"), settings->getLastPath(),
+	                                                      STR_Dialog_OpenFile, settings->getLastPath(),
 	                                                      "Output file (*.outp);;All Files (*)");
 	if (fileName != "")
 	{
@@ -484,27 +491,26 @@ void MainWindow::tab3ButtonCrystalToTopondPressed()
 		QFile file(path);
 		if (file.open(QIODevice::WriteOnly | QIODevice::Text))
 		{
-			// We're going to streaming text to the file
 			QTextStream stream(&file);
 			stream << ctConvertor->output;
 			file.close();
 		}
 		else
 		{
-			QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'%1' не удается открыть для записи!").arg(path));
+			QMessageBox::critical(this, STR_ErrorTitle_SaveError, STR_ErrorMessage_CantOpenFileForWrite.arg(path));
 			return;
 		}
-        QMessageBox::information(this, tr("Данные обработаны"), tr("Данные обработаны и сохранены!"));
+        QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
 	}
 	else
-        QMessageBox::warning(this, tr("Ошибка парсинга"), tr("В предоставленном файле отсутствуют необходимые данные или файл поврежден!"));
+        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 }
 
 void MainWindow::tab3ButtonTopondToCrystalPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	const QString fileName = QFileDialog::getOpenFileName(this,
-	                                                      tr("Open file"), settings->getLastPath(),
+	                                                      STR_Dialog_OpenFile, settings->getLastPath(),
 	                                                      "Output file (*.outp);;All Files (*)");
 	if (fileName != "")
 	{
@@ -541,13 +547,13 @@ void MainWindow::tab3ButtonTopondToCrystalPressed()
 		}
 		else
 		{
-			QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'%1' не удается открыть для записи!").arg(path));
+			QMessageBox::critical(this, STR_ErrorTitle_SaveError, STR_ErrorMessage_CantOpenFileForWrite.arg(path));
 			return;
 		}
-        QMessageBox::information(this, tr("Данные обработаны"), tr("Данные обработаны и сохранены!"));
+        QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
 	}
 	else
-        QMessageBox::warning(this, tr("Ошибка парсинга"), tr("В предоставленном файле отсутствуют необходимые данные или файл поврежден!"));
+        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 }
 
 void MainWindow::tab2ButtonDrawZoneStructPressed()
@@ -564,7 +570,7 @@ void MainWindow::tab2ButtonDrawZoneStructPressed()
 	else
 	{
         delete content;
-        QMessageBox::warning(this, tr("Ошибка загрузки"), tr("Не указан файл построения!"));
+        QMessageBox::warning(this, STR_ErrorTitle_LoadingError, STR_ErrorMessage_NoFileToDraw);
 		return;
 	}
 	bandData->parseData(content);
@@ -578,30 +584,30 @@ void MainWindow::tab2ButtonDrawZoneStructPressed()
 	{
 		double numbersToBuild[2];
 
-		if (plotParams->uhf)
+		if (plotParams->commonUhf)
 		{
 			for (int i = 0; i < 2; i++)
 			{
 				numbersToBuild[0] = bandData->oXBand[bandData->oXBand.size() / 2 * i];
 				numbersToBuild[1] = bandData->oXBand[bandData->oXBand.size() / 2 * (i + 1) - 1];
-				graphsC->append(new ZoneStructGraphBuilder(bandData, ui->tab2ZoneStructYMin->text().toDouble(),
-					ui->tab2ZoneStructYMax->text().toDouble(), ui->tab2LineKPoints->text(),
-                    plotParams, tab2GraphFont, numbersToBuild, QString(("Зонная структура " + std::to_string(i + 1)).c_str()), settings, symbols, this));
+				(new ZoneGraph(settings, QString((STR_GraphTitle_ZoneStruct.toStdString() + " " + std::to_string(i + 1)).c_str()), plotParams, tab2GraphFont, this))->
+					draw(bandData, ui->tab2ZoneStructYMin->text().toDouble(),
+						ui->tab2ZoneStructYMax->text().toDouble(), ui->tab2LineKPoints->text(),
+						numbersToBuild, symbols);
 			}
 		}
 		else
 		{
 			numbersToBuild[0] = 0;
 			numbersToBuild[1] = bandData->oXBand[bandData->oXBand.size() - 1];
-			graphsC->append(new ZoneStructGraphBuilder(bandData, ui->tab2ZoneStructYMin->text().toDouble(),
-				ui->tab2ZoneStructYMax->text().toDouble(), ui->tab2LineKPoints->text(),
-                plotParams, tab2GraphFont, numbersToBuild, tr("Зонная структура"), settings, symbols, this));
+			(new ZoneGraph(settings, STR_GraphTitle_ZoneStruct, plotParams, tab2GraphFont, this))->
+				draw(bandData, ui->tab2ZoneStructYMin->text().toDouble(),
+					ui->tab2ZoneStructYMax->text().toDouble(), ui->tab2LineKPoints->text(),
+					numbersToBuild, symbols);
 		}
-
 	}
-
 	else
-        QMessageBox::warning(this, tr("Ошибка парсинга"), tr("В предоставленном файле отсутсвуют необходимые данные или файл поврежден!"));
+        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 }
 
 void MainWindow::tab2UpdateParams(QString i) const
@@ -621,7 +627,7 @@ void MainWindow::tab2UpdateShowLine(int i) const
 void MainWindow::tab2LoadFilef25DossPressed()
 {
 	const QString fileName = QFileDialog::getOpenFileName(this,
-	                                                      tr("Open file"), settings->getLastPath(),
+	                                                      STR_Dialog_OpenFile, settings->getLastPath(),
 	                                                      tr("f25 files (*.f25);;All Files (*)"));
 	if (fileName != "")
 	{
@@ -665,7 +671,7 @@ void MainWindow::tab2ComboBoxLineSelectorIndexChanged(const int selected) const
 		disconnect(ui->tab2SpinnerLineMultiplier, SIGNAL(valueChanged(QString)), this, SLOT(tab2UpdateParams(QString)));
 		ui->tab2SpinnerLineWidth->setValue(plotParams->tab2PlotParams->at(selected).width);
 		ui->tab2SpinnerLineWidth->update();
-		ui->ColorLable8->setPixmap(ColorIconDrawer::drawIcon(plotParams->tab2PlotParams->at(selected).color));
+		ui->ColorLable8->setPixmap(ColorIconDrawer::drawIcon(plotParams->tab2PlotParams->at(selected).color,qApp->devicePixelRatio()));
 		ui->ColorLable8->update();
 		ui->tab2CheckBoxShow1->setChecked(plotParams->tab2PlotParams->at(selected).show);
 		ui->tab2CheckBoxShow1->update();
@@ -692,7 +698,7 @@ void MainWindow::tab2ButtonDrawDosPressed()
 	else
 	{
         delete content;
-        QMessageBox::warning(this, tr("Ошибка загрузки"), tr("Не указан файл построения!"));
+        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoFileToDraw);
 		return;
 	}
 
@@ -700,9 +706,11 @@ void MainWindow::tab2ButtonDrawDosPressed()
 	plotParams->updatePlotParams(2);
 	double borders[4] = { ui->tab2DOSXMin->text().toDouble(),ui->tab2DOSXMax->text().toDouble(),ui->tab2DOSYMin->text().toDouble(),ui->tab2DOSYMax->text().toDouble() };
 	if (bandData->outputCOHP.count() > 0 || bandData->outputDOSS.count() > 0 || bandData->outputCOOP.count() > 0)
-		new DOSGraphBuilder(bandData, borders, plotParams, tab2GraphFont, ui->tab2ComboBoxDosRotate->currentIndex(), settings, symbols,ui->tab2ComboBoxLineSelector->currentIndex(), this);
+		//new DOSGraphBuilder(bandData, borders, plotParams, tab2GraphFont, ui->tab2ComboBoxDosRotate->currentIndex(), settings, symbols,ui->tab2ComboBoxLineSelector->currentIndex(), this);
+		(new DosGraph(settings, STR_GraphTitle_PlotDefaultName, plotParams, tab2GraphFont, this))->draw(bandData, borders,
+			ui->tab2ComboBoxDosRotate->currentIndex(), symbols, ui->tab2ComboBoxLineSelector->currentIndex());
 	else
-        QMessageBox::warning(this, tr("Ошибка парсинга"), tr("В предоставленном файле отсутсвуют необходимые данные или файл поврежден!"));
+        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 	delete content;
 }
 
@@ -728,36 +736,41 @@ void MainWindow::tab4QtAbout()
 
 void MainWindow::tab4LicenceMit()
 {
-	const QString text = tr("Лицензия MIT\n\nCopyright © 2020 КемГУ\n\nДанная лицензия разрешает лицам, получившим копию данного программного"
-		" обеспечения и сопутствующей документации (в дальнейшем именуемыми «Программное Обеспечение»), безвозмездно"
-		" использовать Программное Обеспечение без ограничений, включая неограниченное право на использование, копирование,"
-		" изменение, слияние, публикацию, распространение, сублицензирование и/или продажу копий Программного Обеспечения, "
-		"а также лицам, которым предоставляется данное Программное Обеспечение, при соблюдении следующих условий:\n\n"
-		"Указанное выше уведомление об авторском праве и данные условия должны быть включены во все копии или значимые "
-		"части данного Программного Обеспечения.\n\nДАННОЕ ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ПРЕДОСТАВЛЯЕТСЯ «КАК ЕСТЬ», БЕЗ КАКИХ-ЛИБО"
-		" ГАРАНТИЙ, ЯВНО ВЫРАЖЕННЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ, ВКЛЮЧАЯ ГАРАНТИИ ТОВАРНОЙ ПРИГОДНОСТИ, СООТВЕТСТВИЯ ПО ЕГО КОНКРЕТНОМУ "
-		"НАЗНАЧЕНИЮ И ОТСУТСТВИЯ НАРУШЕНИЙ, НО НЕ ОГРАНИЧИВАЯСЬ ИМИ. НИ В КАКОМ СЛУЧАЕ АВТОРЫ ИЛИ ПРАВООБЛАДАТЕЛИ НЕ НЕСУТ "
-        "ОТВЕТСТВЕННОСТИ ПО КАКИМ-ЛИБО ИСКАМ, ЗА УЩЕРБ ИЛИ ПО ИНЫМ ТРЕБОВАНИЯМ, В ТОМ ЧИСЛЕ, ПРИ ДЕЙСТВИИ КОНТРАКТА, ДЕЛИКТЕ "
-        "ИЛИ ИНОЙ СИТУАЦИИ, ВОЗНИКШИМ ИЗ-ЗА ИСПОЛЬЗОВАНИЯ ПРОГРАММНОГО ОБЕСПЕЧЕНИЯ ИЛИ ИНЫХ ДЕЙСТВИЙ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ.");
-    QMessageBox::information(this, tr("Лицензионное соглашение"), text);
+	const QString text = STR_Licence;
+    QMessageBox::information(this, STR_LicenseTitle, text);
 }
 
 void MainWindow::tab4Changelog()
 {
-    if (formChangelog!=nullptr)
-    {
-        formChangelog->close();
-        delete formChangelog;
-    }
-    formChangelog = new changelog(this);
     formChangelog->show();
+}
+
+void MainWindow::tab5QeDosLoad()
+{
+	QList<QString>* content = new QList<QString>();
+	QString fileName = QFileDialog::getOpenFileName(this,
+		STR_Dialog_OpenFile, settings->getLastPath(),
+		"All Files (*)");
+	if (fileName != "")
+	{
+		readFileFromFs(fileName, content);
+		const QFileInfo fileinfo(fileName);
+		settings->updatePath(fileinfo.absolutePath());
+	}
+	else
+	{
+		delete content;
+		return;
+	}
+	qeDosData->parseData(content);
+	(new QeGraph(settings, "Plot", plotParams, tab2GraphFont, this))->draw(qeDosData);
 }
 
 void MainWindow::tab2PushButtonPdosLoadPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Open file"), settings->getLastPath(),
+        STR_Dialog_OpenFile, settings->getLastPath(),
 		"Output file (*.out);;All Files (*)");
 	if (fileName != "")
 	{
@@ -775,23 +788,23 @@ void MainWindow::tab2PushButtonPdosLoadPressed()
 	delete content;
 	if (data.count() <= 0)
 	{
-        QMessageBox::warning(this, tr("Ошибка парсинга"), tr("В предоставленном файле отсутсвуют необходимые данные или файл поврежден!"));
+        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 		return;
 	}
 
 	fileName = QFileDialog::getSaveFileName(nullptr,
-        tr("Сохранить данные"), settings->getLastPath()+"PDOS.xlsx",
+        STR_Dialog_SaveFile, settings->getLastPath()+"PDOS.xlsx",
         tr("Excel file (*.xlsx);;All Files (*)"));
 	if (fileName != "")
 	{
 		const QFileInfo fileinfo(fileName);
 		settings->updatePath(fileinfo.absolutePath());
 		QXlsx::Document xlsx;
-        xlsx.write(1, 1, tr("№ атома"));
-        xlsx.write(1, 2, tr("Атом"));
-        xlsx.write(1, 3, tr("Тип"));
-        xlsx.write(1, 4, tr("Число ф-й"));
-        xlsx.write(1, 5, tr("Номера баз. ф-й"));
+        xlsx.write(1, 1, STR_XLSX_AtomNumber);
+        xlsx.write(1, 2, STR_XLSX_Atom);
+        xlsx.write(1, 3, STR_XLSX_Type);
+        xlsx.write(1, 4, STR_XLSX_FunctionNumber);
+        xlsx.write(1, 5, STR_XLSX_BaseFunctionNumber);
 		int counter = 2;
 		for (int i = 0; i < data.count(); i++)
 		{
@@ -817,9 +830,9 @@ void MainWindow::tab2PushButtonPdosLoadPressed()
 		const bool success = xlsx.saveAs(fileName); // save the document as 'Test.xlsx'
 		if (success != true)
 		{
-			QMessageBox::critical(this, tr("Ошибка сохранения"), tr("'%1' не удается открыть для записи!").arg(fileName));
+			QMessageBox::critical(this, STR_ErrorTitle_SaveError,STR_ErrorMessage_CantOpenFileForWrite.arg(fileName));
 		}
-        QMessageBox::information(this, tr("Данные обработаны"), tr("Данные обработаны и сохранены!"));
+        QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
 	}
 
 	ui->tab2PDOSNumbersTable->clear();
@@ -843,5 +856,5 @@ void MainWindow::tab2PushButtonPdosLoadPressed()
 			ui->tab2PDOSNumbersTable->setItem(ui->tab2PDOSNumbersTable->rowCount() - 1, 5, itm);
 		}
 	}
-    ui->tab2PDOSNumbersTable->setHorizontalHeaderLabels(QStringList() << tr("№ атома") << tr("Атом") << tr("Тип") << tr("Число ф-й") << tr("N нач.") << tr("N кон."));
+    ui->tab2PDOSNumbersTable->setHorizontalHeaderLabels(QStringList() << STR_XLSX_AtomNumber << STR_XLSX_Atom << STR_XLSX_Type << STR_XLSX_FunctionNumber << STR_XLSX_StartNumber << STR_XLSX_EndNumber );
 }

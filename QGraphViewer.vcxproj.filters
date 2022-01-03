@@ -73,7 +73,7 @@
     <ClCompile Include="source\banddata.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\basicgraphbuild.cpp">
+    <ClCompile Include="source\basicgraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\changelog.cpp">
@@ -88,7 +88,7 @@
     <ClCompile Include="source\crystaltopondconvertors.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\dosgraphbuilder.cpp">
+    <ClCompile Include="source\dosgraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\filedialogsload.cpp">
@@ -98,6 +98,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\filessaver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\graphbuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\graphicsdata.cpp">
@@ -238,7 +241,13 @@
     <ClCompile Include="libs\QXlsx\source\xlsxzipwriter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\zonestructgraphbuilder.cpp">
+    <ClCompile Include="source\zonegraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QeDos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="qegraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -249,13 +258,16 @@
     <ClInclude Include="headers\banddata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <QtMoc Include="headers\basicgraphbuild.h">
+    <ClInclude Include="headers\basicgraph.h">
       <Filter>Header Files</Filter>
-    </QtMoc>
+    </ClInclude>
     <QtMoc Include="headers\changelog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <ClInclude Include="headers\coloricondrawer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\constantsandstrings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="headers\contour.h">
@@ -267,7 +279,7 @@
     <ClInclude Include="headers\delegator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <QtMoc Include="headers\dosgraphbuilder.h">
+    <QtMoc Include="headers\dosgraph.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="headers\filedialogsload.h">
@@ -279,6 +291,9 @@
     <ClInclude Include="headers\filessaver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <QtMoc Include="headers\graphbuilder.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
     <ClInclude Include="headers\graphicsdata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -315,8 +330,6 @@
     <ClInclude Include="headers\surfdata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    
-    
     <ClInclude Include="headers\uiinit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -461,56 +474,17 @@
     <ClInclude Include="libs\QXlsx\header\xlsxzipwriter_p.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <QtMoc Include="headers\zonestructgraphbuilder.h">
+    <ClInclude Include="headers\zonegraph.h">
       <Filter>Header Files</Filter>
-    </QtMoc>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <CustomBuild Include="debug\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
     <CustomBuild Include="release\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
   </ItemGroup>
   <ItemGroup>
     <None Include="translations\qt_en.ts">
@@ -584,6 +558,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="W:\Repos\QGraphViewer\QGraphViewer\QGraphViewer_resource.rc" />
+    <ResourceCompile Include=".\QGraphViewer_resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="QeDos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="qegraph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

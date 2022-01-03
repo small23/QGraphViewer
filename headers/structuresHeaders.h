@@ -1,3 +1,6 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
 #ifndef STRUCTURESHEADERS_H
 #define STRUCTURESHEADERS_H
 #include <QColor>
@@ -8,13 +11,13 @@
 struct UniversalLines{
     QVector<double> x;
     QVector<double> y;
-    int Type;
+    int type;
 };
 
 struct UniversalPoints{
     double x;
     double y;
-    int Type;
+    int type;
 };
 
 struct UniversalLineParams{

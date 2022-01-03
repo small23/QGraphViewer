@@ -1,4 +1,4 @@
-QT       += core gui charts #opengl
+QT       += core gui #opengl
 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
@@ -10,7 +10,7 @@ CONFIG += c++11
 # any Qt feature that has been marked deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
-DEFINES += QT_DEPRECATED_WARNINGS #QCUSTOMPLOT_USE_OPENGL
+DEFINES += QT_DEPRECATED_WARNINGS
 
 # You can also make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -26,51 +26,27 @@ include(./libs/QXlsx/QXlsx.pri)
 win32 {
     #QMAKE_LFLAGS += /SUBSYSTEM:CONSOLE,5.01
     #QMAKE_CXX += /D_USING_V110_SDK71_
-    LIBS *= -L"%ProgramFiles(x86)%/Microsoft SDKs/Windows/7.1A/Lib"
-    INCLUDEPATH += "%ProgramFiles(x86)%/Microsoft SDKs/Windows/7.1A/Include"
+    #LIBS *= -L"%ProgramFiles(x86)%/Microsoft SDKs/Windows/7.1A/Lib"
+    #INCLUDEPATH += "%ProgramFiles(x86)%/Microsoft SDKs/Windows/7.1A/Include"
 }
 
 RC_ICONS = ./resources/Logos/logo.ico
 
 SOURCES += \
-    source/changelog.cpp \
-    source/settingskeeper.cpp \
-    source/atomconversion.cpp \
-    source/banddata.cpp \
-    source/basicgraphbuild.cpp \
-    source/coloricondrawer.cpp \
-    source/contour.cpp \
-    source/crystaltopondconvertors.cpp \
-    source/dosgraphbuilder.cpp \
-    source/filedialogsload.cpp \
-    source/fileread.cpp \
-    source/filessaver.cpp \
-    source/graphicsdata.cpp \
-    source/helpmatrixwidget.cpp \
-    source/helpwindow.cpp \
-    source/main.cpp \
-    source/mainwindow.cpp \
-    source/mathsymbols.cpp \
-    source/pdosparser.cpp \
-    source/picturesettings.cpp \
-    source/plotparameters.cpp \
-    source/qcustomplot.cpp \
-    source/surfdata.cpp \
-    source/uiinit.cpp \
-    source/zonestructgraphbuilder.cpp
+    $$files("source/*.cpp", true)
 
 HEADERS += \
+    headers/basicgraph.h \
     headers/changelog.h \
     headers/delegator.h \
     headers/settingsKeeper.h \
     headers/structuresHeaders.h \
     headers/atomconversion.h \
     headers/banddata.h \
-    headers/basicgraphbuild.h \
     headers/coloricondrawer.h \
     headers/contour.h \
     headers/crystaltopondconvertors.h \
-    headers/dosgraphbuilder.h \
+    headers/dosgraph.h \
     headers/filedialogsload.h \
     headers/fileread.h \
     headers/filessaver.h \
@@ -84,10 +60,12 @@ HEADERS += \
     headers/plotparameters.h \
     headers/qcustomplot.h \
     headers/surfdata.h \
+    headers/graphbuilder.h \
     ui_mainwindow.h \
     ui_picturesettings.h \
     headers/uiinit.h \
-    headers/zonestructgraphbuilder.h
+    headers/zonegraph.h \
+    headers/constantsandstrings.h
 
 FORMS += \
     ui/changelog.ui \
@@ -97,6 +75,7 @@ FORMS += \
 INCLUDEPATH += $$PWD/headers
 INCLUDEPATH += $$PWD/ui
 INCLUDEPATH += $$PWD/libs
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

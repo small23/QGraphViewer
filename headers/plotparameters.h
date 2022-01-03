@@ -1,3 +1,6 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
 #ifndef PLOTPARAMETERS_H
 #define PLOTPARAMETERS_H
 
@@ -44,13 +47,31 @@ public:
     double tab1surfaceDivider;
     double tab1surfacePrecision;
     double tab1surfaceWidth;
-    bool zeroShift;
-    bool uhf;
+    bool tab2zeroShift;
+    bool commonUhf;
 	bool colorContours;
     int drawRes;
     int drawQuality=90;
     double drawScale=6;
     int preferFormat=0;
+
+    QVector<UniversalLineParams>* tab5PlotParams;
+    QColor tab5FermiLevelColor;
+    double tab5FermiLevelWidth;
+    bool tab5ShowFermiLine;
+    double tab5FermiLevel;
+    QString tab5PlotName = "";
+    QString tab5OyName = "";
+    QString tab5OxName = "";
+    bool tab5OyTicks;
+    bool tab5OxTicks;
+    double tab5xMin;
+    double tab5xMax;
+    double tab5yMin;
+    double tab5yMax;
+    double tab5yMinZs;
+    double tab5yMaxZs;
+
 
 private:
     Ui::MainWindow *ui;

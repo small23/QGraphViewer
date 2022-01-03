@@ -1,215 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en" sourcelanguage="ru">
-<context>
-    <name>AtomConversion</name>
-    <message>
-        <location filename="../source/atomconversion.cpp" line="15"/>
-        <location filename="../source/atomconversion.cpp" line="198"/>
-        <source>Ошибка сохранения</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/atomconversion.cpp" line="15"/>
-        <source>Нет данных для сохранения!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/atomconversion.cpp" line="19"/>
-        <location filename="../source/atomconversion.cpp" line="169"/>
-        <source>Сохранить данные</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/atomconversion.cpp" line="176"/>
-        <source>№ Исходного атома</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/atomconversion.cpp" line="177"/>
-        <source>№ Атома в эл. яч.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/atomconversion.cpp" line="199"/>
-        <source>&apos;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/atomconversion.cpp" line="199"/>
-        <source>&apos; не удается открыть для записи!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/atomconversion.cpp" line="202"/>
-        <source>Данные обработаны</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/atomconversion.cpp" line="202"/>
-        <source>Данные обработаны и сохранены!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/atomconversion.cpp" line="206"/>
-        <source>Ошибка обработки</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/atomconversion.cpp" line="207"/>
-        <source>Атомы не найдены! Проверьте правильность ввода информации.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>BasicGraphBuild</name>
-    <message>
-        <location filename="../source/basicgraphbuild.cpp" line="11"/>
-        <source>Plot</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/basicgraphbuild.cpp" line="253"/>
-        <location filename="../source/basicgraphbuild.cpp" line="258"/>
-        <source>PNG file (*.png);;All Files (*)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../source/basicgraphbuild.cpp" line="262"/>
-        <source>JPG file (*.jpg);;All Files (*)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../source/basicgraphbuild.cpp" line="266"/>
-        <source>BMP file (*.bmp);All Files (*)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../source/basicgraphbuild.cpp" line="273"/>
-        <source>Сохранить график</source>
-        <translation>Save graph</translation>
-    </message>
-    <message>
-        <location filename="../source/basicgraphbuild.cpp" line="301"/>
-        <source>Ошибка сохранения</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/basicgraphbuild.cpp" line="301"/>
-        <source>Не удалось сохранить изображение!</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DOSGraphBuilder</name>
-    <message>
-        <location filename="../source/dosgraphbuilder.cpp" line="56"/>
-        <source>Plot</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/dosgraphbuilder.cpp" line="256"/>
-        <location filename="../source/dosgraphbuilder.cpp" line="261"/>
-        <source>PNG file (*.png);;All Files (*)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../source/dosgraphbuilder.cpp" line="265"/>
-        <source>JPG file (*.jpg);;All Files (*)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../source/dosgraphbuilder.cpp" line="269"/>
-        <source>BMP file (*.bmp);All Files (*)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../source/dosgraphbuilder.cpp" line="276"/>
-        <source>Сохранить график</source>
-        <translation>Save graph</translation>
-    </message>
-</context>
+<TS version="2.1" language="en_US">
 <context>
     <name>FileDialogsLoad</name>
     <message>
-        <location filename="../source/filedialogsload.cpp" line="14"/>
-        <location filename="../source/filedialogsload.cpp" line="89"/>
-        <location filename="../source/filedialogsload.cpp" line="93"/>
-        <source>Open file</source>
-        <translation>Open file</translation>
-    </message>
-    <message>
-        <location filename="../source/filedialogsload.cpp" line="15"/>
+        <location filename="../source/filedialogsload.cpp" line="20"/>
         <source>Plot files (*.dat);;All Files (*)</source>
-        <translation>Plot files (*.dat);;All Files (*)</translation>
-    </message>
-    <message>
-        <location filename="../source/filedialogsload.cpp" line="47"/>
-        <source>Ошибка добавления</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/filedialogsload.cpp" line="47"/>
-        <source>Файл &apos;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/filedialogsload.cpp" line="47"/>
-        <source>&apos; имеет нестандартное имя и не будет добавлен.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/filedialogsload.cpp" line="90"/>
-        <source>Main files (*.outp);;All Files (*)</source>
         <translation></translation>
-    </message>
-    <message>
-        <location filename="../source/filedialogsload.cpp" line="94"/>
-        <source>f25 files (*.f25);;All Files (*)</source>
-        <translation></translation>
-    </message>
-</context>
-<context>
-    <name>HelpMatrixWidget</name>
-    <message>
-        <location filename="../source/helpmatrixwidget.cpp" line="27"/>
-        <source>Help</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>HelpWindow</name>
-    <message>
-        <location filename="../source/helpwindow.cpp" line="28"/>
-        <source>Help</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="../ui/mainwindow.ui" line="66"/>
+        <location filename="../ui_mainwindow.h" line="1445"/>
         <source>Contour map</source>
-        <translation>Contour map</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="86"/>
+        <location filename="../ui_mainwindow.h" line="1371"/>
         <source>Файлы для построения изолиний, траекторий ∇ρ, атомных бассейнов, линий связи</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="109"/>
+        <location filename="../ui_mainwindow.h" line="1372"/>
         <source>Surf*</source>
-        <translation>Surf*</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="172"/>
         <location filename="../ui/mainwindow.ui" line="1963"/>
-        <location filename="../ui/mainwindow.ui" line="3348"/>
-        <location filename="../ui/mainwindow.ui" line="4447"/>
-        <location filename="../ui/mainwindow.ui" line="4718"/>
+        <location filename="../ui/mainwindow.ui" line="3350"/>
+        <location filename="../ui/mainwindow.ui" line="4449"/>
+        <location filename="../ui/mainwindow.ui" line="4720"/>
+        <location filename="../ui_mainwindow.h" line="1373"/>
+        <location filename="../ui_mainwindow.h" line="1429"/>
+        <location filename="../ui_mainwindow.h" line="1484"/>
+        <location filename="../ui_mainwindow.h" line="1531"/>
+        <location filename="../ui_mainwindow.h" line="1542"/>
         <source>HELP</source>
-        <translation>HELP</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="235"/>
@@ -219,81 +51,111 @@
         <location filename="../ui/mainwindow.ui" line="379"/>
         <location filename="../ui/mainwindow.ui" line="565"/>
         <location filename="../ui/mainwindow.ui" line="2517"/>
-        <location filename="../ui/mainwindow.ui" line="3462"/>
+        <location filename="../ui/mainwindow.ui" line="3464"/>
+        <location filename="../ui_mainwindow.h" line="1374"/>
+        <location filename="../ui_mainwindow.h" line="1375"/>
+        <location filename="../ui_mainwindow.h" line="1376"/>
+        <location filename="../ui_mainwindow.h" line="1377"/>
+        <location filename="../ui_mainwindow.h" line="1379"/>
+        <location filename="../ui_mainwindow.h" line="1386"/>
+        <location filename="../ui_mainwindow.h" line="1454"/>
+        <location filename="../ui_mainwindow.h" line="1489"/>
         <source>X</source>
-        <translation>X</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="355"/>
         <location filename="../ui/mainwindow.ui" line="421"/>
         <location filename="../ui/mainwindow.ui" line="490"/>
+        <location filename="../ui_mainwindow.h" line="1378"/>
+        <location filename="../ui_mainwindow.h" line="1380"/>
+        <location filename="../ui_mainwindow.h" line="1383"/>
         <source>Загрузить</source>
         <translation>Load</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="442"/>
+        <location filename="../ui_mainwindow.h" line="1381"/>
         <source>P2dcrynp</source>
-        <translation>P2dcrynp</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="466"/>
+        <location filename="../ui_mainwindow.h" line="1382"/>
         <source>Molgraph</source>
-        <translation>Molgraph</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="514"/>
+        <location filename="../ui_mainwindow.h" line="1384"/>
         <source>*.outp</source>
-        <translation>*.outp</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="538"/>
+        <location filename="../ui_mainwindow.h" line="1385"/>
         <source>Trajgrad</source>
-        <translation>Trajgrad</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="592"/>
+        <location filename="../ui_mainwindow.h" line="1387"/>
         <source>*.f25</source>
-        <translation>*.f25</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="616"/>
         <location filename="../ui/mainwindow.ui" line="2553"/>
-        <location filename="../ui/mainwindow.ui" line="4009"/>
-        <location filename="../ui/mainwindow.ui" line="4219"/>
+        <location filename="../ui/mainwindow.ui" line="4011"/>
+        <location filename="../ui/mainwindow.ui" line="4221"/>
+        <location filename="../ui_mainwindow.h" line="1388"/>
+        <location filename="../ui_mainwindow.h" line="1456"/>
+        <location filename="../ui_mainwindow.h" line="1512"/>
+        <location filename="../ui_mainwindow.h" line="1521"/>
         <source>UHF</source>
-        <translation>UHF</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="638"/>
+        <location filename="../ui_mainwindow.h" line="1389"/>
         <source>Отрисовка</source>
-        <translation>Graph params</translation>
+        <translation type="unfinished">Plotting</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="658"/>
         <location filename="../ui/mainwindow.ui" line="2356"/>
-        <location filename="../ui/mainwindow.ui" line="3423"/>
+        <location filename="../ui/mainwindow.ui" line="3425"/>
+        <location filename="../ui_mainwindow.h" line="1390"/>
+        <location filename="../ui_mainwindow.h" line="1449"/>
+        <location filename="../ui_mainwindow.h" line="1488"/>
         <source>Построить</source>
-        <translation>Build</translation>
+        <translation type="unfinished">Draw plot</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="682"/>
+        <location filename="../ui_mainwindow.h" line="1391"/>
         <source>Скрыть оси</source>
         <translation>Hide axis</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="727"/>
+        <location filename="../ui_mainwindow.h" line="1392"/>
         <source>Оси кегель</source>
-        <translation>Font size</translation>
+        <translation>Axis font size</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="775"/>
-        <location filename="../ui/mainwindow.ui" line="4177"/>
+        <location filename="../ui/mainwindow.ui" line="4179"/>
+        <location filename="../ui_mainwindow.h" line="1393"/>
+        <location filename="../ui_mainwindow.h" line="1520"/>
         <source>Поворот на</source>
-        <translation>Rotate to</translation>
+        <translation>Rotate by</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="802"/>
         <location filename="../ui/mainwindow.ui" line="2742"/>
+        <location filename="../ui_mainwindow.h" line="1394"/>
+        <location filename="../ui_mainwindow.h" line="1462"/>
         <source>Шрифт</source>
         <translation>Font</translation>
     </message>
@@ -308,42 +170,60 @@
         <location filename="../ui/mainwindow.ui" line="2768"/>
         <location filename="../ui/mainwindow.ui" line="2929"/>
         <location filename="../ui/mainwindow.ui" line="3256"/>
+        <location filename="../ui_mainwindow.h" line="1395"/>
+        <location filename="../ui_mainwindow.h" line="1434"/>
+        <location filename="../ui_mainwindow.h" line="1435"/>
+        <location filename="../ui_mainwindow.h" line="1436"/>
+        <location filename="../ui_mainwindow.h" line="1437"/>
+        <location filename="../ui_mainwindow.h" line="1438"/>
+        <location filename="../ui_mainwindow.h" line="1439"/>
+        <location filename="../ui_mainwindow.h" line="1463"/>
+        <location filename="../ui_mainwindow.h" line="1469"/>
+        <location filename="../ui_mainwindow.h" line="1480"/>
         <source>Выбрать...</source>
         <translation>Choose...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="848"/>
         <location filename="../ui/mainwindow.ui" line="2990"/>
+        <location filename="../ui_mainwindow.h" line="1396"/>
+        <location filename="../ui_mainwindow.h" line="1472"/>
         <source>Настройка линий</source>
         <translation>Line settings</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="868"/>
+        <location filename="../ui_mainwindow.h" line="1397"/>
         <source>Линии Trajgrad</source>
         <translation>Trajgrad lines</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="892"/>
+        <location filename="../ui_mainwindow.h" line="1398"/>
         <source>Атомные Бассейны 1</source>
-        <translation>Atomic pools 1</translation>
+        <translation>Atom pools 1</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="916"/>
+        <location filename="../ui_mainwindow.h" line="1399"/>
         <source>Атомные Бассейны 2</source>
-        <translation>Atomic pools 2</translation>
+        <translation>Atom pools 2</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="940"/>
+        <location filename="../ui_mainwindow.h" line="1400"/>
         <source>Линии Связей</source>
         <translation>Connection lines</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="964"/>
+        <location filename="../ui_mainwindow.h" line="1401"/>
         <source>Особые точки</source>
-        <translation>Points</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="988"/>
+        <location filename="../ui_mainwindow.h" line="1402"/>
         <source>Атомы</source>
         <translation>Atoms</translation>
     </message>
@@ -354,6 +234,12 @@
         <location filename="../ui/mainwindow.ui" line="1195"/>
         <location filename="../ui/mainwindow.ui" line="1219"/>
         <location filename="../ui/mainwindow.ui" line="1243"/>
+        <location filename="../ui_mainwindow.h" line="1403"/>
+        <location filename="../ui_mainwindow.h" line="1404"/>
+        <location filename="../ui_mainwindow.h" line="1405"/>
+        <location filename="../ui_mainwindow.h" line="1406"/>
+        <location filename="../ui_mainwindow.h" line="1407"/>
+        <location filename="../ui_mainwindow.h" line="1408"/>
         <source>Цвет</source>
         <translation>Color</translation>
     </message>
@@ -363,59 +249,75 @@
         <location filename="../ui/mainwindow.ui" line="1315"/>
         <location filename="../ui/mainwindow.ui" line="1339"/>
         <location filename="../ui/mainwindow.ui" line="1591"/>
+        <location filename="../ui_mainwindow.h" line="1409"/>
+        <location filename="../ui_mainwindow.h" line="1410"/>
+        <location filename="../ui_mainwindow.h" line="1411"/>
+        <location filename="../ui_mainwindow.h" line="1412"/>
+        <location filename="../ui_mainwindow.h" line="1415"/>
         <source>Толщина</source>
         <translation>Width</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1363"/>
         <location filename="../ui/mainwindow.ui" line="1387"/>
+        <location filename="../ui_mainwindow.h" line="1413"/>
+        <location filename="../ui_mainwindow.h" line="1414"/>
         <source>Размер</source>
         <translation>Size</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1789"/>
+        <location filename="../ui_mainwindow.h" line="1423"/>
         <source>Точность</source>
         <translation>Accuracy</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1813"/>
+        <location filename="../ui_mainwindow.h" line="1424"/>
         <source>Отсечка</source>
-        <translation>Cut-off</translation>
+        <translation>EPS</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1837"/>
+        <location filename="../ui_mainwindow.h" line="1425"/>
         <source>0.1</source>
-        <translation>0.1</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1861"/>
+        <location filename="../ui_mainwindow.h" line="1426"/>
         <source>0.001</source>
-        <translation>0.001</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1915"/>
+        <location filename="../ui_mainwindow.h" line="1427"/>
         <source>Делитель</source>
-        <translation>Delimiter</translation>
+        <translation>Divider</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1942"/>
+        <location filename="../ui_mainwindow.h" line="1428"/>
         <source>Цветные уровни</source>
-        <translation>Colormap</translation>
+        <translation>Color lines</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1983"/>
+        <location filename="../ui_mainwindow.h" line="1430"/>
         <source>∆ρ</source>
-        <translation>∆ρ</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2007"/>
+        <location filename="../ui_mainwindow.h" line="1431"/>
         <source>|Vb|/Gb&lt;1</source>
-        <translation>|Vb|/Gb&lt;1</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2031"/>
+        <location filename="../ui_mainwindow.h" line="1432"/>
         <source>ρ, ∆ρ, G, H, ∮</source>
-        <translation>ρ, ∆ρ, G, H, ∮</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2048"/>
@@ -428,308 +330,389 @@
         <location filename="../ui/mainwindow.ui" line="2494"/>
         <location filename="../ui/mainwindow.ui" line="2859"/>
         <location filename="../ui/mainwindow.ui" line="3269"/>
-        <location filename="../ui/mainwindow.ui" line="3507"/>
-        <location filename="../ui/mainwindow.ui" line="3528"/>
-        <location filename="../ui/mainwindow.ui" line="3573"/>
-        <location filename="../ui/mainwindow.ui" line="3594"/>
-        <location filename="../ui/mainwindow.ui" line="3967"/>
-        <location filename="../ui/mainwindow.ui" line="3988"/>
+        <location filename="../ui/mainwindow.ui" line="3509"/>
+        <location filename="../ui/mainwindow.ui" line="3530"/>
+        <location filename="../ui/mainwindow.ui" line="3575"/>
+        <location filename="../ui/mainwindow.ui" line="3596"/>
+        <location filename="../ui/mainwindow.ui" line="3969"/>
+        <location filename="../ui/mainwindow.ui" line="3990"/>
+        <location filename="../ui_mainwindow.h" line="1433"/>
+        <location filename="../ui_mainwindow.h" line="1440"/>
+        <location filename="../ui_mainwindow.h" line="1441"/>
+        <location filename="../ui_mainwindow.h" line="1442"/>
+        <location filename="../ui_mainwindow.h" line="1443"/>
+        <location filename="../ui_mainwindow.h" line="1444"/>
+        <location filename="../ui_mainwindow.h" line="1451"/>
+        <location filename="../ui_mainwindow.h" line="1453"/>
+        <location filename="../ui_mainwindow.h" line="1467"/>
+        <location filename="../ui_mainwindow.h" line="1481"/>
+        <location filename="../ui_mainwindow.h" line="1491"/>
+        <location filename="../ui_mainwindow.h" line="1492"/>
+        <location filename="../ui_mainwindow.h" line="1494"/>
+        <location filename="../ui_mainwindow.h" line="1495"/>
+        <location filename="../ui_mainwindow.h" line="1510"/>
+        <location filename="../ui_mainwindow.h" line="1511"/>
         <source>0</source>
-        <translation>0</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2264"/>
+        <location filename="../ui_mainwindow.h" line="1505"/>
         <source>E(k), N(E)</source>
-        <translation>E(k), N(E)</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2289"/>
-        <location filename="../ui/mainwindow.ui" line="3882"/>
-        <location filename="../source/mainwindow.cpp" line="616"/>
+        <location filename="../ui/mainwindow.ui" line="3884"/>
+        <location filename="../ui_mainwindow.h" line="1446"/>
+        <location filename="../ui_mainwindow.h" line="1506"/>
         <source>Зонная структура</source>
         <translation>Zone structure</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2311"/>
-        <location filename="../ui/mainwindow.ui" line="3382"/>
+        <location filename="../ui/mainwindow.ui" line="3384"/>
+        <location filename="../ui_mainwindow.h" line="1447"/>
+        <location filename="../ui_mainwindow.h" line="1486"/>
         <source>Построение</source>
-        <translation>Building</translation>
+        <translation>Plotting</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2333"/>
-        <location filename="../ui/mainwindow.ui" line="3402"/>
-        <location filename="../ui/mainwindow.ui" line="3922"/>
-        <location filename="../ui/mainwindow.ui" line="4072"/>
-        <location filename="../ui/mainwindow.ui" line="4135"/>
+        <location filename="../ui/mainwindow.ui" line="3404"/>
+        <location filename="../ui/mainwindow.ui" line="3924"/>
+        <location filename="../ui/mainwindow.ui" line="4074"/>
+        <location filename="../ui/mainwindow.ui" line="4137"/>
+        <location filename="../ui_mainwindow.h" line="1448"/>
+        <location filename="../ui_mainwindow.h" line="1487"/>
+        <location filename="../ui_mainwindow.h" line="1508"/>
+        <location filename="../ui_mainwindow.h" line="1515"/>
+        <location filename="../ui_mainwindow.h" line="1518"/>
         <source>Загрузить *.f25</source>
         <translation>Load *.f25</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2399"/>
-        <location filename="../ui/mainwindow.ui" line="3549"/>
-        <location filename="../ui/mainwindow.ui" line="3943"/>
+        <location filename="../ui/mainwindow.ui" line="3551"/>
+        <location filename="../ui/mainwindow.ui" line="3945"/>
+        <location filename="../ui_mainwindow.h" line="1450"/>
+        <location filename="../ui_mainwindow.h" line="1493"/>
+        <location filename="../ui_mainwindow.h" line="1509"/>
         <source>Y min/max</source>
-        <translation>Y min/max</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2448"/>
+        <location filename="../ui_mainwindow.h" line="1452"/>
         <source>k-точки ЗБ</source>
         <translation>k-points</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2530"/>
+        <location filename="../ui_mainwindow.h" line="1455"/>
         <source>CheckBox</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2576"/>
+        <location filename="../ui_mainwindow.h" line="1457"/>
         <source>Параметры построения</source>
-        <translation>Building paramrters</translation>
+        <translation>Plotting parameters</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2596"/>
+        <location filename="../ui_mainwindow.h" line="1458"/>
         <source>Общие настройки</source>
         <translation>Common settings</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2616"/>
+        <location filename="../ui_mainwindow.h" line="1459"/>
         <source>Заголовок графика</source>
-        <translation>Graph title</translation>
+        <translation>Plot title</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2658"/>
+        <location filename="../ui_mainwindow.h" line="1460"/>
         <source>Подпись Oy</source>
-        <translation>Oy sign</translation>
+        <translation>Oy title</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2700"/>
+        <location filename="../ui_mainwindow.h" line="1461"/>
         <source>Подпись Ox</source>
-        <translation>Ox sign</translation>
+        <translation>Ox title</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2791"/>
+        <location filename="../ui_mainwindow.h" line="1464"/>
         <source>Уровень Ферми</source>
         <translation>Fermi level</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2843"/>
+        <location filename="../ui_mainwindow.h" line="1466"/>
         <source>Цвет линии Ф</source>
-        <translation>Fermi color</translation>
+        <translation>Fermi level color</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2882"/>
+        <location filename="../ui_mainwindow.h" line="1468"/>
         <source>Толщина линии Ф</source>
-        <translation>Fermi width</translation>
+        <translation>Fermi level width</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2965"/>
+        <location filename="../ui_mainwindow.h" line="1471"/>
         <source>Сдвиг в 0</source>
-        <translation>Shift graph to 0</translation>
+        <translation>Shift to 0</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3010"/>
+        <location filename="../ui_mainwindow.h" line="1473"/>
         <source>Номер графика</source>
-        <translation>Graph number</translation>
+        <translation>Line number</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3052"/>
+        <location filename="../ui_mainwindow.h" line="1474"/>
         <source>Толщина линий</source>
         <translation>Line width</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3100"/>
+        <location filename="../ui_mainwindow.h" line="1475"/>
         <source>Тип линии</source>
         <translation>Line type</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3142"/>
+        <location filename="../ui_mainwindow.h" line="1476"/>
         <source>Цвет линии</source>
         <translation>Line color</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3166"/>
+        <location filename="../ui_mainwindow.h" line="1477"/>
         <source>Отобразить</source>
         <translation>Show</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3211"/>
+        <location filename="../ui_mainwindow.h" line="1479"/>
         <source>Множитель Oy</source>
         <translation>Oy multiplier</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="3297"/>
+        <location filename="../ui/mainwindow.ui" line="3299"/>
+        <location filename="../ui_mainwindow.h" line="1482"/>
         <source>HELP.  Номера функций PDOS.</source>
-        <translation>HELP. PDOS function numbers.</translation>
+        <translation>HELP, PDOS functions numbers</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="3322"/>
+        <location filename="../ui/mainwindow.ui" line="3324"/>
+        <location filename="../ui_mainwindow.h" line="1483"/>
         <source>Загрузить *.out</source>
-        <translation>Loat *.out</translation>
+        <translation>Load *.out</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="3370"/>
+        <location filename="../ui/mainwindow.ui" line="3372"/>
+        <location filename="../ui_mainwindow.h" line="1485"/>
         <source>DOS, COHP, COOP</source>
-        <translation>DOS, COHP, COOP</translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="3483"/>
+        <location filename="../ui/mainwindow.ui" line="3485"/>
+        <location filename="../ui_mainwindow.h" line="1490"/>
         <source>X min/max</source>
-        <translation>X min/max</translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="3615"/>
+        <location filename="../ui/mainwindow.ui" line="3617"/>
+        <location filename="../ui_mainwindow.h" line="1496"/>
         <source>Метки по оси Ox</source>
         <translation>Ox ticks</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="3663"/>
+        <location filename="../ui/mainwindow.ui" line="3665"/>
+        <location filename="../ui_mainwindow.h" line="1498"/>
         <source>Метки по оси Oy</source>
         <translation>Oy ticks</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="3714"/>
+        <location filename="../ui/mainwindow.ui" line="3716"/>
+        <location filename="../ui_mainwindow.h" line="1500"/>
         <source>Поворот</source>
-        <translation>Rotate to</translation>
+        <translation>Rotate</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="3762"/>
+        <location filename="../ui/mainwindow.ui" line="3764"/>
+        <location filename="../ui_mainwindow.h" line="1501"/>
         <source>F(X) -&gt; - F(X)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="3850"/>
+        <location filename="../ui/mainwindow.ui" line="3852"/>
+        <location filename="../ui_mainwindow.h" line="1504"/>
         <source>Help. Математические символы</source>
-        <translation type="unfinished"></translation>
+        <translation>Help. Math symbols</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="3862"/>
+        <location filename="../ui/mainwindow.ui" line="3864"/>
+        <location filename="../ui_mainwindow.h" line="1543"/>
         <source>Конвертирование</source>
-        <translation type="unfinished"></translation>
+        <translation>Converting</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="3902"/>
-        <location filename="../ui/mainwindow.ui" line="4052"/>
+        <location filename="../ui/mainwindow.ui" line="3904"/>
+        <location filename="../ui/mainwindow.ui" line="4054"/>
+        <location filename="../ui_mainwindow.h" line="1507"/>
+        <location filename="../ui_mainwindow.h" line="1514"/>
         <source>Конвертирование в X, F(X)</source>
-        <translation type="unfinished"></translation>
+        <translation>Convert to X, F(X)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4032"/>
+        <location filename="../ui/mainwindow.ui" line="4034"/>
+        <location filename="../ui_mainwindow.h" line="1513"/>
         <source>DOS,COOP, COHP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4095"/>
+        <location filename="../ui/mainwindow.ui" line="4097"/>
+        <location filename="../ui_mainwindow.h" line="1516"/>
         <source>Поверхности</source>
-        <translation type="unfinished"></translation>
+        <translation>Surface</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4115"/>
+        <location filename="../ui/mainwindow.ui" line="4117"/>
+        <location filename="../ui_mainwindow.h" line="1517"/>
         <source>Конвертирование в X, Y, F(X,Y)</source>
-        <translation type="unfinished"></translation>
+        <translation>Convert to X, Y, F(X,Y)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4156"/>
+        <location filename="../ui/mainwindow.ui" line="4158"/>
+        <location filename="../ui_mainwindow.h" line="1519"/>
         <source>Загрузить Surf*</source>
-        <translation type="unfinished"></translation>
+        <translation>Load Surf*</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4241"/>
+        <location filename="../ui/mainwindow.ui" line="4243"/>
+        <location filename="../ui_mainwindow.h" line="1522"/>
         <source>Конвертирование плоскостей из *.outp</source>
-        <translation type="unfinished"></translation>
+        <translation>Convert plane from *.outp</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4261"/>
+        <location filename="../ui/mainwindow.ui" line="4263"/>
+        <location filename="../ui_mainwindow.h" line="1523"/>
         <source>CRYSTAL -&gt; TOPOND</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4282"/>
+        <location filename="../ui/mainwindow.ui" line="4284"/>
+        <location filename="../ui_mainwindow.h" line="1524"/>
         <source>TOPOND -&gt; CRYSTAL</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4303"/>
+        <location filename="../ui/mainwindow.ui" line="4305"/>
+        <location filename="../ui_mainwindow.h" line="1525"/>
         <source>RECTANGU</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4324"/>
+        <location filename="../ui/mainwindow.ui" line="4326"/>
+        <location filename="../ui_mainwindow.h" line="1526"/>
         <source>обязателен!</source>
-        <translation type="unfinished"></translation>
+        <translation>IS MANDATORY!</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4347"/>
+        <location filename="../ui/mainwindow.ui" line="4349"/>
+        <location filename="../ui_mainwindow.h" line="1527"/>
         <source>Преобразование координат</source>
-        <translation type="unfinished"></translation>
+        <translation>Coordinates conversion</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4367"/>
+        <location filename="../ui/mainwindow.ui" line="4369"/>
+        <location filename="../ui_mainwindow.h" line="1528"/>
         <source>Исходные координаты атомов</source>
-        <translation type="unfinished"></translation>
+        <translation>Coorinates</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4406"/>
+        <location filename="../ui/mainwindow.ui" line="4408"/>
+        <location filename="../ui_mainwindow.h" line="1529"/>
         <source>Матрица преобразования</source>
-        <translation type="unfinished"></translation>
+        <translation>Conversion matrix</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4426"/>
-        <location filename="../ui/mainwindow.ui" line="4697"/>
+        <location filename="../ui/mainwindow.ui" line="4428"/>
+        <location filename="../ui/mainwindow.ui" line="4699"/>
+        <location filename="../ui_mainwindow.h" line="1530"/>
+        <location filename="../ui_mainwindow.h" line="1541"/>
         <source>Получить</source>
-        <translation type="unfinished"></translation>
+        <translation>Get</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4487"/>
+        <location filename="../ui/mainwindow.ui" line="4489"/>
+        <location filename="../ui_mainwindow.h" line="1532"/>
         <source>Преобразование координат в формат ATOMS</source>
-        <translation type="unfinished"></translation>
+        <translation>Convert coordinates to ATOMS format</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4507"/>
+        <location filename="../ui/mainwindow.ui" line="4509"/>
+        <location filename="../ui_mainwindow.h" line="1533"/>
         <source>Атомы в элементарной ячейке (000)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4546"/>
+        <location filename="../ui/mainwindow.ui" line="4548"/>
+        <location filename="../ui_mainwindow.h" line="1534"/>
         <source>Атомы заданы</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4566"/>
-        <location filename="../ui/mainwindow.ui" line="4590"/>
+        <location filename="../ui/mainwindow.ui" line="4568"/>
+        <location filename="../ui/mainwindow.ui" line="4592"/>
+        <location filename="../ui_mainwindow.h" line="1535"/>
+        <location filename="../ui_mainwindow.h" line="1536"/>
         <source>в векторах </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4611"/>
+        <location filename="../ui/mainwindow.ui" line="4613"/>
+        <location filename="../ui_mainwindow.h" line="1537"/>
         <source>кристаллографической </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4632"/>
-        <location filename="../ui/mainwindow.ui" line="4653"/>
+        <location filename="../ui/mainwindow.ui" line="4634"/>
+        <location filename="../ui/mainwindow.ui" line="4655"/>
+        <location filename="../ui_mainwindow.h" line="1538"/>
+        <location filename="../ui_mainwindow.h" line="1539"/>
         <source>ячейки</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4674"/>
+        <location filename="../ui/mainwindow.ui" line="4676"/>
+        <location filename="../ui_mainwindow.h" line="1540"/>
         <source>элементарной</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4743"/>
+        <location filename="../ui/mainwindow.ui" line="4745"/>
+        <location filename="../ui_mainwindow.h" line="1579"/>
         <source>О программе</source>
-        <translation type="unfinished"></translation>
+        <translation>About the program</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4755"/>
+        <location filename="../ui/mainwindow.ui" line="4757"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;QGraphViewer&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Версия 1.0.1 &lt;span style=&quot; font-style:italic;&quot;&gt;&amp;quot;La Grande Finale&amp;quot;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Версия 1.0.2 &lt;span style=&quot; font-style:italic;&quot;&gt;&amp;quot;La Grande Finale&amp;quot;&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt; &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Данное приложение создано в среде Qt 5.14 - 5.15, с использованием библиотек QCustomPlot 2.01, QXlsx и Eigen.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Данное приложение создано в среде Qt 5.14 - 5.15, с использованием библиотек QCustomPlot, QXlsx и Eigen.&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Библиотеки используются по лицензии MIT.&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Автор выражает благодарность авторам QCustomPlot и QXlsx за облегчение жизни студентов-разрабов и спасении программы от костылей. Отдельная благодарность Mike Markowski и пользователю &lt;span style=&quot; font-style:italic;&quot;&gt;Timon&lt;/span&gt; за библиотеку нахождения изолиний. Вы спасли мне нервы.&lt;/p&gt;
@@ -747,193 +730,488 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4828"/>
+        <location filename="../ui/mainwindow.ui" line="4830"/>
+        <location filename="../ui_mainwindow.h" line="1575"/>
         <source>О среде Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>About Qt</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4841"/>
+        <location filename="../ui/mainwindow.ui" line="4843"/>
+        <location filename="../ui_mainwindow.h" line="1576"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4867"/>
+        <location filename="../ui/mainwindow.ui" line="4869"/>
+        <location filename="../ui_mainwindow.h" line="1577"/>
         <source>Соглашение</source>
-        <translation type="unfinished"></translation>
+        <translation>License</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4880"/>
+        <location filename="../ui/mainwindow.ui" line="4882"/>
+        <location filename="../ui_mainwindow.h" line="1578"/>
         <source>Изменения</source>
-        <translation type="unfinished"></translation>
+        <translation>Changelog</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4888"/>
+        <location filename="../ui/mainwindow.ui" line="4890"/>
+        <location filename="../ui_mainwindow.h" line="1368"/>
         <source>Сборка</source>
-        <translation type="unfinished"></translation>
+        <translation>Build date</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4893"/>
+        <location filename="../ui/mainwindow.ui" line="4895"/>
+        <location filename="../ui_mainwindow.h" line="1369"/>
         <source>О фреймфорке Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>About Qt</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="4898"/>
+        <location filename="../ui/mainwindow.ui" line="4900"/>
+        <location filename="../ui_mainwindow.h" line="1370"/>
         <source>Изображение</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="179"/>
-        <location filename="../source/mainwindow.cpp" line="185"/>
-        <location filename="../source/mainwindow.cpp" line="192"/>
-        <location filename="../source/mainwindow.cpp" line="210"/>
-        <location filename="../source/mainwindow.cpp" line="213"/>
-        <location filename="../source/mainwindow.cpp" line="216"/>
-        <location filename="../source/mainwindow.cpp" line="219"/>
-        <location filename="../source/mainwindow.cpp" line="232"/>
-        <location filename="../source/mainwindow.cpp" line="337"/>
-        <location filename="../source/mainwindow.cpp" line="371"/>
-        <location filename="../source/mainwindow.cpp" line="405"/>
-        <location filename="../source/mainwindow.cpp" line="467"/>
-        <location filename="../source/mainwindow.cpp" line="518"/>
-        <location filename="../source/mainwindow.cpp" line="568"/>
-        <location filename="../source/mainwindow.cpp" line="622"/>
-        <location filename="../source/mainwindow.cpp" line="723"/>
-        <location filename="../source/mainwindow.cpp" line="796"/>
-        <source>Ошибка парсинга</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="179"/>
-        <source>Не указан ни один файл для построения!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="185"/>
-        <source>Не указаны файлы с данными для построения!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="192"/>
-        <source>Не указан файл *.outp, Molgrath/Trajgrad/P2dcrynp не будут построены!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="210"/>
-        <source>В файле .outp отсутствуют необходимые данные или файл поврежден!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="213"/>
-        <source>В файле Trajgrad.dat отсутствуют необходимые данные или файл поврежден!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="216"/>
-        <source>В файле Molgrapf.dat отсутствуют необходимые данные или файл поврежден!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="219"/>
-        <source>В файле P2dcrynp.dat отсутствуют необходимые данные или файл поврежден!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="232"/>
-        <source>Не указан файл *.outp!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="310"/>
-        <location filename="../source/mainwindow.cpp" line="344"/>
-        <location filename="../source/mainwindow.cpp" line="378"/>
-        <location filename="../source/mainwindow.cpp" line="412"/>
-        <location filename="../source/mainwindow.cpp" line="474"/>
-        <location filename="../source/mainwindow.cpp" line="525"/>
-        <location filename="../source/mainwindow.cpp" line="642"/>
-        <location filename="../source/mainwindow.cpp" line="778"/>
-        <source>Open file</source>
-        <translation type="unfinished">Open file</translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="331"/>
-        <location filename="../source/mainwindow.cpp" line="365"/>
-        <location filename="../source/mainwindow.cpp" line="399"/>
-        <location filename="../source/mainwindow.cpp" line="460"/>
-        <location filename="../source/mainwindow.cpp" line="512"/>
-        <location filename="../source/mainwindow.cpp" line="562"/>
-        <location filename="../source/mainwindow.cpp" line="838"/>
-        <source>Ошибка сохранения</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="331"/>
-        <location filename="../source/mainwindow.cpp" line="365"/>
-        <location filename="../source/mainwindow.cpp" line="399"/>
-        <location filename="../source/mainwindow.cpp" line="460"/>
-        <location filename="../source/mainwindow.cpp" line="512"/>
-        <location filename="../source/mainwindow.cpp" line="562"/>
-        <location filename="../source/mainwindow.cpp" line="838"/>
-        <source>&apos;%1&apos; не удается открыть для записи!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="334"/>
-        <location filename="../source/mainwindow.cpp" line="368"/>
-        <location filename="../source/mainwindow.cpp" line="402"/>
-        <location filename="../source/mainwindow.cpp" line="464"/>
-        <location filename="../source/mainwindow.cpp" line="515"/>
-        <location filename="../source/mainwindow.cpp" line="565"/>
-        <location filename="../source/mainwindow.cpp" line="840"/>
-        <source>Данные обработаны</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="334"/>
-        <location filename="../source/mainwindow.cpp" line="368"/>
-        <location filename="../source/mainwindow.cpp" line="402"/>
-        <location filename="../source/mainwindow.cpp" line="464"/>
-        <location filename="../source/mainwindow.cpp" line="515"/>
-        <location filename="../source/mainwindow.cpp" line="565"/>
-        <location filename="../source/mainwindow.cpp" line="840"/>
-        <source>Данные обработаны и сохранены!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="337"/>
-        <location filename="../source/mainwindow.cpp" line="371"/>
-        <location filename="../source/mainwindow.cpp" line="405"/>
-        <location filename="../source/mainwindow.cpp" line="467"/>
-        <location filename="../source/mainwindow.cpp" line="518"/>
-        <location filename="../source/mainwindow.cpp" line="568"/>
-        <source>В предоставленном файле отсутствуют необходимые данные или файл поврежден!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="585"/>
-        <location filename="../source/mainwindow.cpp" line="713"/>
-        <source>Ошибка загрузки</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="585"/>
-        <location filename="../source/mainwindow.cpp" line="713"/>
-        <source>Не указан файл построения!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="622"/>
-        <location filename="../source/mainwindow.cpp" line="723"/>
-        <location filename="../source/mainwindow.cpp" line="796"/>
-        <source>В предоставленном файле отсутсвуют необходимые данные или файл поврежден!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="643"/>
+        <location filename="../source/mainwindow.cpp" line="623"/>
         <source>f25 files (*.f25);;All Files (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="749"/>
+        <location filename="../source/mainwindow.cpp" line="768"/>
+        <source>Excel file (*.xlsx);;All Files (*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui_mainwindow.h" line="1544"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;QGraphViewer&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Версия 1.0.2 &lt;span style=&quot; font-style:italic;&quot;&gt;&amp;quot;La Grande Finale&amp;quot;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt; &lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Данное приложение создано в среде Qt 5.14 - 5.15, с использованием библиотек QCustomPlot, QXlsx и Eigen.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Библиотеки используются по лицензии MIT.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Автор выражает благодарность авторам QCustomPlot и QXlsx за облегчение жизни студентов-разрабов и спасении программы от костылей. Отдельна�� благодарность Mike Markowski и пользователю &lt;span style=&quot; font-style:italic;&quot;&gt;Timon&lt;/span&gt; за библиотеку нахождения изолиний. Вы спасли мне нервы.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;В случае во��никновения проблем, обратитесь к вашему преподавателю и покажите как воспроизвести ошибку.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Авторы:&lt;/p&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Кравченко Андрей,&lt;/p&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ФГАОУ ВО НИ ТПУ&lt;/p&gt;
+&lt;p align=&quot;right&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Кравченко Наталья,&lt;/p&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ФГБОУ ВО КемГУ&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;2020-2021, Все права не защищены!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PictureSettings</name>
+    <message>
+        <location filename="../ui/picturesettings.ui" line="19"/>
+        <location filename="../ui_picturesettings.h" line="160"/>
+        <source>Dialog</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/picturesettings.ui" line="80"/>
+        <location filename="../ui_picturesettings.h" line="161"/>
+        <source>OK</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/picturesettings.ui" line="93"/>
+        <location filename="../ui_picturesettings.h" line="162"/>
+        <source>Cancel</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/picturesettings.ui" line="143"/>
+        <location filename="../ui/picturesettings.ui" line="291"/>
+        <location filename="../ui_picturesettings.h" line="163"/>
+        <location filename="../ui_picturesettings.h" line="169"/>
+        <source>Меньше</source>
+        <translation>Smaller</translation>
+    </message>
+    <message>
+        <location filename="../ui/picturesettings.ui" line="162"/>
+        <location filename="../ui/picturesettings.ui" line="310"/>
+        <location filename="../ui_picturesettings.h" line="164"/>
+        <location filename="../ui_picturesettings.h" line="170"/>
+        <source>Больше</source>
+        <translation>Bigger</translation>
+    </message>
+    <message>
+        <location filename="../ui/picturesettings.ui" line="181"/>
+        <location filename="../ui/picturesettings.ui" line="272"/>
+        <location filename="../ui_picturesettings.h" line="165"/>
+        <location filename="../ui_picturesettings.h" line="168"/>
+        <source>Х</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/picturesettings.ui" line="228"/>
+        <location filename="../ui_picturesettings.h" line="166"/>
+        <source>Качество (JPG)</source>
+        <translation>Quality</translation>
+    </message>
+    <message>
+        <location filename="../ui/picturesettings.ui" line="250"/>
+        <location filename="../ui_picturesettings.h" line="167"/>
+        <source>Разрешение</source>
+        <translation>Resolution</translation>
+    </message>
+    <message>
+        <location filename="../ui/picturesettings.ui" line="329"/>
+        <location filename="../ui_picturesettings.h" line="171"/>
+        <source>PNG</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/picturesettings.ui" line="348"/>
+        <location filename="../ui_picturesettings.h" line="172"/>
+        <source>JPG</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/picturesettings.ui" line="367"/>
+        <location filename="../ui_picturesettings.h" line="173"/>
+        <source>BMP</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/picturesettings.ui" line="386"/>
+        <location filename="../ui_picturesettings.h" line="174"/>
+        <source>Формат</source>
+        <translation>Image type</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="12"/>
+        <source>Ошибка парсинга</source>
+        <translation>Parsing error</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="13"/>
+        <source>Ошибка сохранения</source>
+        <translation>Saving error</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="14"/>
+        <source>Ошибка загрузки</source>
+        <translation>Loading error</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="15"/>
+        <source>Ошибка добавления</source>
+        <translation>Adding error</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="16"/>
+        <source>Ошибка обработки</source>
+        <translation>Processing error</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="18"/>
+        <source>Не указан ни один файл для построения!</source>
+        <translation>No build files specified!</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="19"/>
+        <source>Не указан файл построения!</source>
+        <translation>Build file not specified!</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="20"/>
+        <source>Не указаны файлы с данными для построения!</source>
+        <translation>Files with data for building are not specified!</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="21"/>
+        <source>Не указан файл *.outp, Molgrath/Trajgrad/P2dcrynp не будут построены!</source>
+        <translation>No * .outp file specified, Molgrath / Trajgrad / P2dcrynp will not be built!</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="22"/>
+        <source>В файле .outp отсутствуют необходимые данные или файл поврежден!</source>
+        <translation>The .outp file is missing required data or the file is damaged!</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="23"/>
+        <source>В файле Trajgrad.dat отсутствуют необходимые данные или файл поврежден!</source>
+        <translation>The Trajgrad.dat file is missing the required data or the file is damaged!</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="24"/>
+        <location filename="../headers/constantsandstrings.h" line="25"/>
+        <source>В файле Molgrapf.dat отсутствуют необходимые данные или файл поврежден!</source>
+        <translation>The  Molgrapf.dat file is missing the required data or the file is damaged!</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="26"/>
+        <source>Не указан файл *.outp!</source>
+        <translation>* .Outp file not specified!</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="27"/>
+        <source>&apos;%1&apos; не удается открыть для записи!</source>
+        <translation>&apos;%1&apos; could not be opened for writing!</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="28"/>
+        <source>В предоставленном файле отсутствуют необходимые данные или файл поврежден!</source>
+        <translation>The provided file is missing the required data or the file is damaged!</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="29"/>
+        <source>Файл &apos;%1&apos; имеет нестандартное имя и не будет добавлен.</source>
+        <translation>File &apos;%1&apos; has a non-standard name and will not be added.</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="30"/>
+        <source>Не удалось сохранить изображение!</source>
+        <translation>Failed to save image!</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="31"/>
+        <source>Атомы не найдены! Проверьте правильность ввода информации.</source>
+        <translation>No atoms found! Check if the information is entered correctly.</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="32"/>
+        <source>Нет данных для сохранения!</source>
+        <translation>No data to save!</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="34"/>
+        <source>Данные обработаны</source>
+        <translation>Data processed</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="35"/>
+        <source>Данные обработаны и сохранены!</source>
+        <translation>Data processed and saved!</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="37"/>
+        <source>Открыть файл...</source>
+        <translation>Open file...</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="38"/>
+        <source>Сохранить файл как...</source>
+        <translation>Save as...</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="40"/>
+        <source>Список изменений</source>
+        <translation>Changelog</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="41"/>
+        <location filename="../headers/constantsandstrings.h" line="89"/>
+        <source>Настройки</source>
+        <translation>Settings</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="42"/>
+        <source>Help</source>
+        <translation>Help</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="44"/>
+        <source>Зонная структура</source>
+        <translation>Zone structure</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="45"/>
+        <location filename="../headers/constantsandstrings.h" line="46"/>
+        <source>График</source>
+        <translation>Plot</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="47"/>
+        <source>Ro</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="48"/>
+        <source>RoDef</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="49"/>
+        <source>Spin</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="50"/>
+        <source>SpinDef</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="52"/>
+        <source>№ атома</source>
+        <translation>Atom number</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="53"/>
+        <source>Атом</source>
+        <translation>Atom</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="54"/>
+        <source>Тип</source>
+        <translation>Type</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="55"/>
+        <source>Число ф-й</source>
+        <translation>Fcn. count</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="56"/>
+        <source>Номера баз. ф-й</source>
+        <translation>Base fcn. num.</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="57"/>
+        <source>N нач.</source>
+        <translation>N str</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="58"/>
+        <source>N кон.</source>
+        <translation>N end</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="60"/>
+        <source>№ исх. ат.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="61"/>
+        <source>№ ат. в элм. яч.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="63"/>
+        <source>№ Исходного атома</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="64"/>
+        <source>№ Атома в эл. яч.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="65"/>
+        <source>n1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="66"/>
+        <source>n2</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="67"/>
+        <source>n3</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="69"/>
+        <source>Сплошная</source>
+        <translation>Solid</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="70"/>
+        <source>Тире</source>
+        <translation>Dash</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="71"/>
+        <location filename="../headers/constantsandstrings.h" line="77"/>
+        <source>Точка</source>
+        <translation>Dot</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="72"/>
+        <source>Точка-тире</source>
+        <translation>Dash-Dot</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="74"/>
+        <source>Круг</source>
+        <translation>Circle</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="75"/>
+        <source>Плюс</source>
+        <translation>Plus</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="76"/>
+        <source>Звездочка</source>
+        <translation>Asterisk</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="78"/>
+        <source>Перекрестие</source>
+        <translation>Cross</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="79"/>
+        <source>Квадрат</source>
+        <translation>Square</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="80"/>
+        <source>Ромб</source>
+        <translation>Diamond</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="81"/>
+        <source>Верхнеор. треугольник</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="82"/>
+        <source>Нижнеор. треугольник</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="84"/>
+        <source>Нет</source>
+        <translation>None</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="85"/>
+        <source>По часовой</source>
+        <translation>Clockwise</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="86"/>
+        <source>Против часовой</source>
+        <translation>Counter-Clockwise</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="88"/>
+        <source>Сохранить график</source>
+        <translation>Save plot</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="91"/>
+        <source>Лицензионное соглашение</source>
+        <translation>License agreement</translation>
+    </message>
+    <message>
+        <location filename="../headers/constantsandstrings.h" line="92"/>
         <source>Лицензия MIT
 
 Copyright © 2020 КемГУ
@@ -946,252 +1224,9 @@ Copyright © 2020 КемГУ
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../source/mainwindow.cpp" line="760"/>
-        <source>Лицензионное соглашение</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="801"/>
-        <source>Сохранить данные</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="802"/>
-        <source>Excel file (*.xlsx);;All Files (*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="808"/>
-        <location filename="../source/mainwindow.cpp" line="864"/>
-        <source>№ атома</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="809"/>
-        <location filename="../source/mainwindow.cpp" line="864"/>
-        <source>Атом</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="810"/>
-        <location filename="../source/mainwindow.cpp" line="864"/>
-        <source>Тип</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="811"/>
-        <location filename="../source/mainwindow.cpp" line="864"/>
-        <source>Число ф-й</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="812"/>
-        <source>Номера баз. ф-й</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="864"/>
-        <source>N нач.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/mainwindow.cpp" line="864"/>
-        <source>N кон.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PictureSettings</name>
-    <message>
-        <location filename="../ui/picturesettings.ui" line="19"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/picturesettings.ui" line="80"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/picturesettings.ui" line="93"/>
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/picturesettings.ui" line="143"/>
-        <location filename="../ui/picturesettings.ui" line="291"/>
-        <source>Меньше</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/picturesettings.ui" line="162"/>
-        <location filename="../ui/picturesettings.ui" line="310"/>
-        <source>Больше</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/picturesettings.ui" line="181"/>
-        <location filename="../ui/picturesettings.ui" line="272"/>
-        <source>Х</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/picturesettings.ui" line="228"/>
-        <source>Качество (JPG)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/picturesettings.ui" line="250"/>
-        <source>Разрешение</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/picturesettings.ui" line="329"/>
-        <source>PNG</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/picturesettings.ui" line="348"/>
-        <source>JPG</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/picturesettings.ui" line="367"/>
-        <source>BMP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ui/picturesettings.ui" line="386"/>
-        <source>Формат</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/picturesettings.cpp" line="13"/>
-        <source>Настройки</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QComboBox</name>
-    <message>
-        <location filename="../source/uiinit.cpp" line="6"/>
-        <location filename="../source/uiinit.cpp" line="11"/>
-        <source>Сплошная</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/uiinit.cpp" line="6"/>
-        <location filename="../source/uiinit.cpp" line="11"/>
-        <source>Тире</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/uiinit.cpp" line="6"/>
-        <location filename="../source/uiinit.cpp" line="7"/>
-        <location filename="../source/uiinit.cpp" line="11"/>
-        <source>Точка</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/uiinit.cpp" line="6"/>
-        <location filename="../source/uiinit.cpp" line="11"/>
-        <source>Точка-тире</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/uiinit.cpp" line="7"/>
-        <source>Круг</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/uiinit.cpp" line="7"/>
-        <source>Плюс</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/uiinit.cpp" line="7"/>
-        <source>Звездочка</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/uiinit.cpp" line="8"/>
-        <source>Перекрестие</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/uiinit.cpp" line="8"/>
-        <source>Квадрат</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/uiinit.cpp" line="8"/>
-        <source>Ромб</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/uiinit.cpp" line="8"/>
-        <source>Верхнеор. треугольник</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/uiinit.cpp" line="9"/>
-        <source>Нижнеор. треугольник</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/uiinit.cpp" line="10"/>
-        <source>Нет</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/uiinit.cpp" line="10"/>
-        <source>По часовой</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/uiinit.cpp" line="10"/>
-        <source>Против часовой</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ZoneStructGraphBuilder</name>
-    <message>
-        <location filename="../source/zonestructgraphbuilder.cpp" line="183"/>
-        <source>Настройки</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/zonestructgraphbuilder.cpp" line="190"/>
-        <location filename="../source/zonestructgraphbuilder.cpp" line="195"/>
-        <source>PNG file (*.png);;All Files (*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/zonestructgraphbuilder.cpp" line="199"/>
-        <source>JPG file (*.jpg);;All Files (*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/zonestructgraphbuilder.cpp" line="203"/>
-        <source>BMP file (*.bmp);All Files (*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/zonestructgraphbuilder.cpp" line="238"/>
-        <source>Ошибка сохранения</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/zonestructgraphbuilder.cpp" line="238"/>
-        <source>Не удалось сохранить изображение!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/zonestructgraphbuilder.cpp" line="182"/>
-        <location filename="../source/zonestructgraphbuilder.cpp" line="210"/>
-        <source>Сохранить график</source>
-        <translation type="unfinished">Save graph</translation>
+        <location filename="../headers/constantsandstrings.h" line="104"/>
+        <source>Дата сборки: %1, %2</source>
+        <translation>Build date: %1, %2</translation>
     </message>
 </context>
 <context>
@@ -1204,7 +1239,7 @@ Copyright © 2020 КемГУ
     <message>
         <location filename="../ui/changelog.ui" line="26"/>
         <source>Да понял я...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">OK</translation>
     </message>
     <message>
         <location filename="../ui/changelog.ui" line="39"/>
@@ -1214,14 +1249,21 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;1.1 - Wat, you still use this?!&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Общие изменения&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Пацаны и пацанессы, ЛОКАЛИЗАЦИЯ ПОДЪЕХАЛА!&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- А еще ченджлоги&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- ЛОКАЛИЗАЦИЯ ПОДЪЕХАЛА!&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- 64-х битная версия&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Внутренняя кухня&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Масштабные переделки кодовой базы&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Реорганизовано хранение исходных файлов&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Оформление кода приведено к единообразному стандарту CammelCase&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Устранено множество потенциальных утечек памяти&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Масштабные переделки кодовой базы:&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;-- Реорганизовано хранение исходных файлов&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;-- Оформление кода приведено к единообразному стандарту CammelCase&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;-- Устранено множество потенциальных утечек памяти&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;-- Переделаны классы отрисовки графиков, теперь наследие и ООП&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Немного увеличена скорость работы приложения&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Переезд на MSVC2019&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Переезд на Windows SDK 10.0.20348.0&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Обновление библиотеки QCustomPlot до версии 2.1.0&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;1.0.2 - La Grande Finale!&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Багфиксы&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;1.0.1 - La Grande Finale!&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Исправлено отображение чек-боксов выбора уровня Ферми&lt;/p&gt;
@@ -1230,12 +1272,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Если не выбран ни один график в DOS\COOP\COHP будет строиться текущий выбраный&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;1.0 - La Grande Finale!&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../source/changelog.cpp" line="16"/>
-        <source>Список изменений</source>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Первый релиз&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

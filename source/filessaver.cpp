@@ -1,3 +1,6 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
 #include "filessaver.h"
 
 
@@ -200,12 +203,8 @@ bool FilesSaver::saveLinFermi(const QString& path, BandData *bandData, const dou
     QString outputStr;
     if (file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
-        // We're going to streaming text to the file
         QTextStream stream(&file);
-        if (uhf)
-            outputStr = QString::number(bandData->oXBand[0], 'g', 8) + "\t" + QString::number(bandData->fermi, 'g', 8) + "\n" + QString::number(bandData->oXBand.at(bandData->oXBand.count() / 2 - 1), 'g', 8) + "\t" + QString::number(bandData->fermi, 'g', 8);
-        else
-			outputStr = QString::number(bandData->oXBand[0], 'g', 8) + "\t" + QString::number(bandData->fermi, 'g', 8) + "\n" + QString::number(bandData->oXBand.at(bandData->oXBand.count() / 2 - 1), 'g', 8) + "\t" + QString::number(bandData->fermi, 'g', 8);
+		outputStr = QString::number(bandData->oXBand[0], 'g', 8) + "\t" + QString::number(bandData->fermi, 'g', 8) + "\n" + QString::number(bandData->oXBand.at(bandData->oXBand.count() / 2 - 1), 'g', 8) + "\t" + QString::number(bandData->fermi, 'g', 8);
         stream << outputStr;
         file.close();
     }
@@ -295,11 +294,7 @@ bool FilesSaver::saveMapnData(const QString& sourceFileLocation, BandData *bandD
             xlsx.write(j+1,3,bandData->outputMAPN[i][j]);
         }
         QApplication::processEvents();
-//            QThread *thread= new QThread;
-//            XlsxSaver *saveDoc = new XlsxSaver(&xlsx,pathFull);
-//            saveDoc->moveToThread(thread);
-//            thread->start();
-//            while (thread->isRunning());
+
         const bool success=xlsx.saveAs(pathFull); // save the document as 'Test.xlsx'
         if (success!=true)
         {

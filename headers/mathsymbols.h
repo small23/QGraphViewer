@@ -1,3 +1,6 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
 #pragma once
 
 #include <QObject>
@@ -5,12 +8,13 @@
 
 //Класс-словарь математических символов, присутствующих в юникоде
 
-class MathSymbols : public QObject
+class MathSymbols final : public QObject
 {
 	Q_OBJECT
 
 public:
-	MathSymbols(QObject *parent);
+	explicit MathSymbols(QObject *parent);
+	QString adaptString(QString rawString) const;
 	~MathSymbols();
 	void initMap() const;
 	QMap<QString, QString> *map;

@@ -1,14 +1,20 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
 #include "uiinit.h"
+
+#include "coloricondrawer.h"
+#include "constantsandstrings.h"
 #include "ui_mainwindow.h"
 #include "delegator.h"
 #include "plotparameters.h"
 
-auto lineTypesLang ={QComboBox::tr("Сплошная"), QComboBox::tr("Тире"), QComboBox::tr("Точка"), QComboBox::tr("Точка-тире")};
-auto pointTypesLang = {QComboBox::tr("Круг"),QComboBox::tr("Плюс"),QComboBox::tr("Звездочка"),QComboBox::tr("Точка"),
-                   QComboBox::tr("Перекрестие"),QComboBox::tr("Квадрат"),QComboBox::tr("Ромб"),QComboBox::tr("Верхнеор. треугольник"),
-                   QComboBox::tr("Нижнеор. треугольник")};
-auto rotateTypesLang = { QComboBox::tr("Нет"),QComboBox::tr("По часовой"),QComboBox::tr("Против часовой")};
-auto pointTypesSecondLang = {QComboBox::tr("Сплошная"), QComboBox::tr("Тире"), QComboBox::tr("Точка"), QComboBox::tr("Точка-тире")};
+auto lineTypesLang ={STR_UI_LineTypes_Solid, STR_UI_LineTypes_Dash, STR_UI_LineTypes_Pointed, STR_UI_LineTypes_PointDash};
+auto pointTypesLang = { STR_UI_PointTypes_Cirq,STR_UI_PointTypes_Plus,STR_UI_PointTypes_Star,STR_UI_PointTypes_Point,
+                   STR_UI_PointTypes_X,STR_UI_PointTypes_Square,STR_UI_PointTypes_Diamond,STR_UI_PointTypes_TriangUp,
+                   STR_UI_PointTypes_TriangDown };
+auto rotateTypesLang = { STR_UI_RotateTypes_None,STR_UI_RotateTypes_Clockwise,STR_UI_RotateTypes_Counter_Clockwise};
+auto pointTypesSecondLang = { STR_UI_LineTypes_Solid, STR_UI_LineTypes_Dash, STR_UI_LineTypes_Pointed, STR_UI_LineTypes_PointDash };
 
 void setupUiFields(Ui::MainWindow* ui)
 {
@@ -45,8 +51,8 @@ void setupUiFields(Ui::MainWindow* ui)
 
     const QFont font("Arial", 9, QFont::Thin);
 
-    const int columnWidth=53;
-    const int rowHeight=8;
+    constexpr int columnWidth=53;
+    constexpr int rowHeight=8;
 
 
     ui->tab3RotationTable->setRowCount(3);
@@ -75,7 +81,9 @@ void setupUiFields(Ui::MainWindow* ui)
 
     ui->tab3ConvertedAtomsTable->setRowCount(0);
     ui->tab3ConvertedAtomsTable->setColumnCount(5);
-    ui->tab3ConvertedAtomsTable->setHorizontalHeaderLabels(QStringList() << "№ исх. ат." << "№ ат. в элм. яч." << "n1" << "n2" << "n3");
+    ui->tab3ConvertedAtomsTable->setHorizontalHeaderLabels(QStringList() << STR_XLSX_Short_SourceAtomNumber << STR_XLSX_Short_AtomNumber
+        << STR_XLSX_Extended_N1 << STR_XLSX_Extended_N2 << STR_XLSX_Extended_N3);
+	//QStringList() << "№ исх. ат." << "№ ат. в элм. яч." << "n1" << "n2" << "n3");
     ui->tab3ConvertedAtomsTable->verticalHeader()->hide();
     ui->tab3ConvertedAtomsTable->verticalHeader()->setDefaultSectionSize(rowHeight);
     ui->tab3ConvertedAtomsTable->setColumnWidth(0,80);
@@ -100,19 +108,33 @@ void setupUiFields(Ui::MainWindow* ui)
     ui->tab2PDOSNumbersTable->verticalScrollBar()->show();
     ui->tab2PDOSNumbersTable->horizontalHeader()->setStretchLastSection(true);
     //ui->tab2PDOSNumbersTable->verticalHeader()->setStretchLastSection(true);
-    ui->tab2PDOSNumbersTable->setHorizontalHeaderLabels(QStringList() << "№ атома" << "Атом" << "Тип" << "Число ф-й" << "№ нач." <<"№ кон.");
+    ui->tab2PDOSNumbersTable->setHorizontalHeaderLabels(QStringList() << STR_XLSX_AtomNumber << STR_XLSX_Atom << STR_XLSX_Type << STR_XLSX_FunctionNumber << STR_XLSX_StartNumber << STR_XLSX_EndNumber);
     ui->tab2PDOSNumbersTable->horizontalHeader()->setFont(font);
 
-    const QPixmap pixmap(":logos/Logos/qcp-logo.png");
-    ui->tab4QCustomPlotLabel->setPixmap(pixmap);
+    qreal devPixRat = qApp->devicePixelRatio();
+    int w = (ui->tab4QtLogo->width())*devPixRat;
+    int h = (ui->tab4QtLogo->height() + 500)*devPixRat;
+    
+    QPixmap pixmap(":logos/Logos/qcp-logo.png");
+    pixmap.setDevicePixelRatio(devPixRat);
+    // set a scaled pixmap to a w x h window keeping its aspect ratio 
+    ui->tab4QCustomPlotLabel->setPixmap(pixmap.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+	//ui->tab4QCustomPlotLabel->setPixmap(pixmap);
+    //ui->tab4QCustomPlotLabel->adjustSize();
 
-    const QPixmap pixmap2(":logos/Logos/Qt_logo_2016.svg.png");
-    ui->tab4QtLogo->setPixmap(pixmap2);
+    QPixmap pixmap2(":logos/Logos/Qt_logo_2016.svg.png");
+    pixmap2.setDevicePixelRatio(devPixRat);
+    ui->tab4QtLogo->setPixmap(pixmap2.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+	//ui->tab4QtLogo->setPixmap(pixmap2);
+    //ui->tab4QtLogo->adjustSize();
 
-    const QPixmap pixmap3(":logos/Logos/QXlsx-Desktop.png");
-    ui->tab4QXlsxLogo->setPixmap(pixmap3);
+    QPixmap pixmap3(":logos/Logos/QXlsx-Desktop.png");
+    pixmap3.setDevicePixelRatio(devPixRat);
+    ui->tab4QXlsxLogo->setPixmap(pixmap3.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    //ui->tab4QXlsxLogo->setPixmap(pixmap3);
+    //ui->tab4QXlsxLogo->adjustSize();
 
-    ui->tab4CompileDate->setText(QString("Дата сборки: %1, %2").arg(__DATE__).arg(__TIME__));
+    ui->tab4CompileDate->setText(STR_BuildDate.arg(__DATE__).arg(__TIME__));
 
     ui->tab4TextBrowserAboutProgram->setFrameStyle(QFrame::NoFrame);
     ui->tab4TextBrowserAboutProgram->setTextInteractionFlags(Qt::NoTextInteraction);
@@ -158,36 +180,19 @@ void setUiButtonsGroups(Ui::MainWindow* ui)
     ui->HelpButtonGroup->setId(ui->helpButton62,62);
     ui->HelpButtonGroup->setId(ui->helpButton63,63);
 
-    //ui->LoadFileButtonGroup->addButton(ui->tab2LoadFilef25DOSS);
     ui->LoadFileButtonGroup->addButton(ui->tab2LoadFilef25ZoneStruct);
 
     ui->LoadFileButtonGroup->setId(ui->tab1LoadFilef25,6);
     ui->LoadFileButtonGroup->setId(ui->tab1LoadFileOutp,5);
-    //ui->LoadFileButtonGroup->setId(ui->tab2LoadFilef25DOSS,8);
     ui->LoadFileButtonGroup->setId(ui->tab2LoadFilef25ZoneStruct,7);
+
+    //ui->tab4ChangelogButton->hide();
 }
 
 void setUiColorLabels(Ui::MainWindow* ui)
 {
-//    for (int i=0; i<6; i++)
-//    {
-//        LineColors[i].color=QColor(0,0,0);
-//        LineColors[i].width=1;
-//        LineColors[i].style=Qt::PenStyle::SolidLine;
-//    }
-    QPixmap colorIcon(16,16);
-    colorIcon.fill(Qt::transparent);
-    QPainter p(&colorIcon);
-    p.setRenderHint(QPainter::Antialiasing, true);
-    const QPen pen(Qt::transparent, 2);
-    p.setPen(pen);
-    QBrush brush(Qt::black);
-    p.setBrush(brush);
-    p.drawEllipse(0, 0, 16, 16);
-    brush.setColor(Qt::black);
-    p.setBrush(brush);
-    p.drawEllipse(1, 1, 14, 14);
-    QIcon redIcon(colorIcon);
+
+    QPixmap colorIcon = ColorIconDrawer::drawIcon(Qt::black, qApp->devicePixelRatio());;
     ui->ColorLable1->setPixmap(colorIcon);
     ui->ColorLable2->setPixmap(colorIcon);
     ui->ColorLable3->setPixmap(colorIcon);

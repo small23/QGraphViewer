@@ -14,9 +14,7 @@
 #include <QProgressDialog>
 #include "helpwindow.h"
 #include "uiinit.h"
-#include "basicgraphbuild.h"
 #include "graphicsdata.h"
-#include "zonestructgraphbuilder.h"
 #include "filedialogsload.h"
 #include "helpmatrixwidget.h"
 #include "atomconversion.h"
@@ -26,7 +24,6 @@
 #include "filessaver.h"
 #include "plotparameters.h"
 #include "coloricondrawer.h"
-#include "dosgraphbuilder.h"
 #include "pdosparser.h"
 #include <QTimer>
 #include <QtConcurrent/QtConcurrent>
@@ -35,20 +32,25 @@
 #include "ui_mainwindow.h"
 #include "mathsymbols.h"
 #include "changelog.h"
-
+#include "basicgraph.h"
+#include "zonegraph.h"
+#include "dosgraph.h"
+#include "constantsandstrings.h"
+#include "QeDos.h"
+#include "qegraph.h"
 
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
+class MainWindow final : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    explicit MainWindow(QWidget *parent = nullptr);
+    ~MainWindow() override;
     //QProgressDialog* processDialog;
 
 public Q_SLOTS:
@@ -106,6 +108,8 @@ private Q_SLOTS:
     void tab2PushButtonPdosLoadPressed();
 
     void tab4Changelog();
+
+    void tab5QeDosLoad();
 	
 private:
     //Указатели на классы-обработчики и хранилища
@@ -119,17 +123,15 @@ private:
     GraphicsData *graphicsData;
     BandData *bandData;
     SurfData *surfData;
+    QeDos* qeDosData;
     FilesSaver *filesSaver;
     PdosParser *pdosParser;
     QString compilationTime;
     CrystalTopondConvertors *ctConvertor;
     PlotParameters *plotParams;
     ColorIconDrawer *iconDrawer;
-    QTimer* tmr;
-    QVector<BasicGraphBuild*> *graphsA;
-    QVector<DOSGraphBuilder*> *graphsB;
-    QVector<ZoneStructGraphBuilder*> *graphsC;
     MathSymbols* symbols;
     AtomConversion* atomsConvert;
+	FileDialogsLoad*	fileDiag;
 };
 #endif // MAINWINDOW_H

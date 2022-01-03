@@ -1,6 +1,9 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
 #include "plotparameters.h"
 
-PlotParameters::PlotParameters(Ui::MainWindow *uiInt, QWidget *parentInt)
+PlotParameters::PlotParameters(Ui::MainWindow* uiInt, QWidget* parentInt)
 {
 	ui = uiInt;
 	parent = parentInt;
@@ -24,14 +27,26 @@ PlotParameters::PlotParameters(Ui::MainWindow *uiInt, QWidget *parentInt)
 	tab1surfaceDivider = 0;
 	tab1surfacePrecision = 0;
 	tab1surfaceWidth = 0;
-	zeroShift = false;
-	uhf = false;
+	tab2zeroShift = false;
+	commonUhf = false;
 	colorContours = false;
 	drawRes = 0;
 	tab2FermiLevelWidth = 0;
 	tab2ShowFermiLine = false;
 	tab2OyTicks = false;
 	tab2OxTicks = false;
+
+	UniversalLineParams test2;
+	test2 = test;
+	tab5FermiLevelColor = QColor(0, 0, 0);;
+	tab5PlotParams = new QVector<UniversalLineParams>();
+	tab5PlotParams->append(test2);
+	tab5ShowOx = false;
+	tab5FxInverse = false;
+	tab5FermiLevelWidth = 0;
+	tab5ShowFermiLine = false;
+	tab5OyTicks = false;
+	tab5OxTicks = false;
 }
 
 void PlotParameters::updatePlotParams(const int tabId)
@@ -76,7 +91,7 @@ void PlotParameters::updatePlotParams(const int tabId)
 		for (int i = 0; i < 4; i++)
 		{
 			QString name = QString("tab1LineType%1").arg(i + 1);
-			QComboBox *box = parent->findChild<QComboBox *>(name);
+			QComboBox* box = parent->findChild<QComboBox*>(name);
 			if (box != nullptr)
 			{
 				switch (box->currentIndex()) {
@@ -100,7 +115,7 @@ void PlotParameters::updatePlotParams(const int tabId)
 		for (int i = 4; i < 6; i++)
 		{
 			QString name = QString("tab1LineType%1").arg(i + 1);
-			QComboBox *box = parent->findChild<QComboBox *>(name);
+			QComboBox* box = parent->findChild<QComboBox*>(name);
 			if (box != nullptr)
 			{
 				switch (box->currentIndex()) {
@@ -173,9 +188,28 @@ void PlotParameters::updatePlotParams(const int tabId)
 		tab2OyTicks = ui->tab2CheckBoxShowOyTicks->isChecked();
 		tab2FxInverse = ui->tab2CheckBoxFxSet->isChecked();
 	}
+	else if (tabId == 5)
+	{
+		//tab5FermiLevelColor = QColor(0, 0, 0);;
+		tab5FermiLevelWidth = ui->tab5SpinnerBoxFermiLevelWidth->value();
+		tab5ShowFermiLine = ui->tab5CheckBoxFermiLevel->isChecked();
+		tab5FermiLevel = ui->tab5DOSFerm->text().toDouble();
+		tab5PlotName = ui->tab5EditLinePlotName->text();
+		tab5OyName = ui->tab5EditLineOxName->text();
+		tab5OxName = ui->tab5EditLineOyName->text();
+		tab5OyTicks = ui->tab5CheckBoxShowOyTicks->isChecked();
+		tab5OxTicks = ui->tab5CheckBoxShowOxTicks->isChecked();
+		tab5xMin = ui->tab5DOSXMin->text().toDouble();
+		tab5xMax = ui->tab5DOSXMax->text().toDouble();
+		tab5yMin = ui->tab5DOSYMin->text().toDouble();
+		tab5yMax = ui->tab5DOSYMax->text().toDouble();
+		tab5yMinZs = ui->tab5ZoneStructYMin->text().toDouble();
+		tab5yMaxZs = ui->tab5ZoneStructYMax->text().toDouble();
 
-	zeroShift = ui->tab2ZeroShift->isChecked();
-	uhf = ui->tab2UHF->isChecked();
+	}
+
+	tab2zeroShift = ui->tab2ZeroShift->isChecked();
+	commonUhf = ui->tab2UHF->isChecked();
 
 }
 
@@ -207,7 +241,7 @@ void PlotParameters::setCountOfLines(int size) const
 	{
 		UniversalLineParams temp2;
 		temp2.color = QColor(0, 0, 0);
-        temp2.width = 2;
+		temp2.width = 2;
 		temp2.style = Qt::PenStyle::SolidLine;
 		temp2.styleId = 0;
 		temp2.show = false;

@@ -1,3 +1,6 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
 #include "picturesettings.h"
 #include "ui_picturesettings.h"
 
@@ -7,10 +10,10 @@ PictureSettings::PictureSettings(PlotParameters* params, SettingsKeeper* setting
 {
     ui->setupUi(this);
     QTranslator qtTranslator;
-    qtTranslator.load("qt_en", QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    qtTranslator.load(settings->lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     QApplication::installTranslator(&qtTranslator);
     this->settings = settings;
-    this->setWindowTitle(tr("Настройки"));
+    this->setWindowTitle(STR_Window_Settings);
 	
     connect(ui->okButton,     SIGNAL(clicked()), this, SLOT(okButtonPushed()));
     connect(ui->cancelButton, SIGNAL(clicked()), this, SLOT(cancelButtonPushed()));

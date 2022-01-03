@@ -1,12 +1,23 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
 #include "mathsymbols.h"
 
-MathSymbols::MathSymbols(QObject *parent)
-	: QObject(parent)
+MathSymbols::MathSymbols(QObject* parent)
+	: QObject(parent), map(new QMap<QString, QString>())
 {
-	map = new QMap<QString, QString>();
 	initMap();
 }
 
+QString MathSymbols::adaptString(QString rawString) const
+{
+	for (int i = this->map->count() - 1; i >= 0; i--)
+	{
+		if (rawString.contains(this->map->keys().at(i)))
+			rawString = rawString.replace(this->map->keys().at(i), this->map->values().at(i));
+	}
+	return rawString;
+}
 
 MathSymbols::~MathSymbols()
 {
@@ -394,8 +405,8 @@ void MathSymbols::initMap() const
 "\\par",
 "‖" };
 
-for(int i=0; i<test.count(); i+=2)
-{
-	map->insert(test[i], test[i + 1]);
-}
+	for (int i = 0; i < test.count(); i += 2)
+	{
+		this->map->insert(test[i], test[i + 1]);
+	}
 }

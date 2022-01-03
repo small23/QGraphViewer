@@ -1,4 +1,9 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
 #include "atomconversion.h"
+
+#include "constantsandstrings.h"
 
 AtomConversion::AtomConversion(Ui::MainWindow* uiExt, SettingsKeeper* settings, QWidget* parent) : QWidget(parent)
 {
@@ -12,11 +17,11 @@ void AtomConversion::convertAtoms()
 
 	if (res.isEmpty())
 	{
-		QMessageBox::critical(this, tr("Ошибка сохранения"), tr("Нет данных для сохранения!"));
+		QMessageBox::critical(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoDataForSave);
 		return;
 	}
 	const QString fileName = QFileDialog::getSaveFileName(nullptr,
-	                                                      tr("Сохранить данные"), settings->getLastPath() + "Atoms.txt",
+		STR_Dialog_SaveFile, settings->getLastPath() + "Atoms.txt",
 	                                                      "Text file (*.txt);;All Files (*)");
 	if (fileName != "")
 	{
@@ -101,7 +106,6 @@ void AtomConversion::convertAndSearchAtoms()
 		}
 	}
 
-	str = "";
 	str = ui->tab3TextEditAtomsElem->toPlainText();
 	b.clear();
 	b = str.split("\n");
@@ -161,23 +165,23 @@ void AtomConversion::convertAndSearchAtoms()
 			ui->tab3ConvertedAtomsTable->setItem(ui->tab3ConvertedAtomsTable->rowCount() - 1, 4, itm);
 		}
 	}
-	ui->tab3ConvertedAtomsTable->setHorizontalHeaderLabels(
-		QStringList() << "№ исх. ат." << "N ат. в элм. яч." << "n1" << "n2" << "n3");
+	ui->tab3ConvertedAtomsTable->setHorizontalHeaderLabels(QStringList() << STR_XLSX_Short_SourceAtomNumber << STR_XLSX_Short_AtomNumber
+		<< STR_XLSX_Extended_N1 << STR_XLSX_Extended_N2 << STR_XLSX_Extended_N3);
 	if (ui->tab3ConvertedAtomsTable->rowCount() > 0)
 	{
 		const QString fileName = QFileDialog::getSaveFileName(nullptr,
-		                                                      tr("Сохранить данные"), settings->getLastPath() + "Atoms.xlsx",
+			STR_Dialog_SaveFile, settings->getLastPath() + "Atoms.xlsx",
 		                                                      "Excel file (*.xlsx);;All Files (*)");
 		if (fileName != "")
 		{
 			const QFileInfo fileinfo(fileName);
 			settings->updatePath(fileinfo.absolutePath());
 			QXlsx::Document xlsx;
-			xlsx.write(1, 1, tr("№ Исходного атома"));
-			xlsx.write(1, 2, tr("№ Атома в эл. яч."));
-			xlsx.write(1, 3, "n1");
-			xlsx.write(1, 4, "n2");
-			xlsx.write(1, 5, "n3");
+			xlsx.write(1, 1, STR_XLSX_Extended_SourceAtomNumber);
+			xlsx.write(1, 2, STR_XLSX_Extended_AtomNumber);
+			xlsx.write(1, 3, STR_XLSX_Extended_N1);
+			xlsx.write(1, 4, STR_XLSX_Extended_N2);
+			xlsx.write(1, 5, STR_XLSX_Extended_N3);
 			for (int j = 0; j < ui->tab3ConvertedAtomsTable->rowCount(); j++)
 			{
 				xlsx.write(j + 2, 1, ui->tab3ConvertedAtomsTable->item(j, 0)->text().toDouble());
@@ -195,14 +199,14 @@ void AtomConversion::convertAndSearchAtoms()
 			const bool success = xlsx.saveAs(fileName); // save the document as 'Test.xlsx'
 			if (success != true)
 			{
-				QMessageBox::critical(this, tr("Ошибка сохранения"),
-				                      tr("'") + fileName + tr("' не удается открыть для записи!"));
+				QMessageBox::critical(this, STR_ErrorTitle_SaveError,
+					STR_ErrorMessage_CantOpenFileForWrite.arg(fileName));
 				return;
 			}
-			QMessageBox::information(this, tr("Данные обработаны"), tr("Данные обработаны и сохранены!"));
+			QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
 		}
 	}
 	else
-		QMessageBox::warning(this, tr("Ошибка обработки"),
-		                     tr("Атомы не найдены! Проверьте правильность ввода информации."));
+		QMessageBox::warning(this, STR_ErrorTitle_ProcessingError,
+			STR_ErrorMessage_NoAtomsError);
 }
