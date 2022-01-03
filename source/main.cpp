@@ -17,7 +17,8 @@ int main(int argc, char *argv[])
     //auto a = QLibraryInfo::TranslationsPath;
     //qtTranslator.load("qt_en.qm", QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     //application.installTranslator(&qtTranslator);
-    const QPixmap pixmap(":/splash/splash.png");
+    QPixmap pixmap(":/splash/splash.png");
+    pixmap.setDevicePixelRatio(qApp->devicePixelRatio());
     QSplashScreen splash(pixmap);
     splash.setMask(pixmap.mask());
     splash.show();
