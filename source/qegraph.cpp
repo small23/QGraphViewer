@@ -11,10 +11,6 @@ void QeGraph::draw(QeDos* data, MathSymbols* symbols, const int currentGraphic, 
 	QCPCurve* newCurve;
 	QPen pen;
 	bool isShowed = false;
-	//double xmin = 999999999999;
-	//double xmax = -99999999999;
-	//double ymin = 999999999999;
-	//double ymax = -99999999999;
 	drawData(data, angle, &isShowed);
 	if (!isShowed)
 	{
@@ -163,20 +159,8 @@ void QeGraph::drawData(QeDos* data, int angle, bool* isShowed)
 				y.clear();
 				for (int j = 0; j < data->pdos[file].size(); j++) //Line size (point number)
 				{
-
 					x.append(data->pdos[0][j][0] + plotParams->tab5DOSShift);
 					y.append(data->pdos[0][j][i] * plotParams->tab5PlotParams->at(lineCounter).multiplier);
-					//newCurve->addData(data->pdos[0][j][0], data->pdos[0][j][i]);
-					/*
-					if (xmin > data->pdos[0][j][0])
-						xmin = data->pdos[0][j][0];
-					if (xmax < data->pdos[0][j][0])
-						xmax = data->pdos[0][j][0];
-					if (ymin > data->pdos[0][j][i])
-						ymin = data->pdos[0][j][i];
-					if (ymax < data->pdos[0][j][i])
-						ymax = data->pdos[0][j][i];
-						*/
 				}
 				QCPCurve* newCurve = new QCPCurve(customPlot->xAxis, customPlot->yAxis);
 				if (angle == 0)
