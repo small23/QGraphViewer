@@ -6,6 +6,7 @@ GraphBuilder::GraphBuilder(SettingsKeeper* settings, const QString& title, PlotP
 	customPlot->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(customPlot, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequest(QPoint)));
     connect(customPlot, SIGNAL(destroyed(QObject*)), this, SLOT(deletionOnClose(QObject*)));
+    connect(customPlot, SIGNAL(resizeEvent(QResizeEvent*)), this, SLOT(resizeEvent(QResizeEvent*)));
     customPlot->setWindowTitle(title);
     customPlot->setAttribute(Qt::WA_DeleteOnClose);
 
@@ -21,6 +22,7 @@ GraphBuilder::GraphBuilder(SettingsKeeper* settings, const QString& title, PlotP
     customPlot->yAxis->setTickLabelFont(font);
     customPlot->xAxis->setLabelFont(font);
     customPlot->yAxis->setLabelFont(font);
+
     customPlot->setLocale(QLocale::English);
 }
 

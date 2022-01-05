@@ -34,45 +34,48 @@ MainWindow::MainWindow(QWidget* parent)
 	tab1GraphFont.setPointSize(18);
 	tab2GraphFont.setFamily("Times New Roman");
 	tab2GraphFont.setPointSize(18);
+	tab5GraphFont.setFamily("Times New Roman");
+	tab5GraphFont.setPointSize(18);
+	ui->tab1FontSize->setValue(18);
 
-    connect(ui->tab3AtomsConvertButton,     SIGNAL(clicked()),                    this,       SLOT(atomsConvertButtonPressed()));
-    connect(ui->tab3AtomsSearchButton,      SIGNAL(clicked()),                    this,       SLOT(atomsSearchButtonPressed()));
-    connect(ui->tab3LoadFileConvertXfX,     SIGNAL(clicked()),                    this,       SLOT(loadFileConvertXfXButtonPressed()));
-    connect(ui->tab3LoadFilesConvertDOS,    SIGNAL(clicked()),                    this,       SLOT(tab3LoadFilesConvertDosButtonPressed()));
-    connect(ui->tab3SurfF25Button,          SIGNAL(clicked()),                    this,       SLOT(tab3SurfF25ButtonPressed()));
-    connect(ui->tab3SurfConvertButton,      SIGNAL(clicked()),                    this,       SLOT(tab3SurfConvertButtonPressed()));
-    connect(ui->tab3ButtonCrystalToTopond,  SIGNAL(clicked()),                    this,       SLOT(tab3ButtonCrystalToTopondPressed()));
-    connect(ui->tab3ButtonTopondToCrystal,  SIGNAL(clicked()),                    this,       SLOT(tab3ButtonTopondToCrystalPressed()));
-    connect(ui->tab2buttonDrawZoneStruct,   SIGNAL(clicked()),                    this,       SLOT(tab2ButtonDrawZoneStructPressed()));
-    connect(ui->ColorButtonGroup,           SIGNAL(buttonClicked(int)),           this,       SLOT(colorChangeButtonClicked(int)));
-    connect(ui->DeleteButtonGroup,          SIGNAL(buttonClicked(int)),           this,       SLOT(deleteFileStringButtonClicked(int)));
-    connect(ui->HelpButtonGroup,            SIGNAL(buttonClicked(int)),           this,       SLOT(helpButtonClicked(int)));
-    connect(ui->LoadFileButtonGroup,        SIGNAL(buttonClicked(int)),           fileDiag,   SLOT(loadFileButtonCliked(int)));
-    connect(ui->tab1LoadFilesTjMolP2,       SIGNAL(clicked()),                    fileDiag,   SLOT(fileDialogMolTrajP2Load()));
-    connect(ui->tab1PlotGraphic,            SIGNAL(clicked()),                    this,       SLOT(plotButtonTab1Clicked()));
-    connect(ui->tab1FontChangeButton,       SIGNAL(clicked()),                    this,       SLOT(fontChangeButtonPressed()));
-    connect(ui->tab2SpinnerLineWidth,       SIGNAL(valueChanged(QString)),        this,       SLOT(tab2UpdateParams(QString)));
-    connect(ui->tab2ComboBoxLineType,       SIGNAL(currentIndexChanged(QString)), this,       SLOT(tab2UpdateParams(QString)));
-    connect(ui->tab2CheckBoxShow1,          SIGNAL(stateChanged(int)),            this,       SLOT(tab2UpdateShowLine(int)));
-    connect(ui->tab2SpinnerLineMultiplier,  SIGNAL(valueChanged(QString)),        this,       SLOT(tab2UpdateParams(QString)));
-    connect(ui->tab2ComboBoxLineSelector,   SIGNAL(currentIndexChanged(int)),     this,       SLOT(tab2ComboBoxLineSelectorIndexChanged(int)));
-    connect(ui->tab2ButtonDrawDOS,          SIGNAL(clicked()),                    this,       SLOT(tab2ButtonDrawDosPressed()));
-    connect(ui->tab2BushButtonSetFont,      SIGNAL(clicked()),                    this,       SLOT(tab2BushButtonSetFontPressed()));
-    connect(ui->tab4QtAbout,                SIGNAL(clicked()),                    this,       SLOT(tab4QtAbout()));
-    connect(ui->tab2LoadFilef25DOSS,        SIGNAL(clicked()),                    this,       SLOT(tab2LoadFilef25DossPressed()));
-    connect(ui->tab4LicenceMIT,             SIGNAL(clicked()),                    this,       SLOT(tab4LicenceMit()));
-    connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),                    this,       SLOT(tab2PushButtonPdosLoadPressed()));
-    connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),                    this,       SLOT(tab2PushButtonPdosLoadPressed()));
-    connect(ui->tab4ChangelogButton,        SIGNAL(clicked()),                    this,       SLOT(tab4Changelog()));
-	connect(ui->tab5SpinnerLineWidth,		  SIGNAL(valueChanged(QString)),		  this,		  SLOT(tab5UpdateParams(QString)));
-	connect(ui->tab5ComboBoxLineType,		  SIGNAL(currentIndexChanged(QString)), this,		  SLOT(tab5UpdateParams(QString)));
-	connect(ui->tab5CheckBoxShow1,          SIGNAL(stateChanged(int)),			  this,		  SLOT(tab5UpdateShowLine(int)));
-	connect(ui->tab5SpinnerLineMultiplier,  SIGNAL(valueChanged(QString)),		  this,		  SLOT(tab5UpdateParams(QString)));
-	connect(ui->tab5ComboBoxLineSelector,   SIGNAL(currentIndexChanged(int)),	  this,		  SLOT(tab5ComboBoxLineSelectorIndexChanged(int)));
-	connect(ui->tab5BushButtonSetFont, SIGNAL(clicked()), this, SLOT(tab5BushButtonSetFontPressed()));
-	connect(ui->tab5LoadFilefQEDOSS, SIGNAL(clicked()), this, SLOT(tab5LoadFileDossPressed()));
-	connect(ui->tab5ButtonDrawDOS, SIGNAL(clicked()), this,SLOT(tab5DrawDosPressed()));
-	connect(ui->tab5LoadFilecomboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5UpdateParamsFile(int)));
+    connect(ui->tab3AtomsConvertButton,     SIGNAL(clicked()),						this,       SLOT(atomsConvertButtonPressed()));
+    connect(ui->tab3AtomsSearchButton,      SIGNAL(clicked()),						this,       SLOT(atomsSearchButtonPressed()));
+    connect(ui->tab3LoadFileConvertXfX,     SIGNAL(clicked()),						this,       SLOT(loadFileConvertXfXButtonPressed()));
+    connect(ui->tab3LoadFilesConvertDOS,    SIGNAL(clicked()),						this,       SLOT(tab3LoadFilesConvertDosButtonPressed()));
+    connect(ui->tab3SurfF25Button,          SIGNAL(clicked()),						this,       SLOT(tab3SurfF25ButtonPressed()));
+    connect(ui->tab3SurfConvertButton,      SIGNAL(clicked()),						this,       SLOT(tab3SurfConvertButtonPressed()));
+    connect(ui->tab3ButtonCrystalToTopond,  SIGNAL(clicked()),						this,       SLOT(tab3ButtonCrystalToTopondPressed()));
+    connect(ui->tab3ButtonTopondToCrystal,  SIGNAL(clicked()),						this,       SLOT(tab3ButtonTopondToCrystalPressed()));
+    connect(ui->tab2buttonDrawZoneStruct,   SIGNAL(clicked()),						this,       SLOT(tab2ButtonDrawZoneStructPressed()));
+    connect(ui->ColorButtonGroup,           SIGNAL(buttonClicked(int)),				this,       SLOT(colorChangeButtonClicked(int)));
+    connect(ui->DeleteButtonGroup,          SIGNAL(buttonClicked(int)),				this,       SLOT(deleteFileStringButtonClicked(int)));
+    connect(ui->HelpButtonGroup,            SIGNAL(buttonClicked(int)),				this,       SLOT(helpButtonClicked(int)));
+    connect(ui->LoadFileButtonGroup,        SIGNAL(buttonClicked(int)),				fileDiag,   SLOT(loadFileButtonCliked(int)));
+    connect(ui->tab1LoadFilesTjMolP2,       SIGNAL(clicked()),						fileDiag,   SLOT(fileDialogMolTrajP2Load()));
+    connect(ui->tab1PlotGraphic,            SIGNAL(clicked()),						this,       SLOT(plotButtonTab1Clicked()));
+    connect(ui->tab1FontChangeButton,       SIGNAL(clicked()),						this,       SLOT(fontChangeButtonPressed()));
+    connect(ui->tab2SpinnerLineWidth,       SIGNAL(valueChanged(QString)),			this,       SLOT(tab2UpdateParams(QString)));
+    connect(ui->tab2ComboBoxLineType,       SIGNAL(currentIndexChanged(QString)),	this,       SLOT(tab2UpdateParams(QString)));
+    connect(ui->tab2CheckBoxShow1,          SIGNAL(stateChanged(int)),				this,       SLOT(tab2UpdateShowLine(int)));
+    connect(ui->tab2SpinnerLineMultiplier,  SIGNAL(valueChanged(QString)),			this,       SLOT(tab2UpdateParams(QString)));
+    connect(ui->tab2ComboBoxLineSelector,   SIGNAL(currentIndexChanged(int)),		this,       SLOT(tab2ComboBoxLineSelectorIndexChanged(int)));
+    connect(ui->tab2ButtonDrawDOS,          SIGNAL(clicked()),						this,       SLOT(tab2ButtonDrawDosPressed()));
+    connect(ui->tab2BushButtonSetFont,      SIGNAL(clicked()),						this,       SLOT(tab2BushButtonSetFontPressed()));
+    connect(ui->tab4QtAbout,                SIGNAL(clicked()),						this,       SLOT(tab4QtAbout()));
+    connect(ui->tab2LoadFilef25DOSS,        SIGNAL(clicked()),						this,       SLOT(tab2LoadFilef25DossPressed()));
+    connect(ui->tab4LicenceMIT,             SIGNAL(clicked()),						this,       SLOT(tab4LicenceMit()));
+    connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),						this,       SLOT(tab2PushButtonPdosLoadPressed()));
+    connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),						this,       SLOT(tab2PushButtonPdosLoadPressed()));
+    connect(ui->tab4ChangelogButton,        SIGNAL(clicked()),						this,       SLOT(tab4Changelog()));
+	connect(ui->tab5SpinnerLineWidth,		  SIGNAL(valueChanged(QString)),			this,		SLOT(tab5UpdateParams(QString)));
+	connect(ui->tab5ComboBoxLineType,		  SIGNAL(currentIndexChanged(QString)),	this,		SLOT(tab5UpdateParams(QString)));
+	connect(ui->tab5CheckBoxShow1,          SIGNAL(stateChanged(int)),				this,		SLOT(tab5UpdateShowLine(int)));
+	connect(ui->tab5SpinnerLineMultiplier,  SIGNAL(valueChanged(QString)),			this,		SLOT(tab5UpdateParams(QString)));
+	connect(ui->tab5ComboBoxLineSelector,   SIGNAL(currentIndexChanged(int)),		this,		SLOT(tab5ComboBoxLineSelectorIndexChanged(int)));
+	connect(ui->tab5BushButtonSetFont,	  SIGNAL(clicked()),						this,		SLOT(tab5BushButtonSetFontPressed()));
+	connect(ui->tab5LoadFilefQEDOSS,		  SIGNAL(clicked()),						this,		SLOT(tab5LoadFileDossPressed()));
+	connect(ui->tab5ButtonDrawDOS,		  SIGNAL(clicked()),						this,		SLOT(tab5DrawDosPressed()));
+	connect(ui->tab5LoadFilecomboBox,		  SIGNAL(currentIndexChanged(int)),		this,		SLOT(tab5UpdateParamsFile(int)));
 
 
 	//Корректировочный коэффициент масштабирования
@@ -796,7 +799,6 @@ void MainWindow::tab5QeDosLoad()
 		return;
 	}
 	qeDosData->parseDataNew(content);
-	(new QeGraph(settings, "Plot", plotParams, tab2GraphFont, this))->draw(qeDosData);
 }
 
 void MainWindow::tab5UpdateParams(QString i)
@@ -898,26 +900,32 @@ void MainWindow::tab5LoadFileDossPressed()
 
 void MainWindow::tab5DrawDosPressed()
 {
-	for (int i=0; i< ui->tab5LoadFilecomboBox->count(); i++)
+	if (ui->tab5LoadFilecomboBox->count() > 0)
 	{
-		QString filePath = ui->tab5LoadFilecomboBox->itemText(i);
-		QList<QString>* content = new QList<QString>();
-		if (filePath != "")
-		{
-			readFileFromFs(filePath, content);
-			const QFileInfo fileinfo(filePath);
-			settings->updatePath(fileinfo.absolutePath());
-		}
-		else
-		{
-			delete content;
-			return;
-		}
 		qeDosData->clear();
-		qeDosData->parseAppend(content);
-		(new QeGraph(settings, "Plot", plotParams, tab5GraphFont, this))->draw(qeDosData);
+		for (int i = 0; i < ui->tab5LoadFilecomboBox->count(); i++)
+		{
+			QString filePath = ui->tab5LoadFilecomboBox->itemText(i);
+			QList<QString>* content = new QList<QString>();
+			if (filePath != "")
+			{
+				readFileFromFs(filePath, content);
+				const QFileInfo fileinfo(filePath);
+				settings->updatePath(fileinfo.absolutePath());
+			}
+			else
+			{
+				delete content;
+				return;
+			}
+			qeDosData->parseAppend(content);
+		}
+		int selected = ui->tab5ComboBoxLineSelector->currentIndex();
+		for (int i = 0; i < ui->tab5LoadFilecomboBox->currentIndex(); i++)
+				selected += plotParams->tab5LinesCounter->at(i);
+		plotParams->updatePlotParams(5);
+		(new QeGraph(settings, "Plot", plotParams, tab5GraphFont, this))->draw(qeDosData, symbols, selected, ui->tab5ComboBoxDosRotate->currentIndex());
 	}
-
 }
 
 void MainWindow::tab5UpdateParamsFile(int selected)

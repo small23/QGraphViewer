@@ -16,18 +16,9 @@ void QeDos::parseAppend(const QList<QString>* content)
 {
 	pdos.append(QVector<QVector<double>>(1));
 	const int index = pdos.count() - 1;
-	const QString test = content->at(1);
-	QStringList test2 = test.split(" ");
-	int i = test2.count() - 1;
-	while (i >= 0)
-	{
-		if (test2.at(i) == "")
-			test2.removeAt(i);
-		i--;
-	}
-	const int numbersCount = test2.count();
+	const int numbersCount = count(content)+1;
 
-
+	pdos[index].clear();
 	for (int i = 1; i < content->size(); i++)
 	{
 		QString c = content->at(i);
@@ -46,7 +37,7 @@ void QeDos::parseAppend(const QList<QString>* content)
 
 
 
-int QeDos::count(QList<QString>* content)
+int QeDos::count(const QList<QString>* content)
 {
 	QString test = content->at(1);
 	QStringList test2 = test.split(" ");
@@ -58,7 +49,7 @@ int QeDos::count(QList<QString>* content)
 		i--;
 	}
 
-	return test2.count();
+	return test2.count()-1;
 }
 
 void QeDos::clear()

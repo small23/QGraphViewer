@@ -352,10 +352,10 @@ public:
     QFrame *line;
     QPushButton *tab4LicenceMIT;
     QPushButton *tab4ChangelogButton;
-    QButtonGroup *LoadFileButtonGroup;
     QButtonGroup *ColorButtonGroup;
     QButtonGroup *DeleteButtonGroup;
     QButtonGroup *HelpButtonGroup;
+    QButtonGroup *LoadFileButtonGroup;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -1823,6 +1823,7 @@ public:
         label_147->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         groupBox_64 = new QGroupBox(tab_5);
         groupBox_64->setObjectName(QString::fromUtf8("groupBox_64"));
+        groupBox_64->setEnabled(false);
         groupBox_64->setGeometry(QRect(225, 210, 215, 81));
         groupBox_64->setFont(font2);
         tab5LoadFilesConvertDOS = new QPushButton(groupBox_64);
@@ -1875,7 +1876,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(3);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -2134,27 +2135,27 @@ public:
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Arial'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">QGraphViewer</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\222\320\265\321\200\321\201\320\270\321\217 1.0.2 <span style=\" font-style:italic;\">&quot;La Grande Finale&quot;</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> </p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-"
-                        "indent:0px;\">\320\224\320\260\320\275\320\275\320\276\320\265 \320\277\321\200\320\270\320\273\320\276\320\266\320\265\320\275\320\270\320\265 \321\201\320\276\320\267\320\264\320\260\320\275\320\276 \320\262 \321\201\321\200\320\265\320\264\320\265 Qt 5.14 - 5.15, \321\201 \320\270\321\201\320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\320\275\320\270\320\265\320\274 \320\261\320\270\320\261\320\273\320\270\320\276\321\202\320\265\320\272 QCustomPlot, QXlsx \320\270 Eigen.</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\221\320\270\320\261\320\273\320\270\320\276\321\202\320\265\320\272\320\270 \320\270\321\201\320\277\320\276\320\273\321\214\320\267\321\203\321\216\321\202\321\201\321\217 \320\277\320\276 \320\273\320\270\321\206\320\265\320\275\320\267\320\270\320\270 MIT.</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0;"
-                        " text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\220\320\262\321\202\320\276\321\200 \320\262\321\213\321\200\320\260\320\266\320\260\320\265\321\202 \320\261\320\273\320\260\320\263\320\276\320\264\320\260\321\200\320\275\320\276\321\201\321\202\321\214 \320\260\320\262\321\202\320\276\321\200\320\260\320\274 QCustomPlot \320\270 QXlsx \320\267\320\260 \320\276\320\261\320\273\320\265\320\263\321\207\320\265\320\275\320\270\320\265 \320\266\320\270\320\267\320\275\320\270 \321\201\321\202\321\203\320\264\320\265\320\275\321\202\320\276\320\262-\321\200\320\260\320\267\321\200\320\260\320\261\320\276\320\262 \320\270 \321\201\320\277\320\260\321\201\320\265\320\275\320\270\320\270 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\320\274\321\213 \320\276\321\202 \320\272\320\276\321\201\321\202\321\213\320\273\320\265\320\271. \320\236\321\202\320\264\320\265\320\273\321\214\320\275\320\260\321"
-                        "\217 \320\261\320\273\320\260\320\263\320\276\320\264\320\260\321\200\320\275\320\276\321\201\321\202\321\214 Mike Markowski \320\270 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\321\216 <span style=\" font-style:italic;\">Timon</span> \320\267\320\260 \320\261\320\270\320\261\320\273\320\270\320\276\321\202\320\265\320\272\321\203 \320\275\320\260\321\205\320\276\320\266\320\264\320\265\320\275\320\270\321\217 \320\270\320\267\320\276\320\273\320\270\320\275\320\270\320\271. \320\222\321\213 \321\201\320\277\320\260\321\201\320\273\320\270 \320\274\320\275\320\265 \320\275\320\265\321\200\320\262\321\213.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\222\320\265\321\200\321\201\320\270\321\217 1.1.0 Alpha 1 <span style=\" font-style:italic;\">&quot;W</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:10pt; font-style:italic;\">at, you still use this?!</span><span style=\" font-style:italic;\">&quot; </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-bl"
+                        "ock-indent:0; text-indent:0px;\"> </p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\224\320\260\320\275\320\275\320\276\320\265 \320\277\321\200\320\270\320\273\320\276\320\266\320\265\320\275\320\270\320\265 \321\201\320\276\320\267\320\264\320\260\320\275\320\276 \320\262 \321\201\321\200\320\265\320\264\320\265 Qt 5.14 - 5.15, \321\201 \320\270\321\201\320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\320\275\320\270\320\265\320\274 \320\261\320\270\320\261\320\273\320\270\320\276\321\202\320\265\320\272 QCustomPlot, QXlsx \320\270 Eigen.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\221\320\270\320\261\320\273\320\270\320\276\321\202\320\265\320\272\320\270 \320\270\321\201\320\277\320\276\320\273\321\214\320\267\321\203\321\216\321\202\321\201\321\217 \320\277\320\276 \320\273\320\270\321\206\320\265\320\275\320\267\320\270"
+                        "\320\270 MIT.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\222 \321\201\320\273\321\203\321\207\320\260\320\265 \320\262\320\276\320"
-                        "\267\320\275\320\270\320\272\320\275\320\276\320\262\320\265\320\275\320\270\321\217 \320\277\321\200\320\276\320\261\320\273\320\265\320\274, \320\276\320\261\321\200\320\260\321\202\320\270\321\202\320\265\321\201\321\214 \320\272 \320\262\320\260\321\210\320\265\320\274\321\203 \320\277\321\200\320\265\320\277\320\276\320\264\320\260\320\262\320\260\321\202\320\265\320\273\321\216 \320\270 \320\277\320\276\320\272\320\260\320\266\320\270\321\202\320\265 \320\272\320\260\320\272 \320\262\320\276\321\201\320\277\321\200\320\276\320\270\320\267\320\262\320\265\321\201\321\202\320\270 \320\276\321\210\320\270\320\261\320\272\321\203.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\220\320\262\321\202\320\276\321\200 \320\262\321\213\321\200\320\260\320\266\320\260\320\265\321\202 \320\261\320\273\320\260\320\263\320\276\320\264\320\260\321\200\320\275\320\276\321\201\321\202\321\214 \320\260\320\262\321\202\320\276\321\200\320\260\320\274 QCustomPlot \320\270 QXlsx \320\267\320\260 \320\276\320\261\320\273\320\265\320\263\321\207\320\265\320\275\320\270\320\265 \320\266\320\270\320\267\320\275\320\270 \321\201\321\202\321\203\320\264\320\265\320\275\321\202\320\276\320\262-\321\200\320\260\320\267\321\200\320\260\320\261\320\276\320\262 \320\270 \321\201\320\277\320\260\321\201\320\265\320\275\320\270\320\270 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\320\274\321\213 \320"
+                        "\276\321\202 \320\272\320\276\321\201\321\202\321\213\320\273\320\265\320\271. \320\236\321\202\320\264\320\265\320\273\321\214\320\275\320\260\321\217 \320\261\320\273\320\260\320\263\320\276\320\264\320\260\321\200\320\275\320\276\321\201\321\202\321\214 Mike Markowski \320\270 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\321\216 <span style=\" font-style:italic;\">Timon</span> \320\267\320\260 \320\261\320\270\320\261\320\273\320\270\320\276\321\202\320\265\320\272\321\203 \320\275\320\260\321\205\320\276\320\266\320\264\320\265\320\275\320\270\321\217 \320\270\320\267\320\276\320\273\320\270\320\275\320\270\320\271. \320\222\321\213 \321\201\320\277\320\260\321\201\320\273\320\270 \320\274\320\275\320\265 \320\275\320\265\321\200\320\262\321\213.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\220\320\262\321\202\320\276\321\200\321\213:</p>\n"
-"<p align=\"right\" s"
-                        "tyle=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\232\321\200\320\260\320\262\321\207\320\265\320\275\320\272\320\276 \320\220\320\275\320\264\321\200\320\265\320\271,</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; marg"
+                        "in-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\222 \321\201\320\273\321\203\321\207\320\260\320\265 \320\262\320\276\320\267\320\275\320\270\320\272\320\275\320\276\320\262\320\265\320\275\320\270\321\217 \320\277\321\200\320\276\320\261\320\273\320\265\320\274, \320\276\320\261\321\200\320\260\321\202\320\270\321\202\320\265\321\201\321\214 \320\272 \320\262\320\260\321\210\320\265\320\274\321\203 \320\277\321\200\320\265\320\277\320\276\320\264\320\260\320\262\320\260\321\202\320\265\320\273\321\216 \320\270 \320\277\320\276\320\272\320\260\320\266\320\270\321\202\320\265 \320\272\320\260\320\272 \320\262\320\276\321\201\320\277\321\200\320\276\320\270\320\267\320\262\320\265\321\201\321\202\320\270 \320\276\321\210\320\270\320\261\320\272\321\203.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; marg"
+                        "in-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\220\320\262\321\202\320\276\321\200\321\213:</p>\n"
+"<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\232\321\200\320\260\320\262\321\207\320\265\320\275\320\272\320\276 \320\220\320\275\320\264\321\200\320\265\320\271,</p>\n"
 "<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\244\320\223\320\220\320\236\320\243 \320\222\320\236 \320\235\320\230 \320\242\320\237\320\243</p>\n"
 "<p align=\"right\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\232\321\200\320\260\320\262\321\207\320\265\320\275\320\272\320\276 \320\235\320\260\321\202\320\260\320\273\321\214\321\217,</p>\n"
-"<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px;"
-                        " margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\244\320\223\320\221\320\236\320\243 \320\222\320\236 \320\232\320\265\320\274\320\223\320\243</p>\n"
+"<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\232\321\200\320\260\320\262\321\207\320\265\320\275\320\272\320\276"
+                        " \320\235\320\260\321\202\320\260\320\273\321\214\321\217,</p>\n"
+"<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\244\320\223\320\221\320\236\320\243 \320\222\320\236 \320\232\320\265\320\274\320\223\320\243</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">2020-2021, \320\222\321\201\320\265 \320\277\321\200\320\260\320\262\320\260 \320\275\320\265 \320\267\320\260\321\211\320\270\321\211\320\265\320\275\321\213!</p></body></html>", nullptr));
         tab4QCustomPlotLabel->setText(QString());

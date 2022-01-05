@@ -220,6 +220,7 @@ void PlotParameters::updatePlotParams(const int tabId)
 		tab5ShowFermiLine = ui->tab5CheckBoxFermiLevel->isChecked();
 		tab5FermiLevel = ui->tab5DOSFerm->text().toDouble();
 		tab5PlotName = ui->tab5EditLinePlotName->text();
+		tab5DOSShift = ui->tab5DOSShift->text().toDouble();
 		tab5OyName = ui->tab5EditLineOxName->text();
 		tab5OxName = ui->tab5EditLineOyName->text();
 		tab5OyTicks = ui->tab5CheckBoxShowOyTicks->isChecked();

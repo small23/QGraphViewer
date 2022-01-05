@@ -72,6 +72,7 @@ public:
     double tab5yMax;
     double tab5yMinZs;
     double tab5yMaxZs;
+    double tab5DOSShift;
     QVector<int>* tab5LinesCounter;
 
 

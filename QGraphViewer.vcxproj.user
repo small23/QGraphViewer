@@ -5,12 +5,12 @@
     <QtLastBackgroundBuild>2021-12-18T18:13:40.7806224Z</QtLastBackgroundBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="QtSettings">
-    <QtLastBackgroundBuild>2022-01-03T16:06:15.1200320Z</QtLastBackgroundBuild>
+    <QtLastBackgroundBuild>2022-01-05T10:23:31.1867858Z</QtLastBackgroundBuild>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <QtLastBackgroundBuild>2021-12-18T18:13:41.9186649Z</QtLastBackgroundBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="QtSettings">
-    <QtLastBackgroundBuild>2022-01-03T16:06:15.6959704Z</QtLastBackgroundBuild>
+    <QtLastBackgroundBuild>2022-01-05T10:23:31.7053031Z</QtLastBackgroundBuild>
   </PropertyGroup>
 </Project>
