@@ -142,6 +142,6 @@ private:
     MathSymbols* symbols;
     AtomConversion* atomsConvert;
 	FileDialogsLoad*	fileDiag;
-
+    QColor MenuSelectedGraph = Qt::red;
 };
 #endif // MAINWINDOW_H

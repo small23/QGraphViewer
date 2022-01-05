@@ -94,6 +94,11 @@ MainWindow::MainWindow(QWidget* parent)
 	this->setFixedSize(this->size());
 	this->setWindowTitle("QGraphViewer");
 
+	//QTranslator qtTranslator;
+	//auto a = QLibraryInfo::TranslationsPath;
+	//qtTranslator.load("qt_en", QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+	//qApp->installTranslator(&qtTranslator);
+
 	this->show();
 }
 
@@ -655,7 +660,7 @@ void MainWindow::tab2UpdateShowLine(int i) const
 {
 	plotParams->updatePlotParams(2);
 	if (ui->tab2CheckBoxShow1->isChecked())
-		ui->tab2ComboBoxLineSelector->setItemData(ui->tab2ComboBoxLineSelector->currentIndex(), QBrush(Qt::red), Qt::ForegroundRole); //TextColorRole
+		ui->tab2ComboBoxLineSelector->setItemData(ui->tab2ComboBoxLineSelector->currentIndex(), QBrush(MenuSelectedGraph), Qt::ForegroundRole); //TextColorRole
 	else
 		ui->tab2ComboBoxLineSelector->setItemData(ui->tab2ComboBoxLineSelector->currentIndex(), QBrush(Qt::black), Qt::ForegroundRole);
 }
@@ -813,9 +818,9 @@ void MainWindow::tab5UpdateShowLine(int i)
 		selected += plotParams->tab5LinesCounter->at(i);
 	plotParams->updatePlotParams(5);
 	if (ui->tab5CheckBoxShow1->isChecked())
-		ui->tab5ComboBoxLineSelector->setItemData(selected, QBrush(Qt::red), Qt::ForegroundRole); //TextColorRole
+		ui->tab5ComboBoxLineSelector->setItemData(ui->tab5ComboBoxLineSelector->currentIndex(), QBrush(MenuSelectedGraph), Qt::ForegroundRole); //TextColorRole
 	else
-		ui->tab5ComboBoxLineSelector->setItemData(selected, QBrush(Qt::black), Qt::ForegroundRole);
+		ui->tab5ComboBoxLineSelector->setItemData(ui->tab5ComboBoxLineSelector->currentIndex(), QBrush(Qt::black), Qt::ForegroundRole);
 }
 
 void MainWindow::tab5ComboBoxLineSelectorIndexChanged(int selected)
@@ -871,6 +876,7 @@ void MainWindow::tab5LoadFileDossPressed()
 		tr("All Files (*)"));
 	if (!fileNames.isEmpty())
 	{
+		int maxWidth = 0;
 		disconnect(ui->tab5ComboBoxLineSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5ComboBoxLineSelectorIndexChanged(int)));
 		disconnect(ui->tab5LoadFilecomboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5UpdateParamsFile(int)));
 		int linesCount = 0;
@@ -879,6 +885,11 @@ void MainWindow::tab5LoadFileDossPressed()
 		plotParams->tab5LinesCounter->clear();
 		for (auto fileName : fileNames)
 		{
+			QFont myFont("Arial", 9);
+			QFontMetrics fm(myFont);
+			int width = fm.width(fileName);
+			if (width > maxWidth)
+				maxWidth = width;
 			QList<QString>* content = new QList<QString>();
 			readFileFromFs(fileName, content);
 			const QFileInfo fileinfo(fileName);
@@ -890,6 +901,7 @@ void MainWindow::tab5LoadFileDossPressed()
 			plotParams->tab5LinesCounter->append(count);
 			delete content;
 		}
+		ui->tab5LoadFilecomboBox->view()->setMinimumWidth(maxWidth + maxWidth*0.05);
 		connect(ui->tab5ComboBoxLineSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5ComboBoxLineSelectorIndexChanged(int)));
 		connect(ui->tab5LoadFilecomboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5UpdateParamsFile(int)));
 		plotParams->tab5SetCountOfLines(linesCount);
@@ -941,7 +953,9 @@ void MainWindow::tab5UpdateParamsFile(int selected)
 		{
 			ui->tab5ComboBoxLineSelector->addItem(QString::number(i + 1));
 			if (plotParams->tab5PlotParams->at(shift+i).show)
-				ui->tab5ComboBoxLineSelector->setItemData(i, QBrush(Qt::red), Qt::ForegroundRole); //TextColorRole
+				ui->tab5ComboBoxLineSelector->setItemData(i, QBrush(MenuSelectedGraph), Qt::ForegroundRole); //TextColorRole
+			else
+				ui->tab5ComboBoxLineSelector->setItemData(i, QBrush(Qt::black), Qt::ForegroundRole);
 		}
 		connect(ui->tab5ComboBoxLineSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5ComboBoxLineSelectorIndexChanged(int)));
 		ui->tab5ComboBoxLineSelector->setCurrentIndex(0);

@@ -159,8 +159,8 @@ void QeGraph::drawData(QeDos* data, int angle, bool* isShowed)
 				y.clear();
 				for (int j = 0; j < data->pdos[file].size(); j++) //Line size (point number)
 				{
-					x.append(data->pdos[0][j][0] + plotParams->tab5DOSShift);
-					y.append(data->pdos[0][j][i] * plotParams->tab5PlotParams->at(lineCounter).multiplier);
+					x.append(data->pdos[file][j][0] + plotParams->tab5DOSShift);
+					y.append(data->pdos[file][j][i] * plotParams->tab5PlotParams->at(lineCounter).multiplier);
 				}
 				QCPCurve* newCurve = new QCPCurve(customPlot->xAxis, customPlot->yAxis);
 				if (angle == 0)
