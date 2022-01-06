@@ -7,27 +7,20 @@
 //настройка интерфейса, восстановление предыдущх настроек
 MainWindow::MainWindow(QWidget* parent)
 	: QMainWindow(parent)
-	, ui(new Ui::MainWindow)
+	, settings(new SettingsKeeper(this)), ui(new Ui::MainWindow), formChangelog(new changelog(settings, this)),
+	graphicsData(new GraphicsData()),
+	bandData(new BandData()), surfData(new SurfData()),
+	qeDosData(new QeDos()), filesSaver(new FilesSaver()), pdosParser(new PdosParser()),
+	ctConvertor(new CrystalTopondConvertors()), plotParams(new PlotParameters(ui, this)),
+	iconDrawer(new ColorIconDrawer()), symbols(new MathSymbols(this)),
+	atomsConvert(new AtomConversion(ui, settings)), fileDiag(new FileDialogsLoad(ui, this, settings))
 {
-	settings = new SettingsKeeper(this);
 	QTranslator qtTranslator;
 	auto a = QLibraryInfo::TranslationsPath;
 	qtTranslator.load(settings->lang, QCoreApplication::applicationDirPath() + "/translations");
 	qApp->installTranslator(&qtTranslator);
 	//qApp->installTranslator(&qtTranslator);
-	fileDiag = new FileDialogsLoad(ui, this, settings);
-	graphicsData = new GraphicsData();
-	bandData = new BandData();
-	surfData = new SurfData();
-	qeDosData = new QeDos();
-	ctConvertor = new CrystalTopondConvertors();
-	filesSaver = new FilesSaver();
-	plotParams = new PlotParameters(ui, this);
-	iconDrawer = new ColorIconDrawer();
-	pdosParser = new PdosParser();
-	symbols = new MathSymbols(this);
-	atomsConvert = new AtomConversion(ui, settings);
-	formChangelog = new changelog(settings, this);
+
 
 	ui->setupUi(this);
 	setupUiFields(ui);
@@ -191,7 +184,8 @@ void MainWindow::helpButtonClicked(const int id)
 	const QRect windowLocation = geometry();
 	if (id == 2)
 	{
-		HelpMatrixWidget* a = new HelpMatrixWidget(ui, windowLocation, qApp->devicePixelRatio(), QApplication::desktop()->screenGeometry());
+		HelpMatrixWidget* a = new HelpMatrixWidget(ui, windowLocation, qApp->devicePixelRatio(),
+		                                           QApplication::desktop()->screenGeometry());
 		a->installEventFilter(a);
 	}
 	else
