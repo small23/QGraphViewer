@@ -352,10 +352,11 @@ public:
     QFrame *line;
     QPushButton *tab4LicenceMIT;
     QPushButton *tab4ChangelogButton;
-    QButtonGroup *ColorButtonGroup;
-    QButtonGroup *DeleteButtonGroup;
+    QPushButton *tab5LanguageChange;
     QButtonGroup *HelpButtonGroup;
+    QButtonGroup *ColorButtonGroup;
     QButtonGroup *LoadFileButtonGroup;
+    QButtonGroup *DeleteButtonGroup;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -1871,6 +1872,9 @@ public:
         tab4ChangelogButton = new QPushButton(tab_4);
         tab4ChangelogButton->setObjectName(QString::fromUtf8("tab4ChangelogButton"));
         tab4ChangelogButton->setGeometry(QRect(420, 400, 75, 23));
+        tab5LanguageChange = new QPushButton(tab_4);
+        tab5LanguageChange->setObjectName(QString::fromUtf8("tab5LanguageChange"));
+        tab5LanguageChange->setGeometry(QRect(240, 400, 75, 23));
         tabWidget->addTab(tab_4, QString());
         MainWindow->setCentralWidget(centralwidget);
 
@@ -2165,6 +2169,7 @@ public:
         tab4CompileDate->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         tab4LicenceMIT->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\320\263\320\273\320\260\321\210\320\265\320\275\320\270\320\265", nullptr));
         tab4ChangelogButton->setText(QCoreApplication::translate("MainWindow", "\320\230\320\267\320\274\320\265\320\275\320\265\320\275\320\270\321\217", nullptr));
+        tab5LanguageChange->setText(QCoreApplication::translate("MainWindow", "English", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_4), QCoreApplication::translate("MainWindow", "\320\236 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\320\274\320\265", nullptr));
         (void)MainWindow;
     } // retranslateUi

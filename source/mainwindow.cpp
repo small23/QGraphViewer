@@ -10,7 +10,10 @@ MainWindow::MainWindow(QWidget* parent)
 	, ui(new Ui::MainWindow)
 {
 	settings = new SettingsKeeper(this);
-	
+	QTranslator qtTranslator;
+	auto a = QLibraryInfo::TranslationsPath;
+	qtTranslator.load(settings->lang, QCoreApplication::applicationDirPath() + "/translations");
+	qApp->installTranslator(&qtTranslator);
 	//qApp->installTranslator(&qtTranslator);
 	fileDiag = new FileDialogsLoad(ui, this, settings);
 	graphicsData = new GraphicsData();
@@ -76,6 +79,7 @@ MainWindow::MainWindow(QWidget* parent)
 	connect(ui->tab5LoadFilefQEDOSS,		  SIGNAL(clicked()),						this,		SLOT(tab5LoadFileDossPressed()));
 	connect(ui->tab5ButtonDrawDOS,		  SIGNAL(clicked()),						this,		SLOT(tab5DrawDosPressed()));
 	connect(ui->tab5LoadFilecomboBox,		  SIGNAL(currentIndexChanged(int)),		this,		SLOT(tab5UpdateParamsFile(int)));
+	connect(ui->tab5LanguageChange, SIGNAL(clicked()), this, SLOT(tab5LanguageChanged()));
 
 
 	//Корректировочный коэффициент масштабирования
@@ -93,11 +97,6 @@ MainWindow::MainWindow(QWidget* parent)
 	this->setStatusBar(nullptr);
 	this->setFixedSize(this->size());
 	this->setWindowTitle("QGraphViewer");
-
-	//QTranslator qtTranslator;
-	//auto a = QLibraryInfo::TranslationsPath;
-	//qtTranslator.load("qt_en", QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-	//qApp->installTranslator(&qtTranslator);
 
 	this->show();
 }
@@ -962,6 +961,20 @@ void MainWindow::tab5UpdateParamsFile(int selected)
 
 		tab5ComboBoxLineSelectorIndexChanged(0);
 	}
+}
+
+void MainWindow::tab5LanguageChanged()
+{
+	if (settings->lang == "qt_en")
+		settings->lang = "qt_ru";
+	else
+		settings->lang = "qt_en";
+
+	settings->saveSettings();
+
+	QMessageBox::warning(this, STR_LangTitle_ChangeWarning, STR_LangMessage_ChangeWarningRestartReq);
+	qApp->quit();
+	QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
 }
 
 void MainWindow::tab2PushButtonPdosLoadPressed()

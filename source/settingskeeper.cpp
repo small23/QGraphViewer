@@ -31,9 +31,6 @@ SettingsKeeper::SettingsKeeper(QObject *parent)
 		Settings->setValue("lang", "qt_ru");
 	else
 		lang = Settings->value("lang").toString();
-
-	lang = "qt_en";
-	
 }
 
 void SettingsKeeper::updatePath(QString path)

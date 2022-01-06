@@ -118,6 +118,7 @@ private Q_SLOTS:
     void tab5LoadFileDossPressed();
     void tab5DrawDosPressed();
     void tab5UpdateParamsFile(int selected);
+    void tab5LanguageChanged();
 	
 private:
     //Указатели на классы-обработчики и хранилища

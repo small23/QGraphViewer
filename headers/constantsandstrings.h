@@ -103,4 +103,7 @@ const QString STR_Licence = QObject::tr("Лицензия MIT\n\nCopyright © 20
 
 const QString STR_BuildDate = QObject::tr("Дата сборки: %1, %2");
 
+const QString STR_LangTitle_ChangeWarning = QObject::tr("Changing language");
+const QString STR_LangMessage_ChangeWarningRestartReq = QObject::tr("The application must be restarted to apply the language."); 
+
 #endif // GRAPHBUILDER_H

@@ -6883,6 +6883,19 @@ p, li { white-space: pre-wrap; }
        <string>Изменения</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="tab5LanguageChange">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>400</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>English</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -6911,9 +6924,9 @@ p, li { white-space: pre-wrap; }
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="ColorButtonGroup"/>
-  <buttongroup name="DeleteButtonGroup"/>
   <buttongroup name="HelpButtonGroup"/>
+  <buttongroup name="ColorButtonGroup"/>
   <buttongroup name="LoadFileButtonGroup"/>
+  <buttongroup name="DeleteButtonGroup"/>
  </buttongroups>
 </ui>
