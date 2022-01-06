@@ -22,6 +22,8 @@ int main(int argc, char *argv[])
     QApplication::setOrganizationName("KemSU");
     QApplication::setApplicationName("QGraphViewer");
 	MainWindow w;
+    w.setLocale(QLocale(QLocale::English));
+    QLocale::setDefault(QLocale::English);
     QApplication::processEvents();
     splash.finish(&w);
     return QApplication::exec();

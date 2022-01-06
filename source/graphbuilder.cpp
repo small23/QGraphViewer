@@ -22,8 +22,7 @@ GraphBuilder::GraphBuilder(SettingsKeeper* settings, const QString& title, PlotP
     customPlot->yAxis->setTickLabelFont(font);
     customPlot->xAxis->setLabelFont(font);
     customPlot->yAxis->setLabelFont(font);
-
-    customPlot->setLocale(QLocale::English);
+    
 }
 
 void GraphBuilder::draw(){
