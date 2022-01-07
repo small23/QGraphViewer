@@ -19,6 +19,7 @@
 #include "xlsxrichstring.h"
 #include "xlsxworkbook.h"
 #include "banddata.h"
+#include "qesurfdata.h"
 
 class FilesSaver
 {
@@ -28,6 +29,7 @@ public:
     bool saveBandData(QString fileName, BandData* bandData, double zoneMin, double zoneMax, bool uhf);
     bool saveDosData(const QString& sourceFileLocation, BandData *bandData);
     bool saveMapnData(const QString& sourceFileLocation, BandData *bandData, int rotate);
+    bool saveQeSurfData(const QString& sourceFileLocation, QeSurfData* data, int rotate);
     static bool saveCryTopData();
     //Структура, сохраняющая возникающие ошибки при записи данных
     struct ErrorData

@@ -13,7 +13,8 @@ MainWindow::MainWindow(QWidget* parent)
 	qeDosData(new QeDos()), filesSaver(new FilesSaver()), pdosParser(new PdosParser()),
 	ctConvertor(new CrystalTopondConvertors()), plotParams(new PlotParameters(ui, this)),
 	iconDrawer(new ColorIconDrawer()), symbols(new MathSymbols(this)),
-	atomsConvert(new AtomConversion(ui, settings)), fileDiag(new FileDialogsLoad(ui, this, settings))
+	atomsConvert(new AtomConversion(ui, settings)), fileDiag(new FileDialogsLoad(ui, this, settings)),
+	qeSurfData(new QeSurfData())
 {
 	QTranslator qtTranslator;
 	auto a = QLibraryInfo::TranslationsPath;
@@ -61,7 +62,6 @@ MainWindow::MainWindow(QWidget* parent)
     connect(ui->tab2LoadFilef25DOSS,        SIGNAL(clicked()),						this,       SLOT(tab2LoadFilef25DossPressed()));
     connect(ui->tab4LicenceMIT,             SIGNAL(clicked()),						this,       SLOT(tab4LicenceMit()));
     connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),						this,       SLOT(tab2PushButtonPdosLoadPressed()));
-    connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),						this,       SLOT(tab2PushButtonPdosLoadPressed()));
     connect(ui->tab4ChangelogButton,        SIGNAL(clicked()),						this,       SLOT(tab4Changelog()));
 	connect(ui->tab5SpinnerLineWidth,		  SIGNAL(valueChanged(QString)),			this,		SLOT(tab5UpdateParams(QString)));
 	connect(ui->tab5ComboBoxLineType,		  SIGNAL(currentIndexChanged(QString)),	this,		SLOT(tab5UpdateParams(QString)));
@@ -73,6 +73,7 @@ MainWindow::MainWindow(QWidget* parent)
 	connect(ui->tab5ButtonDrawDOS,		  SIGNAL(clicked()),						this,		SLOT(tab5DrawDosPressed()));
 	connect(ui->tab5LoadFilecomboBox,		  SIGNAL(currentIndexChanged(int)),		this,		SLOT(tab5UpdateParamsFile(int)));
 	connect(ui->tab5LanguageChange, SIGNAL(clicked()), this, SLOT(tab5LanguageChanged()));
+	connect(ui->tab5LoadSurfDatButton, SIGNAL(clicked()), this, SLOT(tab5LoadSurfDatButtonPressed()));
 
 
 	//Корректировочный коэффициент масштабирования
@@ -676,6 +677,7 @@ void MainWindow::tab2LoadFilef25DossPressed()
 			const int sum = count[0] + count[1] + count[2];
 			ui->tab2ComboBoxLineSelector->clear();
 			plotParams->tab2SetCountOfLines(sum);
+			int internalCounter = 0;
 			for (int i = 0; i < count[0]; i++)
 				ui->tab2ComboBoxLineSelector->addItem(QString::number(i + 1) + ": COHP");
 			for (int i = 0; i < count[1]; i++)
@@ -683,6 +685,18 @@ void MainWindow::tab2LoadFilef25DossPressed()
 			for (int i = 0; i < count[2]; i++)
 				ui->tab2ComboBoxLineSelector->addItem(QString::number(i + 1) + ": DOS");
 			ui->tab2ComboBoxLineSelector->setCurrentIndex(0);
+
+			for (int i=0; i< sum; i++)
+			{
+				if (plotParams->tab2PlotParams->at(i).show)
+				{
+					ui->tab2ComboBoxLineSelector->setItemData(i, QBrush(MenuSelectedGraph), Qt::ForegroundRole);
+				}
+				else
+				{
+					ui->tab2ComboBoxLineSelector->setItemData(i, QBrush(Qt::black), Qt::ForegroundRole);
+				}
+			}
 		}
 		else
 		{
@@ -969,6 +983,65 @@ void MainWindow::tab5LanguageChanged()
 	QMessageBox::warning(this, STR_LangTitle_ChangeWarning, STR_LangMessage_ChangeWarningRestartReq);
 	qApp->quit();
 	QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
+}
+
+void MainWindow::tab5LoadSurfDatButtonPressed()
+{
+	QList<QString>* content = new QList<QString>();
+	const QString fileName = QFileDialog::getOpenFileName(this, STR_Dialog_OpenFile, settings->getLastPath(),
+		"All Files (*)");
+	if (fileName != "")
+	{
+		const QFileInfo fileinfo(fileName);
+		settings->updatePath(fileinfo.absolutePath());
+		readFileFromFs(fileName, content);
+	}
+	else
+	{
+		delete content;
+		return;
+	}
+
+	qeSurfData->parseData(content);
+	delete content;
+	if (qeSurfData->oF.count() > 0)
+	{
+		qeSurfData->rotateData(ui->tab5SurfRotationSelector->currentIndex() * 90);
+		QProgressDialog progressBar;
+		progressBar.setValue(0);
+		progressBar.setRange(0, 1);
+		progressBar.show();
+
+		QString path;
+		QStringList pathTemp = fileName.split("/");
+		
+		QFileInfo fileInfo(fileName);
+		path = fileInfo.path();
+		const QDir dir(path);
+		if (!dir.exists())
+			dir.mkpath(".");
+		const QString pathFull = path + "/" + fileInfo.baseName() + "-" + QString::number(
+			ui->tab5SurfRotationSelector->currentIndex() * 90) + ".xlsx";
+		QXlsx::Document xlsx;
+		for (int j = 0; j < qeSurfData->oF.count(); j++)
+		{
+			xlsx.write(j + 1, 1, qeSurfData->oRepeatY[j]);
+			xlsx.write(j + 1, 2, qeSurfData->oRepeatX[j]);
+			xlsx.write(j + 1, 3, qeSurfData->oF[j]);
+		}
+		QApplication::processEvents();
+		const bool success = xlsx.saveAs(pathFull); // save the document as 'Test.xlsx'
+		if (success != true)
+		{
+			progressBar.close();
+			QMessageBox::critical(this, STR_ErrorTitle_SaveError, STR_ErrorMessage_CantOpenFileForWrite.arg(pathFull));
+			return;
+		}
+		progressBar.close();
+		QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
+	}
+	else
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 }
 
 void MainWindow::tab2PushButtonPdosLoadPressed()

@@ -29,6 +29,7 @@ void setupUiFields(Ui::MainWindow* ui)
     ui->tab3SurfRotationSelector->addItems({"0°","90°","180°","270°"});
     ui->tab2ComboBoxDosRotate->addItems(rotateTypesLang);
 	ui->tab1ComboBoxRotate->addItems({ "0°","90°","180°","270°" });
+    ui->tab5SurfRotationSelector->addItems({ "0°","90°","180°","270°" });
     ui->tab2ComboBoxLineType->addItems(pointTypesSecondLang);
     ui->tab2ComboBoxLineSelector->addItems({"1"});
 

@@ -250,6 +250,9 @@
     <ClCompile Include="source\zonegraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="qesurfdata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\qedos.h">
@@ -481,6 +484,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="headers\zonegraph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="qesurfdata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -353,10 +353,10 @@ public:
     QPushButton *tab4LicenceMIT;
     QPushButton *tab4ChangelogButton;
     QPushButton *tab5LanguageChange;
-    QButtonGroup *HelpButtonGroup;
     QButtonGroup *ColorButtonGroup;
-    QButtonGroup *LoadFileButtonGroup;
     QButtonGroup *DeleteButtonGroup;
+    QButtonGroup *LoadFileButtonGroup;
+    QButtonGroup *HelpButtonGroup;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -1712,7 +1712,7 @@ public:
         tab5_loadQeBand->setFont(font4);
         groupBox_63 = new QGroupBox(tab_5);
         groupBox_63->setObjectName(QString::fromUtf8("groupBox_63"));
-        groupBox_63->setEnabled(false);
+        groupBox_63->setEnabled(true);
         groupBox_63->setGeometry(QRect(0, 180, 215, 111));
         groupBox_63->setFont(font2);
         groupBox_63->setFlat(false);

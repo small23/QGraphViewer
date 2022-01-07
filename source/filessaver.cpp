@@ -3,6 +3,8 @@
 
 #include "filessaver.h"
 
+#include "qesurfdata.h"
+
 
 FilesSaver::FilesSaver() = default;
 
@@ -305,6 +307,12 @@ bool FilesSaver::saveMapnData(const QString& sourceFileLocation, BandData *bandD
         }
     }
     progressBar.close();
+    return true;
+}
+
+bool FilesSaver::saveQeSurfData(const QString& sourceFileLocation, QeSurfData* data, const int rotate)
+{
+
     return true;
 }
 

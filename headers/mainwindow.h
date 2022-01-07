@@ -38,6 +38,7 @@
 #include "constantsandstrings.h"
 #include "QeDos.h"
 #include "qegraph.h"
+#include "qesurfdata.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -119,6 +120,7 @@ private Q_SLOTS:
     void tab5DrawDosPressed();
     void tab5UpdateParamsFile(int selected);
     void tab5LanguageChanged();
+    void tab5LoadSurfDatButtonPressed();
 	
 private:
     //Указатели на классы-обработчики и хранилища
@@ -143,6 +145,7 @@ private:
     MathSymbols* symbols;
     AtomConversion* atomsConvert;
 	FileDialogsLoad*	fileDiag;
+    QeSurfData* qeSurfData;
     QColor MenuSelectedGraph = Qt::red;
 };
 #endif // MAINWINDOW_H

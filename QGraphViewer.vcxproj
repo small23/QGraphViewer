@@ -199,6 +199,7 @@
     </QtUic>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="qesurfdata.cpp" />
     <ClCompile Include="source\qedos.cpp" />
     <ClCompile Include="source\atomconversion.cpp" />
     <ClCompile Include="source\banddata.cpp" />
@@ -263,6 +264,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\qedos.h" />
+    <ClInclude Include="qesurfdata.h" />
     <QtMoc Include="headers\atomconversion.h">
     </QtMoc>
     <ClInclude Include="headers\banddata.h" />

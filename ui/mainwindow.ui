@@ -6137,7 +6137,7 @@
      </widget>
      <widget class="QGroupBox" name="groupBox_63">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -6924,9 +6924,9 @@ p, li { white-space: pre-wrap; }
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="HelpButtonGroup"/>
   <buttongroup name="ColorButtonGroup"/>
-  <buttongroup name="LoadFileButtonGroup"/>
   <buttongroup name="DeleteButtonGroup"/>
+  <buttongroup name="LoadFileButtonGroup"/>
+  <buttongroup name="HelpButtonGroup"/>
  </buttongroups>
 </ui>
