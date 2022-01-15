@@ -3,9 +3,6 @@
 
 #include "helpmatrixwidget.h"
 
-#include "constantsandstrings.h"
-#include "QDebug"
-
 HelpMatrixWidget::HelpMatrixWidget(Ui::MainWindow *uiInt, const QRect windowLocation, const qreal devScaleRatio, const QRect desktopSize, QWidget *parent) : QGraphicsView(parent)
 {
     scene = new QGraphicsScene();

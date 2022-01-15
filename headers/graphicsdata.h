@@ -7,7 +7,7 @@
 //Класс для парсинга и хранения данных
 //Trajgrad, Molgraph, атомов
 
-#include "StructuresHeaders.h"
+#include "structuresheaders.h"
 #include <Eigen/Core>
 #include <Eigen/Geometry>
 #include "fileread.h"

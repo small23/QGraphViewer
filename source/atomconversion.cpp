@@ -3,8 +3,6 @@
 
 #include "atomconversion.h"
 
-#include "constantsandstrings.h"
-
 AtomConversion::AtomConversion(Ui::MainWindow* uiExt, SettingsKeeper* settings, QWidget* parent) : QWidget(parent)
 {
 	ui = uiExt;

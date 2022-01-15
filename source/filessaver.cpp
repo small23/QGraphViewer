@@ -3,11 +3,7 @@
 
 #include "filessaver.h"
 
-#include "qesurfdata.h"
-
-
 FilesSaver::FilesSaver() = default;
-
 
 bool FilesSaver::saveDosData(const QString& sourceFileLocation, BandData *bandData)
 {

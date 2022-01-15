@@ -5,10 +5,8 @@
 #include "QFont"
 #include "plotparameters.h"
 #include "contour.h"
-#include "settingsKeeper.h"
-//#include "mainwindow.h"
+#include "settingskeeper.h"
 #include "constantsandstrings.h"
-#include "QSvgGenerator"
 
 class GraphBuilder : public QWidget
 {

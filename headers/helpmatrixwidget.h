@@ -14,6 +14,8 @@
 #include <QMessageBox>
 #include "ui_mainwindow.h"
 #include <QMouseEvent>
+#include "constantsandstrings.h"
+#include "QDebug"
 
 class HelpMatrixWidget : public QGraphicsView
 {

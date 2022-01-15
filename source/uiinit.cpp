@@ -3,12 +3,6 @@
 
 #include "uiinit.h"
 
-#include "coloricondrawer.h"
-#include "constantsandstrings.h"
-#include "ui_mainwindow.h"
-#include "delegator.h"
-#include "plotparameters.h"
-
 auto lineTypesLang ={STR_UI_LineTypes_Solid, STR_UI_LineTypes_Dash, STR_UI_LineTypes_Pointed, STR_UI_LineTypes_PointDash};
 auto pointTypesLang = { STR_UI_PointTypes_Cirq,STR_UI_PointTypes_Plus,STR_UI_PointTypes_Star,STR_UI_PointTypes_Point,
                    STR_UI_PointTypes_X,STR_UI_PointTypes_Square,STR_UI_PointTypes_Diamond,STR_UI_PointTypes_TriangUp,

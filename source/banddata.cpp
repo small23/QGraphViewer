@@ -1,5 +1,6 @@
 // This is a personal academic project. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
 #include "banddata.h"
 
 BandData::BandData(): borders{}, fermi(0), type(0), nothing(0), interval(0)

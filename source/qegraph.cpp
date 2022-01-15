@@ -1,3 +1,6 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
 #include "qegraph.h"
 
 QeGraph::QeGraph(SettingsKeeper* settings, const QString& title, PlotParameters* plotParams, QFont font,

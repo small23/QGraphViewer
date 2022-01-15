@@ -8,7 +8,7 @@
 
 #include <QDialog>
 #include "plotparameters.h"
-#include "SettingsKeeper.h"
+#include "settingskeeper.h"
 #include "constantsandstrings.h"
 
 namespace Ui {

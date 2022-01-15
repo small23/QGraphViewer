@@ -3,10 +3,6 @@
 
 #include "helpwindow.h"
 
-#include "constantsandstrings.h"
-#include "QScrollBar"
-
-
 HelpWindow::HelpWindow(const QPixmap& hel, const QRect windowLocation, qreal devScaleRatio, QRect desktopSize,QWidget *parent) : QWidget(parent)
 {
     scene = new QGraphicsScene();

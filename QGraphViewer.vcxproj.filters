@@ -67,9 +67,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\qedos.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\atomconversion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -136,7 +133,13 @@
     <ClCompile Include="source\qcustomplot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\qedos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="source\qegraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\qesurfdata.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\settingskeeper.cpp">
@@ -250,14 +253,8 @@
     <ClCompile Include="source\zonegraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="qesurfdata.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="headers\qedos.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <QtMoc Include="headers\atomconversion.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -327,13 +324,19 @@
     <QtMoc Include="headers\qcustomplot.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <ClInclude Include="headers\qedos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="headers\qegraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <QtMoc Include="headers\settingsKeeper.h">
+    <ClInclude Include="headers\qesurfdata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="headers\settingskeeper.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <ClInclude Include="headers\structuresHeaders.h">
+    <ClInclude Include="headers\structuresheaders.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="headers\surfdata.h">
@@ -484,9 +487,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="headers\zonegraph.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="qesurfdata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

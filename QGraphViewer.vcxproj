@@ -20,7 +20,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <OutputDirectory>release\</OutputDirectory>
     <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
     <CharacterSet>NotSet</CharacterSet>
@@ -29,7 +29,7 @@
     <PrimaryOutput>QGraphViewer</PrimaryOutput>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <OutputDirectory>debug\</OutputDirectory>
     <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
     <CharacterSet>NotSet</CharacterSet>
@@ -199,8 +199,6 @@
     </QtUic>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="qesurfdata.cpp" />
-    <ClCompile Include="source\qedos.cpp" />
     <ClCompile Include="source\atomconversion.cpp" />
     <ClCompile Include="source\banddata.cpp" />
     <ClCompile Include="source\basicgraph.cpp" />
@@ -223,7 +221,9 @@
     <ClCompile Include="source\picturesettings.cpp" />
     <ClCompile Include="source\plotparameters.cpp" />
     <ClCompile Include="source\qcustomplot.cpp" />
+    <ClCompile Include="source\qedos.cpp" />
     <ClCompile Include="source\qegraph.cpp" />
+    <ClCompile Include="source\qesurfdata.cpp" />
     <ClCompile Include="source\settingskeeper.cpp" />
     <ClCompile Include="source\surfdata.cpp" />
     <ClCompile Include="source\uiinit.cpp" />
@@ -263,8 +263,6 @@
     <ClCompile Include="source\zonegraph.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="headers\qedos.h" />
-    <ClInclude Include="qesurfdata.h" />
     <QtMoc Include="headers\atomconversion.h">
     </QtMoc>
     <ClInclude Include="headers\banddata.h" />
@@ -301,10 +299,12 @@
     </QtMoc>
     <QtMoc Include="headers\qcustomplot.h">
     </QtMoc>
+    <ClInclude Include="headers\qedos.h" />
     <ClInclude Include="headers\qegraph.h" />
-    <QtMoc Include="headers\settingsKeeper.h">
+    <ClInclude Include="headers\qesurfdata.h" />
+    <QtMoc Include="headers\settingskeeper.h">
     </QtMoc>
-    <ClInclude Include="headers\structuresHeaders.h" />
+    <ClInclude Include="headers\structuresheaders.h" />
     <ClInclude Include="headers\surfdata.h" />
     <ClInclude Include="headers\uiinit.h" />
     <ClInclude Include="libs\QXlsx\header\xlsxabstractooxmlfile.h" />

@@ -3,8 +3,6 @@
 
 #include "coloricondrawer.h"
 
-#include <qcoreapplication.h>
-
 ColorIconDrawer::ColorIconDrawer() = default;
 
 #define SCALE_FACTOR (5.0)

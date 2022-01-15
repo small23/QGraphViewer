@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QObject>
+#include <QtCore/qtextstream.h>
 
 class QeDos
 {

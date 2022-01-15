@@ -8,7 +8,7 @@
 
 #include <QObject>
 #include <QWidget>
-#include <structuresHeaders.h>
+#include <structuresheaders.h>
 #include "QFile"
 #include "QFileDialog"
 #include "QMessageBox"

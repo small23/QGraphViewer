@@ -9,6 +9,7 @@
 #include "QPixmap"
 #include "QColor"
 #include "QPainter"
+#include <qcoreapplication.h>
 
 class ColorIconDrawer
 {

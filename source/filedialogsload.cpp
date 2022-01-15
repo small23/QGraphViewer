@@ -3,9 +3,6 @@
 
 #include "filedialogsload.h"
 
-#include "constantsandstrings.h"
-#include "ui_mainwindow.h"
-
  FileDialogsLoad::FileDialogsLoad(Ui::MainWindow *uiInt,QWidget *parentInt, SettingsKeeper* settings)
 {
     ui=uiInt;

@@ -12,6 +12,8 @@
 #include <QGraphicsScene>
 #include <QCloseEvent>
 #include <QMessageBox>
+#include "constantsandstrings.h"
+#include "QScrollBar"
 
 class HelpWindow : public QWidget
 {

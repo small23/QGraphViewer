@@ -6,6 +6,11 @@
 
 
 #include "ui_mainwindow.h"
+#include "coloricondrawer.h"
+#include "constantsandstrings.h"
+#include "ui_mainwindow.h"
+#include "delegator.h"
+#include "plotparameters.h"
 
 //Функция-инициализации интерфейса и полей
 

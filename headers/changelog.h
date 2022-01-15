@@ -9,7 +9,7 @@
 #include "ui_changelog.h"
 #include "QTranslator"
 #include "QLibraryInfo"
-#include "settingsKeeper.h"
+#include "settingskeeper.h"
 
 namespace Ui {
 class changelog;

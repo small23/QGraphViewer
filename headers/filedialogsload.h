@@ -12,8 +12,9 @@
 #include "ui_mainwindow.h"
 #include "QFileDialog"
 #include "QMessageBox"
-#include "SettingsKeeper.h"
-
+#include "settingskeeper.h"
+#include "constantsandstrings.h"
+#include "ui_mainwindow.h"
 
 class FileDialogsLoad : public QWidget
 {

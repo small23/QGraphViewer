@@ -6,12 +6,13 @@
 #include <QMainWindow>
 #include <QGraphicsView>
 #include <QProgressDialog>
-#include <structuresHeaders.h>
 #include <QMessageBox>
-
+#include <QApplication>
 #include <QFont>
-
+#include <QTimer>
+#include <QtConcurrent/QtConcurrent>
 #include <QProgressDialog>
+
 #include "helpwindow.h"
 #include "uiinit.h"
 #include "graphicsdata.h"
@@ -25,10 +26,8 @@
 #include "plotparameters.h"
 #include "coloricondrawer.h"
 #include "pdosparser.h"
-#include <QTimer>
-#include <QtConcurrent/QtConcurrent>
 #include "picturesettings.h"
-#include "settingsKeeper.h"
+#include "settingskeeper.h"
 #include "ui_mainwindow.h"
 #include "mathsymbols.h"
 #include "changelog.h"
@@ -36,10 +35,10 @@
 #include "zonegraph.h"
 #include "dosgraph.h"
 #include "constantsandstrings.h"
-#include "QeDos.h"
+#include "qedos.h"
 #include "qegraph.h"
 #include "qesurfdata.h"
-
+#include <structuresheaders.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
