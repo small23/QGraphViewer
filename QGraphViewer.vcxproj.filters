@@ -342,6 +342,8 @@
     <ClInclude Include="headers\surfdata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    
+    
     <ClInclude Include="headers\uiinit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -491,12 +493,49 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <CustomBuild Include="debug\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
     <CustomBuild Include="release\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
   </ItemGroup>
   <ItemGroup>
     <None Include="translations\qt_en.ts">
@@ -570,6 +609,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include=".\QGraphViewer_resource.rc" />
+    <ResourceCompile Include="W:\Repos\QGraphViewer\QGraphViewer\QGraphViewer_resource.rc" />
   </ItemGroup>
 </Project>

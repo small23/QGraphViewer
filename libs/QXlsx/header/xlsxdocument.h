@@ -41,7 +41,10 @@ public:
 	QVariant read(const CellReference &cell) const;
 	QVariant read(int row, int col) const;
 	
-	bool insertImage(int row, int col, const QImage &image);
+    int insertImage(int row, int col, const QImage &image);
+    bool getImage(int imageIndex, QImage& img);
+    bool getImage(int row, int col, QImage& img);
+    uint getImageCount();
 	
 	Chart *insertChart(int row, int col, const QSize &size);
 	
@@ -110,6 +113,9 @@ public:
 	bool save() const;
 	bool saveAs(const QString &xlsXname) const;
 	bool saveAs(QIODevice *device) const;
+
+	// copy style from one xlsx file to other
+	static bool copyStyle(const QString &from, const QString &to);
 
 	bool isLoadPackage() const; 
 	bool load() const; // equals to isLoadPackage()

@@ -1,14 +1,4 @@
-//--------------------------------------------------------------------
-//
-// QXlsx
-// MIT License
-// https://github.com/j2doll/QXlsx
-//
-// QtXlsx
-// https://github.com/dbzhang800/QtXlsxWriter
-// http://qtxlsx.debao.me/
-// MIT License
-//
+// xlsxworksheet.h
 
 #ifndef XLSXWORKSHEET_H
 #define XLSXWORKSHEET_H
@@ -107,7 +97,11 @@ public:
     Cell *cellAt(const CellReference &row_column) const;
     Cell *cellAt(int row, int column) const;
 
-    bool insertImage(int row, int column, const QImage &image);
+    int insertImage(int row, int column, const QImage &image);
+    bool getImage(int imageIndex, QImage& img);
+    bool getImage(int row, int column, QImage& img);
+    uint getImageCount();
+
     Chart *insertChart(int row, int column, const QSize &size);
 
     bool mergeCells(const CellRange &range, const Format &format=Format());
