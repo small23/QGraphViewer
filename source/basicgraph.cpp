@@ -430,7 +430,7 @@ void BasicGraph::drawDataIsolines(std::vector<MarchingSquares::levelPaths> resul
     {
         if (i % 2 == 0)
         {
-            if (plotParams->colorContours)
+            if (plotParams->tab1ColorContours)
             {
                 pen.setStyle(Qt::PenStyle::SolidLine);
                 QColor temp;
@@ -441,7 +441,7 @@ void BasicGraph::drawDataIsolines(std::vector<MarchingSquares::levelPaths> resul
         }
         else
         {
-            if (plotParams->colorContours)
+            if (plotParams->tab1ColorContours)
             {
                 pen.setStyle(Qt::PenStyle::DashLine);
                 QColor temp;
@@ -515,7 +515,7 @@ void BasicGraph::drawDataIsolines(std::vector<MarchingSquares::levelPaths> resul
                 }
             }
         }
-        if (plotParams->colorContours)
+        if (plotParams->tab1ColorContours)
         {
             if (i % 2 == 0)
             {

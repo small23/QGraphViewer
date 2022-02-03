@@ -33,6 +33,8 @@ MainWindow::MainWindow(QWidget* parent)
 	tab2GraphFont.setPointSize(18);
 	tab5GraphFont.setFamily("Times New Roman");
 	tab5GraphFont.setPointSize(18);
+	tab5ContourGraphFont.setFamily("Times New Roman");
+	tab5ContourGraphFont.setPointSize(18);
 	ui->tab1FontSize->setValue(18);
 
     connect(ui->tab3AtomsConvertButton,     SIGNAL(clicked()),						this,       SLOT(atomsConvertButtonPressed()));
@@ -63,7 +65,7 @@ MainWindow::MainWindow(QWidget* parent)
     connect(ui->tab4LicenceMIT,             SIGNAL(clicked()),						this,       SLOT(tab4LicenceMit()));
     connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),						this,       SLOT(tab2PushButtonPdosLoadPressed()));
     connect(ui->tab4ChangelogButton,        SIGNAL(clicked()),						this,       SLOT(tab4Changelog()));
-	connect(ui->tab5SpinnerLineWidth,		  SIGNAL(valueChanged(QString)),			this,		SLOT(tab5UpdateParams(QString)));
+	connect(ui->tab5SpinnerLineWidth,		  SIGNAL(valueChanged(QString)),			this,	    SLOT(tab5UpdateParams(QString)));
 	connect(ui->tab5ComboBoxLineType,		  SIGNAL(currentIndexChanged(QString)),	this,		SLOT(tab5UpdateParams(QString)));
 	connect(ui->tab5CheckBoxShow1,          SIGNAL(stateChanged(int)),				this,		SLOT(tab5UpdateShowLine(int)));
 	connect(ui->tab5SpinnerLineMultiplier,  SIGNAL(valueChanged(QString)),			this,		SLOT(tab5UpdateParams(QString)));
@@ -72,9 +74,11 @@ MainWindow::MainWindow(QWidget* parent)
 	connect(ui->tab5LoadFilefQEDOSS,		  SIGNAL(clicked()),						this,		SLOT(tab5LoadFileDossPressed()));
 	connect(ui->tab5ButtonDrawDOS,		  SIGNAL(clicked()),						this,		SLOT(tab5DrawDosPressed()));
 	connect(ui->tab5LoadFilecomboBox,		  SIGNAL(currentIndexChanged(int)),		this,		SLOT(tab5UpdateParamsFile(int)));
-	connect(ui->tab5LanguageChange, SIGNAL(clicked()), this, SLOT(tab5LanguageChanged()));
-	connect(ui->tab5LoadSurfDatButton, SIGNAL(clicked()), this, SLOT(tab5LoadSurfDatButtonPressed()));
-
+	connect(ui->tab5LanguageChange,		  SIGNAL(clicked()),                      this,       SLOT(tab5LanguageChanged()));
+	connect(ui->tab5LoadSurfDatButton,      SIGNAL(clicked()),                      this,       SLOT(tab5LoadSurfDatButtonPressed()));
+	connect(ui->tab5LoadQEDen,              SIGNAL(clicked()),                      this,       SLOT(tab5LoadQEDenButtonPressed()));
+	connect(ui->tab5PlotGraphic,            SIGNAL(clicked()),                      this,       SLOT(tab5PlotGraphicButtonPressed()));
+	connect(ui->tab5FontChangeButton,       SIGNAL(clicked()),                      this,       SLOT(tab5PushButtonSetFontContourPressed()));
 
 	//Корректировочный коэффициент масштабирования
 	//графиков на дисплеях с масштабом !=100%
@@ -150,6 +154,7 @@ void MainWindow::deleteFileStringButtonClicked(const int id) const
 			disconnect(ui->tab5ComboBoxLineSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5ComboBoxLineSelectorIndexChanged(int)));
 			disconnect(ui->tab5LoadFilecomboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5UpdateParamsFile(int)));
 			ui->tab5LoadFilecomboBox->clear();
+			ui->tab5LoadFilecomboBox->setToolTip("");
 			ui->tab5ComboBoxLineSelector->clear();
 			plotParams->tab5SetCountOfLines(1);
 			ui->tab5ComboBoxLineSelector->addItem("1");
@@ -163,6 +168,7 @@ void MainWindow::deleteFileStringButtonClicked(const int id) const
 	if (lineEdit != nullptr)
 	{
 		lineEdit->clear();
+		lineEdit->setToolTip("");
 		if (id == 8)
 		{
 			ui->tab2ComboBoxLineSelector->clear();
@@ -619,7 +625,7 @@ void MainWindow::tab2ButtonDrawZoneStructPressed()
 	{
 		double numbersToBuild[2];
 
-		if (plotParams->commonUhf)
+		if (plotParams->tab2Uhf)
 		{
 			for (int i = 0; i < 2; i++)
 			{
@@ -671,6 +677,7 @@ void MainWindow::tab2LoadFilef25DossPressed()
 		const QFileInfo fileinfo(fileName);
 		settings->updatePath(fileinfo.absolutePath());
 		ui->tab2FileLine2->setText(fileName);
+		ui->tab2FileLine2->setToolTip(fileName);
 		QVector<int> count = bandData->countData(content);
 		if (count[0] > 0 || count[1] > 0 || count[2] > 0)
 		{
@@ -821,6 +828,7 @@ void MainWindow::tab5UpdateParams(QString i)
 void MainWindow::tab5UpdateShowLine(int i)
 {
 	int selected = ui->tab5ComboBoxLineSelector->currentIndex();
+	ui->tab5LoadFilecomboBox->setToolTip(ui->tab5LoadFilecomboBox->currentText());
 	for (int i = 0; i < ui->tab5LoadFilecomboBox->currentIndex(); i++)
 		selected += plotParams->tab5LinesCounter->at(i);
 	plotParams->updatePlotParams(5);
@@ -890,6 +898,7 @@ void MainWindow::tab5LoadFileDossPressed()
 		ui->tab5LoadFilecomboBox->clear();
 		ui->tab5ComboBoxLineSelector->clear();
 		plotParams->tab5LinesCounter->clear();
+		int flagErrorDuringAdd = 0;
 		for (auto fileName : fileNames)
 		{
 			QFont myFont("Arial", 9);
@@ -901,19 +910,34 @@ void MainWindow::tab5LoadFileDossPressed()
 			readFileFromFs(fileName, content);
 			const QFileInfo fileinfo(fileName);
 			settings->updatePath(fileinfo.absolutePath());
-			ui->tab5LoadFilecomboBox->addItem(fileName);
 			int count = qeDosData->count(content);
-			linesCount += count;
+			if (count>0)
+			{
+				ui->tab5LoadFilecomboBox->addItem(fileName);
+				linesCount += count;
+				plotParams->tab5LinesCounter->append(count);
+			}
+			else
+			{
+				flagErrorDuringAdd++;
+			}
 			QFileInfo file = QFileInfo(fileName);
-			plotParams->tab5LinesCounter->append(count);
 			delete content;
+		}
+		if (flagErrorDuringAdd>0)
+		{
+			QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_SomeFilesNotContainedData.arg(flagErrorDuringAdd));
 		}
 		ui->tab5LoadFilecomboBox->view()->setMinimumWidth(maxWidth + maxWidth*0.05);
 		connect(ui->tab5ComboBoxLineSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5ComboBoxLineSelectorIndexChanged(int)));
 		connect(ui->tab5LoadFilecomboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(tab5UpdateParamsFile(int)));
 		plotParams->tab5SetCountOfLines(linesCount);
-		ui->tab5LoadFilecomboBox->setCurrentIndex(0);
-		tab5UpdateParamsFile(0);
+		if (ui->tab5LoadFilecomboBox->count()>0)
+		{
+			ui->tab5LoadFilecomboBox->setCurrentIndex(0);
+			ui->tab5LoadFilecomboBox->setToolTip(ui->tab5LoadFilecomboBox->currentText());
+			tab5UpdateParamsFile(0);
+		}
 	}
 }
 
@@ -945,12 +969,15 @@ void MainWindow::tab5DrawDosPressed()
 		plotParams->updatePlotParams(5);
 		(new QeGraph(settings, "Plot", plotParams, tab5GraphFont, this))->draw(qeDosData, symbols, selected, ui->tab5ComboBoxDosRotate->currentIndex());
 	}
+	else
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 }
 
 void MainWindow::tab5UpdateParamsFile(int selected)
 {
 	if (selected != -1)
 	{
+		ui->tab5LoadFilecomboBox->setToolTip(ui->tab5LoadFilecomboBox->currentText());
 		int shift = 0;
 		for (int i = 0; i < ui->tab5LoadFilecomboBox->currentIndex(); i++)
 			shift += plotParams->tab5LinesCounter->at(i);
@@ -969,6 +996,8 @@ void MainWindow::tab5UpdateParamsFile(int selected)
 
 		tab5ComboBoxLineSelectorIndexChanged(0);
 	}
+	else
+		ui->tab5LoadFilecomboBox->setToolTip("");
 }
 
 void MainWindow::tab5LanguageChanged()
@@ -1042,6 +1071,55 @@ void MainWindow::tab5LoadSurfDatButtonPressed()
 	}
 	else
 		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
+}
+
+void MainWindow::tab5PushButtonSetFontContourPressed()
+{
+	bool ok;
+	QFontDialog fontDialog;
+	const QRect windowLocation = geometry();
+	fontDialog.setGeometry(windowLocation.x() + 100, windowLocation.y() + 50, 480, 360);
+	const QFont font = fontDialog.getFont(&ok, tab5ContourGraphFont);
+	if (ok) {
+		tab5ContourGraphFont = font;
+	}
+	else {
+
+	}
+}
+
+void MainWindow::tab5LoadQEDenButtonPressed()
+{
+	const QString fileName = QFileDialog::getOpenFileName(this,
+		STR_Dialog_OpenFile, settings->getLastPath(),
+		tr("Dat files (*.dat);;All Files (*)"));
+	if (fileName != "")
+	{
+		ui->tab5FileLine3->setText(fileName);
+		ui->tab5FileLine3->setToolTip(fileName);
+		const QFileInfo fileinfo(ui->tab5FileLine3->text());
+		settings->updatePath(fileinfo.absolutePath());
+	}
+}
+
+void MainWindow::tab5PlotGraphicButtonPressed()
+{
+	QList<QString>* content = new QList<QString>();
+
+	if (ui->tab5FileLine3->text() != "")
+	{
+		qeSurfData->clear();
+		readFileFromFs(ui->tab5FileLine3->text(), content);
+		qeSurfData->parseData(content);
+		delete content;
+		plotParams->updatePlotParams(5);
+		if (qeSurfData->oF.count()>2)
+			(new QEContourGraph(settings, "Plot", plotParams, tab5GraphFont, this))->draw(qeSurfData);
+		else
+			QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
+	}
+	else
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoFileToDraw);
 }
 
 void MainWindow::tab2PushButtonPdosLoadPressed()

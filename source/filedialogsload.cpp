@@ -20,32 +20,68 @@ void FileDialogsLoad::fileDialogMolTrajP2Load()
         QFileInfo fileInfo(fileNames[i]);
 
         if (fileInfo.fileName().toUpper().contains("TRAJGRAD.DAT"))
+        {
             ui->tab1FileLine1->setText(fileNames[i]);
+            ui->tab1FileLine1->setToolTip(fileNames[i]);
+        }
         else if (fileInfo.fileName().toUpper().contains("MOLGRAPH"))
+        {
             ui->tab1FileLine2->setText(fileNames[i]);
+            ui->tab1FileLine2->setToolTip(fileNames[i]);
+        }
         else if (fileInfo.fileName().toUpper().contains("P2DCRYIN"))
+        {
             ui->tab1FileLine3->setText(fileNames[i]);
+            ui->tab1FileLine3->setToolTip(fileNames[i]);
+        }
         else if (fileInfo.fileName().toUpper().contains("SURFELFB"))
+        {
             ui->tab1FileLine4->setText(fileNames[i]);
+            ui->tab1FileLine4->setToolTip(fileNames[i]);
+        }
         else if (fileInfo.fileName().toUpper().contains("SURFGKIN"))
+        {
             ui->tab1FileLine4->setText(fileNames[i]);
+            ui->tab1FileLine4->setToolTip(fileNames[i]);
+        }
         else if (fileInfo.fileName().toUpper().contains("SURFGRHO"))
+        {
             ui->tab1FileLine4->setText(fileNames[i]);
+            ui->tab1FileLine4->setToolTip(fileNames[i]);
+        }
         else if (fileInfo.fileName().toUpper().contains("SURFKKIN"))
+        {
             ui->tab1FileLine4->setText(fileNames[i]);
+            ui->tab1FileLine4->setToolTip(fileNames[i]);
+        }
         else if (fileInfo.fileName().toUpper().contains("SURFLAPM"))
+        {
             ui->tab1FileLine4->setText(fileNames[i]);
+            ui->tab1FileLine4->setToolTip(fileNames[i]);
+        }
         else if (fileInfo.fileName().toUpper().contains("SURFLAPP"))
+        {
             ui->tab1FileLine4->setText(fileNames[i]);
+            ui->tab1FileLine4->setToolTip(fileNames[i]);
+        }
         else if (fileInfo.fileName().toUpper().contains("SURFRHOO"))
+        {
             ui->tab1FileLine4->setText(fileNames[i]);
+            ui->tab1FileLine4->setToolTip(fileNames[i]);
+        }
         else if (fileInfo.fileName().toUpper().contains("SURFSPDE"))
+        {
             ui->tab1FileLine4->setText(fileNames[i]);
+            ui->tab1FileLine4->setToolTip(fileNames[i]);
+        }
         else if (fileInfo.fileName().toUpper().contains("SURFVIRI"))
+        {
             ui->tab1FileLine4->setText(fileNames[i]);
+            ui->tab1FileLine4->setToolTip(fileNames[i]);
+        }
         else
             QMessageBox::warning(this, STR_ErrorTitle_AddingError, STR_ErrorMessage_NonStandartNameMessage.arg(fileInfo.fileName()));
-
+        
         settings->updatePath(fileInfo.absolutePath());
     }
 }
@@ -75,6 +111,9 @@ void FileDialogsLoad::loadFileButtonCliked(const int id)
 
         QLineEdit* lineEdit = parent->findChild<QLineEdit*>(lineName);
         if (lineEdit != nullptr)
+        {
             lineEdit->setText(fileName);
+            lineEdit->setToolTip(fileName);
+        }
     }
 }

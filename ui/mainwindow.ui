@@ -5112,6 +5112,14 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>9</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
       </widget>
      </widget>
      <widget class="QGroupBox" name="groupBox_55">
@@ -6251,7 +6259,7 @@
      </widget>
      <widget class="QGroupBox" name="groupBox_60">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -6274,7 +6282,7 @@
       </property>
       <widget class="QLabel" name="label_169">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -6301,7 +6309,7 @@
       </widget>
       <widget class="QLineEdit" name="tab5FileLine3">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -6325,7 +6333,7 @@
       </widget>
       <widget class="QPushButton" name="tab5LoadQEDen">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -6349,7 +6357,7 @@
       </widget>
       <widget class="QPushButton" name="deleteButton11">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -6373,7 +6381,7 @@
       </widget>
       <widget class="QLabel" name="label_170">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -6400,7 +6408,7 @@
       </widget>
       <widget class="QDoubleSpinBox" name="tab5SpinnerBoxContourWidth">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -6427,7 +6435,7 @@
       </widget>
       <widget class="QDoubleSpinBox" name="tab5SpinnerBoxLevelDivider">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -6457,7 +6465,7 @@
       </widget>
       <widget class="QCheckBox" name="tab5CheckBoxColorLevels">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -6481,7 +6489,7 @@
       </widget>
       <widget class="QLabel" name="label_171">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -6508,7 +6516,7 @@
       </widget>
       <widget class="QComboBox" name="tab5ComboBoxRotate">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -6529,7 +6537,7 @@
       </widget>
       <widget class="QLabel" name="label_172">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -6555,6 +6563,9 @@
        </property>
       </widget>
       <widget class="QPushButton" name="tab5PlotGraphic">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>351</x>
@@ -6577,7 +6588,7 @@
       </widget>
       <widget class="QCheckBox" name="tab5ShowAxis">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -6600,6 +6611,9 @@
        </property>
       </widget>
       <widget class="QPushButton" name="tab5FontChangeButton">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>230</x>
@@ -6621,6 +6635,9 @@
        </property>
       </widget>
       <widget class="QLabel" name="label_147">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>170</x>
@@ -6760,7 +6777,7 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;QGraphViewer&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Версия 1.1.0 Alpha 1 &lt;span style=&quot; font-style:italic;&quot;&gt;&amp;quot;W&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-style:italic;&quot;&gt;at, you still use this?!&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;&amp;quot; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Версия 1.1.0 Alpha 2 &lt;span style=&quot; font-style:italic;&quot;&gt;&amp;quot;W&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-style:italic;&quot;&gt;at, you still use this?!&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;&amp;quot; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt; &lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Данное приложение создано в среде Qt 5.14 - 5.15, с использованием библиотек QCustomPlot, QXlsx и Eigen.&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Библиотеки используются по лицензии MIT.&lt;/p&gt;
@@ -6925,8 +6942,8 @@ p, li { white-space: pre-wrap; }
  <connections/>
  <buttongroups>
   <buttongroup name="ColorButtonGroup"/>
-  <buttongroup name="DeleteButtonGroup"/>
   <buttongroup name="LoadFileButtonGroup"/>
   <buttongroup name="HelpButtonGroup"/>
+  <buttongroup name="DeleteButtonGroup"/>
  </buttongroups>
 </ui>

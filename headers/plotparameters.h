@@ -49,8 +49,8 @@ public:
     double tab1surfacePrecision;
     double tab1surfaceWidth;
     bool tab2zeroShift;
-    bool commonUhf;
-	bool colorContours;
+    bool tab2Uhf;
+	bool tab1ColorContours;
     int drawRes;
     int drawQuality=90;
     double drawScale=6;
@@ -75,6 +75,11 @@ public:
     double tab5DOSShift;
     QVector<int>* tab5LinesCounter;
 
+    double tab5surfaceDivider;
+    double tab5surfaceWidth;
+    bool tab5ColorContours;
+    bool tab5surfaceHideAxis;
+    int tab5surfaceRotate;
 
 private:
     Ui::MainWindow *ui;

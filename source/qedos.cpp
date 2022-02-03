@@ -48,7 +48,15 @@ int QeDos::count(const QList<QString>* content)
 			test2.removeAt(i);
 		i--;
 	}
-
+	i = 0;
+	while (i < test2.count())
+	{
+		bool ok = false;
+		double temp = test2.at(i).toDouble(&ok);
+		if (!ok)
+			return 0;
+		i++;
+	}
 	return test2.count()-1;
 }
 

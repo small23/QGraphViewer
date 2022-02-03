@@ -354,9 +354,9 @@ public:
     QPushButton *tab4ChangelogButton;
     QPushButton *tab5LanguageChange;
     QButtonGroup *ColorButtonGroup;
-    QButtonGroup *DeleteButtonGroup;
     QButtonGroup *LoadFileButtonGroup;
     QButtonGroup *HelpButtonGroup;
+    QButtonGroup *DeleteButtonGroup;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -1488,6 +1488,7 @@ public:
         tab5LoadFilecomboBox = new QComboBox(groupBox_53);
         tab5LoadFilecomboBox->setObjectName(QString::fromUtf8("tab5LoadFilecomboBox"));
         tab5LoadFilecomboBox->setGeometry(QRect(10, 50, 161, 22));
+        tab5LoadFilecomboBox->setFont(font1);
         groupBox_55 = new QGroupBox(tab_5);
         groupBox_55->setObjectName(QString::fromUtf8("groupBox_55"));
         groupBox_55->setGeometry(QRect(450, 0, 231, 451));
@@ -1736,46 +1737,46 @@ public:
         tab5SurfRotationSelector->setFont(font1);
         groupBox_60 = new QGroupBox(tab_5);
         groupBox_60->setObjectName(QString::fromUtf8("groupBox_60"));
-        groupBox_60->setEnabled(false);
+        groupBox_60->setEnabled(true);
         groupBox_60->setGeometry(QRect(0, 310, 441, 141));
         groupBox_60->setFont(font2);
         label_169 = new QLabel(groupBox_60);
         label_169->setObjectName(QString::fromUtf8("label_169"));
-        label_169->setEnabled(false);
+        label_169->setEnabled(true);
         label_169->setGeometry(QRect(10, 20, 31, 21));
         label_169->setFont(font1);
         label_169->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         tab5FileLine3 = new QLineEdit(groupBox_60);
         tab5FileLine3->setObjectName(QString::fromUtf8("tab5FileLine3"));
-        tab5FileLine3->setEnabled(false);
+        tab5FileLine3->setEnabled(true);
         tab5FileLine3->setGeometry(QRect(50, 20, 251, 22));
         tab5FileLine3->setFont(font1);
         tab5LoadQEDen = new QPushButton(groupBox_60);
         tab5LoadQEDen->setObjectName(QString::fromUtf8("tab5LoadQEDen"));
-        tab5LoadQEDen->setEnabled(false);
+        tab5LoadQEDen->setEnabled(true);
         tab5LoadQEDen->setGeometry(QRect(351, 20, 81, 22));
         tab5LoadQEDen->setFont(font1);
         deleteButton11 = new QPushButton(groupBox_60);
         deleteButton11->setObjectName(QString::fromUtf8("deleteButton11"));
-        deleteButton11->setEnabled(false);
+        deleteButton11->setEnabled(true);
         deleteButton11->setGeometry(QRect(316, 20, 21, 21));
         deleteButton11->setFont(font1);
         label_170 = new QLabel(groupBox_60);
         label_170->setObjectName(QString::fromUtf8("label_170"));
-        label_170->setEnabled(false);
+        label_170->setEnabled(true);
         label_170->setGeometry(QRect(20, 80, 61, 21));
         label_170->setFont(font1);
         label_170->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         tab5SpinnerBoxContourWidth = new QDoubleSpinBox(groupBox_60);
         tab5SpinnerBoxContourWidth->setObjectName(QString::fromUtf8("tab5SpinnerBoxContourWidth"));
-        tab5SpinnerBoxContourWidth->setEnabled(false);
+        tab5SpinnerBoxContourWidth->setEnabled(true);
         tab5SpinnerBoxContourWidth->setGeometry(QRect(90, 80, 51, 22));
         tab5SpinnerBoxContourWidth->setFont(font1);
         tab5SpinnerBoxContourWidth->setDecimals(1);
         tab5SpinnerBoxContourWidth->setMinimum(1.000000000000000);
         tab5SpinnerBoxLevelDivider = new QDoubleSpinBox(groupBox_60);
         tab5SpinnerBoxLevelDivider->setObjectName(QString::fromUtf8("tab5SpinnerBoxLevelDivider"));
-        tab5SpinnerBoxLevelDivider->setEnabled(false);
+        tab5SpinnerBoxLevelDivider->setEnabled(true);
         tab5SpinnerBoxLevelDivider->setGeometry(QRect(90, 50, 51, 22));
         tab5SpinnerBoxLevelDivider->setFont(font1);
         tab5SpinnerBoxLevelDivider->setDecimals(1);
@@ -1783,41 +1784,44 @@ public:
         tab5SpinnerBoxLevelDivider->setValue(2.000000000000000);
         tab5CheckBoxColorLevels = new QCheckBox(groupBox_60);
         tab5CheckBoxColorLevels->setObjectName(QString::fromUtf8("tab5CheckBoxColorLevels"));
-        tab5CheckBoxColorLevels->setEnabled(false);
+        tab5CheckBoxColorLevels->setEnabled(true);
         tab5CheckBoxColorLevels->setGeometry(QRect(320, 50, 111, 21));
         tab5CheckBoxColorLevels->setFont(font1);
         label_171 = new QLabel(groupBox_60);
         label_171->setObjectName(QString::fromUtf8("label_171"));
-        label_171->setEnabled(false);
+        label_171->setEnabled(true);
         label_171->setGeometry(QRect(150, 50, 71, 21));
         label_171->setFont(font1);
         label_171->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         tab5ComboBoxRotate = new QComboBox(groupBox_60);
         tab5ComboBoxRotate->setObjectName(QString::fromUtf8("tab5ComboBoxRotate"));
-        tab5ComboBoxRotate->setEnabled(false);
+        tab5ComboBoxRotate->setEnabled(true);
         tab5ComboBoxRotate->setGeometry(QRect(230, 50, 71, 22));
         tab5ComboBoxRotate->setFont(font1);
         label_172 = new QLabel(groupBox_60);
         label_172->setObjectName(QString::fromUtf8("label_172"));
-        label_172->setEnabled(false);
+        label_172->setEnabled(true);
         label_172->setGeometry(QRect(20, 50, 61, 21));
         label_172->setFont(font1);
         label_172->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         tab5PlotGraphic = new QPushButton(groupBox_60);
         tab5PlotGraphic->setObjectName(QString::fromUtf8("tab5PlotGraphic"));
+        tab5PlotGraphic->setEnabled(true);
         tab5PlotGraphic->setGeometry(QRect(351, 110, 81, 22));
         tab5PlotGraphic->setFont(font2);
         tab5ShowAxis = new QCheckBox(groupBox_60);
         tab5ShowAxis->setObjectName(QString::fromUtf8("tab5ShowAxis"));
-        tab5ShowAxis->setEnabled(false);
+        tab5ShowAxis->setEnabled(true);
         tab5ShowAxis->setGeometry(QRect(320, 80, 101, 20));
         tab5ShowAxis->setFont(font1);
         tab5FontChangeButton = new QPushButton(groupBox_60);
         tab5FontChangeButton->setObjectName(QString::fromUtf8("tab5FontChangeButton"));
+        tab5FontChangeButton->setEnabled(true);
         tab5FontChangeButton->setGeometry(QRect(230, 80, 71, 22));
         tab5FontChangeButton->setFont(font1);
         label_147 = new QLabel(groupBox_60);
         label_147->setObjectName(QString::fromUtf8("label_147"));
+        label_147->setEnabled(true);
         label_147->setGeometry(QRect(170, 80, 51, 21));
         label_147->setFont(font1);
         label_147->setLayoutDirection(Qt::LeftToRight);
@@ -2139,7 +2143,7 @@ public:
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Arial'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">QGraphViewer</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\222\320\265\321\200\321\201\320\270\321\217 1.1.0 Alpha 1 <span style=\" font-style:italic;\">&quot;W</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:10pt; font-style:italic;\">at, you still use this?!</span><span style=\" font-style:italic;\">&quot; </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\222\320\265\321\200\321\201\320\270\321\217 1.1.0 Alpha 2 <span style=\" font-style:italic;\">&quot;W</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:10pt; font-style:italic;\">at, you still use this?!</span><span style=\" font-style:italic;\">&quot; </span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-bl"
                         "ock-indent:0; text-indent:0px;\"> </p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\224\320\260\320\275\320\275\320\276\320\265 \320\277\321\200\320\270\320\273\320\276\320\266\320\265\320\275\320\270\320\265 \321\201\320\276\320\267\320\264\320\260\320\275\320\276 \320\262 \321\201\321\200\320\265\320\264\320\265 Qt 5.14 - 5.15, \321\201 \320\270\321\201\320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\320\275\320\270\320\265\320\274 \320\261\320\270\320\261\320\273\320\270\320\276\321\202\320\265\320\272 QCustomPlot, QXlsx \320\270 Eigen.</p>\n"

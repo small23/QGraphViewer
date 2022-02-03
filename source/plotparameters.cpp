@@ -28,8 +28,8 @@ PlotParameters::PlotParameters(Ui::MainWindow* uiInt, QWidget* parentInt)
 	tab1surfacePrecision = 0;
 	tab1surfaceWidth = 0;
 	tab2zeroShift = false;
-	commonUhf = false;
-	colorContours = false;
+	tab2Uhf = false;
+	tab1ColorContours = false;
 	drawRes = 0;
 	tab2FermiLevelWidth = 0;
 	tab2ShowFermiLine = false;
@@ -86,7 +86,7 @@ void PlotParameters::updatePlotParams(const int tabId)
 		tab1PlotParams[5].show = ui->tab1CheckBoxShow6->isChecked();
 		tab1PlotParams[6].show = ui->tab1CheckBoxShow7->isChecked();
 
-		colorContours = ui->tab1CheckBoxColorLevels->isChecked();
+		tab1ColorContours = ui->tab1CheckBoxColorLevels->isChecked();
 
 		for (int i = 0; i < 4; i++)
 		{
@@ -231,10 +231,16 @@ void PlotParameters::updatePlotParams(const int tabId)
 		tab5yMax = ui->tab5DOSYMax->text().toDouble();
 		tab5yMinZs = ui->tab5ZoneStructYMin->text().toDouble();
 		tab5yMaxZs = ui->tab5ZoneStructYMax->text().toDouble();
+
+		tab5surfaceDivider = ui->tab5SpinnerBoxLevelDivider->value();
+		tab5surfaceWidth = ui->tab5SpinnerBoxContourWidth->value();
+		tab5ColorContours = ui->tab5CheckBoxColorLevels->isChecked();
+		tab5surfaceHideAxis = ui->tab5ShowAxis->isChecked();
+		tab5surfaceRotate = ui->tab5ComboBoxRotate->currentIndex();
 	}
 
 	tab2zeroShift = ui->tab2ZeroShift->isChecked();
-	commonUhf = ui->tab2UHF->isChecked();
+	tab2Uhf = ui->tab2UHF->isChecked();
 
 }
 

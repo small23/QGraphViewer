@@ -253,6 +253,9 @@
     <ClCompile Include="source\zonegraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="qecontourgraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="headers\atomconversion.h">
@@ -342,8 +345,6 @@
     <ClInclude Include="headers\surfdata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    
-    
     <ClInclude Include="headers\uiinit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -493,49 +494,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <CustomBuild Include="debug\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
     <CustomBuild Include="release\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
   </ItemGroup>
   <ItemGroup>
     <None Include="translations\qt_en.ts">
@@ -609,6 +573,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="W:\Repos\QGraphViewer\QGraphViewer\QGraphViewer_resource.rc" />
+    <ResourceCompile Include=".\QGraphViewer_resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="qecontourgraph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

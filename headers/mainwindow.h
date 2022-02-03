@@ -38,7 +38,8 @@
 #include "qedos.h"
 #include "qegraph.h"
 #include "qesurfdata.h"
-#include <structuresheaders.h>
+#include "qecontourgraph.h"
+#include "structuresheaders.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -120,6 +121,9 @@ private Q_SLOTS:
     void tab5UpdateParamsFile(int selected);
     void tab5LanguageChanged();
     void tab5LoadSurfDatButtonPressed();
+    void tab5LoadQEDenButtonPressed();
+    void tab5PlotGraphicButtonPressed();
+    void tab5PushButtonSetFontContourPressed();
 	
 private:
     //Указатели на классы-обработчики и хранилища
@@ -131,6 +135,7 @@ private:
     QFont tab1GraphFont;
     QFont tab2GraphFont;
     QFont tab5GraphFont;
+    QFont tab5ContourGraphFont;
     GraphicsData *graphicsData;
     BandData *bandData;
     SurfData *surfData;

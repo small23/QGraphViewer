@@ -30,6 +30,7 @@ const QString STR_ErrorMessage_NonStandartNameMessage = QObject::tr("Файл '%
 const QString STR_ErrorMessage_ImageSavingError = QObject::tr("Не удалось сохранить изображение!");
 const QString STR_ErrorMessage_NoAtomsError = QObject::tr("Атомы не найдены! Проверьте правильность ввода информации.");
 const QString STR_ErrorMessage_NoDataForSave = QObject::tr("Нет данных для сохранения!");
+const QString STR_ErrorMessage_SomeFilesNotContainedData = QObject::tr("Некоторые файлы ('%1') не содержат нужных данных и не добавлены в список");
 
 const QString STR_MessageBoxTitle_DataProcessed = QObject::tr("Данные обработаны");
 const QString STR_MessageBoxMessage_DataProcessedAndSaved = QObject::tr("Данные обработаны и сохранены!");

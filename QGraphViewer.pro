@@ -39,6 +39,7 @@ HEADERS += \
     $$files("headers/*.h", true) \
     ui_mainwindow.h \
     ui_picturesettings.h \
+    ui_changelog.h \
 
 
 FORMS += \
