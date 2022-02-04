@@ -28,7 +28,6 @@ GraphBuilder::GraphBuilder(SettingsKeeper* settings, const QString& title, PlotP
     customPlot->yAxis->setLabelFont(font);
 
     imageOnWidget.setParent(this);
-    //imageOnWidget =  QLabel("Start", this);
     imageOnWidget.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     this->setMinimumSize(250, 250);
 
@@ -60,19 +59,22 @@ void GraphBuilder::deletionOnClose(QObject* obj)
 
 void GraphBuilder::resizeEvent(QResizeEvent* event)
 {
-    float thisAspectRatio = (float)event->size().width() / event->size().height();
-    int width, height;
-    if (thisAspectRatio > compareScale)
+    if (!plotDraw.isNull())
     {
-        height = event->size().height();
-        width = height * compareScale;
+        float thisAspectRatio = (float)event->size().width() / event->size().height();
+        int width, height;
+        if (thisAspectRatio > compareScale)
+        {
+            height = event->size().height();
+            width = height * compareScale;
+        }
+        else
+        {
+            width = event->size().width();
+            height = width / compareScale;
+        }
+        imageOnWidget.setPixmap(plotDraw.scaled(width, height, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     }
-    else
-    {
-        width = event->size().width();
-        height = width / compareScale;
-    }
-    imageOnWidget.setPixmap(plotDraw.scaled(width, height, Qt::KeepAspectRatio, Qt::SmoothTransformation));
 	QWidget::resizeEvent(event);
 }
 
@@ -80,10 +82,10 @@ void GraphBuilder::showEvent(QShowEvent* event)
 {
     plotWidth = customPlot->minimumWidth();
     plotHeight = customPlot->minimumHeight();
-    plotDraw = customPlot->toPixmap(plotWidth, plotHeight, 1.5);
+    plotDraw = customPlot->toPixmap(plotWidth, plotHeight, 3);
     this->resize(plotWidth, plotHeight);
 	QWidget::showEvent(event);
-    plotDraw = customPlot->toPixmap(plotWidth, plotHeight, 5);
+    QApplication::processEvents();
 }
 
 void GraphBuilder::closeEvent(QCloseEvent* event)

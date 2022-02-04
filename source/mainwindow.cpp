@@ -175,6 +175,10 @@ void MainWindow::deleteFileStringButtonClicked(const int id) const
 			plotParams->tab2SetCountOfLines(1);
 			ui->tab2ComboBoxLineSelector->addItem("1");
 			ui->tab2ComboBoxLineSelector->setCurrentIndex(0);
+			if (ui->tab2CheckBoxShow1->isChecked())
+				ui->tab2ComboBoxLineSelector->setItemData(ui->tab2ComboBoxLineSelector->currentIndex(), QBrush(MenuSelectedGraph), Qt::ForegroundRole); //TextColorRole
+			else
+				ui->tab2ComboBoxLineSelector->setItemData(ui->tab2ComboBoxLineSelector->currentIndex(), QBrush(Qt::black), Qt::ForegroundRole);
 		}
 		if (id == 10)
 		{
@@ -938,6 +942,12 @@ void MainWindow::tab5LoadFileDossPressed()
 			ui->tab5LoadFilecomboBox->setToolTip(ui->tab5LoadFilecomboBox->currentText());
 			tab5UpdateParamsFile(0);
 		}
+		else
+		{
+			plotParams->tab5SetCountOfLines(1);
+			ui->tab5ComboBoxLineSelector->addItem("1");
+			ui->tab5ComboBoxLineSelector->setCurrentIndex(0);
+		}
 	}
 }
 
@@ -1155,42 +1165,14 @@ void MainWindow::tab2PushButtonPdosLoadPressed()
 	{
 		const QFileInfo fileinfo(fileName);
 		settings->updatePath(fileinfo.absolutePath());
-		QXlsx::Document xlsx;
-        xlsx.write(1, 1, STR_XLSX_AtomNumber);
-        xlsx.write(1, 2, STR_XLSX_Atom);
-        xlsx.write(1, 3, STR_XLSX_Type);
-        xlsx.write(1, 4, STR_XLSX_FunctionNumber);
-        xlsx.write(1, 5, STR_XLSX_BaseFunctionNumber);
-		int counter = 2;
-		for (int i = 0; i < data.count(); i++)
-		{
-			for (int ii = 0; ii < data.at(i).count(); ii++)
-			{
-				xlsx.write(counter, 1, QString::number(data.at(i).at(ii).number));
-				xlsx.write(counter, 2, data.at(i).at(ii).name);
-				xlsx.write(counter, 3, data.at(i).at(ii).type);
-				xlsx.write(counter, 4, QString::number(data.at(i).at(ii).end - data.at(i).at(ii).begin + 1));
-				QString temp;
-				for (int j = data.at(i).at(ii).begin; j <= data.at(i).at(ii).end; j++)
-					temp += QString::number(j) + " ";
-				xlsx.write(counter, 5, temp);
-				counter++;
-			}
-		}
-		xlsx.setColumnWidth(1, 10);
-		xlsx.setColumnWidth(2, 10);
-		xlsx.setColumnWidth(3, 10);
-		xlsx.setColumnWidth(4, 15);
-		xlsx.setColumnWidth(5, 50);
-		QApplication::processEvents();
-		const bool success = xlsx.saveAs(fileName); // save the document as 'Test.xlsx'
+		bool success = filesSaver->saveHelpNumberOfFunctionsData(fileName, data);
 		if (success != true)
 		{
-			QMessageBox::critical(this, STR_ErrorTitle_SaveError,STR_ErrorMessage_CantOpenFileForWrite.arg(fileName));
+			QMessageBox::critical(this, STR_ErrorTitle_SaveError, STR_ErrorMessage_CantOpenFileForWrite.arg(fileName));
 		}
-        QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
+		QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
 	}
-
+	
 	ui->tab2PDOSNumbersTable->clear();
 	ui->tab2PDOSNumbersTable->setRowCount(0);
 	for (int i = 0; i < data.count(); i++)

@@ -150,6 +150,6 @@ private:
     AtomConversion* atomsConvert;
 	FileDialogsLoad*	fileDiag;
     QeSurfData* qeSurfData;
-    QColor MenuSelectedGraph = Qt::red;
+    QColor MenuSelectedGraph = Qt::darkGreen;
 };
 #endif // MAINWINDOW_H

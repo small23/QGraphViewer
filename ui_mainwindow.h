@@ -353,10 +353,10 @@ public:
     QPushButton *tab4LicenceMIT;
     QPushButton *tab4ChangelogButton;
     QPushButton *tab5LanguageChange;
-    QButtonGroup *ColorButtonGroup;
-    QButtonGroup *LoadFileButtonGroup;
     QButtonGroup *HelpButtonGroup;
     QButtonGroup *DeleteButtonGroup;
+    QButtonGroup *LoadFileButtonGroup;
+    QButtonGroup *ColorButtonGroup;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -2143,7 +2143,7 @@ public:
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Arial'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">QGraphViewer</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\222\320\265\321\200\321\201\320\270\321\217 1.1.0 Alpha 2 <span style=\" font-style:italic;\">&quot;W</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:10pt; font-style:italic;\">at, you still use this?!</span><span style=\" font-style:italic;\">&quot; </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\222\320\265\321\200\321\201\320\270\321\217 1.1.0 Alpha 3 <span style=\" font-style:italic;\">&quot;W</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:10pt; font-style:italic;\">at, you still use this?!</span><span style=\" font-style:italic;\">&quot; </span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-bl"
                         "ock-indent:0; text-indent:0px;\"> </p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\224\320\260\320\275\320\275\320\276\320\265 \320\277\321\200\320\270\320\273\320\276\320\266\320\265\320\275\320\270\320\265 \321\201\320\276\320\267\320\264\320\260\320\275\320\276 \320\262 \321\201\321\200\320\265\320\264\320\265 Qt 5.14 - 5.15, \321\201 \320\270\321\201\320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\320\275\320\270\320\265\320\274 \320\261\320\270\320\261\320\273\320\270\320\276\321\202\320\265\320\272 QCustomPlot, QXlsx \320\270 Eigen.</p>\n"
@@ -2165,7 +2165,7 @@ public:
                         " \320\235\320\260\321\202\320\260\320\273\321\214\321\217,</p>\n"
 "<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\244\320\223\320\221\320\236\320\243 \320\222\320\236 \320\232\320\265\320\274\320\223\320\243</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">2020-2021, \320\222\321\201\320\265 \320\277\321\200\320\260\320\262\320\260 \320\275\320\265 \320\267\320\260\321\211\320\270\321\211\320\265\320\275\321\213!</p></body></html>", nullptr));
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">2020-2022, \320\222\321\201\320\265 \320\277\321\200\320\260\320\262\320\260 \320\275\320\265 \320\267\320\260\321\211\320\270\321\211\320\265\320\275\321\213!</p></body></html>", nullptr));
         tab4QCustomPlotLabel->setText(QString());
         tab4QtLogo->setText(QString());
         tab4QXlsxLogo->setText(QString());
