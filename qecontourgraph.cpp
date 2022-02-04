@@ -8,7 +8,6 @@ QEContourGraph::QEContourGraph(SettingsKeeper* settings, const QString& title, P
 
 void QEContourGraph::draw(QeSurfData* data)
 {
-    //data->rotateData(plotParams->tab5surfaceRotate * 90);
     drawSurface(data);
 
     QVector<double> tickValues;

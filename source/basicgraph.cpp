@@ -118,6 +118,7 @@ void BasicGraph::draw(const bool hideAxis, const int buildType, const bool uhf, 
     const QCPRange xRange = customPlot->xAxis->range();
     const QCPRange yRange = customPlot->yAxis->range();
     compareScale = (yRange.upper - yRange.lower) / (xRange.upper - xRange.lower);
+    aspectRatio = compareScale;
     if (compareScale < 1.01)
     {
         customPlot->setGeometry(30, 30, plotParams->drawRes, static_cast<int>(round(plotParams->drawRes * compareScale)));
@@ -138,6 +139,8 @@ void BasicGraph::draw(const bool hideAxis, const int buildType, const bool uhf, 
         customPlot->yAxis->setTicks(false);
         customPlot->yAxis->setTickLabels(false);
     }
+
+
 
     switch (angle)
     {
@@ -161,7 +164,7 @@ void BasicGraph::draw(const bool hideAxis, const int buildType, const bool uhf, 
         break;
     }
 
-    customPlot->show();
+	this->show();
 }
 
 void BasicGraph::drawDataLines(QList<UniversalLines>* data, const int index, const int angle) const

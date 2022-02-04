@@ -6,12 +6,13 @@
 GraphBuilder::GraphBuilder(SettingsKeeper* settings, const QString& title, PlotParameters* plotParams, const QFont& font, QWidget* parent) :
 	settings(settings), parent(parent), customPlot(new QCustomPlot()), plotParams(plotParams), font(font)
 {
-	customPlot->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(customPlot, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequest(QPoint)));
-    connect(customPlot, SIGNAL(destroyed(QObject*)), this, SLOT(deletionOnClose(QObject*)));
-    connect(customPlot, SIGNAL(resizeEvent(QResizeEvent*)), this, SLOT(resizeEvent(QResizeEvent*)));
-    customPlot->setWindowTitle(title);
-    customPlot->setAttribute(Qt::WA_DeleteOnClose);
+	//customPlot->setContextMenuPolicy(Qt::CustomContextMenu);
+    this->setContextMenuPolicy(Qt::CustomContextMenu);
+	//connect(customPlot, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequest(QPoint)));
+    connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequest(QPoint)));
+	connect(this, SIGNAL(destroyed(QObject*)), this, SLOT(deletionOnClose(QObject*)));
+    this->setWindowTitle(title);
+    this->setAttribute(Qt::WA_DeleteOnClose);
 
     customPlot->xAxis2->setVisible(true);
     customPlot->yAxis2->setVisible(true);
@@ -25,16 +26,70 @@ GraphBuilder::GraphBuilder(SettingsKeeper* settings, const QString& title, PlotP
     customPlot->yAxis->setTickLabelFont(font);
     customPlot->xAxis->setLabelFont(font);
     customPlot->yAxis->setLabelFont(font);
-    
+
+    imageOnWidget.setParent(this);
+    //imageOnWidget =  QLabel("Start", this);
+    imageOnWidget.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    this->setMinimumSize(250, 250);
+
+    QPushButton Bu_Quit("Quit", this);
+    QObject::connect(&Bu_Quit, SIGNAL(clicked()), qApp, SLOT(quit()));
+
+    QVBoxLayout* vbl = new QVBoxLayout(this);
+    vbl->addWidget(&imageOnWidget);
+    vbl->addWidget(&Bu_Quit);
+    vbl->setContentsMargins(0, 0, 0, 0);
+
+    QPalette Pal(palette());
+
+    Pal.setColor(QPalette::Background, Qt::white);
+	this->setAutoFillBackground(true);
+	this->setPalette(Pal);
 }
 
 void GraphBuilder::draw(){
 
 }
 
+
+
 void GraphBuilder::deletionOnClose(QObject* obj)
 {
     this->deleteLater();
+}
+
+void GraphBuilder::resizeEvent(QResizeEvent* event)
+{
+    float thisAspectRatio = (float)event->size().width() / event->size().height();
+    int width, height;
+    if (thisAspectRatio > aspectRatio)
+    {
+        height = event->size().height();
+        width = height * aspectRatio;
+    }
+    else
+    {
+        width = event->size().width();
+        height = width / aspectRatio;
+    }
+    imageOnWidget.setPixmap(plotDraw.scaled(width, height, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+	QWidget::resizeEvent(event);
+}
+
+void GraphBuilder::showEvent(QShowEvent* event)
+{
+    plotWidth = customPlot->minimumWidth();
+    plotHeight = customPlot->minimumHeight();
+    plotDraw = customPlot->toPixmap(plotWidth, plotHeight, 1.5);
+    this->resize(plotWidth, plotHeight);
+	QWidget::showEvent(event);
+    plotDraw = customPlot->toPixmap(plotWidth, plotHeight, 5);
+}
+
+void GraphBuilder::closeEvent(QCloseEvent* event)
+{
+	QWidget::closeEvent(event);
+    delete customPlot;
 }
 
 void GraphBuilder::contextMenuRequest(const QPoint pos)
@@ -43,7 +98,7 @@ void GraphBuilder::contextMenuRequest(const QPoint pos)
     menu->setAttribute(Qt::WA_DeleteOnClose);
     menu->addAction(STR_Graph_SaveGraph, this, SLOT(savePicture()));
     menu->addAction(STR_Graph_Settings, parent, SLOT(showPictureSettings()));
-    menu->popup(customPlot->mapToGlobal(pos));
+    menu->popup(this->mapToGlobal(pos));
 }
 
 void GraphBuilder::savePicture()

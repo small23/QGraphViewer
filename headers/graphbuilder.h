@@ -23,6 +23,9 @@ public slots:
     //Обработка эвента сохранения изображения
     void savePicture();
     void deletionOnClose(QObject* obj);
+    void resizeEvent(QResizeEvent* event) override;
+    void showEvent(QShowEvent* event) override;
+    void closeEvent(QCloseEvent* event) override;
 
 protected:
         SettingsKeeper* settings;
@@ -32,7 +35,13 @@ protected:
         double compareScale{};
         QCustomPlot *customPlot;
         PlotParameters* plotParams;
+        double aspectRatio;
+        QPixmap plotDraw;
+        int plotWidth;
+        int plotHeight;
         QFont font;
+        QWidget window;
+        QLabel imageOnWidget;
 };
 
 #endif // GRAPHBUILDER_H
