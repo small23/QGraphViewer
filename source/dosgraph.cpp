@@ -169,7 +169,7 @@ void DosGraph::draw(BandData* graphics, double borders[4], const int angle,
 	if (angle == 2)
 		customPlot->xAxis->setRangeReversed(true);
 
-	customPlot->show();
+	this->show();
 }
 
 void DosGraph::drawData(QVector<QVector<double>> data, const QVector<double>& axis, const int angle, const int paramsShift, bool* showed) const

@@ -137,5 +137,5 @@ void ZoneGraph::draw(BandData* graphics, const double min, const double max, con
 		customPlot->yAxis->setLabel(symbols->adaptString(plotParams->tab2OyName));
 	}
 
-	customPlot->show();
+	this->show();
 }

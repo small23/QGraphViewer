@@ -28,14 +28,18 @@ public slots:
     void closeEvent(QCloseEvent* event) override;
 
 protected:
+    void drawDataIsolines(std::vector<MarchingSquares::levelPaths> result, double* hslA, double* hslB,
+        const double* hslAStep, const double* hslBStep, const QVector<double>& oXTemp,
+        const QVector<double>& oYTemp, bool shiftA, bool shiftB,
+        int angle, double stepX, double stepY, double surfaceWidth, bool colorLines) const;
+
         SettingsKeeper* settings;
         QWidget* parent;
         //Множитель разрешения для корректной работы на нестандартном
         //DPI\масштабировании системы
-        double compareScale{};
+        double compareScale = 1;
         QCustomPlot *customPlot;
         PlotParameters* plotParams;
-        double aspectRatio;
         QPixmap plotDraw;
         int plotWidth;
         int plotHeight;

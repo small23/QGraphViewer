@@ -142,7 +142,7 @@ void QeGraph::draw(QeDos* data, MathSymbols* symbols, const int currentGraphic, 
 
 	if (angle == 2)
 		customPlot->xAxis->setRangeReversed(true);
-	customPlot->show();
+	this->show();
 }
 
 void QeGraph::drawData(QeDos* data, int angle, bool* isShowed)

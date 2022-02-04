@@ -118,7 +118,6 @@ void BasicGraph::draw(const bool hideAxis, const int buildType, const bool uhf, 
     const QCPRange xRange = customPlot->xAxis->range();
     const QCPRange yRange = customPlot->yAxis->range();
     compareScale = (yRange.upper - yRange.lower) / (xRange.upper - xRange.lower);
-    aspectRatio = compareScale;
     if (compareScale < 1.01)
     {
         customPlot->setGeometry(30, 30, plotParams->drawRes, static_cast<int>(round(plotParams->drawRes * compareScale)));
@@ -291,8 +290,9 @@ void BasicGraph::drawSurface(SurfData* surfData, const int angle) const
     if (surfData->oX.size() >= 2 && surfData->oY.size() >= 2)
         drawDataIsolines(result, &hslA, &hslB, &hslAStep,
                            &hslBStep, surfData->oX, surfData->oY, shiftA, shiftB,
-                           colorDelimiterA, colorDelimiterB, angle, surfData->oX.at(1) - surfData->oX.at(0),
-                           surfData->oY.at(1) - surfData->oY.at(0));
+                           angle, surfData->oX.at(1) - surfData->oX.at(0),
+                           surfData->oY.at(1) - surfData->oY.at(0),
+            plotParams->tab1surfaceWidth, plotParams->tab1ColorContours);
 
     delete contour;
 }
@@ -401,176 +401,9 @@ void BasicGraph::drawBand(BandData* bandData, const int buildType, const bool uh
     if (bandData->oYTempMapn.size()>1 && bandData->oXTempMapn.size() > 1)
         drawDataIsolines(result, &hslA, &hslB, &hslAStep, &hslBStep,
                            bandData->oXTempMapn, bandData->oYTempMapn, shiftA, shiftB,
-                           colorDelimiterB, colorDelimiterA, angle, bandData->oXTempMapn.at(1)- bandData->oXTempMapn.at(0),
-                           bandData->oYTempMapn.at(1) - bandData->oYTempMapn.at(0));
+                            angle, bandData->oXTempMapn.at(1)- bandData->oXTempMapn.at(0),
+                           bandData->oYTempMapn.at(1) - bandData->oYTempMapn.at(0),
+            plotParams->tab1surfaceWidth, plotParams->tab1ColorContours);
 
     delete contour;
-}
-
-void BasicGraph::drawDataIsolines(std::vector<MarchingSquares::levelPaths> result,
-    double* hslA, double* hslB,const double* hslAStep, const double* hslBStep, const QVector<double>& oXTemp, const QVector<double>
-    & oYTemp, bool shiftA, bool shiftB,
-    int hslABorder, int hslBBorder, int angle, double stepX, double stepY) const
-{
-    QPen pen;
-
-    int hslAChange = 0;
-    int hslBChange = 0;
-
-    pen.setStyle(Qt::PenStyle::SolidLine);
-    pen.setColor(QColor(0, 0, 0));
-    pen.setWidthF(plotParams->tab1surfaceWidth);
-
-    QCPCurve* newCurve1;
-    QCPCurve* newCurve2;
-    newCurve1 = new QCPCurve(customPlot->xAxis, customPlot->yAxis);
-    newCurve2 = new QCPCurve(customPlot->xAxis, customPlot->yAxis);
-    pen.setStyle(Qt::PenStyle::SolidLine);
-    newCurve1->setPen(pen);
-    pen.setStyle(Qt::PenStyle::DashLine);
-    newCurve2->setPen(pen);
-    for (uint i = 0; i < result.size(); i++)
-    {
-        if (i % 2 == 0)
-        {
-            if (plotParams->tab1ColorContours)
-            {
-                pen.setStyle(Qt::PenStyle::SolidLine);
-                QColor temp;
-                temp.setHsv(static_cast<int>(*hslB), 255, 255);
-                pen.setColor(temp);
-                newCurve1->setPen(pen);
-            }
-        }
-        else
-        {
-            if (plotParams->tab1ColorContours)
-            {
-                pen.setStyle(Qt::PenStyle::DashLine);
-                QColor temp;
-                temp.setHsv(static_cast<int>(*hslA), 255, 255);
-                pen.setColor(temp);
-                newCurve2->setPen(pen);
-            }
-        }
-
-        for (uint ii = 0; ii < result[i].size(); ii++)
-        {
-            if (result[i][ii].size() > 4)
-            {
-                if (i % 2 == 0)
-                {
-                    for (int iii = 0; iii < result[i][ii].size(); iii++)
-                    {
-
-                        qreal x = result[i][ii][iii].x();
-                        qreal y = result[i][ii][iii].y();
-                        if (x >= oXTemp.at(1) && y >= oYTemp.at(1) && x <= oXTemp.at(oXTemp.count() - 1) && y <= oYTemp.at(oYTemp.count() - 1))
-                        {
-                            x -= stepX / 2;
-                            y -= stepY / 2;
-                            switch (angle)
-                            {
-                            case 0: case 180:
-                                newCurve1->addData(x, y);
-                                break;
-                            case 90: case 270:
-                                newCurve1->addData(y, x);
-                                break;
-                            default:
-                                break;
-                            }
-                            //newCurve1->addData(x, y);
-                        }
-                        else
-                            newCurve1->addData(qQNaN(), qQNaN());
-                    }
-                    newCurve1->addData(qQNaN(), qQNaN());
-                }
-                else
-                {
-                    for (int iii = 0; iii < result[i][ii].size(); iii++)
-                    {
-
-                        qreal x = result[i][ii][iii].x();
-                        qreal y = result[i][ii][iii].y();
-                        if (x >= oXTemp.at(1) && y >= oYTemp.at(1) && x <= oXTemp.at(oXTemp.count() - 1) && y <= oYTemp.at(oYTemp.count() - 1))
-                        {
-                            x -= stepX / 2;
-                            y -= stepY / 2;
-                            switch (angle)
-                            {
-                            case 0: case 180:
-                                newCurve2->addData(x, y);
-                                break;
-                            case 90: case 270:
-                                newCurve2->addData(y, x);
-                                break;
-                            default:
-                                break;
-                            }
-                            //newCurve2->addData(x, y);
-                        }
-                        else
-                            newCurve2->addData(qQNaN(), qQNaN());
-                    }
-                    newCurve2->addData(qQNaN(), qQNaN());
-                }
-            }
-        }
-        if (plotParams->tab1ColorContours)
-        {
-            if (i % 2 == 0)
-            {
-                if (!result[i].empty())
-                {
-                    hslBChange++;
-                    if (shiftB)
-                    {
-                        if (hslBChange > 3)
-                            *hslB += *hslBStep;
-                    }
-                    else
-                        *hslB += *hslBStep;
-                }
-                if (newCurve1->data()->size()!=0)
-					newCurve1 = new QCPCurve(customPlot->xAxis, customPlot->yAxis);
-                else
-                {
-                    customPlot->removePlottable(newCurve1);
-                    newCurve1 = new QCPCurve(customPlot->xAxis, customPlot->yAxis);
-                }
-            }
-            else
-            {
-                if (newCurve2->data()->size() != 0)
-					newCurve2 = new QCPCurve(customPlot->xAxis, customPlot->yAxis);
-                else
-                {
-                    customPlot->removePlottable(newCurve2);
-                    newCurve2 = new QCPCurve(customPlot->xAxis, customPlot->yAxis);
-                }
-                if (!result[i].empty())
-                {
-                    hslAChange++;
-                    if (shiftA)
-                    {
-                        if (hslAChange > 3)
-                            *hslA += *hslAStep;
-                    }
-                    else
-                        *hslA += *hslAStep;
-                }
-
-            }
-        }
-    }
-    if (newCurve1->data()->size() == 0)
-    {
-        customPlot->removePlottable(newCurve1);
-    }
-    if (newCurve2->data()->size() == 0)
-    {
-        customPlot->removePlottable(newCurve2);
-    }
 }
