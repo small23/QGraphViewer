@@ -56,3 +56,9 @@ void HelpWindow::resizeEvent(QResizeEvent* event)
     scene->addPixmap(outHel);
 
 }
+
+void HelpWindow::closeEvent(QCloseEvent* event)
+{
+	QGraphicsView::closeEvent(event);
+    delete scene;
+}

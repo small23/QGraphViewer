@@ -28,6 +28,7 @@ public:
 private slots:
     void mouseDoubleClickEvent(QMouseEvent * e) override;
     void resizeEvent(QResizeEvent* event) override;
+    void closeEvent(QCloseEvent* event) override;
 
 private:
     int origScaleW = 744;

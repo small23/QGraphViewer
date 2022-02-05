@@ -51,6 +51,12 @@ void HelpMatrixWidget::resizeEvent(QResizeEvent* event)
     scene->addPixmap(outHel);
 }
 
+void HelpMatrixWidget::closeEvent(QCloseEvent* event)
+{
+	QGraphicsView::closeEvent(event);
+    delete scene;
+}
+
 void HelpMatrixWidget::mouseDoubleClickEvent(QMouseEvent *event)
 {
        QTableWidgetItem *itm;

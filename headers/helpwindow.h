@@ -28,6 +28,7 @@ public:
 
 private slots:
     void resizeEvent(QResizeEvent* event) override;
+	void closeEvent(QCloseEvent* event) override;
 
 private:
     QPixmap helInt;
