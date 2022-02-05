@@ -71,8 +71,8 @@ void GraphBuilder::resizeEvent(QResizeEvent* event)
             height = event->size().height();
             width = height / compareScale;
         }
-        plotDraw.setDevicePixelRatio(this->devicePixelRatio());
-        imageOnWidget.setPixmap(plotDraw.scaled(width * this->devicePixelRatio(), height * this->devicePixelRatio(),
+        plotDraw.setDevicePixelRatio(this->devicePixelRatioF());
+        imageOnWidget.setPixmap(plotDraw.scaled(width * this->devicePixelRatioF(), height * this->devicePixelRatioF(),
             Qt::KeepAspectRatio, Qt::SmoothTransformation));
     }
 	QWidget::resizeEvent(event);
@@ -82,8 +82,8 @@ void GraphBuilder::showEvent(QShowEvent* event)
 {
     plotWidth = customPlot->minimumWidth();
     plotHeight = customPlot->minimumHeight();
-    plotDraw = customPlot->toPixmap(plotWidth, plotHeight, 3 * this->devicePixelRatio());
-    plotDraw.setDevicePixelRatio(this->devicePixelRatio());
+    plotDraw = customPlot->toPixmap(plotWidth, plotHeight, 3 * this->devicePixelRatioF());
+    plotDraw.setDevicePixelRatio(this->devicePixelRatioF());
     this->resize(plotWidth, plotHeight);
 	QWidget::showEvent(event);
     QApplication::processEvents();

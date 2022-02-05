@@ -6,7 +6,6 @@
 HelpMatrixWidget::HelpMatrixWidget(Ui::MainWindow *uiInt, const QRect windowLocation, const QRect desktopSize, QWidget *parent) : QGraphicsView(parent)
 {
     scene = new QGraphicsScene();
-    //view = new QGraphicsView(); //744*588
     const QString helpFile = QString(":resource/help/HELP2.png");
     hel = QPixmap(helpFile);
     int h = hel.height();
