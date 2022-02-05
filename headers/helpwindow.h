@@ -14,15 +14,25 @@
 #include <QMessageBox>
 #include "constantsandstrings.h"
 #include "QScrollBar"
+#include "QLabel"
+#include "QVBoxLayout"
 
-class HelpWindow : public QWidget
+class HelpWindow : public QGraphicsView
 {
     Q_OBJECT
 public:
-    explicit HelpWindow(const QPixmap& hel,QRect windowLocation, qreal devScaleRatio, QRect desktopSize,QWidget *parent = nullptr);
+    explicit HelpWindow(const QPixmap& hel,QRect windowLocation, QRect desktopSize,QWidget *parent = nullptr);
     //~HelpWindow();
     QGraphicsScene *scene;
-    QGraphicsView *view;
+    //QGraphicsView *view;
+
+private slots:
+    void resizeEvent(QResizeEvent* event) override;
+
+private:
+    QPixmap helInt;
+    QRect windowLocationInt;
+    QRect desktopSizeInt;
 
 };
 

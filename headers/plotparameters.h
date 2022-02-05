@@ -81,6 +81,8 @@ public:
     bool tab5surfaceHideAxis;
     int tab5surfaceRotate;
 
+    qreal displayScale = 1;
+
 private:
     Ui::MainWindow *ui;
     QWidget *parent;

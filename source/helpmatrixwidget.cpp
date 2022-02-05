@@ -3,18 +3,18 @@
 
 #include "helpmatrixwidget.h"
 
-HelpMatrixWidget::HelpMatrixWidget(Ui::MainWindow *uiInt, const QRect windowLocation, const qreal devScaleRatio, const QRect desktopSize, QWidget *parent) : QGraphicsView(parent)
+HelpMatrixWidget::HelpMatrixWidget(Ui::MainWindow *uiInt, const QRect windowLocation, const QRect desktopSize, QWidget *parent) : QGraphicsView(parent)
 {
     scene = new QGraphicsScene();
     //view = new QGraphicsView(); //744*588
     const QString helpFile = QString(":resource/help/HELP2.png");
-    const QPixmap hel = QPixmap(helpFile);
+    hel = QPixmap(helpFile);
     int h = hel.height();
     int w = hel.width();
-    h = h * (96.0 * devScaleRatio / 300.0);
+    h = h * (96.0 * this->devicePixelRatioF() / 300.0);
     QPixmap outHel = hel.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation);
-    scaleRatioError = static_cast<double>(outHel.width()) / devScaleRatio / origScaleW;
-    outHel.setDevicePixelRatio(devScaleRatio);
+    scaleRatioError = static_cast<double>(outHel.width()) / this->devicePixelRatioF() / origScaleW;
+    outHel.setDevicePixelRatio(this->devicePixelRatioF());
     
     scene->addPixmap(outHel);
     this->setScene(scene);
@@ -22,8 +22,8 @@ HelpMatrixWidget::HelpMatrixWidget(Ui::MainWindow *uiInt, const QRect windowLoca
     const int sizeLimHeight = desktopSize.height() - desktopSize.height() * 0.1;
     const int centreX = windowLocation.x() + windowLocation.width() / 2;
     const int centreY = windowLocation.y() + windowLocation.height() / 2;
-    const int height = (outHel.height() / devScaleRatio) < (sizeLimHeight) ? (outHel.height() / devScaleRatio) + 10 : sizeLimHeight;
-    const int width = (outHel.width() / devScaleRatio) < (sizeLimWidth) ? (outHel.width() / devScaleRatio) + 20 : sizeLimWidth;
+    const int height = (outHel.height() / this->devicePixelRatioF()) < (sizeLimHeight) ? (outHel.height() / this->devicePixelRatioF()) + 10 : sizeLimHeight;
+    const int width = (outHel.width() / this->devicePixelRatioF()) < (sizeLimWidth) ? (outHel.width() / this->devicePixelRatioF()) + 20 : sizeLimWidth;
 	int x = centreX - width / 2;
 	int y = centreY - height / 2;
 
@@ -40,6 +40,17 @@ HelpMatrixWidget::HelpMatrixWidget(Ui::MainWindow *uiInt, const QRect windowLoca
     this->show();
 }
 
+void HelpMatrixWidget::resizeEvent(QResizeEvent* event)
+{
+    QGraphicsView::resizeEvent(event);
+    int h = hel.height();
+    int w = hel.width();
+    h = h * (96.0 * this->devicePixelRatioF() / 300.0);
+    QPixmap outHel = hel.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    outHel.setDevicePixelRatio(this->devicePixelRatioF());
+    scene->clear();
+    scene->addPixmap(outHel);
+}
 
 void HelpMatrixWidget::mouseDoubleClickEvent(QMouseEvent *event)
 {

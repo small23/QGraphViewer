@@ -26,7 +26,6 @@ MainWindow::MainWindow(QWidget* parent)
 	ui->setupUi(this);
 	setupUiFields(ui);
 	setUiButtonsGroups(ui);
-	setUiColorLabels(ui);
 	tab1GraphFont.setFamily("Times New Roman");
 	tab1GraphFont.setPointSize(18);
 	tab2GraphFont.setFamily("Times New Roman");
@@ -80,23 +79,25 @@ MainWindow::MainWindow(QWidget* parent)
 	connect(ui->tab5PlotGraphic,            SIGNAL(clicked()),                      this,       SLOT(tab5PlotGraphicButtonPressed()));
 	connect(ui->tab5FontChangeButton,       SIGNAL(clicked()),                      this,       SLOT(tab5PushButtonSetFontContourPressed()));
 
-	//Корректировочный коэффициент масштабирования
-	//графиков на дисплеях с масштабом !=100%
-	QScreen* srn = QApplication::screens().at(0);
-	const auto b= srn->availableSize();
-	auto height = b.height()*0.90;
-	if (height > GRAPH_SCALE) height = GRAPH_SCALE;
-	plotParams->drawRes = static_cast<int>(height);
-	plotParams->drawQuality = settings->quality;
-	plotParams->drawScale = settings->scale;
-	plotParams->preferFormat = settings->imageType;
-
-	
 	this->setStatusBar(nullptr);
 	this->setFixedSize(this->size());
 	this->setWindowTitle("QGraphViewer");
 
 	this->show();
+	connect(this->window()->windowHandle(), SIGNAL(screenChanged(QScreen*)), this, SLOT(screenChanged(QScreen*)));
+	setUiColorLabels(ui, this->window()->windowHandle()->devicePixelRatio());
+	imageInit(ui, this->window()->windowHandle()->devicePixelRatio());
+	//Корректировочный коэффициент масштабирования
+	//графиков на дисплеях с масштабом !=100%
+	QScreen* srn = QApplication::screens().at(0);
+	const auto b = srn->availableSize();
+	auto height = b.height() * 0.90;
+	if (height > GRAPH_SCALE) height = GRAPH_SCALE;
+	plotParams->drawRes = static_cast<int>(height);
+	plotParams->drawQuality = settings->quality;
+	plotParams->drawScale = settings->scale;
+	plotParams->preferFormat = settings->imageType;
+	plotParams->displayScale = this->window()->windowHandle()->devicePixelRatio();
 }
 
 MainWindow::~MainWindow()
@@ -125,7 +126,7 @@ void MainWindow::colorChangeButtonClicked(const int id) const
 	colorPickerMenu.exec();
 	const QColor choosenColor = colorPickerMenu.selectedColor();
 	if (!choosenColor.isValid()) return;
-	const QPixmap colorIcon = ColorIconDrawer::drawIcon(choosenColor,qApp->devicePixelRatio());
+	const QPixmap colorIcon = ColorIconDrawer::drawIcon(choosenColor, this->window()->windowHandle()->devicePixelRatio());
 	const QString colorLabelName = QString("ColorLable%1").arg(id);
 	QLabel* colorLabel = findChild<QLabel*>(colorLabelName);
 	if (colorLabel != nullptr)
@@ -133,6 +134,38 @@ void MainWindow::colorChangeButtonClicked(const int id) const
 		//LinesParams[id-1].color=choosenColor;
 		plotParams->updateColors(id, choosenColor);
 		QIcon redIcon(colorIcon);
+		colorLabel->setPixmap(colorIcon);
+		colorLabel->update();
+	}
+}
+
+void MainWindow::setColotLabelById(const int id) const
+{
+	
+	const QString colorLabelName = QString("ColorLable%1").arg(id);
+	QLabel* colorLabel = findChild<QLabel*>(colorLabelName);
+	if (colorLabel != nullptr)
+	{
+		QColor choosenColor;
+		if (id < 7)
+			choosenColor = plotParams->tab1PlotParams[id - 1].color;
+		else if (id == 8)
+		{
+			const int workingLine = ui->tab2ComboBoxLineSelector->currentIndex();
+			choosenColor = plotParams->tab2PlotParams->data()[workingLine].color;
+		}
+		else if (id == 7)
+			choosenColor = plotParams->tab2FermiLevel;
+		else if (id == 9)
+		{
+			int workingLine = ui->tab5ComboBoxLineSelector->currentIndex();
+			for (int i = 0; i < ui->tab5LoadFilecomboBox->currentIndex(); i++)
+				workingLine += plotParams->tab5LinesCounter->at(i);
+			choosenColor = plotParams->tab5PlotParams->data()[workingLine].color;
+		}
+		else if (id == 10)
+			choosenColor = plotParams->tab5FermiLevelColor;
+		const QPixmap colorIcon = ColorIconDrawer::drawIcon(choosenColor, this->window()->windowHandle()->devicePixelRatio());
 		colorLabel->setPixmap(colorIcon);
 		colorLabel->update();
 	}
@@ -195,15 +228,14 @@ void MainWindow::helpButtonClicked(const int id)
 	const QRect windowLocation = geometry();
 	if (id == 2)
 	{
-		HelpMatrixWidget* a = new HelpMatrixWidget(ui, windowLocation, qApp->devicePixelRatio(),
-		                                           QApplication::desktop()->screenGeometry());
+		HelpMatrixWidget* a = new HelpMatrixWidget(ui, windowLocation, QApplication::desktop()->screenGeometry());
 		a->installEventFilter(a);
 	}
 	else
 	{
 		const QString helpFile = QString(":resource/help/HELP%1.png").arg(id);
 		const QPixmap helpPixmap = QPixmap(helpFile);
-		HelpWindow(helpPixmap, windowLocation, qApp->devicePixelRatio(), QApplication::desktop()->screenGeometry(),this);
+		new HelpWindow(helpPixmap, windowLocation, QApplication::desktop()->screenGeometry());
 	}
 }
 
@@ -730,7 +762,7 @@ void MainWindow::tab2ComboBoxLineSelectorIndexChanged(const int selected) const
 		disconnect(ui->tab2SpinnerLineMultiplier, SIGNAL(valueChanged(QString)), this, SLOT(tab2UpdateParams(QString)));
 		ui->tab2SpinnerLineWidth->setValue(plotParams->tab2PlotParams->at(selected).width);
 		ui->tab2SpinnerLineWidth->update();
-		ui->ColorLable8->setPixmap(ColorIconDrawer::drawIcon(plotParams->tab2PlotParams->at(selected).color,qApp->devicePixelRatio()));
+		ui->ColorLable8->setPixmap(ColorIconDrawer::drawIcon(plotParams->tab2PlotParams->at(selected).color, this->window()->windowHandle()->devicePixelRatio()));
 		ui->ColorLable8->update();
 		ui->tab2CheckBoxShow1->setChecked(plotParams->tab2PlotParams->at(selected).show);
 		ui->tab2CheckBoxShow1->update();
@@ -858,7 +890,7 @@ void MainWindow::tab5ComboBoxLineSelectorIndexChanged(int selected)
 		disconnect(ui->tab5SpinnerLineMultiplier, SIGNAL(valueChanged(QString)), this, SLOT(tab5UpdateParams(QString)));
 		ui->tab5SpinnerLineWidth->setValue(plotParams->tab5PlotParams->at(selected).width);
 		ui->tab5SpinnerLineWidth->update();
-		ui->ColorLable9->setPixmap(ColorIconDrawer::drawIcon(plotParams->tab5PlotParams->at(selected).color, qApp->devicePixelRatio()));
+		ui->ColorLable9->setPixmap(ColorIconDrawer::drawIcon(plotParams->tab5PlotParams->at(selected).color, this->window()->windowHandle()->devicePixelRatio()));
 		ui->ColorLable10->update();
 		ui->tab5CheckBoxShow1->setChecked(plotParams->tab5PlotParams->at(selected).show);
 		ui->tab5CheckBoxShow1->update();
@@ -1095,6 +1127,16 @@ void MainWindow::tab5PushButtonSetFontContourPressed()
 	}
 	else {
 
+	}
+}
+
+void MainWindow::screenChanged(QScreen* screen)
+{
+	this->window()->windowHandle()->setScreen(screen);
+	imageInit(ui, this->window()->windowHandle()->devicePixelRatio());
+	for (int i = 1; i < 11; i++)
+	{
+		setColotLabelById(i);
 	}
 }
 

@@ -16,7 +16,7 @@
 
 void setupUiFields(Ui::MainWindow* ui);
 void setUiButtonsGroups(Ui::MainWindow* ui);
-void setUiColorLabels(Ui::MainWindow* ui);
-
+void setUiColorLabels(Ui::MainWindow* ui, qreal devPixRat);
+void imageInit(Ui::MainWindow* ui, qreal devPixRat);
 
 #endif // UIINIT_H

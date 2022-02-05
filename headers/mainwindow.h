@@ -63,6 +63,7 @@ public Q_SLOTS:
 private Q_SLOTS:
     //...смены цвета линнии графика
     void colorChangeButtonClicked(int id) const;
+    void setColotLabelById(int id) const;
     //...очищения строки пути к файлу
     void deleteFileStringButtonClicked(int id) const;
     //...вызова графической справки
@@ -124,6 +125,9 @@ private Q_SLOTS:
     void tab5LoadQEDenButtonPressed();
     void tab5PlotGraphicButtonPressed();
     void tab5PushButtonSetFontContourPressed();
+
+
+    void screenChanged(QScreen* screen);
 	
 private:
     //Указатели на классы-обработчики и хранилища

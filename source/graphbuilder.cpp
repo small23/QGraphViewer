@@ -27,23 +27,21 @@ GraphBuilder::GraphBuilder(SettingsKeeper* settings, const QString& title, PlotP
     customPlot->xAxis->setLabelFont(font);
     customPlot->yAxis->setLabelFont(font);
 
+    customPlot->setBufferDevicePixelRatio(plotParams->displayScale);
+
     imageOnWidget.setParent(this);
     imageOnWidget.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     this->setMinimumSize(250, 250);
 
-    QPushButton Bu_Quit("Quit", this);
-    QObject::connect(&Bu_Quit, SIGNAL(clicked()), qApp, SLOT(quit()));
-
-    QVBoxLayout* vbl = new QVBoxLayout(this);
+    vbl = new QVBoxLayout(this);
     vbl->addWidget(&imageOnWidget);
-    vbl->addWidget(&Bu_Quit);
     vbl->setContentsMargins(0, 0, 0, 0);
-
     QPalette Pal(palette());
 
     Pal.setColor(QPalette::Background, Qt::white);
 	this->setAutoFillBackground(true);
 	this->setPalette(Pal);
+    
 }
 
 void GraphBuilder::draw(){
@@ -61,19 +59,21 @@ void GraphBuilder::resizeEvent(QResizeEvent* event)
 {
     if (!plotDraw.isNull())
     {
-        float thisAspectRatio = (float)event->size().width() / event->size().height();
+        float thisAspectRatio =  event->size().height() / (float)event->size().width();
         int width, height;
         if (thisAspectRatio > compareScale)
         {
-            height = event->size().height();
-            width = height * compareScale;
+            width = event->size().width();
+            height = width * compareScale;
         }
         else
         {
-            width = event->size().width();
-            height = width / compareScale;
+            height = event->size().height();
+            width = height / compareScale;
         }
-        imageOnWidget.setPixmap(plotDraw.scaled(width, height, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        plotDraw.setDevicePixelRatio(this->devicePixelRatio());
+        imageOnWidget.setPixmap(plotDraw.scaled(width * this->devicePixelRatio(), height * this->devicePixelRatio(),
+            Qt::KeepAspectRatio, Qt::SmoothTransformation));
     }
 	QWidget::resizeEvent(event);
 }
@@ -82,7 +82,8 @@ void GraphBuilder::showEvent(QShowEvent* event)
 {
     plotWidth = customPlot->minimumWidth();
     plotHeight = customPlot->minimumHeight();
-    plotDraw = customPlot->toPixmap(plotWidth, plotHeight, 3);
+    plotDraw = customPlot->toPixmap(plotWidth, plotHeight, 3 * this->devicePixelRatio());
+    plotDraw.setDevicePixelRatio(this->devicePixelRatio());
     this->resize(plotWidth, plotHeight);
 	QWidget::showEvent(event);
     QApplication::processEvents();
@@ -92,6 +93,7 @@ void GraphBuilder::closeEvent(QCloseEvent* event)
 {
 	QWidget::closeEvent(event);
     delete customPlot;
+    delete vbl;
 }
 
 void GraphBuilder::contextMenuRequest(const QPoint pos)

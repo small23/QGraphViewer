@@ -40,6 +40,7 @@ protected:
         double compareScale = 1;
         QCustomPlot *customPlot;
         PlotParameters* plotParams;
+        QVBoxLayout* vbl;
         QPixmap plotDraw;
         int plotWidth;
         int plotHeight;

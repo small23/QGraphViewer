@@ -118,10 +118,17 @@ void setupUiFields(Ui::MainWindow* ui)
     ui->tab2PDOSNumbersTable->setHorizontalHeaderLabels(QStringList() << STR_XLSX_AtomNumber << STR_XLSX_Atom << STR_XLSX_Type << STR_XLSX_FunctionNumber << STR_XLSX_StartNumber << STR_XLSX_EndNumber);
     ui->tab2PDOSNumbersTable->horizontalHeader()->setFont(font);
 
-    qreal devPixRat = qApp->devicePixelRatio();
-    int w = (ui->tab4QtLogo->width())*devPixRat;
-    int h = (ui->tab4QtLogo->height() + 500)*devPixRat;
-    
+    ui->tab4CompileDate->setText(STR_BuildDate.arg(__DATE__).arg(__TIME__));
+
+    ui->tab4TextBrowserAboutProgram->setFrameStyle(QFrame::NoFrame);
+    ui->tab4TextBrowserAboutProgram->setTextInteractionFlags(Qt::NoTextInteraction);
+}
+
+void imageInit(Ui::MainWindow* ui, qreal devPixRat)
+{
+    int w = (ui->tab4QtLogo->width()) * devPixRat;
+    int h = (ui->tab4QtLogo->height() + 500) * devPixRat;
+
     QPixmap pixmap(":logos/Logos/qcp-logo.png");
     pixmap.setDevicePixelRatio(devPixRat);
     ui->tab4QCustomPlotLabel->setPixmap(pixmap.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation));
@@ -133,11 +140,6 @@ void setupUiFields(Ui::MainWindow* ui)
     QPixmap pixmap3(":logos/Logos/QXlsx-Desktop.png");
     pixmap3.setDevicePixelRatio(devPixRat);
     ui->tab4QXlsxLogo->setPixmap(pixmap3.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-
-    ui->tab4CompileDate->setText(STR_BuildDate.arg(__DATE__).arg(__TIME__));
-
-    ui->tab4TextBrowserAboutProgram->setFrameStyle(QFrame::NoFrame);
-    ui->tab4TextBrowserAboutProgram->setTextInteractionFlags(Qt::NoTextInteraction);
 }
 
 void setUiButtonsGroups(Ui::MainWindow* ui)
@@ -200,10 +202,9 @@ void setUiButtonsGroups(Ui::MainWindow* ui)
     //ui->tab4ChangelogButton->hide();
 }
 
-void setUiColorLabels(Ui::MainWindow* ui)
+void setUiColorLabels(Ui::MainWindow* ui, qreal devPixRat)
 {
-
-    QPixmap colorIcon = ColorIconDrawer::drawIcon(Qt::black, qApp->devicePixelRatio());
+    QPixmap colorIcon = ColorIconDrawer::drawIcon(Qt::black, devPixRat);
     ui->ColorLable1->setPixmap(colorIcon);
     ui->ColorLable2->setPixmap(colorIcon);
     ui->ColorLable3->setPixmap(colorIcon);
