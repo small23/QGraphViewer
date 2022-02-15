@@ -10,14 +10,10 @@ QeSurfData::QeSurfData()
 
 void QeSurfData::parseData(QList<QString>* content)
 {
-    oX.clear();
-    oY.clear();
-    oRepeatX.clear();
-    oRepeatY.clear();
-    oF.clear();
+    this->clear();
 
     long int countX = 0, countY = 0;
-    double xMin, yMin, stepX, stepY, nothing, temp;
+    double temp;
     QString c;
     c = content->at(0);
     QTextStream getData(&c);

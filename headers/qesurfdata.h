@@ -11,9 +11,9 @@ public:
 	QeSurfData();
     QVector<double> oX, oY, oRepeatX, oRepeatY, oF;
     //QVector<QVector<double>> oF;
-    //Парсер данных
+    //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     void parseData(QList<QString>* content);
-	//Поворот данных на угол 0-270 градусов
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ 0-270 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     void rotateData(int angle);
     void clear();
 };

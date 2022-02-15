@@ -256,6 +256,12 @@
     <ClCompile Include="qecontourgraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="qezonedata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="qezonegraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="headers\atomconversion.h">
@@ -577,6 +583,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="qecontourgraph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="qezonedata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="qezonegraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

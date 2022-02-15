@@ -40,6 +40,8 @@
 #include "qesurfdata.h"
 #include "qecontourgraph.h"
 #include "structuresheaders.h"
+#include "qezonedata.h"
+#include "qezonegraph.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -121,11 +123,12 @@ private Q_SLOTS:
     void tab5DrawDosPressed();
     void tab5UpdateParamsFile(int selected);
     void tab5LanguageChanged();
-    void tab5LoadSurfDatButtonPressed();
+    void tab5LoadSurfConvButtonPressed();
     void tab5LoadQEDenButtonPressed();
     void tab5PlotGraphicButtonPressed();
     void tab5PushButtonSetFontContourPressed();
-
+    void tab5LoadQeBandButtonPressed();
+    void tab5DrawZoneButtonPressed();
 
     void screenChanged(QScreen* screen);
 	
@@ -154,6 +157,7 @@ private:
     AtomConversion* atomsConvert;
 	FileDialogsLoad*	fileDiag;
     QeSurfData* qeSurfData;
+    QeZoneData* qeZoneData;
     QColor MenuSelectedGraph = Qt::darkGreen;
 };
 #endif // MAINWINDOW_H

@@ -353,9 +353,9 @@ public:
     QPushButton *tab4LicenceMIT;
     QPushButton *tab4ChangelogButton;
     QPushButton *tab5LanguageChange;
-    QButtonGroup *HelpButtonGroup;
     QButtonGroup *DeleteButtonGroup;
     QButtonGroup *LoadFileButtonGroup;
+    QButtonGroup *HelpButtonGroup;
     QButtonGroup *ColorButtonGroup;
 
     void setupUi(QMainWindow *MainWindow)
@@ -1666,7 +1666,7 @@ public:
         line_4->setFrameShape(QFrame::HLine);
         groupBox_58 = new QGroupBox(tab_5);
         groupBox_58->setObjectName(QString::fromUtf8("groupBox_58"));
-        groupBox_58->setEnabled(false);
+        groupBox_58->setEnabled(true);
         groupBox_58->setGeometry(QRect(0, 0, 215, 161));
         groupBox_58->setFont(font3);
         groupBox_59 = new QGroupBox(groupBox_58);
@@ -1884,7 +1884,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

@@ -200,6 +200,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="qecontourgraph.cpp" />
+    <ClCompile Include="qezonedata.cpp" />
+    <ClCompile Include="qezonegraph.cpp" />
     <ClCompile Include="source\atomconversion.cpp" />
     <ClCompile Include="source\banddata.cpp" />
     <ClCompile Include="source\basicgraph.cpp" />
@@ -265,6 +267,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="qecontourgraph.h" />
+    <ClInclude Include="qezonedata.h" />
+    <ClInclude Include="qezonegraph.h" />
     <QtMoc Include="headers\atomconversion.h">
     </QtMoc>
     <ClInclude Include="headers\banddata.h" />

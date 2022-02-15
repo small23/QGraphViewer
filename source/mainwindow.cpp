@@ -14,14 +14,13 @@ MainWindow::MainWindow(QWidget* parent)
 	ctConvertor(new CrystalTopondConvertors()), plotParams(new PlotParameters(ui, this)),
 	iconDrawer(new ColorIconDrawer()), symbols(new MathSymbols(this)),
 	atomsConvert(new AtomConversion(ui, settings)), fileDiag(new FileDialogsLoad(ui, this, settings)),
-	qeSurfData(new QeSurfData())
+	qeSurfData(new QeSurfData()), qeZoneData(new QeZoneData())
 {
 	QTranslator qtTranslator;
 	auto a = QLibraryInfo::TranslationsPath;
 	qtTranslator.load(settings->lang, QCoreApplication::applicationDirPath() + "/translations");
 	qApp->installTranslator(&qtTranslator);
 	//qApp->installTranslator(&qtTranslator);
-
 
 	ui->setupUi(this);
 	setupUiFields(ui);
@@ -64,20 +63,23 @@ MainWindow::MainWindow(QWidget* parent)
     connect(ui->tab4LicenceMIT,             SIGNAL(clicked()),						this,       SLOT(tab4LicenceMit()));
     connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),						this,       SLOT(tab2PushButtonPdosLoadPressed()));
     connect(ui->tab4ChangelogButton,        SIGNAL(clicked()),						this,       SLOT(tab4Changelog()));
-	connect(ui->tab5SpinnerLineWidth,		  SIGNAL(valueChanged(QString)),			this,	    SLOT(tab5UpdateParams(QString)));
-	connect(ui->tab5ComboBoxLineType,		  SIGNAL(currentIndexChanged(QString)),	this,		SLOT(tab5UpdateParams(QString)));
-	connect(ui->tab5CheckBoxShow1,          SIGNAL(stateChanged(int)),				this,		SLOT(tab5UpdateShowLine(int)));
-	connect(ui->tab5SpinnerLineMultiplier,  SIGNAL(valueChanged(QString)),			this,		SLOT(tab5UpdateParams(QString)));
-	connect(ui->tab5ComboBoxLineSelector,   SIGNAL(currentIndexChanged(int)),		this,		SLOT(tab5ComboBoxLineSelectorIndexChanged(int)));
-	connect(ui->tab5BushButtonSetFont,	  SIGNAL(clicked()),						this,		SLOT(tab5BushButtonSetFontPressed()));
-	connect(ui->tab5LoadFilefQEDOSS,		  SIGNAL(clicked()),						this,		SLOT(tab5LoadFileDossPressed()));
-	connect(ui->tab5ButtonDrawDOS,		  SIGNAL(clicked()),						this,		SLOT(tab5DrawDosPressed()));
-	connect(ui->tab5LoadFilecomboBox,		  SIGNAL(currentIndexChanged(int)),		this,		SLOT(tab5UpdateParamsFile(int)));
+	connect(ui->tab5SpinnerLineWidth,		  SIGNAL(valueChanged(QString)),			this,       SLOT(tab5UpdateParams(QString)));
+	connect(ui->tab5ComboBoxLineType,		  SIGNAL(currentIndexChanged(QString)),	this,       SLOT(tab5UpdateParams(QString)));
+	connect(ui->tab5CheckBoxShow1,          SIGNAL(stateChanged(int)),				this,       SLOT(tab5UpdateShowLine(int)));
+	connect(ui->tab5SpinnerLineMultiplier,  SIGNAL(valueChanged(QString)),			this,       SLOT(tab5UpdateParams(QString)));
+	connect(ui->tab5ComboBoxLineSelector,   SIGNAL(currentIndexChanged(int)),		this,       SLOT(tab5ComboBoxLineSelectorIndexChanged(int)));
+	connect(ui->tab5BushButtonSetFont,	  SIGNAL(clicked()),						this,       SLOT(tab5BushButtonSetFontPressed()));
+	connect(ui->tab5LoadFilefQEDOSS,		  SIGNAL(clicked()),						this,       SLOT(tab5LoadFileDossPressed()));
+	connect(ui->tab5ButtonDrawDOS,		  SIGNAL(clicked()),						this,       SLOT(tab5DrawDosPressed()));
+	connect(ui->tab5LoadFilecomboBox,		  SIGNAL(currentIndexChanged(int)),		this,       SLOT(tab5UpdateParamsFile(int)));
 	connect(ui->tab5LanguageChange,		  SIGNAL(clicked()),                      this,       SLOT(tab5LanguageChanged()));
 	connect(ui->tab5LoadSurfDatButton,      SIGNAL(clicked()),                      this,       SLOT(tab5LoadSurfDatButtonPressed()));
 	connect(ui->tab5LoadQEDen,              SIGNAL(clicked()),                      this,       SLOT(tab5LoadQEDenButtonPressed()));
 	connect(ui->tab5PlotGraphic,            SIGNAL(clicked()),                      this,       SLOT(tab5PlotGraphicButtonPressed()));
 	connect(ui->tab5FontChangeButton,       SIGNAL(clicked()),                      this,       SLOT(tab5PushButtonSetFontContourPressed()));
+	connect(ui->tab5_loadQeBand,		      SIGNAL(clicked()),                      this,       SLOT(tab5LoadQeBandButtonPressed()));
+	connect(ui->tab5buttonDrawZoneStruct,   SIGNAL(clicked()),                      this,       SLOT(tab5DrawZoneButtonPressed()));
+
 
 	this->setStatusBar(nullptr);
 	this->setFixedSize(this->size());
@@ -92,7 +94,7 @@ MainWindow::MainWindow(QWidget* parent)
 	QScreen* srn = QApplication::screens().at(0);
 	const auto b = srn->availableSize();
 	auto height = b.height() * 0.90;
-	if (height > GRAPH_SCALE) height = GRAPH_SCALE;
+	if (height > GRAPH_SCALE) height = GRAPH_SCALE; //TODO Remove
 	plotParams->drawRes = static_cast<int>(height);
 	plotParams->drawQuality = settings->quality;
 	plotParams->drawScale = settings->scale;
@@ -1056,7 +1058,7 @@ void MainWindow::tab5LanguageChanged()
 	QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
 }
 
-void MainWindow::tab5LoadSurfDatButtonPressed()
+void MainWindow::tab5LoadSurfConvButtonPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	const QString fileName = QFileDialog::getOpenFileName(this, STR_Dialog_OpenFile, settings->getLastPath(),
@@ -1128,6 +1130,41 @@ void MainWindow::tab5PushButtonSetFontContourPressed()
 	else {
 
 	}
+}
+
+void MainWindow::tab5LoadQeBandButtonPressed()
+{
+	const QString fileName = QFileDialog::getOpenFileName(this,
+		STR_Dialog_OpenFile, settings->getLastPath(),
+		tr("Data files (*.dat *.freq);;All Files (*)"));
+	if (fileName != "")
+	{
+		ui->tab5FileLine1->setText(fileName);
+		ui->tab5FileLine1->setToolTip(fileName);
+		const QFileInfo fileinfo(ui->tab5FileLine1->text());
+		settings->updatePath(fileinfo.absolutePath());
+	}
+}
+
+void MainWindow::tab5DrawZoneButtonPressed()
+{
+	QList<QString>* content = new QList<QString>();
+
+	if (ui->tab5FileLine1->text() != "")
+	{
+		qeZoneData->clear();
+		readFileFromFs(ui->tab5FileLine1->text(), content);
+		qeZoneData->parseData(content);
+		delete content;
+		plotParams->updatePlotParams(5);
+		if (qeZoneData->outputX.count() > 0)
+			(new QeZoneGraph(settings, "Plot", plotParams, tab5GraphFont, this))->draw(qeZoneData,
+				ui->tab5ZoneStructYMin->text().toDouble(), ui->tab5ZoneStructYMax->text().toDouble(), ui->tab5LineKPoints->text(), symbols);
+		else
+			QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
+	}
+	else
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoFileToDraw);
 }
 
 void MainWindow::screenChanged(QScreen* screen)
