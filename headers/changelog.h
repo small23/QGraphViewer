@@ -25,9 +25,11 @@ public:
 
 private slots:
     void cancelButtonPushed();
-
+    void showEvent(QShowEvent* event) override;
+    void resizeEvent(QResizeEvent* event) override;
 private:
     Ui::changelog *ui;
+    QPixmap appLogo;
 };
 
 #endif // CHANGELOG_H

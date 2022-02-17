@@ -312,11 +312,11 @@ public:
     QLineEdit *tab5FileLine1;
     QLabel *label_145;
     QLineEdit *tab5ZoneStructYMax;
-    QLabel *label_146;
-    QLineEdit *tab5LineKPoints;
     QLineEdit *tab5ZoneStructYMin;
     QPushButton *deleteButton9;
     QPushButton *tab5_loadQeBand;
+    QLabel *label_56;
+    QLabel *label_55;
     QGroupBox *groupBox_63;
     QGroupBox *groupBox_61;
     QPushButton *tab5LoadSurfDatButton;
@@ -338,10 +338,6 @@ public:
     QCheckBox *tab5ShowAxis;
     QPushButton *tab5FontChangeButton;
     QLabel *label_147;
-    QGroupBox *groupBox_64;
-    QPushButton *tab5LoadFilesConvertDOS;
-    QLineEdit *tab5ConvertDOSXShift;
-    QLabel *label_181;
     QWidget *tab_4;
     QTextBrowser *tab4TextBrowserAboutProgram;
     QLabel *tab4QCustomPlotLabel;
@@ -353,17 +349,17 @@ public:
     QPushButton *tab4LicenceMIT;
     QPushButton *tab4ChangelogButton;
     QPushButton *tab5LanguageChange;
-    QButtonGroup *DeleteButtonGroup;
-    QButtonGroup *LoadFileButtonGroup;
     QButtonGroup *HelpButtonGroup;
     QButtonGroup *ColorButtonGroup;
+    QButtonGroup *DeleteButtonGroup;
+    QButtonGroup *LoadFileButtonGroup;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->setEnabled(true);
-        MainWindow->resize(695, 478);
+        MainWindow->resize(691, 469);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -1667,11 +1663,11 @@ public:
         groupBox_58 = new QGroupBox(tab_5);
         groupBox_58->setObjectName(QString::fromUtf8("groupBox_58"));
         groupBox_58->setEnabled(true);
-        groupBox_58->setGeometry(QRect(0, 0, 215, 161));
+        groupBox_58->setGeometry(QRect(0, 0, 215, 301));
         groupBox_58->setFont(font3);
         groupBox_59 = new QGroupBox(groupBox_58);
         groupBox_59->setObjectName(QString::fromUtf8("groupBox_59"));
-        groupBox_59->setGeometry(QRect(0, 20, 215, 141));
+        groupBox_59->setGeometry(QRect(0, 20, 215, 281));
         groupBox_59->setFont(font3);
         tab5buttonDrawZoneStruct = new QPushButton(groupBox_59);
         tab5buttonDrawZoneStruct->setObjectName(QString::fromUtf8("tab5buttonDrawZoneStruct"));
@@ -1690,15 +1686,6 @@ public:
         tab5ZoneStructYMax->setObjectName(QString::fromUtf8("tab5ZoneStructYMax"));
         tab5ZoneStructYMax->setGeometry(QRect(165, 80, 41, 22));
         tab5ZoneStructYMax->setFont(font4);
-        label_146 = new QLabel(groupBox_59);
-        label_146->setObjectName(QString::fromUtf8("label_146"));
-        label_146->setGeometry(QRect(20, 110, 81, 21));
-        label_146->setFont(font4);
-        label_146->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-        tab5LineKPoints = new QLineEdit(groupBox_59);
-        tab5LineKPoints->setObjectName(QString::fromUtf8("tab5LineKPoints"));
-        tab5LineKPoints->setGeometry(QRect(125, 110, 81, 22));
-        tab5LineKPoints->setFont(font4);
         tab5ZoneStructYMin = new QLineEdit(groupBox_59);
         tab5ZoneStructYMin->setObjectName(QString::fromUtf8("tab5ZoneStructYMin"));
         tab5ZoneStructYMin->setGeometry(QRect(125, 80, 41, 22));
@@ -1711,10 +1698,27 @@ public:
         tab5_loadQeBand->setObjectName(QString::fromUtf8("tab5_loadQeBand"));
         tab5_loadQeBand->setGeometry(QRect(10, 20, 91, 22));
         tab5_loadQeBand->setFont(font4);
+        label_56 = new QLabel(groupBox_59);
+        label_56->setObjectName(QString::fromUtf8("label_56"));
+        label_56->setGeometry(QRect(26, 110, 151, 20));
+        label_56->setFont(font4);
+        label_55 = new QLabel(groupBox_59);
+        label_55->setObjectName(QString::fromUtf8("label_55"));
+        label_55->setGeometry(QRect(30, 125, 161, 21));
+        QFont font9;
+        font9.setFamily(QString::fromUtf8("Arial"));
+        font9.setPointSize(10);
+        font9.setBold(false);
+        font9.setWeight(50);
+        font9.setStrikeOut(false);
+        font9.setKerning(true);
+        label_55->setFont(font9);
+        label_55->setTextFormat(Qt::PlainText);
+        label_55->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         groupBox_63 = new QGroupBox(tab_5);
         groupBox_63->setObjectName(QString::fromUtf8("groupBox_63"));
         groupBox_63->setEnabled(true);
-        groupBox_63->setGeometry(QRect(0, 180, 215, 111));
+        groupBox_63->setGeometry(QRect(225, 205, 215, 111));
         groupBox_63->setFont(font2);
         groupBox_63->setFlat(false);
         groupBox_63->setCheckable(false);
@@ -1826,24 +1830,6 @@ public:
         label_147->setFont(font1);
         label_147->setLayoutDirection(Qt::LeftToRight);
         label_147->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-        groupBox_64 = new QGroupBox(tab_5);
-        groupBox_64->setObjectName(QString::fromUtf8("groupBox_64"));
-        groupBox_64->setEnabled(false);
-        groupBox_64->setGeometry(QRect(225, 210, 215, 81));
-        groupBox_64->setFont(font2);
-        tab5LoadFilesConvertDOS = new QPushButton(groupBox_64);
-        tab5LoadFilesConvertDOS->setObjectName(QString::fromUtf8("tab5LoadFilesConvertDOS"));
-        tab5LoadFilesConvertDOS->setGeometry(QRect(10, 20, 196, 22));
-        tab5LoadFilesConvertDOS->setFont(font1);
-        tab5ConvertDOSXShift = new QLineEdit(groupBox_64);
-        tab5ConvertDOSXShift->setObjectName(QString::fromUtf8("tab5ConvertDOSXShift"));
-        tab5ConvertDOSXShift->setGeometry(QRect(115, 50, 91, 22));
-        tab5ConvertDOSXShift->setFont(font1);
-        label_181 = new QLabel(groupBox_64);
-        label_181->setObjectName(QString::fromUtf8("label_181"));
-        label_181->setGeometry(QRect(20, 50, 81, 21));
-        label_181->setFont(font4);
-        label_181->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         tabWidget->addTab(tab_5, QString());
         tab_4 = new QWidget();
         tab_4->setObjectName(QString::fromUtf8("tab_4"));
@@ -2112,10 +2098,11 @@ public:
         tab5buttonDrawZoneStruct->setText(QCoreApplication::translate("MainWindow", "\320\237\320\276\321\201\321\202\321\200\320\276\320\270\321\202\321\214", nullptr));
         label_145->setText(QCoreApplication::translate("MainWindow", "Y min/max", nullptr));
         tab5ZoneStructYMax->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        label_146->setText(QCoreApplication::translate("MainWindow", "k-\321\202\320\276\321\207\320\272\320\270 \320\227\320\221", nullptr));
         tab5ZoneStructYMin->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         deleteButton9->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
         tab5_loadQeBand->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\320\263\321\200\321\203\320\267\320\270\321\202\321\214 ", nullptr));
+        label_56->setText(QCoreApplication::translate("MainWindow", "k-\321\202\320\276\321\207\320\272\320\270 (\320\262 \320\265\320\264\320\270\320\275\320\270\321\206\320\260\321\205 2\317\200/a):", nullptr));
+        label_55->setText(QCoreApplication::translate("MainWindow", "L         X         Y         Z", nullptr));
         groupBox_63->setTitle(QCoreApplication::translate("MainWindow", "\320\232\320\276\320\275\320\262\320\265\321\200\321\202\320\270\321\200\320\276\320\262\320\260\320\275\320\270\320\265", nullptr));
         groupBox_61->setTitle(QCoreApplication::translate("MainWindow", "\320\277\320\276\320\262\320\265\321\200\321\205\320\275\320\276\321\201\321\202\320\265\320\271 \320\262 X, Y, F(X,Y)", nullptr));
         tab5LoadSurfDatButton->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\320\263\321\200\321\203\320\267\320\270\321\202\321\214 *.dat", nullptr));
@@ -2133,17 +2120,13 @@ public:
         tab5ShowAxis->setText(QCoreApplication::translate("MainWindow", "\320\241\320\272\321\200\321\213\321\202\321\214 \320\276\321\201\320\270", nullptr));
         tab5FontChangeButton->setText(QCoreApplication::translate("MainWindow", "\320\222\321\213\320\261\321\200\320\260\321\202\321\214...", nullptr));
         label_147->setText(QCoreApplication::translate("MainWindow", "\320\250\321\200\320\270\321\204\321\202", nullptr));
-        groupBox_64->setTitle(QCoreApplication::translate("MainWindow", "\320\232\320\276\320\275\320\262\320\265\321\200\321\202\320\270\321\200\320\276\320\262\320\260\320\275\320\270\320\265 DOS \320\262 X, F(X)", nullptr));
-        tab5LoadFilesConvertDOS->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\320\263\321\200\321\203\320\267\320\270\321\202\321\214", nullptr));
-        tab5ConvertDOSXShift->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        label_181->setText(QCoreApplication::translate("MainWindow", "\320\241\320\264\320\262\320\270\320\263 \320\275\320\260", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_5), QCoreApplication::translate("MainWindow", "QE", nullptr));
         tab4TextBrowserAboutProgram->setHtml(QCoreApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Arial'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">QGraphViewer</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\222\320\265\321\200\321\201\320\270\321\217 1.1.0 Alpha 3 <span style=\" font-style:italic;\">&quot;W</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:10pt; font-style:italic;\">at, you still use this?!</span><span style=\" font-style:italic;\">&quot; </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\222\320\265\321\200\321\201\320\270\321\217 1.1.0 Alpha 4 <span style=\" font-style:italic;\">&quot;W</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:10pt; font-style:italic;\">at, you still use this?!</span><span style=\" font-style:italic;\">&quot; </span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-bl"
                         "ock-indent:0; text-indent:0px;\"> </p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\320\224\320\260\320\275\320\275\320\276\320\265 \320\277\321\200\320\270\320\273\320\276\320\266\320\265\320\275\320\270\320\265 \321\201\320\276\320\267\320\264\320\260\320\275\320\276 \320\262 \321\201\321\200\320\265\320\264\320\265 Qt 5.14 - 5.15, \321\201 \320\270\321\201\320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\320\275\320\270\320\265\320\274 \320\261\320\270\320\261\320\273\320\270\320\276\321\202\320\265\320\272 QCustomPlot, QXlsx \320\270 Eigen.</p>\n"

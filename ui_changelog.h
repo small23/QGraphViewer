@@ -34,13 +34,16 @@ public:
         changelog->setMaximumSize(QSize(408, 301));
         pushButton = new QPushButton(changelog);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(324, 270, 81, 23));
+        pushButton->setGeometry(QRect(304, 270, 101, 23));
+        QFont font;
+        font.setPointSize(9);
+        pushButton->setFont(font);
         textBrowser = new QTextBrowser(changelog);
         textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
         textBrowser->setGeometry(QRect(80, 10, 321, 251));
         logo = new QLabel(changelog);
         logo->setObjectName(QString::fromUtf8("logo"));
-        logo->setGeometry(QRect(10, 10, 71, 61));
+        logo->setGeometry(QRect(10, 10, 61, 61));
 
         retranslateUi(changelog);
 

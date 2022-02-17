@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget* parent)
 	qApp->installTranslator(&qtTranslator);
 	//qApp->installTranslator(&qtTranslator);
 
-	ui->setupUi(this);
+	ui->setupUi(this); 
 	setupUiFields(ui);
 	setUiButtonsGroups(ui);
 	tab1GraphFont.setFamily("Times New Roman");
@@ -34,6 +34,28 @@ MainWindow::MainWindow(QWidget* parent)
 	tab5ContourGraphFont.setFamily("Times New Roman");
 	tab5ContourGraphFont.setPointSize(18);
 	ui->tab1FontSize->setValue(18);
+
+
+	//Generate own table
+	tab5tableView = new CustomTableView(ui->groupBox_59);
+	
+	tab5tableView->setObjectName(QString::fromUtf8("tab5tableWidget"));
+	tab5tableView->setGeometry(QRect(10, 145, 201, 121));
+	QFont font9;
+	font9.setFamily(QString::fromUtf8("Arial"));
+	font9.setPointSize(10);
+	font9.setBold(false);
+	font9.setWeight(50);
+	font9.setStrikeOut(false);
+	font9.setKerning(true);
+	tab5tableView->setFont(font9);
+	tab5tableView->setWordWrap(false);
+	tab5tableView->horizontalHeader()->setVisible(false);
+	tab5tableView->horizontalHeader()->setDefaultSectionSize(45);
+	tab5tableView->verticalHeader()->setVisible(false);
+
+	tab5tableView->show();
+
 
     connect(ui->tab3AtomsConvertButton,     SIGNAL(clicked()),						this,       SLOT(atomsConvertButtonPressed()));
     connect(ui->tab3AtomsSearchButton,      SIGNAL(clicked()),						this,       SLOT(atomsSearchButtonPressed()));
@@ -73,7 +95,7 @@ MainWindow::MainWindow(QWidget* parent)
 	connect(ui->tab5ButtonDrawDOS,		  SIGNAL(clicked()),						this,       SLOT(tab5DrawDosPressed()));
 	connect(ui->tab5LoadFilecomboBox,		  SIGNAL(currentIndexChanged(int)),		this,       SLOT(tab5UpdateParamsFile(int)));
 	connect(ui->tab5LanguageChange,		  SIGNAL(clicked()),                      this,       SLOT(tab5LanguageChanged()));
-	connect(ui->tab5LoadSurfDatButton,      SIGNAL(clicked()),                      this,       SLOT(tab5LoadSurfDatButtonPressed()));
+	connect(ui->tab5LoadSurfDatButton,      SIGNAL(clicked()),                      this,       SLOT(tab5LoadSurfConvButtonPressed()));
 	connect(ui->tab5LoadQEDen,              SIGNAL(clicked()),                      this,       SLOT(tab5LoadQEDenButtonPressed()));
 	connect(ui->tab5PlotGraphic,            SIGNAL(clicked()),                      this,       SLOT(tab5PlotGraphicButtonPressed()));
 	connect(ui->tab5FontChangeButton,       SIGNAL(clicked()),                      this,       SLOT(tab5PushButtonSetFontContourPressed()));
@@ -1159,7 +1181,7 @@ void MainWindow::tab5DrawZoneButtonPressed()
 		plotParams->updatePlotParams(5);
 		if (qeZoneData->outputX.count() > 0)
 			(new QeZoneGraph(settings, "Plot", plotParams, tab5GraphFont, this))->draw(qeZoneData,
-				ui->tab5ZoneStructYMin->text().toDouble(), ui->tab5ZoneStructYMax->text().toDouble(), ui->tab5LineKPoints->text(), symbols);
+				ui->tab5ZoneStructYMin->text().toDouble(), ui->tab5ZoneStructYMax->text().toDouble(), static_cast<QStandardItemModel*>(tab5tableView->model()), symbols);
 		else
 			QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 	}

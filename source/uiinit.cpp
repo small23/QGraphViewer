@@ -35,7 +35,7 @@ void setupUiFields(Ui::MainWindow* ui)
     ui->tab1FontSize->setLocale(QLocale::English);
 
     //QDoubleValidator *localValidator = new QDoubleValidator();
-    QRegExpValidator* localValidator = new QRegExpValidator(QRegExp(R"([+-]?\d*[\.]?\d+)"));
+    QRegExpValidator* localValidator = new QRegExpValidator(QRegExp(R"(^[+\-]?(?:(?:0|[1-9]\d*)(?:\.\d*)?|\.\d+)(?:\d[eE][+\-]?\d+)?$)"));
     //localValidator->setLocale(QLocale::English);
 
     ui->tab1AtomsCutOff->setValidator(localValidator);

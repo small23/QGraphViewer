@@ -133,6 +133,9 @@
     <ClCompile Include="source\qcustomplot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\qecontourgraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="source\qedos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -140,6 +143,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\qesurfdata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\qezonedata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\qezonegraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\settingskeeper.cpp">
@@ -253,13 +262,7 @@
     <ClCompile Include="source\zonegraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="qecontourgraph.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="qezonedata.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="qezonegraph.cpp">
+    <ClCompile Include="customtableview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -333,6 +336,9 @@
     <QtMoc Include="headers\qcustomplot.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <ClInclude Include="headers\qecontourgraph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="headers\qedos.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -340,6 +346,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="headers\qesurfdata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\qezonedata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\qezonegraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <QtMoc Include="headers\settingskeeper.h">
@@ -498,6 +510,9 @@
     <ClInclude Include="headers\zonegraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <QtMoc Include="customtableview.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
@@ -563,6 +578,9 @@
     <None Include="resources\Logos\Qt_logo_2016.svg.png">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="resources\Logos\icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
     <None Include="resources\Logos\logo.ico">
       <Filter>Resource Files</Filter>
     </None>
@@ -580,16 +598,5 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include=".\QGraphViewer_resource.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="qecontourgraph.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="qezonedata.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="qezonegraph.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

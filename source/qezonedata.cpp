@@ -33,7 +33,11 @@ void QeZoneData::parseData(QList<QString>* content)
         getData.setString(&c);
         getData >> x >> y >> z;
         if (!(x == NAN || y == NAN || z == NAN) && getData.atEnd())
+        {
             outputX.append(sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2)));
+            originVector.append(QVector<double>({ x, y, z }));
+        }
+           
         else
         {
             this->clear();
@@ -83,4 +87,5 @@ void QeZoneData::clear()
 {
 	outputX.clear();
 	outputY.clear();
+    originVector.clear();
 }

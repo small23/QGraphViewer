@@ -11,8 +11,7 @@ changelog::changelog(SettingsKeeper *settings, QWidget *parent) :
     QTranslator qtTranslator;
     qtTranslator.load(settings->lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     QApplication::installTranslator(&qtTranslator);
-    const QPixmap pixmap2(":logos/Logos/logo.ico");
-    ui->logo->setPixmap(pixmap2);
+    appLogo.load(":logos/Logos/icon.png");
     this->setWindowTitle(STR_Window_Changelog);
     connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(cancelButtonPushed()));
 }
@@ -20,6 +19,24 @@ changelog::changelog(SettingsKeeper *settings, QWidget *parent) :
 void changelog::cancelButtonPushed()
 {
     this->hide();
+}
+
+void changelog::showEvent(QShowEvent* event)
+{
+	QDialog::showEvent(event);
+    appLogo.setDevicePixelRatio(this->window()->windowHandle()->devicePixelRatio());
+    qreal scale = this->window()->windowHandle()->devicePixelRatio();
+    QPixmap labelLogo = appLogo.scaled(ui->logo->width() * scale, ui->logo->height() * scale, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    ui->logo->setPixmap(labelLogo);
+}
+
+void changelog::resizeEvent(QResizeEvent* event)
+{
+	QDialog::resizeEvent(event);
+    appLogo.setDevicePixelRatio(this->window()->windowHandle()->devicePixelRatio());
+    qreal scale = this->window()->windowHandle()->devicePixelRatio();
+    QPixmap labelLogo = appLogo.scaled(ui->logo->width() * scale, ui->logo->height() * scale, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    ui->logo->setPixmap(labelLogo);
 }
 
 changelog::~changelog()

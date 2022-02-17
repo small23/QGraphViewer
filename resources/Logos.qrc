@@ -4,5 +4,6 @@
         <file>Logos/Qt_logo_2016.svg.png</file>
         <file>Logos/QXlsx-Desktop.png</file>
         <file>Logos/logo.ico</file>
+        <file>Logos/icon.png</file>
     </qresource>
 </RCC>

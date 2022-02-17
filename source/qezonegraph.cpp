@@ -6,7 +6,7 @@ QeZoneGraph::QeZoneGraph(SettingsKeeper* settings, const QString& title, PlotPar
 	plotType = 3;
 }
 
-void QeZoneGraph::draw(QeZoneData* graphics, const double min, const double max, const QString kPoints,
+void QeZoneGraph::draw(QeZoneData* graphics, const double min, const double max, const QStandardItemModel* kPoints,
  MathSymbols* symbols)
 {
 	QPen pen;
@@ -18,7 +18,6 @@ void QeZoneGraph::draw(QeZoneData* graphics, const double min, const double max,
 
 	for (int i = 0; i < graphics->outputY.count(); i++)
 	{
-
 		QVector<double> tempCorrectionY;
 		QVector<double> tempCorrectionX;
 		for (int j = 0; j < graphics->outputY.at(i).count(); j++)
@@ -35,6 +34,7 @@ void QeZoneGraph::draw(QeZoneData* graphics, const double min, const double max,
 		tempCorrectionY.clear();
 		newCurve->addData(qQNaN(), qQNaN());
 	}
+
 	newCurve->setPen(pen);
 	this->compareScale = 600.0/900.0;
 	customPlot->setGeometry(30, 30, plotParams->drawRes, plotParams->drawRes * 0.66);
@@ -47,12 +47,7 @@ void QeZoneGraph::draw(QeZoneData* graphics, const double min, const double max,
 
 	const QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
 	customPlot->xAxis->setTicker(textTicker);
-	QStringList kPointsList = kPoints.split(" ");
-
-	for (int i = 0; i < kPointsList.count(); i++)
-	{
-		kPointsList[i] = symbols->adaptString(kPointsList[i]);
-	}
+	
 
 	/*
 	if (!kPointsList.empty())

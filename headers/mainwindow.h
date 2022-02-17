@@ -42,6 +42,8 @@
 #include "structuresheaders.h"
 #include "qezonedata.h"
 #include "qezonegraph.h"
+#include "customtableview.h"
+#include <QAbstractTableModel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -159,5 +161,9 @@ private:
     QeSurfData* qeSurfData;
     QeZoneData* qeZoneData;
     QColor MenuSelectedGraph = Qt::darkGreen;
+
+
+    CustomTableView* tab5tableView;
+    
 };
 #endif // MAINWINDOW_H

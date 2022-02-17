@@ -11,5 +11,6 @@ public:
 	void parseData(QList<QString>* content);
 	void clear();
 	QVector<QVector<double>> outputY;
+	QVector<QVector<double>> originVector;
 	QVector<double> outputX;
 };
