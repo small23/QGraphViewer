@@ -57,34 +57,34 @@ MainWindow::MainWindow(QWidget* parent)
 	tab5tableView->show();
 
 
-    connect(ui->tab3AtomsConvertButton,     SIGNAL(clicked()),						this,       SLOT(atomsConvertButtonPressed()));
-    connect(ui->tab3AtomsSearchButton,      SIGNAL(clicked()),						this,       SLOT(atomsSearchButtonPressed()));
-    connect(ui->tab3LoadFileConvertXfX,     SIGNAL(clicked()),						this,       SLOT(loadFileConvertXfXButtonPressed()));
-    connect(ui->tab3LoadFilesConvertDOS,    SIGNAL(clicked()),						this,       SLOT(tab3LoadFilesConvertDosButtonPressed()));
-    connect(ui->tab3SurfF25Button,          SIGNAL(clicked()),						this,       SLOT(tab3SurfF25ButtonPressed()));
-    connect(ui->tab3SurfConvertButton,      SIGNAL(clicked()),						this,       SLOT(tab3SurfConvertButtonPressed()));
-    connect(ui->tab3ButtonCrystalToTopond,  SIGNAL(clicked()),						this,       SLOT(tab3ButtonCrystalToTopondPressed()));
-    connect(ui->tab3ButtonTopondToCrystal,  SIGNAL(clicked()),						this,       SLOT(tab3ButtonTopondToCrystalPressed()));
-    connect(ui->tab2buttonDrawZoneStruct,   SIGNAL(clicked()),						this,       SLOT(tab2ButtonDrawZoneStructPressed()));
-    connect(ui->ColorButtonGroup,           SIGNAL(buttonClicked(int)),				this,       SLOT(colorChangeButtonClicked(int)));
-    connect(ui->DeleteButtonGroup,          SIGNAL(buttonClicked(int)),				this,       SLOT(deleteFileStringButtonClicked(int)));
-    connect(ui->HelpButtonGroup,            SIGNAL(buttonClicked(int)),				this,       SLOT(helpButtonClicked(int)));
-    connect(ui->LoadFileButtonGroup,        SIGNAL(buttonClicked(int)),				fileDiag,   SLOT(loadFileButtonCliked(int)));
-    connect(ui->tab1LoadFilesTjMolP2,       SIGNAL(clicked()),						fileDiag,   SLOT(fileDialogMolTrajP2Load()));
-    connect(ui->tab1PlotGraphic,            SIGNAL(clicked()),						this,       SLOT(plotButtonTab1Clicked()));
-    connect(ui->tab1FontChangeButton,       SIGNAL(clicked()),						this,       SLOT(fontChangeButtonPressed()));
-    connect(ui->tab2SpinnerLineWidth,       SIGNAL(valueChanged(QString)),			this,       SLOT(tab2UpdateParams(QString)));
-    connect(ui->tab2ComboBoxLineType,       SIGNAL(currentIndexChanged(QString)),	this,       SLOT(tab2UpdateParams(QString)));
-    connect(ui->tab2CheckBoxShow1,          SIGNAL(stateChanged(int)),				this,       SLOT(tab2UpdateShowLine(int)));
-    connect(ui->tab2SpinnerLineMultiplier,  SIGNAL(valueChanged(QString)),			this,       SLOT(tab2UpdateParams(QString)));
-    connect(ui->tab2ComboBoxLineSelector,   SIGNAL(currentIndexChanged(int)),		this,       SLOT(tab2ComboBoxLineSelectorIndexChanged(int)));
-    connect(ui->tab2ButtonDrawDOS,          SIGNAL(clicked()),						this,       SLOT(tab2ButtonDrawDosPressed()));
-    connect(ui->tab2BushButtonSetFont,      SIGNAL(clicked()),						this,       SLOT(tab2BushButtonSetFontPressed()));
-    connect(ui->tab4QtAbout,                SIGNAL(clicked()),						this,       SLOT(tab4QtAbout()));
-    connect(ui->tab2LoadFilef25DOSS,        SIGNAL(clicked()),						this,       SLOT(tab2LoadFilef25DossPressed()));
-    connect(ui->tab4LicenceMIT,             SIGNAL(clicked()),						this,       SLOT(tab4LicenceMit()));
-    connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),						this,       SLOT(tab2PushButtonPdosLoadPressed()));
-    connect(ui->tab4ChangelogButton,        SIGNAL(clicked()),						this,       SLOT(tab4Changelog()));
+	connect(ui->tab3AtomsConvertButton,     SIGNAL(clicked()),						this,       SLOT(atomsConvertButtonPressed()));
+	connect(ui->tab3AtomsSearchButton,      SIGNAL(clicked()),						this,       SLOT(atomsSearchButtonPressed()));
+	connect(ui->tab3LoadFileConvertXfX,     SIGNAL(clicked()),						this,       SLOT(loadFileConvertXfXButtonPressed()));
+	connect(ui->tab3LoadFilesConvertDOS,    SIGNAL(clicked()),						this,       SLOT(tab3LoadFilesConvertDosButtonPressed()));
+	connect(ui->tab3SurfF25Button,          SIGNAL(clicked()),						this,       SLOT(tab3SurfF25ButtonPressed()));
+	connect(ui->tab3SurfConvertButton,      SIGNAL(clicked()),						this,       SLOT(tab3SurfConvertButtonPressed()));
+	connect(ui->tab3ButtonCrystalToTopond,  SIGNAL(clicked()),						this,       SLOT(tab3ButtonCrystalToTopondPressed()));
+	connect(ui->tab3ButtonTopondToCrystal,  SIGNAL(clicked()),						this,       SLOT(tab3ButtonTopondToCrystalPressed()));
+	connect(ui->tab2buttonDrawZoneStruct,   SIGNAL(clicked()),						this,       SLOT(tab2ButtonDrawZoneStructPressed()));
+	connect(ui->ColorButtonGroup,           SIGNAL(buttonClicked(int)),				this,       SLOT(colorChangeButtonClicked(int)));
+	connect(ui->DeleteButtonGroup,          SIGNAL(buttonClicked(int)),				this,       SLOT(deleteFileStringButtonClicked(int)));
+	connect(ui->HelpButtonGroup,            SIGNAL(buttonClicked(int)),				this,       SLOT(helpButtonClicked(int)));
+	connect(ui->LoadFileButtonGroup,        SIGNAL(buttonClicked(int)),				fileDiag,   SLOT(loadFileButtonCliked(int)));
+	connect(ui->tab1LoadFilesTjMolP2,       SIGNAL(clicked()),						fileDiag,   SLOT(fileDialogMolTrajP2Load()));
+	connect(ui->tab1PlotGraphic,            SIGNAL(clicked()),						this,       SLOT(plotButtonTab1Clicked()));
+	connect(ui->tab1FontChangeButton,       SIGNAL(clicked()),						this,       SLOT(fontChangeButtonPressed()));
+	connect(ui->tab2SpinnerLineWidth,       SIGNAL(valueChanged(QString)),			this,       SLOT(tab2UpdateParams(QString)));
+	connect(ui->tab2ComboBoxLineType,       SIGNAL(currentIndexChanged(QString)),	this,       SLOT(tab2UpdateParams(QString)));
+	connect(ui->tab2CheckBoxShow1,          SIGNAL(stateChanged(int)),				this,       SLOT(tab2UpdateShowLine(int)));
+	connect(ui->tab2SpinnerLineMultiplier,  SIGNAL(valueChanged(QString)),			this,       SLOT(tab2UpdateParams(QString)));
+	connect(ui->tab2ComboBoxLineSelector,   SIGNAL(currentIndexChanged(int)),		this,       SLOT(tab2ComboBoxLineSelectorIndexChanged(int)));
+	connect(ui->tab2ButtonDrawDOS,          SIGNAL(clicked()),						this,       SLOT(tab2ButtonDrawDosPressed()));
+	connect(ui->tab2BushButtonSetFont,      SIGNAL(clicked()),						this,       SLOT(tab2BushButtonSetFontPressed()));
+	connect(ui->tab4QtAbout,                SIGNAL(clicked()),						this,       SLOT(tab4QtAbout()));
+	connect(ui->tab2LoadFilef25DOSS,        SIGNAL(clicked()),						this,       SLOT(tab2LoadFilef25DossPressed()));
+	connect(ui->tab4LicenceMIT,             SIGNAL(clicked()),						this,       SLOT(tab4LicenceMit()));
+	connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),						this,       SLOT(tab2PushButtonPdosLoadPressed()));
+	connect(ui->tab4ChangelogButton,        SIGNAL(clicked()),						this,       SLOT(tab4Changelog()));
 	connect(ui->tab5SpinnerLineWidth,		  SIGNAL(valueChanged(QString)),			this,       SLOT(tab5UpdateParams(QString)));
 	connect(ui->tab5ComboBoxLineType,		  SIGNAL(currentIndexChanged(QString)),	this,       SLOT(tab5UpdateParams(QString)));
 	connect(ui->tab5CheckBoxShow1,          SIGNAL(stateChanged(int)),				this,       SLOT(tab5UpdateShowLine(int)));
@@ -132,14 +132,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::showPictureSettings()
 {
-    if (formPictureSettings!=nullptr)
-    {
-        formPictureSettings->close();
-        delete formPictureSettings;
-    }
-    formPictureSettings = new PictureSettings(plotParams, settings,this);
-    formPictureSettings->setModal(true);
-    formPictureSettings->exec();
+	if (formPictureSettings!=nullptr)
+	{
+		formPictureSettings->close();
+		delete formPictureSettings;
+	}
+	formPictureSettings = new PictureSettings(plotParams, settings,this);
+	formPictureSettings->setModal(true);
+	formPictureSettings->exec();
 }
 
 void MainWindow::colorChangeButtonClicked(const int id) const
@@ -268,20 +268,20 @@ void MainWindow::plotButtonTab1Clicked()
 	//Проверки на безопастность и наличие файлов
 	if (ui->tab1FileLine1->text()+ ui->tab1FileLine2->text()+ ui->tab1FileLine3->text()+ ui->tab1FileLine4->text()+ ui->tab1FileLine5->text()+ ui->tab1FileLine6->text() == "")
 	{
-        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoFilesToDraw);
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoFilesToDraw);
 		return;
 	}
 
 	if (ui->tab1FileLine1->text() + ui->tab1FileLine2->text() + ui->tab1FileLine3->text() + ui->tab1FileLine4->text() + ui->tab1FileLine6->text() == "" && ui->tab1FileLine5->text()!="")
 	{
-        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoDatafiles);
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoDatafiles);
 		return;
 	}
 
 	if (ui->tab1FileLine1->text() + ui->tab1FileLine2->text() + ui->tab1FileLine3->text() != "" &&
 		ui->tab1FileLine5->text() =="" && ui->tab1FileLine4->text() + ui->tab1FileLine6->text() != "")
 	{
-        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoOutpFileWithTransMatrix);
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoOutpFileWithTransMatrix);
 	}
 
 	//Сохранение путей до файлов в единый массив для передачи в парсер
@@ -299,30 +299,30 @@ void MainWindow::plotButtonTab1Clicked()
 		switch (success)
 		{
 		case 0:
-            QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_CorruptDataOutp);
+			QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_CorruptDataOutp);
 			break;
 		case -1:
-            QMessageBox::warning(this, STR_ErrorTitle_ParsingError,STR_ErrorMessage_CorruptDataTrajgrad);
+			QMessageBox::warning(this, STR_ErrorTitle_ParsingError,STR_ErrorMessage_CorruptDataTrajgrad);
 			break;
 		case -2:
-            QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_CorruptDataMolgraph);
+			QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_CorruptDataMolgraph);
 			break;
 		case -3:
-            QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_CorruptDataMolgraph2);
+			QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_CorruptDataMolgraph2);
 			break;
 		default:
 			break;
 		}
 
 		graphicsData->clear();
-        delete content;
+		delete content;
 		return;
 	}
 	
 	if(fields[0]+ fields[1]+ fields[2]!="" && fields[3]=="" && ui->tab1FileLine6->text() == "" && ui->tab1FileLine4->text() == "")
 	{
-        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoOutpFileWithTransMatrixStopDraw);
-        delete content;
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoOutpFileWithTransMatrixStopDraw);
+		delete content;
 		return;
 	}
 
@@ -354,17 +354,17 @@ void MainWindow::plotButtonTab1Clicked()
 			{
 				for (int i = 0; i < bandData->outputMAPN.count(); i++)
 				{
-                    (new BasicGraph(settings, STR_GraphTitle_PlotDefaultName, plotParams, tab1GraphFont, this))->draw( ui->tab1ShowAxis->isChecked(),
-                             i, ui->tab1uhf->isChecked(), graphicsData, surfData, bandData, ui->tab1ComboBoxRotate->currentIndex() * 90);
+					(new BasicGraph(settings, STR_GraphTitle_PlotDefaultName, plotParams, tab1GraphFont, this))->draw( ui->tab1ShowAxis->isChecked(),
+							 i, ui->tab1uhf->isChecked(), graphicsData, surfData, bandData, ui->tab1ComboBoxRotate->currentIndex() * 90);
 				}
 			}
 			else
-                (new BasicGraph(settings, STR_GraphTitle_PlotDefaultName, plotParams, tab1GraphFont, this))->draw(ui->tab1ShowAxis->isChecked(),
-                         0, ui->tab1uhf->isChecked(), graphicsData, surfData, bandData, ui->tab1ComboBoxRotate->currentIndex() * 90);
+				(new BasicGraph(settings, STR_GraphTitle_PlotDefaultName, plotParams, tab1GraphFont, this))->draw(ui->tab1ShowAxis->isChecked(),
+						 0, ui->tab1uhf->isChecked(), graphicsData, surfData, bandData, ui->tab1ComboBoxRotate->currentIndex() * 90);
 		}
 		else
-            (new BasicGraph(settings, STR_GraphTitle_PlotDefaultName, plotParams, tab1GraphFont, this))->draw(ui->tab1ShowAxis->isChecked(),
-                     0, ui->tab1uhf->isChecked(), graphicsData, surfData, bandData, ui->tab1ComboBoxRotate->currentIndex() * 90);
+			(new BasicGraph(settings, STR_GraphTitle_PlotDefaultName, plotParams, tab1GraphFont, this))->draw(ui->tab1ShowAxis->isChecked(),
+					 0, ui->tab1uhf->isChecked(), graphicsData, surfData, bandData, ui->tab1ComboBoxRotate->currentIndex() * 90);
 	}
 
 }
@@ -398,7 +398,7 @@ void MainWindow::loadFileConvertXfXButtonPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	const QString fileName = QFileDialog::getOpenFileName(this, STR_Dialog_OpenFile, settings->getLastPath(),
-	                                                      "*.f25 (*.f25);;All Files (*)");
+														  "*.f25 (*.f25);;All Files (*)");
 	if (fileName != "")
 	{
 		const QFileInfo fileinfo(fileName);
@@ -406,10 +406,10 @@ void MainWindow::loadFileConvertXfXButtonPressed()
 		readFileFromFs(fileName, content);
 	}
 	else
-    {
-        delete content;
+	{
+		delete content;
 		return;
-    }
+	}
 
 	bandData->parseData(content, ui->tab3uhfZoneStruct);
 	delete content;
@@ -421,18 +421,18 @@ void MainWindow::loadFileConvertXfXButtonPressed()
 			QMessageBox::critical(this, STR_ErrorTitle_SaveError, STR_ErrorMessage_CantOpenFileForWrite.arg(filesSaver->errorData.ErrorFile));//QMessageBox::critical(this, STR_ErrorTitle_SaveError, tr("'") + filesSaver->errorData.ErrorFile + tr("' не удается открыть для записи!"));
 			return;
 		}
-        QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
+		QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
 	}
 	else
-        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 }
 
 void MainWindow::tab3LoadFilesConvertDosButtonPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	const QString fileName = QFileDialog::getOpenFileName(this,
-	                                                      STR_Dialog_OpenFile, settings->getLastPath(),
-	                                                      "*.f25 (*.f25);;All Files (*)");
+														  STR_Dialog_OpenFile, settings->getLastPath(),
+														  "*.f25 (*.f25);;All Files (*)");
 	if (fileName != "")
 	{
 		const QFileInfo fileinfo(fileName);
@@ -440,10 +440,10 @@ void MainWindow::tab3LoadFilesConvertDosButtonPressed()
 		readFileFromFs(fileName, content);
 	}
 	else
-    {
-        delete content;
+	{
+		delete content;
 		return;
-    }
+	}
 
 	bandData->parseData(content);
 	delete content;
@@ -452,21 +452,21 @@ void MainWindow::tab3LoadFilesConvertDosButtonPressed()
 		const bool success = filesSaver->saveDosData(fileName, bandData);
 		if (success == false)
 		{
-            QMessageBox::critical(this, STR_ErrorTitle_SaveError, STR_ErrorMessage_CantOpenFileForWrite.arg(filesSaver->errorData.ErrorFile));
+			QMessageBox::critical(this, STR_ErrorTitle_SaveError, STR_ErrorMessage_CantOpenFileForWrite.arg(filesSaver->errorData.ErrorFile));
 			return;
 		}
-        QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
+		QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
 	}
 	else
-        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 }
 
 void MainWindow::tab3SurfF25ButtonPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	const QString fileName = QFileDialog::getOpenFileName(this,
-	                                                       STR_Dialog_OpenFile, settings->getLastPath(),
-	                                                       "*.f25 (*.f25);;All Files (*)");
+														   STR_Dialog_OpenFile, settings->getLastPath(),
+														   "*.f25 (*.f25);;All Files (*)");
 	if (fileName != "")
 	{
 		const QFileInfo fileInfo(fileName);
@@ -474,10 +474,10 @@ void MainWindow::tab3SurfF25ButtonPressed()
 		readFileFromFs(fileName, content);
 	}
 	else
-    {
-        delete content;
+	{
+		delete content;
 		return;
-    }
+	}
 
 	bandData->parseData(content, ui->tab3uhff25->isChecked());
 	delete content;
@@ -486,21 +486,21 @@ void MainWindow::tab3SurfF25ButtonPressed()
 		const bool success = filesSaver->saveMapnData(fileName, bandData, ui->tab3SurfRotationSelector->currentIndex() * 90);
 		if (success == false)
 		{
-            QMessageBox::critical(this, STR_ErrorTitle_SaveError, STR_ErrorMessage_CantOpenFileForWrite.arg(filesSaver->errorData.ErrorFile));
-            return;
+			QMessageBox::critical(this, STR_ErrorTitle_SaveError, STR_ErrorMessage_CantOpenFileForWrite.arg(filesSaver->errorData.ErrorFile));
+			return;
 		}
-        QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
+		QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
 	}
 	else
-        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 }
 
 void MainWindow::tab3SurfConvertButtonPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	const QString fileName = QFileDialog::getOpenFileName(this,
-	                                                      STR_Dialog_OpenFile, settings->getLastPath(),
-	                                                      "*.dat (*.dat);;All Files (*)");
+														  STR_Dialog_OpenFile, settings->getLastPath(),
+														  "*.dat (*.dat);;All Files (*)");
 	if (fileName != "")
 	{
 		const QFileInfo fileinfo(fileName);
@@ -508,10 +508,10 @@ void MainWindow::tab3SurfConvertButtonPressed()
 		readFileFromFs(fileName, content);
 	}
 	else
-    {
+	{
 		delete content;
 		return;
-    }
+	}
 
 	surfData->parseData(content);
 	delete content;
@@ -547,22 +547,22 @@ void MainWindow::tab3SurfConvertButtonPressed()
 		if (success != true)
 		{
 			progressBar.close();
-            QMessageBox::critical(this, STR_ErrorTitle_SaveError, STR_ErrorMessage_CantOpenFileForWrite.arg(pathFull));
+			QMessageBox::critical(this, STR_ErrorTitle_SaveError, STR_ErrorMessage_CantOpenFileForWrite.arg(pathFull));
 			return;
 		}
 		progressBar.close();
-        QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
+		QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
 	}
 	else
-        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 }
 
 void MainWindow::tab3ButtonCrystalToTopondPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	const QString fileName = QFileDialog::getOpenFileName(this,
-	                                                      STR_Dialog_OpenFile, settings->getLastPath(),
-	                                                      "Output file (*.outp);;All Files (*)");
+														  STR_Dialog_OpenFile, settings->getLastPath(),
+														  "Output file (*.outp);;All Files (*)");
 	if (fileName != "")
 	{
 		const QFileInfo fileinfo(fileName);
@@ -570,10 +570,10 @@ void MainWindow::tab3ButtonCrystalToTopondPressed()
 		readFileFromFs(fileName, content);
 	}
 	else
-    {
-        delete content;
+	{
+		delete content;
 		return;
-    }
+	}
 
 	ctConvertor->convertCrystalToTopond(content);
 
@@ -601,18 +601,18 @@ void MainWindow::tab3ButtonCrystalToTopondPressed()
 			QMessageBox::critical(this, STR_ErrorTitle_SaveError, STR_ErrorMessage_CantOpenFileForWrite.arg(path));
 			return;
 		}
-        QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
+		QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
 	}
 	else
-        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 }
 
 void MainWindow::tab3ButtonTopondToCrystalPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	const QString fileName = QFileDialog::getOpenFileName(this,
-	                                                      STR_Dialog_OpenFile, settings->getLastPath(),
-	                                                      "Output file (*.outp);;All Files (*)");
+														  STR_Dialog_OpenFile, settings->getLastPath(),
+														  "Output file (*.outp);;All Files (*)");
 	if (fileName != "")
 	{
 		const QFileInfo fileinfo(fileName);
@@ -620,10 +620,10 @@ void MainWindow::tab3ButtonTopondToCrystalPressed()
 		readFileFromFs(fileName, content);
 	}
 	else
-    {
-        delete content;
+	{
+		delete content;
 		return;
-    }
+	}
 	ctConvertor->convertTopondToCrystal(content);
 
 	delete content;
@@ -651,10 +651,10 @@ void MainWindow::tab3ButtonTopondToCrystalPressed()
 			QMessageBox::critical(this, STR_ErrorTitle_SaveError, STR_ErrorMessage_CantOpenFileForWrite.arg(path));
 			return;
 		}
-        QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
+		QMessageBox::information(this, STR_MessageBoxTitle_DataProcessed, STR_MessageBoxMessage_DataProcessedAndSaved);
 	}
 	else
-        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 }
 
 void MainWindow::tab2ButtonDrawZoneStructPressed()
@@ -670,8 +670,8 @@ void MainWindow::tab2ButtonDrawZoneStructPressed()
 	}
 	else
 	{
-        delete content;
-        QMessageBox::warning(this, STR_ErrorTitle_LoadingError, STR_ErrorMessage_NoFileToDraw);
+		delete content;
+		QMessageBox::warning(this, STR_ErrorTitle_LoadingError, STR_ErrorMessage_NoFileToDraw);
 		return;
 	}
 	bandData->parseData(content);
@@ -708,7 +708,7 @@ void MainWindow::tab2ButtonDrawZoneStructPressed()
 		}
 	}
 	else
-        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 }
 
 void MainWindow::tab2UpdateParams(QString i) const
@@ -728,8 +728,8 @@ void MainWindow::tab2UpdateShowLine(int i) const
 void MainWindow::tab2LoadFilef25DossPressed()
 {
 	const QString fileName = QFileDialog::getOpenFileName(this,
-	                                                      STR_Dialog_OpenFile, settings->getLastPath(),
-	                                                      tr("f25 files (*.f25);;All Files (*)"));
+														  STR_Dialog_OpenFile, settings->getLastPath(),
+														  tr("f25 files (*.f25);;All Files (*)"));
 	if (fileName != "")
 	{
 		QList<QString>* content = new QList<QString>();
@@ -812,8 +812,8 @@ void MainWindow::tab2ButtonDrawDosPressed()
 	}
 	else
 	{
-        delete content;
-        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoFileToDraw);
+		delete content;
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoFileToDraw);
 		return;
 	}
 
@@ -825,7 +825,7 @@ void MainWindow::tab2ButtonDrawDosPressed()
 		(new DosGraph(settings, STR_GraphTitle_PlotDefaultName, plotParams, tab2GraphFont, this))->draw(bandData, borders,
 			ui->tab2ComboBoxDosRotate->currentIndex(), symbols, ui->tab2ComboBoxLineSelector->currentIndex());
 	else
-        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 	delete content;
 }
 
@@ -852,12 +852,12 @@ void MainWindow::tab4QtAbout()
 void MainWindow::tab4LicenceMit()
 {
 	const QString text = STR_Licence;
-    QMessageBox::information(this, STR_LicenseTitle, text);
+	QMessageBox::information(this, STR_LicenseTitle, text);
 }
 
 void MainWindow::tab4Changelog()
 {
-    formChangelog->show();
+	formChangelog->show();
 }
 
 void MainWindow::tab5QeDosLoad()
@@ -1258,7 +1258,7 @@ void MainWindow::tab2PushButtonPdosLoadPressed()
 {
 	QList<QString>* content = new QList<QString>();
 	QString fileName = QFileDialog::getOpenFileName(this,
-        STR_Dialog_OpenFile, settings->getLastPath(),
+		STR_Dialog_OpenFile, settings->getLastPath(),
 		"Output file (*.out);;All Files (*)");
 	if (fileName != "")
 	{
@@ -1267,22 +1267,22 @@ void MainWindow::tab2PushButtonPdosLoadPressed()
 		settings->updatePath(fileinfo.absolutePath());
 	}
 	else
-    {
-        delete content;
+	{
+		delete content;
 		return;
-    }
+	}
 
 	const QVector<QVector<AtomTypes>> data = pdosParser->getAtomData(content);
 	delete content;
 	if (data.count() <= 0)
 	{
-        QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
+		QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
 		return;
 	}
 
 	fileName = QFileDialog::getSaveFileName(nullptr,
-        STR_Dialog_SaveFile, settings->getLastPath()+"PDOS.xlsx",
-        tr("Excel file (*.xlsx);;All Files (*)"));
+		STR_Dialog_SaveFile, settings->getLastPath()+"PDOS.xlsx",
+		tr("Excel file (*.xlsx);;All Files (*)"));
 	if (fileName != "")
 	{
 		const QFileInfo fileinfo(fileName);
@@ -1316,5 +1316,5 @@ void MainWindow::tab2PushButtonPdosLoadPressed()
 			ui->tab2PDOSNumbersTable->setItem(ui->tab2PDOSNumbersTable->rowCount() - 1, 5, itm);
 		}
 	}
-    ui->tab2PDOSNumbersTable->setHorizontalHeaderLabels(QStringList() << STR_XLSX_AtomNumber << STR_XLSX_Atom << STR_XLSX_Type << STR_XLSX_FunctionNumber << STR_XLSX_StartNumber << STR_XLSX_EndNumber );
+	ui->tab2PDOSNumbersTable->setHorizontalHeaderLabels(QStringList() << STR_XLSX_AtomNumber << STR_XLSX_Atom << STR_XLSX_Type << STR_XLSX_FunctionNumber << STR_XLSX_StartNumber << STR_XLSX_EndNumber );
 }
