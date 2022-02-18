@@ -16,7 +16,7 @@ public:
     QWidget* createEditor(QWidget *parent, const QStyleOptionViewItem & option, const QModelIndex & index) const override
     {
 	    auto lineEdit = new QLineEdit(parent);
-	    const auto localValidator = new QRegExpValidator(QRegExp(R"([+-]?\d*[\.]?\d+)"));
+	    const auto localValidator = new QRegExpValidator(QRegExp(R"(^[+\-]?(?:(?:0|[1-9]\d*)(?:\.\d*)?|\.\d+)(?:\d[eE][+\-]?\d+)?$)"));
         lineEdit->setValidator(localValidator);
         return lineEdit;
     }

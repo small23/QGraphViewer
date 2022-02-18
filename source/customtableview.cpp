@@ -6,7 +6,8 @@ CustomTableView::CustomTableView(QWidget* parent)
 	tab5tableModel->setColumnCount(4);
 	tab5tableModel->setRowCount(1);
 	this->setModel(tab5tableModel);
-	connect(this->model(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&)), this, SLOT(onDataChanged(const QModelIndex&, const QModelIndex&)));
+	connect(this->model(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&)), 
+		this, SLOT(onDataChanged(const QModelIndex&, const QModelIndex&)));
 	localValidator = new QRegExpValidator(QRegExp(R"(^[+\-]?(?:(?:0|[1-9]\d*)(?:\.\d*)?|\.\d+)(?:\d[eE][+\-]?\d+)?$)"));
 }
 
@@ -86,9 +87,7 @@ void CustomTableView::onDataChanged(const QModelIndex& topLeft, const QModelInde
 			else
 				item->setBackground(QBrush(Qt::white));
 		}
-
 	}
-
 }
 
 void CustomTableView::keyPressEvent(QKeyEvent* event)
@@ -166,5 +165,4 @@ void CustomTableView::keyPressEvent(QKeyEvent* event)
 			QTableView::keyPressEvent(event);
 		}
 	}
-
 }

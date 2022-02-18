@@ -88,6 +88,9 @@
     <ClCompile Include="source\crystaltopondconvertors.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\customtableview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="source\dosgraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -262,9 +265,6 @@
     <ClCompile Include="source\zonegraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="customtableview.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="headers\atomconversion.h">
@@ -291,6 +291,9 @@
     <ClInclude Include="headers\crystaltopondconvertors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <QtMoc Include="headers\customtableview.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
     <ClInclude Include="headers\delegator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -363,6 +366,9 @@
     <ClInclude Include="headers\surfdata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    
+    
+    
     <ClInclude Include="headers\uiinit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -510,17 +516,53 @@
     <ClInclude Include="headers\zonegraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <QtMoc Include="customtableview.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
   </ItemGroup>
   <ItemGroup>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <CustomBuild Include="debug\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
     <CustomBuild Include="release\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
   </ItemGroup>
   <ItemGroup>
     <None Include="translations\qt_en.ts">
@@ -597,6 +639,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include=".\QGraphViewer_resource.rc" />
+    <ResourceCompile Include="W:\Repos\QGraphViewer\QGraphViewer\QGraphViewer_resource.rc" />
   </ItemGroup>
 </Project>
