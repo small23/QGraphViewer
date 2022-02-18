@@ -59,7 +59,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -6855,9 +6855,9 @@ p, li { white-space: pre-wrap; }
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="HelpButtonGroup"/>
-  <buttongroup name="ColorButtonGroup"/>
   <buttongroup name="DeleteButtonGroup"/>
+  <buttongroup name="ColorButtonGroup"/>
   <buttongroup name="LoadFileButtonGroup"/>
+  <buttongroup name="HelpButtonGroup"/>
  </buttongroups>
 </ui>

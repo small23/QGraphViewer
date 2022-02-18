@@ -109,11 +109,41 @@ void CustomTableView::keyPressEvent(QKeyEvent* event)
 
 			if (data != "")
 			{
+				QStringList dataRows = data.split(QRegExp("[\r\n]"), QString::SkipEmptyParts);
+				QVector<QStringList> cells;
+				for (int i=0; i<dataRows.count(); i++)
+				{
+					cells.append(dataRows[i].split(QRegExp("[ \t]"), QString::SkipEmptyParts));
+				}
 				auto sel = this->selectedIndexes();
 				if (sel.count() > 0)
 				{
 					auto modelIndex = sel.at(0);
-					QStandardItem* item = tab5tableModel->item(modelIndex.row(), modelIndex.column());
+					
+					int indexC = modelIndex.column();
+					int indexR = modelIndex.row();
+					int indexMatrixC = 0;
+					int indexMatrixR = 0;
+					while(true)
+					{
+						QStandardItem* item = new QStandardItem();
+						item->setText(cells[indexMatrixR][indexMatrixC]);
+						tab5tableModel->setItem(indexR, indexC, item);
+						indexMatrixC++;
+						indexC++;
+						if (indexMatrixC >= cells[indexMatrixR].count())
+						{
+							indexMatrixC = 0;
+							indexMatrixR++;
+						}
+						if (indexC >= tab5tableModel->columnCount())
+						{
+							indexC = 0;
+							indexR++;
+						}
+						if (indexMatrixR >= cells.count())
+							break;
+					}
 				}
 			}
 			else
@@ -122,8 +152,9 @@ void CustomTableView::keyPressEvent(QKeyEvent* event)
 		else if (event->matches(QKeySequence::Delete) || event->matches(QKeySequence::Backspace) || event->key() == Qt::Key_Backspace)
 		{
 			auto sel = this->selectedIndexes();
-			for (auto modelIndex : sel)
+			for(int i= sel.size() - 1; i>=0; i--)
 			{
+				auto modelIndex = sel[i];
 				QStandardItem* item = tab5tableModel->item(modelIndex.row(), modelIndex.column());
 				if (item != nullptr)
 				{

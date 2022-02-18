@@ -22,7 +22,7 @@ void QeGraph::draw(QeDos* data, MathSymbols* symbols, const int currentGraphic, 
 		{
 			for (int i = 1; i < data->pdos[file][0].size(); i++) //Count collums of data (line count)
 			{
-				if (lineCounter==currentGraphic)
+				if (lineCounter == currentGraphic)
 				{
 					plotParams->tab5PlotParams->data()[lineCounter].show = true;
 					drawData(data, angle, &isShowed);
@@ -31,9 +31,9 @@ void QeGraph::draw(QeDos* data, MathSymbols* symbols, const int currentGraphic, 
 				lineCounter++;
 			}
 		}
-		
+
 	}
-	
+
 	customPlot->setGeometry(30, 30, plotParams->drawRes, plotParams->drawRes);
 	customPlot->setMinimumSize(plotParams->drawRes, plotParams->drawRes);
 	customPlot->setMaximumSize(plotParams->drawRes, plotParams->drawRes);
@@ -48,20 +48,12 @@ void QeGraph::draw(QeDos* data, MathSymbols* symbols, const int currentGraphic, 
 	customPlot->yAxis->rescale(true);
 
 	newCurve = new QCPCurve(customPlot->xAxis, customPlot->yAxis);
-	if (plotParams->tab2zeroShift)
-	{
-		if (angle > 0)
-			newCurve->addData({ 0,0 }, { -99999,99999 });
-		else
-			newCurve->addData({ -99999,99999 }, { 0,0 });
-	}
+
+	if (angle > 0)
+		newCurve->addData({ 0,0 }, { -99999,99999 });
 	else
-	{
-		if (angle > 0)
-			newCurve->addData({ 0,0 }, { -99999,99999 });
-		else
-			newCurve->addData({ -99999,99999 }, { 0,0 });
-	}
+		newCurve->addData({ -99999,99999 }, { 0,0 });
+
 
 	pen.setStyle(Qt::PenStyle::SolidLine);
 	pen.setColor(Qt::black);
@@ -74,11 +66,11 @@ void QeGraph::draw(QeDos* data, MathSymbols* symbols, const int currentGraphic, 
 		newCurve = new QCPCurve(customPlot->xAxis, customPlot->yAxis);
 		if (angle > 0)
 		{
-			newCurve->addData({ -1000000,10000000 }, {plotParams->tab5FermiLevel,plotParams->tab5FermiLevel});
+			newCurve->addData({ -1000000,10000000 }, { plotParams->tab5FermiLevel,plotParams->tab5FermiLevel });
 		}
 		else
 		{
-			newCurve->addData({ plotParams->tab5FermiLevel,plotParams->tab5FermiLevel}, { -1000000,10000000 });
+			newCurve->addData({ plotParams->tab5FermiLevel,plotParams->tab5FermiLevel }, { -1000000,10000000 });
 		}
 
 		pen.setStyle(Qt::PenStyle::DashLine);
@@ -87,7 +79,7 @@ void QeGraph::draw(QeDos* data, MathSymbols* symbols, const int currentGraphic, 
 		newCurve->setPen(pen);
 	}
 
-	
+
 	if (angle == 0)
 	{
 		if (plotParams->tab5yMin != 0 || plotParams->tab5yMax != 0)
@@ -104,7 +96,7 @@ void QeGraph::draw(QeDos* data, MathSymbols* symbols, const int currentGraphic, 
 		if (plotParams->tab5xMin != 0 || plotParams->tab5xMax != 0)
 			customPlot->yAxis->setRange(plotParams->tab5xMin, plotParams->tab5xMax);
 	}
-	
+
 	font.setPointSize(font.pointSize() + 2);
 	font.setBold(true);
 	if (plotParams->tab5PlotName != "")

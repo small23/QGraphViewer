@@ -29,8 +29,18 @@ void QeDos::parseAppend(const QList<QString>* content)
 		double x;
 		for (int j = 0; j < numbersCount; j++)
 		{
+			if (getData.atEnd())
+			{
+				this->clear();
+				throw "Illegal file content!";
+			}
 			getData >> x;
 			pdos[index][i - 1][j] = x;
+		}
+		if (!getData.atEnd())
+		{
+			this->clear();
+			throw "Illegal file content!";
 		}
 	}
 }
@@ -54,7 +64,10 @@ int QeDos::count(const QList<QString>* content)
 		bool ok = false;
 		double temp = test2.at(i).toDouble(&ok);
 		if (!ok)
+		{
+			clear();
 			return 0;
+		}
 		i++;
 	}
 	return test2.count()-1;

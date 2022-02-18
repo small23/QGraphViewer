@@ -973,6 +973,17 @@ void MainWindow::tab5LoadFileDossPressed()
 			int count = qeDosData->count(content);
 			if (count>0)
 			{
+				try
+				{
+					qeDosData->parseDataNew(content);
+				}
+				catch(...)
+				{
+					count = 0;
+				}
+			}
+			if (count>0)
+			{
 				ui->tab5LoadFilecomboBox->addItem(fileName);
 				linesCount += count;
 				plotParams->tab5LinesCounter->append(count);
@@ -1011,24 +1022,34 @@ void MainWindow::tab5DrawDosPressed()
 {
 	if (ui->tab5LoadFilecomboBox->count() > 0)
 	{
+	
 		qeDosData->clear();
-		for (int i = 0; i < ui->tab5LoadFilecomboBox->count(); i++)
+		try
 		{
-			QString filePath = ui->tab5LoadFilecomboBox->itemText(i);
-			QList<QString>* content = new QList<QString>();
-			if (filePath != "")
+			for (int i = 0; i < ui->tab5LoadFilecomboBox->count(); i++)
 			{
-				readFileFromFs(filePath, content);
-				const QFileInfo fileinfo(filePath);
-				settings->updatePath(fileinfo.absolutePath());
+				QString filePath = ui->tab5LoadFilecomboBox->itemText(i);
+				QList<QString>* content = new QList<QString>();
+				if (filePath != "")
+				{
+					readFileFromFs(filePath, content);
+					const QFileInfo fileinfo(filePath);
+					settings->updatePath(fileinfo.absolutePath());
+				}
+				else
+				{
+					delete content;
+					return;
+				}
+				qeDosData->parseAppend(content);
 			}
-			else
-			{
-				delete content;
-				return;
-			}
-			qeDosData->parseAppend(content);
 		}
+		catch(...)
+		{
+			QMessageBox::warning(this, STR_ErrorTitle_ParsingError, STR_ErrorMessage_NoNecessaryDataInFile);
+			return;
+		}
+		
 		int selected = ui->tab5ComboBoxLineSelector->currentIndex();
 		for (int i = 0; i < ui->tab5LoadFilecomboBox->currentIndex(); i++)
 				selected += plotParams->tab5LinesCounter->at(i);
