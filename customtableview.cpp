@@ -26,9 +26,9 @@ void CustomTableView::onDataChanged(const QModelIndex& topLeft, const QModelInde
 			QList<QStandardItem*> items;
 			for (int column = 0; column < tab5tableModel->columnCount(); ++column)
 			{
-				QStandardItem item;
-				item.setText("");
-				items.append(&item);
+				QStandardItem* item = new QStandardItem();
+				item->setText("");
+				items.append(item);
 			}
 			tab5tableModel->insertRow(tab5tableModel->rowCount(), items);
 		}
