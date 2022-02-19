@@ -107,17 +107,24 @@ MainWindow::MainWindow(QWidget* parent)
 	this->setFixedSize(this->size());
 	this->setWindowTitle("QGraphViewer");
 
+	QSize targetWindowSize = this->size();
+	QRect rec = QGuiApplication::screens().at(0)->geometry();
+	rec.setTop((rec.height() - targetWindowSize.height()) / 2);
+	rec.setLeft((rec.width() - targetWindowSize.width()) / 2);
+	rec.setWidth(this->size().width());
+	rec.setHeight(this->size().height());
+	this->setGeometry(rec);
+
 	this->show();
+
+	
 	connect(this->window()->windowHandle(), SIGNAL(screenChanged(QScreen*)), this, SLOT(screenChanged(QScreen*)));
 	setUiColorLabels(ui, this->window()->windowHandle()->devicePixelRatio());
 	imageInit(ui, this->window()->windowHandle()->devicePixelRatio());
 	//Корректировочный коэффициент масштабирования
 	//графиков на дисплеях с масштабом !=100%
-	QScreen* srn = QApplication::screens().at(0);
-	const auto b = srn->availableSize();
-	auto height = b.height() * 0.90;
-	if (height > GRAPH_SCALE) height = GRAPH_SCALE; //TODO Remove
-	plotParams->drawRes = static_cast<int>(height);
+    //TODO Remove
+	plotParams->drawRes = static_cast<int>(GRAPH_SCALE);
 	plotParams->drawQuality = settings->quality;
 	plotParams->drawScale = settings->scale;
 	plotParams->preferFormat = settings->imageType;
