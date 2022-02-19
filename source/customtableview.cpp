@@ -23,7 +23,7 @@ CustomTableView::~CustomTableView()
 {
 }
 
-void CustomTableView::onDataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight) const
+void CustomTableView::onDataChanged(const QModelIndex& topLeft, const QModelIndex&) const
 {
 	if (topLeft.row() + 1 == tab5tableModel->rowCount())
 	{

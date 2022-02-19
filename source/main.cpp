@@ -12,9 +12,13 @@ int main(int argc, char *argv[])
 
     QApplication application(argc, argv);
     QPixmap pixmap(":/splash/splash.png");
+    QRect rec = QApplication::desktop()->screenGeometry();
+    int targetWidth = (rec.width() * qApp->devicePixelRatio()) / 2 * qApp->devicePixelRatio();
+    int targetHeight = (rec.height() * qApp->devicePixelRatio()) / 2 * qApp->devicePixelRatio();
     pixmap.setDevicePixelRatio(qApp->devicePixelRatio());
-    QSplashScreen splash(pixmap);
-    splash.setMask(pixmap.mask());
+    QPixmap splashPixmap = pixmap.scaled(targetWidth, targetHeight, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+	QSplashScreen splash(splashPixmap);
+    qreal temp = splash.devicePixelRatioF();
     splash.show();
     QApplication::processEvents();
     QApplication::setOrganizationName("KemSU");
