@@ -107,6 +107,10 @@ MainWindow::MainWindow(QWidget* parent)
 	this->setFixedSize(this->size());
 	this->setWindowTitle("QGraphViewer");
 
+#ifdef OWN_HIGHDPI_SCALE
+	resizeWidgets(QGuiApplication::screens().at(0)->logicalDotsPerInch() / 96.0);
+#endif
+
 	QSize targetWindowSize = this->size();
 	QRect rec = QGuiApplication::screens().at(0)->geometry();
 	rec.setTop((rec.height() - targetWindowSize.height()) / 2);
@@ -114,13 +118,16 @@ MainWindow::MainWindow(QWidget* parent)
 	rec.setWidth(this->size().width());
 	rec.setHeight(this->size().height());
 	this->setGeometry(rec);
-
 	this->show();
+	displayScale = this->window()->windowHandle()->devicePixelRatio();
 
-	
+#ifdef OWN_HIGHDPI_SCALE
+	displayScale = QGuiApplication::screens().at(0)->logicalDotsPerInch() / 96.0;
+#endif
+
 	connect(this->window()->windowHandle(), SIGNAL(screenChanged(QScreen*)), this, SLOT(screenChanged(QScreen*)));
-	setUiColorLabels(ui, this->window()->windowHandle()->devicePixelRatio());
-	imageInit(ui, this->window()->windowHandle()->devicePixelRatio());
+	setUiColorLabels(ui, displayScale);
+	imageInit(ui, displayScale);
 	//Корректировочный коэффициент масштабирования
 	//графиков на дисплеях с масштабом !=100%
     //TODO Remove
@@ -128,8 +135,84 @@ MainWindow::MainWindow(QWidget* parent)
 	plotParams->drawQuality = settings->quality;
 	plotParams->drawScale = settings->scale;
 	plotParams->preferFormat = settings->imageType;
-	plotParams->displayScale = this->window()->windowHandle()->devicePixelRatio();
+	plotParams->displayScale = displayScale;
+	
 }
+
+#ifdef OWN_HIGHDPI_SCALE
+void MainWindow::resizeWidgets(qreal mratio)
+{
+
+	QLayout* ql = this->layout();
+
+	if (ql == NULL)
+		return;
+
+	QWidget* pw = ql->parentWidget();
+
+	if (pw == NULL)
+		return;
+
+	QList<QLayout*> layouts;
+
+	WId id;
+
+	foreach(QWidget * w, pw->findChildren<QWidget*>())
+	{
+		id = w->winId();
+		w->setMinimumSize(w->minimumWidth() * mratio, w->minimumHeight() * mratio);
+		w->setMaximumSize(w->maximumWidth() * mratio, w->maximumHeight() * mratio);
+
+		w->resize(w->width() * mratio, w->height() * mratio);
+		w->move(QPoint(g.x() * mratio, g.y() * mratio));
+
+		w->update();
+		w->updateGeometry();
+		
+	}
+
+	foreach(QLayout * l, pw->findChildren<QLayout*>())
+	{
+		if (l != NULL && !(l->objectName().isEmpty()))
+			layouts.append(l);
+	}
+
+	foreach(QLayout * l, layouts) {
+		QMargins m = l->contentsMargins();
+
+		m.setBottom(m.bottom() * mratio);
+		m.setTop(m.top() * mratio);
+		m.setLeft(m.left() * mratio);
+		m.setRight(m.right() * mratio);
+
+		l->setContentsMargins(m);
+
+		l->setSpacing(l->spacing() * mratio);
+
+		if (l->inherits("QGridLayout")) {
+			QGridLayout* gl = ((QGridLayout*)l);
+
+			gl->setHorizontalSpacing(gl->horizontalSpacing() * mratio);
+			gl->setVerticalSpacing(gl->verticalSpacing() * mratio);
+		}
+
+	}
+
+	QMargins m = this->contentsMargins();
+
+	m.setBottom(m.bottom() * mratio);
+	m.setTop(m.top() * mratio);
+	m.setLeft(m.left() * mratio);
+	m.setRight(m.right() * mratio);
+
+	// resize accordingly main window
+	this->setMinimumSize(this->width()* mratio, this->height()* mratio);
+	this->setMaximumSize(this->width()* mratio, this->height()* mratio);
+	this->resize(this->width() * mratio, this->height() * mratio);
+	this->setContentsMargins(m);
+	this->adjustSize();
+}
+#endif
 
 MainWindow::~MainWindow()
 {
@@ -157,7 +240,11 @@ void MainWindow::colorChangeButtonClicked(const int id) const
 	colorPickerMenu.exec();
 	const QColor choosenColor = colorPickerMenu.selectedColor();
 	if (!choosenColor.isValid()) return;
+#ifdef OWN_HIGHDPI_SCALE
+	const QPixmap colorIcon = ColorIconDrawer::drawIcon(choosenColor, QGuiApplication::screens().at(0)->logicalDotsPerInch() / 96.0);
+#else
 	const QPixmap colorIcon = ColorIconDrawer::drawIcon(choosenColor, this->window()->windowHandle()->devicePixelRatio());
+#endif
 	const QString colorLabelName = QString("ColorLable%1").arg(id);
 	QLabel* colorLabel = findChild<QLabel*>(colorLabelName);
 	if (colorLabel != nullptr)
@@ -1219,12 +1306,21 @@ void MainWindow::tab5DrawZoneButtonPressed()
 
 void MainWindow::screenChanged(QScreen* screen)
 {
+#ifdef OWN_HIGHDPI_SCALE
+	resizeWidgets( QGuiApplication::screens().at(0)->logicalDotsPerInch() / 96.0);
+	imageInit(ui, QGuiApplication::screens().at(0)->logicalDotsPerInch() / 96.0);
+	for (int i = 1; i < 11; i++)
+	{
+		setColotLabelById(i);
+	}
+#else
 	this->window()->windowHandle()->setScreen(screen);
 	imageInit(ui, this->window()->windowHandle()->devicePixelRatio());
 	for (int i = 1; i < 11; i++)
 	{
 		setColotLabelById(i);
 	}
+#endif
 }
 
 void MainWindow::tab5LoadQEDenButtonPressed()

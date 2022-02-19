@@ -10,6 +10,7 @@
 #include "QColor"
 #include "QPainter"
 #include <qcoreapplication.h>
+#include "constantsandstrings.h"
 
 class ColorIconDrawer
 {
