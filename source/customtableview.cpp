@@ -98,6 +98,7 @@ void CustomTableView::onDataChanged(const QModelIndex& topLeft, const QModelInde
 			}
 			else
 			{
+				textForValidation.replace(" ", "");
 				if (textForValidation.count() == 0)
 				{
 					badCol.append(true);
