@@ -14,6 +14,14 @@ changelog::changelog(SettingsKeeper *settings, QWidget *parent) :
     appLogo.load(":logos/Logos/icon.png");
     this->setWindowTitle(STR_Window_Changelog);
     connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(cancelButtonPushed()));
+
+	//QMovie* movie = new QMovie(":logos/EasterEgg.gif");
+	//QRect frameSize = movie->frameRect();
+   // QSize size = QSize(ui->logo->width(), ui->logo->height() * (frameSize.width()/ frameSize.height()));
+
+   // movie->setScaledSize(size);
+   // ui->logo->setMovie(movie);
+   // movie->start();
 }
 
 void changelog::cancelButtonPushed()

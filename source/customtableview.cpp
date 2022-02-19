@@ -4,8 +4,16 @@ CustomTableView::CustomTableView(QWidget* parent)
 	: QTableView(parent), tab5tableModel(new QStandardItemModel())
 {
 	tab5tableModel->setColumnCount(4);
-	tab5tableModel->setRowCount(1);
+	tab5tableModel->setRowCount(0);
 	this->setModel(tab5tableModel);
+	QList<QStandardItem*> items;
+	for (int column = 0; column < tab5tableModel->columnCount(); ++column)
+	{
+		QStandardItem* item = new QStandardItem();
+		item->setText("");
+		items.append(item);
+	}
+	tab5tableModel->insertRow(tab5tableModel->rowCount(), items);
 	connect(this->model(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&)), 
 		this, SLOT(onDataChanged(const QModelIndex&, const QModelIndex&)));
 	localValidator = new QRegExpValidator(QRegExp(R"(^[+\-]?(?:(?:0|[1-9]\d*)(?:\.\d*)?|\.\d+)(?:\d[eE][+\-]?\d+)?$)"));
