@@ -7,7 +7,7 @@ CustomTableView::CustomTableView(QWidget* parent)
 	tab5tableModel->setRowCount(0);
 	this->setModel(tab5tableModel);
 	QList<QStandardItem*> items;
-	for (int column = 0; column < tab5tableModel->columnCount(); ++column)
+	for (int column = 0; column < 4; ++column)
 	{
 		QStandardItem* item = new QStandardItem();
 		item->setText("");
@@ -75,22 +75,50 @@ void CustomTableView::onDataChanged(const QModelIndex& topLeft, const QModelInde
 		}
 	}
 
-	QStandardItem* item = tab5tableModel->item(topLeft.row(), topLeft.column());
-	if (item != nullptr)
+	QVector<bool> badCol;
+	bool badRow = false;
+	for (int i=0; i< 4; i++)
 	{
-		if (topLeft.column() > 0)
+		QStandardItem* item = tab5tableModel->item(topLeft.row(), i);
+		if (item != nullptr)
 		{
 			QString textForValidation = item->text();
-			if (textForValidation!="")
+			if (i>0)
 			{
 				int index = 0;
 				auto res = localValidator->validate(textForValidation, index);
-				if (res == QValidator::State::Acceptable)
+				if (res != QValidator::State::Acceptable)
 				{
-					item->setBackground(QBrush(Qt::white));
+					badCol.append(true);
+					badRow = true;
 				}
 				else
+					badCol.append(false);
+
+			}
+			else
+			{
+				if (textForValidation.count() == 0)
+				{
+					badCol.append(true);
+					badRow = true;
+				}
+				else
+					badCol.append(false);
+			}
+		}
+	}
+	for (int i = 0; i < 4; i++)
+	{
+		QStandardItem* item = tab5tableModel->item(topLeft.row(), i);
+		if (item != nullptr)
+		{
+			if (badRow)
+			{
+				if (badCol[i])
 					item->setBackground(QBrush(Qt::red));
+				else
+					item->setBackground(QBrush(Qt::gray));
 			}
 			else
 				item->setBackground(QBrush(Qt::white));
