@@ -14,6 +14,7 @@ CustomTableView::CustomTableView(QWidget* parent)
 		items.append(item);
 	}
 	tab5tableModel->insertRow(tab5tableModel->rowCount(), items);
+	tab5tableModel->setHorizontalHeaderLabels(QStringList() << "L" << "X" << "Y" << "Z");
 	connect(this->model(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&)), 
 		this, SLOT(onDataChanged(const QModelIndex&, const QModelIndex&)));
 	localValidator = new QRegExpValidator(QRegExp(R"(^[+\-]?(?:(?:0|[1-9]\d*)(?:\.\d*)?|\.\d+)(?:\d[eE][+\-]?\d+)?$)"));

@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget* parent)
 	tab5tableView = new CustomTableView(ui->groupBox_59);
 	
 	tab5tableView->setObjectName(QString::fromUtf8("tab5tableWidget"));
-	tab5tableView->setGeometry(QRect(10, 145, 201, 121));
+	tab5tableView->setGeometry(QRect(10, 130, 201, 155));
 	QFont font9;
 	font9.setFamily(QString::fromUtf8("Arial"));
 	font9.setPointSize(10);
@@ -50,12 +50,35 @@ MainWindow::MainWindow(QWidget* parent)
 	font9.setKerning(true);
 	tab5tableView->setFont(font9);
 	tab5tableView->setWordWrap(false);
-	tab5tableView->horizontalHeader()->setVisible(false);
-	tab5tableView->horizontalHeader()->setDefaultSectionSize(45);
-	tab5tableView->verticalHeader()->setVisible(false);
+	if(QSysInfo::windowsVersion()==QSysInfo::WV_WINDOWS10){
+		tab5tableView->setStyleSheet(
+        "QHeaderView::section{"
+            "border-top:0px solid #D8D8D8;"
+            "border-left:0px solid #D8D8D8;"
+            "border-right:1px solid #D8D8D8;"
+            "border-bottom: 1px solid #D8D8D8;"
+            "background-color:rgb(211,211,211);"
+            "padding:4px;"
+        "}"
+        "QTableCornerButton::section{"
+            "border-top:0px solid #D8D8D8;"
+            "border-left:0px solid #D8D8D8;"
+            "border-right:1px solid #D8D8D8;"
+            "border-bottom: 1px solid #D8D8D8;"
+            "background-color:white;"
+        "}");
+		ui->tab2PDOSNumbersTable->setStyleSheet(tab5tableView->styleSheet());
+		ui->tab3ConvertedAtomsTable->setStyleSheet(tab5tableView->styleSheet());
+	}
 
+	tab5tableView->verticalHeader()->setVisible(false);
+	tab5tableView->verticalHeader()->setMinimumSectionSize(0);
+	tab5tableView->horizontalHeader()->setMinimumSectionSize(0);
 	tab5tableView->show();
+
+#ifdef OWN_HIGHDPI_SCALE
 	getOriginBorders();
+#endif
 
 	connect(ui->tab3AtomsConvertButton,     SIGNAL(clicked()),						this,       SLOT(atomsConvertButtonPressed()));
 	connect(ui->tab3AtomsSearchButton,      SIGNAL(clicked()),						this,       SLOT(atomsSearchButtonPressed()));
@@ -126,7 +149,11 @@ MainWindow::MainWindow(QWidget* parent)
 	connect(this->window()->windowHandle(), SIGNAL(screenChanged(QScreen*)), this, SLOT(screenChanged(QScreen*)));
 	setUiColorLabels(ui, displayScale);
 	imageInit(ui, displayScale);
+
+#ifdef OWN_HIGHDPI_SCALE
+	SetTab5TableCellSize(displayScale);
 	tableInit(ui, displayScale);
+#endif
 	//Корректировочный коэффициент масштабирования
 	//графиков на дисплеях с масштабом !=100%
     //TODO Remove
@@ -136,6 +163,21 @@ MainWindow::MainWindow(QWidget* parent)
 	plotParams->preferFormat = settings->imageType;
 	plotParams->displayScale = displayScale;
 	
+}
+
+void MainWindow::SetTab5TableCellSize(qreal scale)
+{
+	QFontMetrics fontKpoints(tab5tableView->font());
+	tab5tableView->verticalHeader()->setDefaultSectionSize(fontKpoints.height() * 1.5);
+	tab5tableView->horizontalHeader()->setMinimumHeight(fontKpoints.height() * 1.5);
+	tab5tableView->horizontalHeader()->setMaximumHeight(fontKpoints.height() * 1.5);
+	//QRect g = tab5tableView->verticalScrollBar()->geometry();
+	int width = tab5tableView->width();
+	width -= 18 * (scale); //TODO FIND WAY TO GET SCROLL SIZE!!!!!!!!!!!!!
+	tab5tableView->setColumnWidth(0, width / 4);
+	tab5tableView->setColumnWidth(1, width / 4);
+	tab5tableView->setColumnWidth(2, width / 4);
+	tab5tableView->setColumnWidth(3, width / 4);
 }
 
 #ifdef OWN_HIGHDPI_SCALE
@@ -206,6 +248,18 @@ void MainWindow::resizeWidgets(qreal mratio) // https://stackoverflow.com/questi
 		this->setMinimumSize(ui->tabWidget->width(), ui->tabWidget->height());
 	}
 }
+
+void MainWindow::checkParent(QWidget* wdg, bool & have, QString name)
+{
+	auto par = wdg->parentWidget();
+	if (par!=nullptr)
+	{
+		checkParent(par, have, name);
+	}
+	if (wdg->objectName() == name)
+		have = true;
+}
+
 #endif
 
 MainWindow::~MainWindow()
@@ -1308,6 +1362,7 @@ void MainWindow::screenChanged(QScreen* screen)
 	{
 		setColotLabelById(i, screen->logicalDotsPerInch() / 96.0);
 	}
+	SetTab5TableCellSize(screen->logicalDotsPerInch() / 96.0);
 #else
 	this->window()->windowHandle()->setScreen(screen);
 	imageInit(ui, this->window()->windowHandle()->devicePixelRatio());

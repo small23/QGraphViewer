@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>698</width>
-    <height>486</height>
+    <width>696</width>
+    <height>479</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -6118,35 +6118,6 @@
          <string>k-точки (в единицах 2π/a):</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_55">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>125</y>
-          <width>161</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Arial</family>
-          <pointsize>10</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-          <strikeout>false</strikeout>
-          <kerning>true</kerning>
-         </font>
-        </property>
-        <property name="text">
-         <string>L         X         Y         Z</string>
-        </property>
-        <property name="textFormat">
-         <enum>Qt::PlainText</enum>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
       </widget>
      </widget>
      <widget class="QGroupBox" name="groupBox_63">
@@ -6855,9 +6826,9 @@ p, li { white-space: pre-wrap; }
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="ColorButtonGroup"/>
   <buttongroup name="DeleteButtonGroup"/>
-  <buttongroup name="LoadFileButtonGroup"/>
   <buttongroup name="HelpButtonGroup"/>
+  <buttongroup name="LoadFileButtonGroup"/>
+  <buttongroup name="ColorButtonGroup"/>
  </buttongroups>
 </ui>

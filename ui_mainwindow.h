@@ -316,7 +316,6 @@ public:
     QPushButton *deleteButton9;
     QPushButton *tab5_loadQeBand;
     QLabel *label_56;
-    QLabel *label_55;
     QGroupBox *groupBox_63;
     QGroupBox *groupBox_61;
     QPushButton *tab5LoadSurfDatButton;
@@ -349,17 +348,17 @@ public:
     QPushButton *tab4LicenceMIT;
     QPushButton *tab4ChangelogButton;
     QPushButton *tab5LanguageChange;
-    QButtonGroup *ColorButtonGroup;
     QButtonGroup *DeleteButtonGroup;
-    QButtonGroup *LoadFileButtonGroup;
     QButtonGroup *HelpButtonGroup;
+    QButtonGroup *LoadFileButtonGroup;
+    QButtonGroup *ColorButtonGroup;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->setEnabled(true);
-        MainWindow->resize(698, 486);
+        MainWindow->resize(696, 479);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -1702,19 +1701,6 @@ public:
         label_56->setObjectName(QString::fromUtf8("label_56"));
         label_56->setGeometry(QRect(26, 110, 151, 20));
         label_56->setFont(font4);
-        label_55 = new QLabel(groupBox_59);
-        label_55->setObjectName(QString::fromUtf8("label_55"));
-        label_55->setGeometry(QRect(30, 125, 161, 21));
-        QFont font9;
-        font9.setFamily(QString::fromUtf8("Arial"));
-        font9.setPointSize(10);
-        font9.setBold(false);
-        font9.setWeight(50);
-        font9.setStrikeOut(false);
-        font9.setKerning(true);
-        label_55->setFont(font9);
-        label_55->setTextFormat(Qt::PlainText);
-        label_55->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         groupBox_63 = new QGroupBox(tab_5);
         groupBox_63->setObjectName(QString::fromUtf8("groupBox_63"));
         groupBox_63->setEnabled(true);
@@ -2102,7 +2088,6 @@ public:
         deleteButton9->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
         tab5_loadQeBand->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\320\263\321\200\321\203\320\267\320\270\321\202\321\214 ", nullptr));
         label_56->setText(QCoreApplication::translate("MainWindow", "k-\321\202\320\276\321\207\320\272\320\270 (\320\262 \320\265\320\264\320\270\320\275\320\270\321\206\320\260\321\205 2\317\200/a):", nullptr));
-        label_55->setText(QCoreApplication::translate("MainWindow", "L         X         Y         Z", nullptr));
         groupBox_63->setTitle(QCoreApplication::translate("MainWindow", "\320\232\320\276\320\275\320\262\320\265\321\200\321\202\320\270\321\200\320\276\320\262\320\260\320\275\320\270\320\265", nullptr));
         groupBox_61->setTitle(QCoreApplication::translate("MainWindow", "\320\277\320\276\320\262\320\265\321\200\321\205\320\275\320\276\321\201\321\202\320\265\320\271 \320\262 X, Y, F(X,Y)", nullptr));
         tab5LoadSurfDatButton->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\320\263\321\200\321\203\320\267\320\270\321\202\321\214 *.dat", nullptr));

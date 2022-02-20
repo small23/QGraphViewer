@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 	#else
-    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+    //QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
     QGuiApplication::setAttribute(Qt::AA_DisableHighDpiScaling, true);
     //QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 	#endif
@@ -22,12 +22,12 @@ int main(int argc, char *argv[])
 #ifndef OWN_HIGHDPI_SCALE
     int targetWidth = (rec.width() * qApp->devicePixelRatio()) / 2 * qApp->devicePixelRatio();
     int targetHeight = (rec.height() * qApp->devicePixelRatio()) / 2 * qApp->devicePixelRatio();
+    pixmap.setDevicePixelRatio(qApp->devicePixelRatio());
 #else
     qreal scale = QGuiApplication::screens().at(0)->logicalDotsPerInch() / 96.0;
     int targetWidth = rec.width()  / 2 * scale;
     int targetHeight = rec.height() / 2 * scale;
 #endif
-    pixmap.setDevicePixelRatio(qApp->devicePixelRatio());
     QPixmap splashPixmap = pixmap.scaled(targetWidth, targetHeight, Qt::KeepAspectRatio, Qt::SmoothTransformation);
 	QSplashScreen splash(splashPixmap);
     qreal temp = splash.devicePixelRatioF();

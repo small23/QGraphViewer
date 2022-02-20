@@ -55,6 +55,7 @@ class MainWindow final : public QMainWindow
 
 public:
 	explicit MainWindow(QWidget* parent = nullptr);
+	void SetTab5TableCellSize(qreal scale);
 	~MainWindow() override;
 	//QProgressDialog* processDialog;
 
@@ -167,6 +168,7 @@ private:
 
 #ifdef OWN_HIGHDPI_SCALE
 	void resizeWidgets(qreal mratio);
+	void checkParent(QWidget* wdg, bool& have, QString name);
 	void getOriginBorders();
 	struct widgetParams
 	{
