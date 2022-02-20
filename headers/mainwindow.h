@@ -67,7 +67,7 @@ public Q_SLOTS:
 private Q_SLOTS:
 	//...смены цвета линнии графика
 	void colorChangeButtonClicked(int id) const;
-	void setColotLabelById(int id) const;
+	void setColotLabelById(const int id, qreal scale) const;
 	//...очищения строки пути к файлу
 	void deleteFileStringButtonClicked(int id) const;
 	//...вызова графической справки
@@ -167,6 +167,16 @@ private:
 
 #ifdef OWN_HIGHDPI_SCALE
 	void resizeWidgets(qreal mratio);
+	void getOriginBorders();
+	struct widgetParams
+	{
+		QRect geom;
+		QPoint pos;
+		QSize minSize;
+		QSize maxSize;
+	};
+	QVector<widgetParams*> windgetPramsList;
+	QHash<QString, int> hashWidgets;
 #endif
 
 };

@@ -59,16 +59,17 @@ void setupUiFields(Ui::MainWindow* ui)
 
 	const QFont font("Arial", 9, QFont::Thin);
 
-	constexpr int columnWidth = 53;
-	constexpr int rowHeight = 8;
-
 
 	ui->tab3RotationTable->setRowCount(3);
 	ui->tab3RotationTable->setColumnCount(3);
 	ui->tab3RotationTable->horizontalHeader()->hide();
 	ui->tab3RotationTable->verticalHeader()->hide();
+#ifndef OWN_HIGHDPI_SCALE
+	constexpr int columnWidth = 53;
+	constexpr int rowHeight = 8;
 	ui->tab3RotationTable->verticalHeader()->setDefaultSectionSize(rowHeight);
 	ui->tab3RotationTable->horizontalHeader()->setDefaultSectionSize(columnWidth);
+#endif
 	ui->tab3RotationTable->horizontalHeader()->setStretchLastSection(true);
 	ui->tab3RotationTable->verticalHeader()->setStretchLastSection(true);
 
@@ -93,17 +94,20 @@ void setupUiFields(Ui::MainWindow* ui)
 		<< STR_XLSX_Extended_N1 << STR_XLSX_Extended_N2 << STR_XLSX_Extended_N3);
 	//QStringList() << "№ исх. ат." << "№ ат. в элм. яч." << "n1" << "n2" << "n3");
 	ui->tab3ConvertedAtomsTable->verticalHeader()->hide();
+#ifndef OWN_HIGHDPI_SCALE
 	ui->tab3ConvertedAtomsTable->verticalHeader()->setDefaultSectionSize(rowHeight);
 	ui->tab3ConvertedAtomsTable->setColumnWidth(0, 80);
 	ui->tab3ConvertedAtomsTable->setColumnWidth(1, 95);
 	ui->tab3ConvertedAtomsTable->setColumnWidth(2, 33);
 	ui->tab3ConvertedAtomsTable->setColumnWidth(3, 33);
 	ui->tab3ConvertedAtomsTable->setColumnWidth(4, 33);
+#endif
 	ui->tab3ConvertedAtomsTable->horizontalHeader()->setStretchLastSection(true);
 
 
 	ui->tab2PDOSNumbersTable->setColumnCount(6);
 	ui->tab2PDOSNumbersTable->setRowCount(0);
+#ifndef OWN_HIGHDPI_SCALE
 	ui->tab2PDOSNumbersTable->verticalHeader()->setDefaultSectionSize(rowHeight);
 	ui->tab2PDOSNumbersTable->setColumnWidth(0, 65);
 	ui->tab2PDOSNumbersTable->setColumnWidth(1, 55);
@@ -111,6 +115,7 @@ void setupUiFields(Ui::MainWindow* ui)
 	ui->tab2PDOSNumbersTable->setColumnWidth(3, 75);
 	ui->tab2PDOSNumbersTable->setColumnWidth(4, 85);
 	ui->tab2PDOSNumbersTable->setColumnWidth(5, 85);
+#endif
 	ui->tab2PDOSNumbersTable->verticalHeader()->hide();
 	ui->tab2PDOSNumbersTable->verticalScrollBar()->show();
 	ui->tab2PDOSNumbersTable->horizontalHeader()->setStretchLastSection(true);
@@ -123,6 +128,40 @@ void setupUiFields(Ui::MainWindow* ui)
 	ui->tab4TextBrowserAboutProgram->setFrameStyle(QFrame::NoFrame);
 	ui->tab4TextBrowserAboutProgram->setTextInteractionFlags(Qt::NoTextInteraction);
 }
+
+#ifdef OWN_HIGHDPI_SCALE
+void tableInit(Ui::MainWindow* ui, qreal devPixRat)
+{
+	int columnWidth = std::floor((ui->tab3RotationTable->geometry().width()-3) / 3.0);
+	int rowHeightCell = std::floor((ui->tab3RotationTable->geometry().height()-3) / 3.0);
+	int rowHeight = 8 * devPixRat;
+	ui->tab3RotationTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+	ui->tab3RotationTable->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+	ui->tab3RotationTable->setColumnWidth(0, columnWidth);
+	ui->tab3RotationTable->setColumnWidth(1, columnWidth);
+	ui->tab3RotationTable->setColumnWidth(2, columnWidth);
+	ui->tab3RotationTable->setRowHeight(0, rowHeightCell);
+	ui->tab3RotationTable->setRowHeight(1, rowHeightCell);
+	ui->tab3RotationTable->setRowHeight(2, rowHeightCell);
+	ui->tab3RotationTable->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	ui->tab3RotationTable->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	//ui->tab3ConvertedAtomsTable->verticalHeader()->setDefaultSectionSize(rowHeight);
+	//ui->tab2PDOSNumbersTable->verticalHeader()->setDefaultSectionSize(rowHeight);
+	ui->tab3ConvertedAtomsTable->setColumnWidth(0, 80 * devPixRat);
+	ui->tab3ConvertedAtomsTable->setColumnWidth(1, 95 * devPixRat);
+	ui->tab3ConvertedAtomsTable->setColumnWidth(2, 33 * devPixRat);
+	ui->tab3ConvertedAtomsTable->setColumnWidth(3, 33 * devPixRat);
+	ui->tab3ConvertedAtomsTable->setColumnWidth(4, 33 * devPixRat);
+	ui->tab2PDOSNumbersTable->setColumnWidth(0, 65 * devPixRat);
+	ui->tab2PDOSNumbersTable->setColumnWidth(1, 55 * devPixRat);
+	ui->tab2PDOSNumbersTable->setColumnWidth(2, 55 * devPixRat);
+	ui->tab2PDOSNumbersTable->setColumnWidth(3, 75 * devPixRat);
+	ui->tab2PDOSNumbersTable->setColumnWidth(4, 85 * devPixRat);
+	ui->tab2PDOSNumbersTable->setColumnWidth(5, 85 * devPixRat);
+
+	
+}
+#endif
 
 void imageInit(Ui::MainWindow* ui, qreal devPixRat)
 {

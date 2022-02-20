@@ -10,6 +10,10 @@ int main(int argc, char *argv[])
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+	#else
+    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+    QGuiApplication::setAttribute(Qt::AA_DisableHighDpiScaling, true);
+    //QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 	#endif
 
     QApplication application(argc, argv);

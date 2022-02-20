@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>691</width>
-    <height>469</height>
+    <width>698</width>
+    <height>486</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -831,7 +831,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>210</y>
+        <y>217</y>
         <width>681</width>
         <height>231</height>
        </rect>
@@ -2561,7 +2561,7 @@
         <x>450</x>
         <y>0</y>
         <width>235</width>
-        <height>451</height>
+        <height>448</height>
        </rect>
       </property>
       <property name="font">
@@ -2581,7 +2581,7 @@
          <x>0</x>
          <y>201</y>
          <width>235</width>
-         <height>246</height>
+         <height>247</height>
         </rect>
        </property>
        <property name="font">
@@ -3376,7 +3376,7 @@
         <rect>
          <x>0</x>
          <y>19</y>
-         <width>221</width>
+         <width>222</width>
          <height>251</height>
         </rect>
        </property>
@@ -3799,7 +3799,7 @@
         <x>0</x>
         <y>268</y>
         <width>451</width>
-        <height>179</height>
+        <height>180</height>
        </rect>
       </property>
       <property name="title">
@@ -4037,9 +4037,9 @@
        <property name="geometry">
         <rect>
          <x>-1</x>
-         <y>19</y>
+         <y>20</y>
          <width>252</width>
-         <height>72</height>
+         <height>71</height>
         </rect>
        </property>
        <property name="font">
@@ -4079,10 +4079,10 @@
      <widget class="QGroupBox" name="groupBox_16">
       <property name="geometry">
        <rect>
-        <x>-1</x>
+        <x>0</x>
         <y>196</y>
-        <width>252</width>
-        <height>249</height>
+        <width>251</width>
+        <height>252</height>
        </rect>
       </property>
       <property name="font">
@@ -4101,7 +4101,7 @@
         <rect>
          <x>0</x>
          <y>20</y>
-         <width>252</width>
+         <width>251</width>
          <height>111</height>
         </rect>
        </property>
@@ -4225,10 +4225,10 @@
       <widget class="QGroupBox" name="groupBox_18">
        <property name="geometry">
         <rect>
-         <x>-1</x>
+         <x>0</x>
          <y>140</y>
-         <width>253</width>
-         <height>109</height>
+         <width>251</width>
+         <height>112</height>
         </rect>
        </property>
        <property name="font">
@@ -4334,7 +4334,7 @@
         <x>250</x>
         <y>0</y>
         <width>431</width>
-        <height>445</height>
+        <height>448</height>
        </rect>
       </property>
       <property name="font">
@@ -5128,7 +5128,7 @@
         <x>450</x>
         <y>0</y>
         <width>231</width>
-        <height>451</height>
+        <height>448</height>
        </rect>
       </property>
       <property name="font">
@@ -5896,7 +5896,7 @@
         <x>0</x>
         <y>0</y>
         <width>215</width>
-        <height>301</height>
+        <height>316</height>
        </rect>
       </property>
       <property name="font">
@@ -5918,7 +5918,7 @@
          <x>0</x>
          <y>20</y>
          <width>215</width>
-         <height>281</height>
+         <height>296</height>
         </rect>
        </property>
        <property name="font">
@@ -6270,8 +6270,8 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>310</y>
-        <width>441</width>
+        <y>307</y>
+        <width>440</width>
         <height>141</height>
        </rect>
       </property>
@@ -6855,9 +6855,9 @@ p, li { white-space: pre-wrap; }
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="HelpButtonGroup"/>
-  <buttongroup name="LoadFileButtonGroup"/>
-  <buttongroup name="DeleteButtonGroup"/>
   <buttongroup name="ColorButtonGroup"/>
+  <buttongroup name="DeleteButtonGroup"/>
+  <buttongroup name="LoadFileButtonGroup"/>
+  <buttongroup name="HelpButtonGroup"/>
  </buttongroups>
 </ui>

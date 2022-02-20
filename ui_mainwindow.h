@@ -349,17 +349,17 @@ public:
     QPushButton *tab4LicenceMIT;
     QPushButton *tab4ChangelogButton;
     QPushButton *tab5LanguageChange;
-    QButtonGroup *HelpButtonGroup;
-    QButtonGroup *LoadFileButtonGroup;
-    QButtonGroup *DeleteButtonGroup;
     QButtonGroup *ColorButtonGroup;
+    QButtonGroup *DeleteButtonGroup;
+    QButtonGroup *LoadFileButtonGroup;
+    QButtonGroup *HelpButtonGroup;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->setEnabled(true);
-        MainWindow->resize(691, 469);
+        MainWindow->resize(698, 486);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -569,7 +569,7 @@ public:
         tab1FontChangeButton->setFont(font1);
         groupBox_3 = new QGroupBox(tab);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        groupBox_3->setGeometry(QRect(0, 210, 681, 231));
+        groupBox_3->setGeometry(QRect(0, 217, 681, 231));
         groupBox_3->setFont(font2);
         label_10 = new QLabel(groupBox_3);
         label_10->setObjectName(QString::fromUtf8("label_10"));
@@ -954,11 +954,11 @@ public:
         label_48->setFont(font4);
         groupBox_8 = new QGroupBox(tab_2);
         groupBox_8->setObjectName(QString::fromUtf8("groupBox_8"));
-        groupBox_8->setGeometry(QRect(450, 0, 235, 451));
+        groupBox_8->setGeometry(QRect(450, 0, 235, 448));
         groupBox_8->setFont(font2);
         groupBox_10 = new QGroupBox(groupBox_8);
         groupBox_10->setObjectName(QString::fromUtf8("groupBox_10"));
-        groupBox_10->setGeometry(QRect(0, 201, 235, 246));
+        groupBox_10->setGeometry(QRect(0, 201, 235, 247));
         groupBox_10->setFont(font2);
         label_44 = new QLabel(groupBox_10);
         label_44->setObjectName(QString::fromUtf8("label_44"));
@@ -1123,7 +1123,7 @@ public:
         groupBox_11->setFont(font2);
         groupBox_13 = new QGroupBox(groupBox_11);
         groupBox_13->setObjectName(QString::fromUtf8("groupBox_13"));
-        groupBox_13->setGeometry(QRect(0, 19, 221, 251));
+        groupBox_13->setGeometry(QRect(0, 19, 222, 251));
         tab2LoadFilef25DOSS = new QPushButton(groupBox_13);
         tab2LoadFilef25DOSS->setObjectName(QString::fromUtf8("tab2LoadFilef25DOSS"));
         tab2LoadFilef25DOSS->setGeometry(QRect(10, 20, 91, 23));
@@ -1210,7 +1210,7 @@ public:
         tab2CheckBoxFxSet->setFont(font1);
         groupBox_27 = new QGroupBox(tab_2);
         groupBox_27->setObjectName(QString::fromUtf8("groupBox_27"));
-        groupBox_27->setGeometry(QRect(0, 268, 451, 179));
+        groupBox_27->setGeometry(QRect(0, 268, 451, 180));
         tab2PDOSNumbersTable = new QTableWidget(groupBox_27);
         tab2PDOSNumbersTable->setObjectName(QString::fromUtf8("tab2PDOSNumbersTable"));
         tab2PDOSNumbersTable->setEnabled(true);
@@ -1264,7 +1264,7 @@ public:
         groupBox_15->setFont(font2);
         groupBox_20 = new QGroupBox(groupBox_15);
         groupBox_20->setObjectName(QString::fromUtf8("groupBox_20"));
-        groupBox_20->setGeometry(QRect(-1, 19, 252, 72));
+        groupBox_20->setGeometry(QRect(-1, 20, 252, 71));
         groupBox_20->setFont(font2);
         tab3LoadFilesConvertDOS = new QPushButton(groupBox_20);
         tab3LoadFilesConvertDOS->setObjectName(QString::fromUtf8("tab3LoadFilesConvertDOS"));
@@ -1272,11 +1272,11 @@ public:
         tab3LoadFilesConvertDOS->setFont(font1);
         groupBox_16 = new QGroupBox(tab_3);
         groupBox_16->setObjectName(QString::fromUtf8("groupBox_16"));
-        groupBox_16->setGeometry(QRect(-1, 196, 252, 249));
+        groupBox_16->setGeometry(QRect(0, 196, 251, 252));
         groupBox_16->setFont(font2);
         groupBox_17 = new QGroupBox(groupBox_16);
         groupBox_17->setObjectName(QString::fromUtf8("groupBox_17"));
-        groupBox_17->setGeometry(QRect(0, 20, 252, 111));
+        groupBox_17->setGeometry(QRect(0, 20, 251, 111));
         groupBox_17->setFont(font2);
         tab3SurfF25Button = new QPushButton(groupBox_17);
         tab3SurfF25Button->setObjectName(QString::fromUtf8("tab3SurfF25Button"));
@@ -1301,7 +1301,7 @@ public:
         tab3uhff25->setFont(font1);
         groupBox_18 = new QGroupBox(groupBox_16);
         groupBox_18->setObjectName(QString::fromUtf8("groupBox_18"));
-        groupBox_18->setGeometry(QRect(-1, 140, 253, 109));
+        groupBox_18->setGeometry(QRect(0, 140, 251, 112));
         groupBox_18->setFont(font2);
         tab3ButtonCrystalToTopond = new QPushButton(groupBox_18);
         tab3ButtonCrystalToTopond->setObjectName(QString::fromUtf8("tab3ButtonCrystalToTopond"));
@@ -1321,7 +1321,7 @@ public:
         label_61->setFont(font1);
         groupBox_21 = new QGroupBox(tab_3);
         groupBox_21->setObjectName(QString::fromUtf8("groupBox_21"));
-        groupBox_21->setGeometry(QRect(250, 0, 431, 445));
+        groupBox_21->setGeometry(QRect(250, 0, 431, 448));
         groupBox_21->setFont(font2);
         groupBox_22 = new QGroupBox(groupBox_21);
         groupBox_22->setObjectName(QString::fromUtf8("groupBox_22"));
@@ -1487,7 +1487,7 @@ public:
         tab5LoadFilecomboBox->setFont(font1);
         groupBox_55 = new QGroupBox(tab_5);
         groupBox_55->setObjectName(QString::fromUtf8("groupBox_55"));
-        groupBox_55->setGeometry(QRect(450, 0, 231, 451));
+        groupBox_55->setGeometry(QRect(450, 0, 231, 448));
         QFont font6;
         font6.setFamily(QString::fromUtf8("Arial"));
         font6.setPointSize(9);
@@ -1663,11 +1663,11 @@ public:
         groupBox_58 = new QGroupBox(tab_5);
         groupBox_58->setObjectName(QString::fromUtf8("groupBox_58"));
         groupBox_58->setEnabled(true);
-        groupBox_58->setGeometry(QRect(0, 0, 215, 301));
+        groupBox_58->setGeometry(QRect(0, 0, 215, 316));
         groupBox_58->setFont(font3);
         groupBox_59 = new QGroupBox(groupBox_58);
         groupBox_59->setObjectName(QString::fromUtf8("groupBox_59"));
-        groupBox_59->setGeometry(QRect(0, 20, 215, 281));
+        groupBox_59->setGeometry(QRect(0, 20, 215, 296));
         groupBox_59->setFont(font3);
         tab5buttonDrawZoneStruct = new QPushButton(groupBox_59);
         tab5buttonDrawZoneStruct->setObjectName(QString::fromUtf8("tab5buttonDrawZoneStruct"));
@@ -1742,7 +1742,7 @@ public:
         groupBox_60 = new QGroupBox(tab_5);
         groupBox_60->setObjectName(QString::fromUtf8("groupBox_60"));
         groupBox_60->setEnabled(true);
-        groupBox_60->setGeometry(QRect(0, 310, 441, 141));
+        groupBox_60->setGeometry(QRect(0, 307, 440, 141));
         groupBox_60->setFont(font2);
         label_169 = new QLabel(groupBox_60);
         label_169->setObjectName(QString::fromUtf8("label_169"));

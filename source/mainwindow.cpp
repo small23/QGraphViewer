@@ -55,7 +55,7 @@ MainWindow::MainWindow(QWidget* parent)
 	tab5tableView->verticalHeader()->setVisible(false);
 
 	tab5tableView->show();
-
+	getOriginBorders();
 
 	connect(ui->tab3AtomsConvertButton,     SIGNAL(clicked()),						this,       SLOT(atomsConvertButtonPressed()));
 	connect(ui->tab3AtomsSearchButton,      SIGNAL(clicked()),						this,       SLOT(atomsSearchButtonPressed()));
@@ -120,14 +120,13 @@ MainWindow::MainWindow(QWidget* parent)
 	this->setGeometry(rec);
 	this->show();
 	displayScale = this->window()->windowHandle()->devicePixelRatio();
-
 #ifdef OWN_HIGHDPI_SCALE
 	displayScale = QGuiApplication::screens().at(0)->logicalDotsPerInch() / 96.0;
 #endif
-
 	connect(this->window()->windowHandle(), SIGNAL(screenChanged(QScreen*)), this, SLOT(screenChanged(QScreen*)));
 	setUiColorLabels(ui, displayScale);
 	imageInit(ui, displayScale);
+	tableInit(ui, displayScale);
 	//Корректировочный коэффициент масштабирования
 	//графиков на дисплеях с масштабом !=100%
     //TODO Remove
@@ -140,9 +139,9 @@ MainWindow::MainWindow(QWidget* parent)
 }
 
 #ifdef OWN_HIGHDPI_SCALE
-void MainWindow::resizeWidgets(qreal mratio)
-{
 
+void MainWindow::getOriginBorders()
+{
 	QLayout* ql = this->layout();
 
 	if (ql == NULL)
@@ -152,65 +151,60 @@ void MainWindow::resizeWidgets(qreal mratio)
 
 	if (pw == NULL)
 		return;
-
-	QList<QLayout*> layouts;
-
-	WId id;
-
 	foreach(QWidget * w, pw->findChildren<QWidget*>())
 	{
-		id = w->winId();
-		w->setMinimumSize(w->minimumWidth() * mratio, w->minimumHeight() * mratio);
-		w->setMaximumSize(w->maximumWidth() * mratio, w->maximumHeight() * mratio);
+		widgetParams* params = new widgetParams();
+		params->pos = w->pos();
+		params->geom = w->geometry();
+		params->minSize = w->minimumSize();
+		params->maxSize = w->maximumSize();
+		windgetPramsList.append(params);
+		hashWidgets.insert(w->objectName(), windgetPramsList.count() - 1);
+	}
+}
 
-		w->resize(w->width() * mratio, w->height() * mratio);
-		w->move(QPoint(g.x() * mratio, g.y() * mratio));
+void MainWindow::resizeWidgets(qreal mratio) // https://stackoverflow.com/questions/39823918/how-to-approach-development-of-new-qt-5-7-high-dpi-per-monitor-dpi-aware-applic
+{
+	QLayout* ql = this->layout();
 
-		w->update();
-		w->updateGeometry();
+	if (ql == nullptr)
+		return;
+
+	QWidget* pw = ql->parentWidget();
+
+	if (pw == nullptr)
+		return;
+
+	widgetParams* params;
+	foreach(QWidget * w, pw->findChildren<QWidget*>())
+	{
+		auto par = w->parentWidget();
+		if (dynamic_cast<QDoubleSpinBox*>(par) != nullptr ||
+			dynamic_cast<QSpinBox*>(par) != nullptr) // Probably not needed while we changing parent size, alwose artifacts
+		{ // If on current screen we have SpinBox - we MUST ignore his content
+			continue;
+		}
+		int i = hashWidgets[w->objectName()];
+		params = windgetPramsList[i];
+		QPoint pos = params->pos * mratio;
+
+		w->resize(params->geom.width()* mratio, params->geom.height() * mratio);
+		w->move(pos);
+	}
+	
+	if (this->maximumSize().height() > ui->tabWidget->height())
+	{
+		this->setMinimumSize(ui->tabWidget->width(), ui->tabWidget->height());
+		this->resize(ui->tabWidget->width(), ui->tabWidget->height());
+		this->setMaximumSize(ui->tabWidget->width(), ui->tabWidget->height());
 		
 	}
-
-	foreach(QLayout * l, pw->findChildren<QLayout*>())
+	else
 	{
-		if (l != NULL && !(l->objectName().isEmpty()))
-			layouts.append(l);
+		this->setMaximumSize(ui->tabWidget->width(), ui->tabWidget->height());
+		this->resize(ui->tabWidget->width(), ui->tabWidget->height());
+		this->setMinimumSize(ui->tabWidget->width(), ui->tabWidget->height());
 	}
-
-	foreach(QLayout * l, layouts) {
-		QMargins m = l->contentsMargins();
-
-		m.setBottom(m.bottom() * mratio);
-		m.setTop(m.top() * mratio);
-		m.setLeft(m.left() * mratio);
-		m.setRight(m.right() * mratio);
-
-		l->setContentsMargins(m);
-
-		l->setSpacing(l->spacing() * mratio);
-
-		if (l->inherits("QGridLayout")) {
-			QGridLayout* gl = ((QGridLayout*)l);
-
-			gl->setHorizontalSpacing(gl->horizontalSpacing() * mratio);
-			gl->setVerticalSpacing(gl->verticalSpacing() * mratio);
-		}
-
-	}
-
-	QMargins m = this->contentsMargins();
-
-	m.setBottom(m.bottom() * mratio);
-	m.setTop(m.top() * mratio);
-	m.setLeft(m.left() * mratio);
-	m.setRight(m.right() * mratio);
-
-	// resize accordingly main window
-	this->setMinimumSize(this->width()* mratio, this->height()* mratio);
-	this->setMaximumSize(this->width()* mratio, this->height()* mratio);
-	this->resize(this->width() * mratio, this->height() * mratio);
-	this->setContentsMargins(m);
-	this->adjustSize();
 }
 #endif
 
@@ -257,7 +251,7 @@ void MainWindow::colorChangeButtonClicked(const int id) const
 	}
 }
 
-void MainWindow::setColotLabelById(const int id) const
+void MainWindow::setColotLabelById(const int id, qreal scale) const
 {
 	
 	const QString colorLabelName = QString("ColorLable%1").arg(id);
@@ -283,7 +277,7 @@ void MainWindow::setColotLabelById(const int id) const
 		}
 		else if (id == 10)
 			choosenColor = plotParams->tab5FermiLevelColor;
-		const QPixmap colorIcon = ColorIconDrawer::drawIcon(choosenColor, this->window()->windowHandle()->devicePixelRatio());
+		const QPixmap colorIcon = ColorIconDrawer::drawIcon(choosenColor, scale);
 		colorLabel->setPixmap(colorIcon);
 		colorLabel->update();
 	}
@@ -1307,18 +1301,19 @@ void MainWindow::tab5DrawZoneButtonPressed()
 void MainWindow::screenChanged(QScreen* screen)
 {
 #ifdef OWN_HIGHDPI_SCALE
-	resizeWidgets( QGuiApplication::screens().at(0)->logicalDotsPerInch() / 96.0);
-	imageInit(ui, QGuiApplication::screens().at(0)->logicalDotsPerInch() / 96.0);
+	resizeWidgets(screen->logicalDotsPerInch() / 96.0); 
+	imageInit(ui, screen->logicalDotsPerInch() / 96.0);
+	tableInit(ui, screen->logicalDotsPerInch() / 96.0);
 	for (int i = 1; i < 11; i++)
 	{
-		setColotLabelById(i);
+		setColotLabelById(i, screen->logicalDotsPerInch() / 96.0);
 	}
 #else
 	this->window()->windowHandle()->setScreen(screen);
 	imageInit(ui, this->window()->windowHandle()->devicePixelRatio());
 	for (int i = 1; i < 11; i++)
 	{
-		setColotLabelById(i);
+		setColotLabelById(i, this->window()->windowHandle()->devicePixelRatio());
 	}
 #endif
 }

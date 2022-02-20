@@ -19,4 +19,8 @@ void setUiButtonsGroups(Ui::MainWindow* ui);
 void setUiColorLabels(Ui::MainWindow* ui, qreal devPixRat);
 void imageInit(Ui::MainWindow* ui, qreal devPixRat);
 
+#ifdef OWN_HIGHDPI_SCALE
+void tableInit(Ui::MainWindow* ui, qreal devPixRat);
+#endif
+
 #endif // UIINIT_H
