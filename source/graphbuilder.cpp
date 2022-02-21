@@ -71,7 +71,9 @@ void GraphBuilder::resizeEvent(QResizeEvent* event)
             height = event->size().height();
             width = height / compareScale;
         }
+#ifndef OWN_HIGHDPI_SCALE
         plotDraw.setDevicePixelRatio(this->devicePixelRatioF());
+#endif
         imageOnWidget.setPixmap(plotDraw.scaled(width * this->devicePixelRatioF(), height * this->devicePixelRatioF(),
             Qt::KeepAspectRatio, Qt::SmoothTransformation));
     }

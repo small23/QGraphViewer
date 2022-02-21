@@ -3,6 +3,8 @@
 
 #include "helpmatrixwidget.h"
 
+#include <qscreen.h>
+
 HelpMatrixWidget::HelpMatrixWidget(Ui::MainWindow *uiInt, const QRect windowLocation, const QRect desktopSize, QWidget *parent) : QGraphicsView(parent)
 {
     scene = new QGraphicsScene();
@@ -10,8 +12,13 @@ HelpMatrixWidget::HelpMatrixWidget(Ui::MainWindow *uiInt, const QRect windowLoca
     hel = QPixmap(helpFile);
     int h = hel.height();
     int w = hel.width();
-    h = h * (96.0 * this->devicePixelRatioF() / 300.0);
-    QPixmap outHel = hel.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+#ifdef OWN_HIGHDPI_SCALE
+    QScreen* pScreen = QGuiApplication::screenAt(this->mapToGlobal({ this->width() / 2,this->height() / 2 }));
+    h = h * (pScreen->logicalDotsPerInch() / 300.0);
+#else
+	h = h * (96.0 * this->devicePixelRatioF() / 300.0);
+#endif
+	QPixmap outHel = hel.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation);
     scaleRatioError = static_cast<double>(outHel.width()) / this->devicePixelRatioF() / origScaleW;
     outHel.setDevicePixelRatio(this->devicePixelRatioF());
     
@@ -41,13 +48,31 @@ HelpMatrixWidget::HelpMatrixWidget(Ui::MainWindow *uiInt, const QRect windowLoca
 
 void HelpMatrixWidget::resizeEvent(QResizeEvent* event)
 {
+#ifndef OWN_HIGHDPI_SCALE
     QGraphicsView::resizeEvent(event);
     int h = hel.height();
     int w = hel.width();
     h = h * (96.0 * this->devicePixelRatioF() / 300.0);
     QPixmap outHel = hel.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation);
     outHel.setDevicePixelRatio(this->devicePixelRatioF());
-    scene->clear();
+#else
+    QScreen* pScreen = QGuiApplication::screenAt(this->mapToGlobal({ this->width() / 2,this->height() / 2 }));
+    int h = hel.height();
+    int w = hel.width();
+    h = h * (pScreen->logicalDotsPerInch()/ 300.0);
+    QPixmap outHel = hel.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    scaleRatioError = static_cast<double>(outHel.width()) / origScaleW;
+    QRect desktopSize = pScreen->geometry();
+    
+    const int sizeLimWidth = desktopSize.width() - desktopSize.width() * 0.1;
+    const int sizeLimHeight = desktopSize.height() - desktopSize.height() * 0.1;
+    const int height = (outHel.height() / this->devicePixelRatioF()) < (sizeLimHeight) ? (outHel.height() / this->devicePixelRatioF()) + 10 : sizeLimHeight;
+    const int width = (outHel.width() / this->devicePixelRatioF()) < (sizeLimWidth) ? (outHel.width() / this->devicePixelRatioF()) + 20 : sizeLimWidth;
+
+    this->setMaximumSize(width, height);
+    this->setMinimumSize(width, height);
+#endif
+	scene->clear();
     scene->addPixmap(outHel);
 }
 

@@ -28,11 +28,30 @@ private slots:
     void cancelButtonPushed();
     void resetQuality() const;
     void resetScale() const;
+    void resetScaleT() const;
 
 private:
     Ui::PictureSettings *ui;
     PlotParameters *params;
     SettingsKeeper* settings;
+    
+#ifdef OWN_HIGHDPI_SCALE
+    void resizeUi(qreal mratio);
+    void getOriginFrames();
+    void resizeEvent(QResizeEvent* event) override;
+
+    struct widgetParams
+    {
+        QRect geom;
+        QPoint pos;
+        QSize minSize;
+        QSize maxSize;
+    };
+    QVector<widgetParams*> windgetPramsList;
+    QHash<QString, int> hashWidgets;
+    int sizeH;
+    int sizeW;
+#endif
 };
 
 #endif // PICTURESETTINGS_H

@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget* parent)
 	tab5tableView = new CustomTableView(ui->groupBox_59);
 	
 	tab5tableView->setObjectName(QString::fromUtf8("tab5tableWidget"));
-	tab5tableView->setGeometry(QRect(10, 130, 201, 155));
+	tab5tableView->setGeometry(QRect(10, 130, 197, 155));
 	QFont font9;
 	font9.setFamily(QString::fromUtf8("Arial"));
 	font9.setPointSize(10);
@@ -135,7 +135,7 @@ MainWindow::MainWindow(QWidget* parent)
 	auto screenList = QGuiApplication::screens();
 	for (auto screen : screenList)
 	{
-		connect(screen, SIGNAL(logicalDotsPerInchChanged(qreal)), this, SLOT(dotsPerInchChanged(qreal)));
+		//connect(screen, SIGNAL(logicalDotsPerInchChanged(qreal)), this, SLOT(dotsPerInchChanged(qreal)));
 	}
 
 	resizeWidgets(QGuiApplication::screens().at(0)->logicalDotsPerInch() / 96.0);
@@ -165,12 +165,11 @@ MainWindow::MainWindow(QWidget* parent)
 	//Корректировочный коэффициент масштабирования
 	//графиков на дисплеях с масштабом !=100%
     //TODO Remove
-	plotParams->drawRes = static_cast<int>(GRAPH_SCALE);
+	plotParams->drawRes = settings->scaleRes;
 	plotParams->drawQuality = settings->quality;
 	plotParams->drawScale = settings->scale;
 	plotParams->preferFormat = settings->imageType;
 	plotParams->displayScale = displayScale;
-	
 }
 
 void MainWindow::SetTab5TableCellSize(qreal scale)
@@ -191,12 +190,27 @@ void MainWindow::SetTab5TableCellSize(qreal scale)
 
 #ifdef OWN_HIGHDPI_SCALE
 
+void MainWindow::resizeEvent(QResizeEvent* event)
+{
+	QScreen* screen = QGuiApplication::screenAt(this->mapToGlobal({ this->width() / 2,this->height() / 2 }));
+	//screenChanged(pScreen);
+	resizeWidgets(screen->logicalDotsPerInch() / 96.0);
+	imageInit(ui, screen->logicalDotsPerInch() / 96.0);
+	tableInit(ui, screen->logicalDotsPerInch() / 96.0);
+	for (int i = 1; i < 11; i++)
+	{
+		setColotLabelById(i, screen->logicalDotsPerInch() / 96.0);
+	}
+	SetTab5TableCellSize(screen->logicalDotsPerInch() / 96.0);
+	QMainWindow::resizeEvent(event);
+	
+}
+
 void MainWindow::dotsPerInchChanged(qreal dpi)
 {
 	QScreen* pScreen = QGuiApplication::screenAt(this->mapToGlobal({ this->width() / 2,this->height() / 2 }));
 	screenChanged(pScreen);
 }
-
 
 void MainWindow::getOriginBorders()
 {
@@ -260,7 +274,7 @@ void MainWindow::resizeWidgets(qreal mratio) // https://stackoverflow.com/questi
 		{
 			params = windgetPramsList[i - 1];
 			QPoint pos = params->pos * mratio;
-
+	
 			w->resize(params->geom.width() * mratio, params->geom.height() * mratio);
 			w->move(pos);
 #ifdef DEBUG_PAINT

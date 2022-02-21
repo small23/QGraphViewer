@@ -27,6 +27,7 @@ public:
 	int quality = 90;
 	double scale = 6;
 	int imageType = 0;
+	int scaleRes = 600;
 	QString lang = "";
 
 private:

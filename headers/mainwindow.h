@@ -178,6 +178,7 @@ private:
 	};
 	QVector<widgetParams*> windgetPramsList;
 	QHash<QString, int> hashWidgets;
+	void resizeEvent(QResizeEvent* event) override;
 private slots:
 		void dotsPerInchChanged(qreal dpi);
 #endif

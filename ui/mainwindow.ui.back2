@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>700</width>
-    <height>488</height>
+    <width>696</width>
+    <height>479</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -69,9 +69,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>8</y>
-        <width>680</width>
-        <height>200</height>
+        <y>10</y>
+        <width>681</width>
+        <height>201</height>
        </rect>
       </property>
       <property name="font">
@@ -91,9 +91,9 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>8</x>
+         <x>20</x>
          <y>110</y>
-         <width>56</width>
+         <width>41</width>
          <height>21</height>
         </rect>
        </property>
@@ -156,8 +156,8 @@
         <rect>
          <x>440</x>
          <y>20</y>
-         <width>76</width>
-         <height>20</height>
+         <width>75</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="font">
@@ -219,8 +219,8 @@
         <rect>
          <x>410</x>
          <y>140</y>
-         <width>20</width>
-         <height>20</height>
+         <width>21</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="font">
@@ -243,8 +243,8 @@
         <rect>
          <x>410</x>
          <y>20</y>
-         <width>20</width>
-         <height>20</height>
+         <width>21</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="font">
@@ -270,8 +270,8 @@
         <rect>
          <x>410</x>
          <y>170</y>
-         <width>20</width>
-         <height>20</height>
+         <width>21</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="font">
@@ -312,8 +312,8 @@
         <rect>
          <x>410</x>
          <y>80</y>
-         <width>20</width>
-         <height>20</height>
+         <width>21</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="font">
@@ -339,8 +339,8 @@
         <rect>
          <x>440</x>
          <y>170</y>
-         <width>76</width>
-         <height>20</height>
+         <width>75</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="font">
@@ -363,8 +363,8 @@
         <rect>
          <x>410</x>
          <y>50</y>
-         <width>20</width>
-         <height>20</height>
+         <width>21</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="font">
@@ -405,8 +405,8 @@
         <rect>
          <x>440</x>
          <y>110</y>
-         <width>76</width>
-         <height>20</height>
+         <width>75</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="font">
@@ -415,7 +415,6 @@
          <pointsize>9</pointsize>
          <weight>50</weight>
          <bold>false</bold>
-         <kerning>false</kerning>
         </font>
        </property>
        <property name="text">
@@ -425,9 +424,9 @@
       <widget class="QLabel" name="label_3">
        <property name="geometry">
         <rect>
-         <x>8</x>
+         <x>0</x>
          <y>80</y>
-         <width>56</width>
+         <width>61</width>
          <height>21</height>
         </rect>
        </property>
@@ -449,9 +448,9 @@
       <widget class="QLabel" name="label_2">
        <property name="geometry">
         <rect>
-         <x>8</x>
+         <x>0</x>
          <y>50</y>
-         <width>56</width>
+         <width>61</width>
          <height>21</height>
         </rect>
        </property>
@@ -475,8 +474,8 @@
         <rect>
          <x>440</x>
          <y>140</y>
-         <width>76</width>
-         <height>20</height>
+         <width>75</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="font">
@@ -497,9 +496,9 @@
       <widget class="QLabel" name="label_5">
        <property name="geometry">
         <rect>
-         <x>8</x>
+         <x>20</x>
          <y>140</y>
-         <width>56</width>
+         <width>41</width>
          <height>21</height>
         </rect>
        </property>
@@ -521,9 +520,9 @@
       <widget class="QLabel" name="label">
        <property name="geometry">
         <rect>
-         <x>8</x>
+         <x>10</x>
          <y>20</y>
-         <width>56</width>
+         <width>51</width>
          <height>21</height>
         </rect>
        </property>
@@ -550,8 +549,8 @@
         <rect>
          <x>410</x>
          <y>110</y>
-         <width>20</width>
-         <height>20</height>
+         <width>21</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="font">
@@ -575,9 +574,9 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>8</x>
+         <x>20</x>
          <y>170</y>
-         <width>56</width>
+         <width>41</width>
          <height>21</height>
         </rect>
        </property>
@@ -622,8 +621,8 @@
       <property name="geometry">
        <rect>
         <x>520</x>
-        <y>8</y>
-        <width>160</width>
+        <y>10</y>
+        <width>161</width>
         <height>168</height>
        </rect>
       </property>
@@ -832,9 +831,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>216</y>
-        <width>680</width>
-        <height>232</height>
+        <y>217</y>
+        <width>681</width>
+        <height>231</height>
        </rect>
       </property>
       <property name="font">
@@ -6663,7 +6662,7 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;QGraphViewer&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Версия 1.1.0 Beta 2 &lt;span style=&quot; font-style:italic;&quot;&gt;&amp;quot;W&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-style:italic;&quot;&gt;at, you still use this?!&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;&amp;quot; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Версия 1.1.0 Beta 1 &lt;span style=&quot; font-style:italic;&quot;&gt;&amp;quot;W&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-style:italic;&quot;&gt;at, you still use this?!&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;&amp;quot; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt; &lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Данное приложение создано в среде Qt 5.14 - 5.15, с использованием библиотек QCustomPlot, QXlsx и Eigen.&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Библиотеки используются по лицензии MIT.&lt;/p&gt;
@@ -6827,9 +6826,9 @@ p, li { white-space: pre-wrap; }
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="ColorButtonGroup"/>
-  <buttongroup name="LoadFileButtonGroup"/>
   <buttongroup name="HelpButtonGroup"/>
   <buttongroup name="DeleteButtonGroup"/>
+  <buttongroup name="ColorButtonGroup"/>
+  <buttongroup name="LoadFileButtonGroup"/>
  </buttongroups>
 </ui>
