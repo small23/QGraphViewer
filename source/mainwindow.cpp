@@ -162,9 +162,6 @@ MainWindow::MainWindow(QWidget* parent)
 	SetTab5TableCellSize(displayScale);
 	tableInit(ui, displayScale);
 #endif
-	//Корректировочный коэффициент масштабирования
-	//графиков на дисплеях с масштабом !=100%
-    //TODO Remove
 	plotParams->drawRes = settings->scaleRes;
 	plotParams->drawQuality = settings->quality;
 	plotParams->drawScale = settings->scale;
@@ -172,6 +169,7 @@ MainWindow::MainWindow(QWidget* parent)
 	plotParams->displayScale = displayScale;
 }
 
+#ifdef OWN_HIGHDPI_SCALE
 void MainWindow::SetTab5TableCellSize(qreal scale)
 {
 	QFontMetrics fontKpoints(tab5tableView->font());
@@ -187,8 +185,6 @@ void MainWindow::SetTab5TableCellSize(qreal scale)
 	tab5tableView->setColumnWidth(3, width / 4);
 	
 }
-
-#ifdef OWN_HIGHDPI_SCALE
 
 void MainWindow::resizeEvent(QResizeEvent* event)
 {

@@ -350,8 +350,8 @@ public:
     QPushButton *tab5LanguageChange;
     QButtonGroup *ColorButtonGroup;
     QButtonGroup *LoadFileButtonGroup;
-    QButtonGroup *HelpButtonGroup;
     QButtonGroup *DeleteButtonGroup;
+    QButtonGroup *HelpButtonGroup;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -819,7 +819,7 @@ public:
         tab1CheckBoxColorLevels->setFont(font1);
         groupBox_4 = new QGroupBox(groupBox_3);
         groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
-        groupBox_4->setGeometry(QRect(550, 0, 131, 161));
+        groupBox_4->setGeometry(QRect(548, 0, 132, 161));
         groupBox_4->setFont(font2);
         helpButton61 = new QPushButton(groupBox_4);
         HelpButtonGroup->addButton(helpButton61);
@@ -892,7 +892,7 @@ public:
         groupBox_5 = new QGroupBox(tab_2);
         groupBox_5->setObjectName(QString::fromUtf8("groupBox_5"));
         groupBox_5->setEnabled(true);
-        groupBox_5->setGeometry(QRect(0, 0, 231, 181));
+        groupBox_5->setGeometry(QRect(0, 0, 232, 181));
         QFont font4;
         font4.setFamily(QString::fromUtf8("Arial"));
         font4.setPointSize(9);
@@ -903,7 +903,7 @@ public:
         groupBox_5->setFont(font4);
         groupBox_6 = new QGroupBox(groupBox_5);
         groupBox_6->setObjectName(QString::fromUtf8("groupBox_6"));
-        groupBox_6->setGeometry(QRect(0, 19, 231, 171));
+        groupBox_6->setGeometry(QRect(0, 20, 232, 171));
         groupBox_6->setFont(font4);
         tab2LoadFilef25ZoneStruct = new QPushButton(groupBox_6);
         tab2LoadFilef25ZoneStruct->setObjectName(QString::fromUtf8("tab2LoadFilef25ZoneStruct"));
@@ -959,11 +959,11 @@ public:
         label_48->setFont(font5);
         groupBox_8 = new QGroupBox(tab_2);
         groupBox_8->setObjectName(QString::fromUtf8("groupBox_8"));
-        groupBox_8->setGeometry(QRect(450, 0, 235, 448));
+        groupBox_8->setGeometry(QRect(450, 0, 234, 448));
         groupBox_8->setFont(font2);
         groupBox_10 = new QGroupBox(groupBox_8);
         groupBox_10->setObjectName(QString::fromUtf8("groupBox_10"));
-        groupBox_10->setGeometry(QRect(0, 201, 235, 247));
+        groupBox_10->setGeometry(QRect(0, 200, 234, 247));
         groupBox_10->setFont(font2);
         label_44 = new QLabel(groupBox_10);
         label_44->setObjectName(QString::fromUtf8("label_44"));
@@ -1043,7 +1043,7 @@ public:
         label_43->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         groupBox_9 = new QGroupBox(groupBox_8);
         groupBox_9->setObjectName(QString::fromUtf8("groupBox_9"));
-        groupBox_9->setGeometry(QRect(0, 19, 531, 191));
+        groupBox_9->setGeometry(QRect(0, 20, 234, 191));
         groupBox_9->setFont(font2);
         label_37 = new QLabel(groupBox_9);
         label_37->setObjectName(QString::fromUtf8("label_37"));
@@ -1110,7 +1110,7 @@ public:
         groupBox_7 = new QGroupBox(tab_2);
         groupBox_7->setObjectName(QString::fromUtf8("groupBox_7"));
         groupBox_7->setEnabled(true);
-        groupBox_7->setGeometry(QRect(0, 220, 231, 50));
+        groupBox_7->setGeometry(QRect(0, 220, 232, 50));
         groupBox_7->setFont(font4);
         tab2PushButtonPDOSLoad = new QPushButton(groupBox_7);
         tab2PushButtonPDOSLoad->setObjectName(QString::fromUtf8("tab2PushButtonPDOSLoad"));
@@ -1124,11 +1124,11 @@ public:
         helpButton5->setFont(font5);
         groupBox_11 = new QGroupBox(tab_2);
         groupBox_11->setObjectName(QString::fromUtf8("groupBox_11"));
-        groupBox_11->setGeometry(QRect(230, 0, 221, 270));
+        groupBox_11->setGeometry(QRect(232, 0, 220, 270));
         groupBox_11->setFont(font2);
         groupBox_13 = new QGroupBox(groupBox_11);
         groupBox_13->setObjectName(QString::fromUtf8("groupBox_13"));
-        groupBox_13->setGeometry(QRect(0, 19, 222, 251));
+        groupBox_13->setGeometry(QRect(0, 20, 220, 251));
         tab2LoadFilef25DOSS = new QPushButton(groupBox_13);
         tab2LoadFilef25DOSS->setObjectName(QString::fromUtf8("tab2LoadFilef25DOSS"));
         tab2LoadFilef25DOSS->setGeometry(QRect(10, 20, 91, 23));
@@ -1862,7 +1862,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
