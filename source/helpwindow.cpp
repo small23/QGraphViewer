@@ -4,19 +4,25 @@
 #include "helpwindow.h"
 
 #include <QApplication>
+#include <qscreen.h>
 #include <qthread.h>
 
 HelpWindow::HelpWindow(const QPixmap& hel, const QRect windowLocation, QRect desktopSize,QWidget *parent) : QGraphicsView(parent)
 {
     scene = new QGraphicsScene();
-    //view = new QGraphicsView(this);
     helInt = hel;
     desktopSizeInt = desktopSize;
     int h = hel.height();
     int w = hel.width();
+#ifndef OWN_HIGHDPI_SCALE
     h = h * (96.0 * this->devicePixelRatioF() / 300.0);
     QPixmap outHel = hel.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation);
     outHel.setDevicePixelRatio(this->devicePixelRatioF());
+#else
+    QScreen* pScreen = QGuiApplication::screenAt(this->mapToGlobal({ this->width() / 2,this->height() / 2 }));
+    h = h * (pScreen->logicalDotsPerInch() / 300.0);
+    QPixmap outHel = hel.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+#endif
 	scene->addPixmap(outHel);
     this->setScene(scene);
     int sizeLimWidth = desktopSize.width() - desktopSize.width() * 0.1;
@@ -46,12 +52,19 @@ HelpWindow::HelpWindow(const QPixmap& hel, const QRect windowLocation, QRect des
 
 void HelpWindow::resizeEvent(QResizeEvent* event)
 {
-	QGraphicsView::resizeEvent(event);
 	int h = helInt.height();
     int w = helInt.width();
+#ifndef OWN_HIGHDPI_SCALE
+    QGraphicsView::resizeEvent(event);
     h = h * (96.0 * this->devicePixelRatioF() / 300.0);
     QPixmap outHel = helInt.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation);
     outHel.setDevicePixelRatio(this->devicePixelRatioF());
+#else
+    QScreen* pScreen = QGuiApplication::screenAt(this->mapToGlobal({ this->width() / 2,this->height() / 2 }));
+    h = h * (pScreen->logicalDotsPerInch() / 300.0);
+    QPixmap outHel = helInt.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    //outHel.setDevicePixelRatio(this->devicePixelRatioF());
+#endif
     scene->clear();
     scene->addPixmap(outHel);
 

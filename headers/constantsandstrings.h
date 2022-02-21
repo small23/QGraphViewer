@@ -8,6 +8,7 @@
 #define GRAPH_SCALE  600
 
 #define OWN_HIGHDPI_SCALE
+//#define DEBUG_PAINT
 //Strings area
 
 const QString STR_ErrorTitle_ParsingError = QObject::tr("Ошибка парсинга");

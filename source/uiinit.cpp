@@ -149,8 +149,12 @@ void tableInit(Ui::MainWindow* ui, qreal devPixRat)
 
 	QFontMetrics fontAtoms(ui->tab3ConvertedAtomsTable->font());
 	ui->tab3ConvertedAtomsTable->verticalHeader()->setDefaultSectionSize(fontAtoms.height() * 1.5);
+	ui->tab3ConvertedAtomsTable->horizontalHeader()->setMinimumHeight(fontAtoms.height() * 1.5);
+	ui->tab3ConvertedAtomsTable->horizontalHeader()->setMaximumHeight(fontAtoms.height() * 1.5);
 	QFontMetrics fontPDOSHelp(ui->tab2PDOSNumbersTable->font());
 	ui->tab2PDOSNumbersTable->verticalHeader()->setDefaultSectionSize(fontPDOSHelp.height() * 1.5);
+	ui->tab2PDOSNumbersTable->horizontalHeader()->setMinimumHeight(fontPDOSHelp.height() * 1.5);
+	ui->tab2PDOSNumbersTable->horizontalHeader()->setMaximumHeight(fontPDOSHelp.height() * 1.5);
 
 	ui->tab3ConvertedAtomsTable->setColumnWidth(0, 80 * devPixRat);
 	ui->tab3ConvertedAtomsTable->setColumnWidth(1, 95 * devPixRat);

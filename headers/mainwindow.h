@@ -55,7 +55,6 @@ class MainWindow final : public QMainWindow
 
 public:
 	explicit MainWindow(QWidget* parent = nullptr);
-	void SetTab5TableCellSize(qreal scale);
 	~MainWindow() override;
 	//QProgressDialog* processDialog;
 
@@ -163,13 +162,13 @@ private:
 	QeZoneData* qeZoneData;
 	QColor MenuSelectedGraph = Qt::darkGreen;
 
-	qreal displayScale = 1;
 	CustomTableView* tab5tableView;
 
 #ifdef OWN_HIGHDPI_SCALE
 	void resizeWidgets(qreal mratio);
 	void checkParent(QWidget* wdg, bool& have, QString name);
 	void getOriginBorders();
+	void SetTab5TableCellSize(qreal scale);
 	struct widgetParams
 	{
 		QRect geom;
@@ -179,6 +178,8 @@ private:
 	};
 	QVector<widgetParams*> windgetPramsList;
 	QHash<QString, int> hashWidgets;
+private slots:
+		void dotsPerInchChanged(qreal dpi);
 #endif
 
 };

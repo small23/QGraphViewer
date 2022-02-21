@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget* parent)
 	qApp->installTranslator(&qtTranslator);
 	//qApp->installTranslator(&qtTranslator);
 
-	ui->setupUi(this); 
+	ui->setupUi(this);
 	setupUiFields(ui);
 	setUiButtonsGroups(ui);
 	tab1GraphFont.setFamily("Times New Roman");
@@ -77,6 +77,7 @@ MainWindow::MainWindow(QWidget* parent)
 	tab5tableView->show();
 
 #ifdef OWN_HIGHDPI_SCALE
+	//this->hide();
 	getOriginBorders();
 #endif
 
@@ -125,12 +126,18 @@ MainWindow::MainWindow(QWidget* parent)
 	connect(ui->tab5_loadQeBand,		      SIGNAL(clicked()),                      this,       SLOT(tab5LoadQeBandButtonPressed()));
 	connect(ui->tab5buttonDrawZoneStruct,   SIGNAL(clicked()),                      this,       SLOT(tab5DrawZoneButtonPressed()));
 
-
 	this->setStatusBar(nullptr);
 	this->setFixedSize(this->size());
 	this->setWindowTitle("QGraphViewer");
 
 #ifdef OWN_HIGHDPI_SCALE
+
+	auto screenList = QGuiApplication::screens();
+	for (auto screen : screenList)
+	{
+		connect(screen, SIGNAL(logicalDotsPerInchChanged(qreal)), this, SLOT(dotsPerInchChanged(qreal)));
+	}
+
 	resizeWidgets(QGuiApplication::screens().at(0)->logicalDotsPerInch() / 96.0);
 #endif
 
@@ -142,9 +149,10 @@ MainWindow::MainWindow(QWidget* parent)
 	rec.setHeight(this->size().height());
 	this->setGeometry(rec);
 	this->show();
-	displayScale = this->window()->windowHandle()->devicePixelRatio();
+	qreal displayScale = this->window()->windowHandle()->devicePixelRatio();
 #ifdef OWN_HIGHDPI_SCALE
-	displayScale = QGuiApplication::screens().at(0)->logicalDotsPerInch() / 96.0;
+	QScreen* pScreen = QGuiApplication::screenAt(this->mapToGlobal({ this->width() / 2,this->height() / 2 }));
+	displayScale = pScreen->logicalDotsPerInch() / 96.0;
 #endif
 	connect(this->window()->windowHandle(), SIGNAL(screenChanged(QScreen*)), this, SLOT(screenChanged(QScreen*)));
 	setUiColorLabels(ui, displayScale);
@@ -178,9 +186,17 @@ void MainWindow::SetTab5TableCellSize(qreal scale)
 	tab5tableView->setColumnWidth(1, width / 4);
 	tab5tableView->setColumnWidth(2, width / 4);
 	tab5tableView->setColumnWidth(3, width / 4);
+	
 }
 
 #ifdef OWN_HIGHDPI_SCALE
+
+void MainWindow::dotsPerInchChanged(qreal dpi)
+{
+	QScreen* pScreen = QGuiApplication::screenAt(this->mapToGlobal({ this->width() / 2,this->height() / 2 }));
+	screenChanged(pScreen);
+}
+
 
 void MainWindow::getOriginBorders()
 {
@@ -193,15 +209,23 @@ void MainWindow::getOriginBorders()
 
 	if (pw == NULL)
 		return;
+
+	QString widgetClass;
+	QString widgetName;
+	widgetParams* params;
 	foreach(QWidget * w, pw->findChildren<QWidget*>())
 	{
+		widgetClass = w->metaObject()->className();
+		widgetName = w->objectName();
+		if (widgetClass == "QWidget" || widgetName.count() == 0 || widgetName.contains("qt_")) // Skip all non-user elements
+			continue;
 		widgetParams* params = new widgetParams();
 		params->pos = w->pos();
 		params->geom = w->geometry();
 		params->minSize = w->minimumSize();
 		params->maxSize = w->maximumSize();
 		windgetPramsList.append(params);
-		hashWidgets.insert(w->objectName(), windgetPramsList.count() - 1);
+		hashWidgets.insert(w->objectName(), windgetPramsList.count());
 	}
 }
 
@@ -216,22 +240,37 @@ void MainWindow::resizeWidgets(qreal mratio) // https://stackoverflow.com/questi
 
 	if (pw == nullptr)
 		return;
-
+#ifdef DEBUG_PAINT
+	QString wName = "";
+	int counter = 0;
+#endif
+	QString widgetClass;
+	QString widgetName;
 	widgetParams* params;
 	foreach(QWidget * w, pw->findChildren<QWidget*>())
 	{
-		auto par = w->parentWidget();
-		if (dynamic_cast<QDoubleSpinBox*>(par) != nullptr ||
-			dynamic_cast<QSpinBox*>(par) != nullptr) // Probably not needed while we changing parent size, alwose artifacts
-		{ // If on current screen we have SpinBox - we MUST ignore his content
-			continue;
-		}
-		int i = hashWidgets[w->objectName()];
-		params = windgetPramsList[i];
-		QPoint pos = params->pos * mratio;
+		widgetClass = w->metaObject()->className();
+		widgetName = w->objectName();
 
-		w->resize(params->geom.width()* mratio, params->geom.height() * mratio);
-		w->move(pos);
+		if (widgetClass == "QWidget" || widgetName.count()==0 || widgetName.contains("qt_")) // Skip all non-user elements
+			continue;
+
+		int i = hashWidgets.value(w->objectName());
+		if (i>0)
+		{
+			params = windgetPramsList[i - 1];
+			QPoint pos = params->pos * mratio;
+
+			w->resize(params->geom.width() * mratio, params->geom.height() * mratio);
+			w->move(pos);
+#ifdef DEBUG_PAINT
+			counter++;
+			w->update();
+			w->repaint();
+			QApplication::processEvents();
+#endif
+		}
+		
 	}
 	
 	if (this->maximumSize().height() > ui->tabWidget->height())
@@ -239,7 +278,6 @@ void MainWindow::resizeWidgets(qreal mratio) // https://stackoverflow.com/questi
 		this->setMinimumSize(ui->tabWidget->width(), ui->tabWidget->height());
 		this->resize(ui->tabWidget->width(), ui->tabWidget->height());
 		this->setMaximumSize(ui->tabWidget->width(), ui->tabWidget->height());
-		
 	}
 	else
 	{
@@ -1363,6 +1401,7 @@ void MainWindow::screenChanged(QScreen* screen)
 		setColotLabelById(i, screen->logicalDotsPerInch() / 96.0);
 	}
 	SetTab5TableCellSize(screen->logicalDotsPerInch() / 96.0);
+	this->window()->windowHandle()->setScreen(screen);
 #else
 	this->window()->windowHandle()->setScreen(screen);
 	imageInit(ui, this->window()->windowHandle()->devicePixelRatio());

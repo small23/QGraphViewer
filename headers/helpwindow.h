@@ -19,21 +19,21 @@
 
 class HelpWindow : public QGraphicsView
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit HelpWindow(const QPixmap& hel,QRect windowLocation, QRect desktopSize,QWidget *parent = nullptr);
-    //~HelpWindow();
-    QGraphicsScene *scene;
-    //QGraphicsView *view;
+	explicit HelpWindow(const QPixmap& hel, QRect windowLocation, QRect desktopSize, QWidget* parent = nullptr);
+	//~HelpWindow();
+	QGraphicsScene* scene;
+	//QGraphicsView *view;
 
 private slots:
-    void resizeEvent(QResizeEvent* event) override;
+	void resizeEvent(QResizeEvent* event) override;
 	void closeEvent(QCloseEvent* event) override;
 
 private:
-    QPixmap helInt;
-    QRect windowLocationInt;
-    QRect desktopSizeInt;
+	QPixmap helInt;
+	QRect windowLocationInt;
+	QRect desktopSizeInt;
 
 };
 
