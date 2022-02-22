@@ -107,7 +107,7 @@ MainWindow::MainWindow(QWidget* parent)
 	connect(ui->tab4QtAbout,                SIGNAL(clicked()),						this,       SLOT(tab4QtAbout()));
 	connect(ui->tab2LoadFilef25DOSS,        SIGNAL(clicked()),						this,       SLOT(tab2LoadFilef25DossPressed()));
 	connect(ui->tab4LicenceMIT,             SIGNAL(clicked()),						this,       SLOT(tab4LicenceMit()));
-	connect(ui->tab4HelpToProject, SIGNAL(clicked()), this, SLOT(tab4HelpToProject()));
+	connect(ui->tab4HelpToProject,		  SIGNAL(clicked()),						this,       SLOT(tab4HelpToProject()));
 	connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),						this,       SLOT(tab2PushButtonPdosLoadPressed()));
 	connect(ui->tab4ChangelogButton,        SIGNAL(clicked()),						this,       SLOT(tab4Changelog()));
 	connect(ui->tab5SpinnerLineWidth,		  SIGNAL(valueChanged(QString)),			this,       SLOT(tab5UpdateParams(QString)));
