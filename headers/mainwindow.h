@@ -110,6 +110,7 @@ private Q_SLOTS:
 	void tab4QtAbout();
 	//...вызова окна лицензии
 	void tab4LicenceMit();
+	void tab4HelpToProject();
 	//...загрузки файла PDOS, обработки данных и вывода результатов в таблицу
 	void tab2PushButtonPdosLoadPressed();
 

@@ -348,9 +348,10 @@ public:
     QPushButton *tab4LicenceMIT;
     QPushButton *tab4ChangelogButton;
     QPushButton *tab5LanguageChange;
-    QButtonGroup *ColorButtonGroup;
-    QButtonGroup *LoadFileButtonGroup;
+    QPushButton *tab4HelpToProject;
     QButtonGroup *DeleteButtonGroup;
+    QButtonGroup *LoadFileButtonGroup;
+    QButtonGroup *ColorButtonGroup;
     QButtonGroup *HelpButtonGroup;
 
     void setupUi(QMainWindow *MainWindow)
@@ -383,7 +384,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tabWidget->setGeometry(QRect(2, 0, 691, 475));
+        tabWidget->setGeometry(QRect(2, 0, 692, 475));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Arial"));
         font1.setPointSize(9);
@@ -892,7 +893,7 @@ public:
         groupBox_5 = new QGroupBox(tab_2);
         groupBox_5->setObjectName(QString::fromUtf8("groupBox_5"));
         groupBox_5->setEnabled(true);
-        groupBox_5->setGeometry(QRect(0, 0, 232, 181));
+        groupBox_5->setGeometry(QRect(0, 0, 233, 181));
         QFont font4;
         font4.setFamily(QString::fromUtf8("Arial"));
         font4.setPointSize(9);
@@ -903,7 +904,7 @@ public:
         groupBox_5->setFont(font4);
         groupBox_6 = new QGroupBox(groupBox_5);
         groupBox_6->setObjectName(QString::fromUtf8("groupBox_6"));
-        groupBox_6->setGeometry(QRect(0, 20, 232, 171));
+        groupBox_6->setGeometry(QRect(0, 20, 233, 171));
         groupBox_6->setFont(font4);
         tab2LoadFilef25ZoneStruct = new QPushButton(groupBox_6);
         tab2LoadFilef25ZoneStruct->setObjectName(QString::fromUtf8("tab2LoadFilef25ZoneStruct"));
@@ -959,7 +960,7 @@ public:
         label_48->setFont(font5);
         groupBox_8 = new QGroupBox(tab_2);
         groupBox_8->setObjectName(QString::fromUtf8("groupBox_8"));
-        groupBox_8->setGeometry(QRect(450, 0, 234, 448));
+        groupBox_8->setGeometry(QRect(451, 0, 234, 448));
         groupBox_8->setFont(font2);
         groupBox_10 = new QGroupBox(groupBox_8);
         groupBox_10->setObjectName(QString::fromUtf8("groupBox_10"));
@@ -1043,7 +1044,7 @@ public:
         label_43->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         groupBox_9 = new QGroupBox(groupBox_8);
         groupBox_9->setObjectName(QString::fromUtf8("groupBox_9"));
-        groupBox_9->setGeometry(QRect(0, 20, 234, 191));
+        groupBox_9->setGeometry(QRect(0, 20, 234, 189));
         groupBox_9->setFont(font2);
         label_37 = new QLabel(groupBox_9);
         label_37->setObjectName(QString::fromUtf8("label_37"));
@@ -1110,7 +1111,7 @@ public:
         groupBox_7 = new QGroupBox(tab_2);
         groupBox_7->setObjectName(QString::fromUtf8("groupBox_7"));
         groupBox_7->setEnabled(true);
-        groupBox_7->setGeometry(QRect(0, 220, 232, 50));
+        groupBox_7->setGeometry(QRect(0, 220, 233, 50));
         groupBox_7->setFont(font4);
         tab2PushButtonPDOSLoad = new QPushButton(groupBox_7);
         tab2PushButtonPDOSLoad->setObjectName(QString::fromUtf8("tab2PushButtonPDOSLoad"));
@@ -1128,7 +1129,7 @@ public:
         groupBox_11->setFont(font2);
         groupBox_13 = new QGroupBox(groupBox_11);
         groupBox_13->setObjectName(QString::fromUtf8("groupBox_13"));
-        groupBox_13->setGeometry(QRect(0, 20, 220, 251));
+        groupBox_13->setGeometry(QRect(0, 20, 220, 250));
         tab2LoadFilef25DOSS = new QPushButton(groupBox_13);
         tab2LoadFilef25DOSS->setObjectName(QString::fromUtf8("tab2LoadFilef25DOSS"));
         tab2LoadFilef25DOSS->setGeometry(QRect(10, 20, 91, 23));
@@ -1215,7 +1216,7 @@ public:
         tab2CheckBoxFxSet->setFont(font1);
         groupBox_27 = new QGroupBox(tab_2);
         groupBox_27->setObjectName(QString::fromUtf8("groupBox_27"));
-        groupBox_27->setGeometry(QRect(0, 268, 451, 180));
+        groupBox_27->setGeometry(QRect(0, 268, 452, 180));
         tab2PDOSNumbersTable = new QTableWidget(groupBox_27);
         tab2PDOSNumbersTable->setObjectName(QString::fromUtf8("tab2PDOSNumbersTable"));
         tab2PDOSNumbersTable->setEnabled(true);
@@ -1839,10 +1840,10 @@ public:
         tab4QXlsxLogo->setGeometry(QRect(20, 240, 201, 101));
         tab4QtAbout = new QPushButton(tab_4);
         tab4QtAbout->setObjectName(QString::fromUtf8("tab4QtAbout"));
-        tab4QtAbout->setGeometry(QRect(590, 400, 81, 23));
+        tab4QtAbout->setGeometry(QRect(588, 400, 81, 23));
         tab4CompileDate = new QLabel(tab_4);
         tab4CompileDate->setObjectName(QString::fromUtf8("tab4CompileDate"));
-        tab4CompileDate->setGeometry(QRect(420, 420, 251, 31));
+        tab4CompileDate->setGeometry(QRect(244, 424, 251, 21));
         line = new QFrame(tab_4);
         line->setObjectName(QString::fromUtf8("line"));
         line->setGeometry(QRect(220, 20, 20, 401));
@@ -1853,16 +1854,19 @@ public:
         tab4LicenceMIT->setGeometry(QRect(504, 400, 81, 23));
         tab4ChangelogButton = new QPushButton(tab_4);
         tab4ChangelogButton->setObjectName(QString::fromUtf8("tab4ChangelogButton"));
-        tab4ChangelogButton->setGeometry(QRect(420, 400, 75, 23));
+        tab4ChangelogButton->setGeometry(QRect(420, 400, 81, 23));
         tab5LanguageChange = new QPushButton(tab_4);
         tab5LanguageChange->setObjectName(QString::fromUtf8("tab5LanguageChange"));
-        tab5LanguageChange->setGeometry(QRect(240, 400, 75, 23));
+        tab5LanguageChange->setGeometry(QRect(240, 400, 81, 23));
+        tab4HelpToProject = new QPushButton(tab_4);
+        tab4HelpToProject->setObjectName(QString::fromUtf8("tab4HelpToProject"));
+        tab4HelpToProject->setGeometry(QRect(504, 424, 165, 23));
         tabWidget->addTab(tab_4, QString());
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -2148,6 +2152,7 @@ public:
         tab4LicenceMIT->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\320\263\320\273\320\260\321\210\320\265\320\275\320\270\320\265", nullptr));
         tab4ChangelogButton->setText(QCoreApplication::translate("MainWindow", "\320\230\320\267\320\274\320\265\320\275\320\265\320\275\320\270\321\217", nullptr));
         tab5LanguageChange->setText(QCoreApplication::translate("MainWindow", "English", nullptr));
+        tab4HelpToProject->setText(QCoreApplication::translate("MainWindow", "\320\237\320\276\320\274\320\276\321\211\321\214 \320\277\321\200\320\276\320\265\320\272\321\202\321\203", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_4), QCoreApplication::translate("MainWindow", "\320\236 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\320\274\320\265", nullptr));
         (void)MainWindow;
     } // retranslateUi

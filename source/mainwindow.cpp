@@ -107,6 +107,7 @@ MainWindow::MainWindow(QWidget* parent)
 	connect(ui->tab4QtAbout,                SIGNAL(clicked()),						this,       SLOT(tab4QtAbout()));
 	connect(ui->tab2LoadFilef25DOSS,        SIGNAL(clicked()),						this,       SLOT(tab2LoadFilef25DossPressed()));
 	connect(ui->tab4LicenceMIT,             SIGNAL(clicked()),						this,       SLOT(tab4LicenceMit()));
+	connect(ui->tab4HelpToProject, SIGNAL(clicked()), this, SLOT(tab4HelpToProject()));
 	connect(ui->tab2PushButtonPDOSLoad,     SIGNAL(clicked()),						this,       SLOT(tab2PushButtonPdosLoadPressed()));
 	connect(ui->tab4ChangelogButton,        SIGNAL(clicked()),						this,       SLOT(tab4Changelog()));
 	connect(ui->tab5SpinnerLineWidth,		  SIGNAL(valueChanged(QString)),			this,       SLOT(tab5UpdateParams(QString)));
@@ -1041,8 +1042,18 @@ void MainWindow::tab4QtAbout()
 
 void MainWindow::tab4LicenceMit()
 {
-	const QString text = STR_Licence;
-	QMessageBox::information(this, STR_LicenseTitle, text);
+	QMessageBox::information(this, STR_LicenseTitle, STR_Licence);
+}
+
+void MainWindow::tab4HelpToProject()
+{
+	QMessageBox msgBox;
+	msgBox.setTextFormat(Qt::RichText);
+	msgBox.setText(STR_HelpToProjectText);
+	msgBox.setStandardButtons(QMessageBox::Ok);
+	msgBox.setWindowTitle(STR_HelpToProjectTitle);
+	msgBox.exec();
+	//QMessageBox::information(this, STR_HelpToProjectTitle, STR_HelpToProjectText);
 }
 
 void MainWindow::tab4Changelog()

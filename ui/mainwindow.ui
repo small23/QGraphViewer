@@ -59,7 +59,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -6724,7 +6724,7 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="tab4QtAbout">
       <property name="geometry">
        <rect>
-        <x>590</x>
+        <x>588</x>
         <y>400</y>
         <width>81</width>
         <height>23</height>
@@ -6737,10 +6737,10 @@ p, li { white-space: pre-wrap; }
      <widget class="QLabel" name="tab4CompileDate">
       <property name="geometry">
        <rect>
-        <x>420</x>
-        <y>420</y>
+        <x>244</x>
+        <y>424</y>
         <width>251</width>
-        <height>31</height>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
@@ -6778,7 +6778,7 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>420</x>
         <y>400</y>
-        <width>75</width>
+        <width>81</width>
         <height>23</height>
        </rect>
       </property>
@@ -6791,12 +6791,25 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>240</x>
         <y>400</y>
-        <width>75</width>
+        <width>81</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
        <string>English</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="tab4HelpToProject">
+      <property name="geometry">
+       <rect>
+        <x>504</x>
+        <y>424</y>
+        <width>165</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Помощь проекту</string>
       </property>
      </widget>
     </widget>
@@ -6827,9 +6840,9 @@ p, li { white-space: pre-wrap; }
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="ColorButtonGroup"/>
-  <buttongroup name="LoadFileButtonGroup"/>
   <buttongroup name="DeleteButtonGroup"/>
+  <buttongroup name="LoadFileButtonGroup"/>
+  <buttongroup name="ColorButtonGroup"/>
   <buttongroup name="HelpButtonGroup"/>
  </buttongroups>
 </ui>
