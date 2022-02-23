@@ -147,7 +147,7 @@ void PictureSettings::getOriginFrames()
 
 void PictureSettings::resizeEvent(QResizeEvent* event)
 {
-    QScreen* screen = QGuiApplication::screenAt(this->mapToGlobal({ this->width() / 2,this->height() / 2 }));
+    QScreen* screen = this->screen();
     qreal scale = screen->logicalDotsPerInch() / 96.0;
     if (this->maximumSize().height() > sizeH * scale)
     {

@@ -56,7 +56,7 @@ void HelpMatrixWidget::resizeEvent(QResizeEvent* event)
     QPixmap outHel = hel.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation);
     outHel.setDevicePixelRatio(this->devicePixelRatioF());
 #else
-    QScreen* pScreen = QGuiApplication::screenAt(this->mapToGlobal({ this->width() / 2,this->height() / 2 }));
+    QScreen* pScreen = this->screen();
     int h = hel.height();
     int w = hel.width();
     h = h * (pScreen->logicalDotsPerInch()/ 300.0);

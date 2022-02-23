@@ -60,7 +60,7 @@ void HelpWindow::resizeEvent(QResizeEvent* event)
     QPixmap outHel = helInt.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation);
     outHel.setDevicePixelRatio(this->devicePixelRatioF());
 #else
-    QScreen* pScreen = QGuiApplication::screenAt(this->mapToGlobal({ this->width() / 2,this->height() / 2 }));
+    QScreen* pScreen = this->screen();
     h = h * (pScreen->logicalDotsPerInch() / 300.0);
     QPixmap outHel = helInt.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation);
     //outHel.setDevicePixelRatio(this->devicePixelRatioF());

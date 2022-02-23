@@ -6,7 +6,7 @@
     <message>
         <location filename="../source/filedialogsload.cpp" line="20"/>
         <source>Plot files (*.dat);;All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -15,19 +15,19 @@
         <location filename="../ui/mainwindow.ui" line="66"/>
         <location filename="../ui_mainwindow.h" line="1968"/>
         <source>Contour map</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="86"/>
         <location filename="../ui_mainwindow.h" line="1894"/>
         <source>Файлы для построения изолиний, траекторий ∇ρ, атомных бассейнов, линий связи</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="109"/>
         <location filename="../ui_mainwindow.h" line="1895"/>
         <source>Surf*</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="172"/>
@@ -41,7 +41,7 @@
         <location filename="../ui_mainwindow.h" line="2054"/>
         <location filename="../ui_mainwindow.h" line="2065"/>
         <source>HELP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="235"/>
@@ -67,7 +67,7 @@
         <location filename="../ui_mainwindow.h" line="2113"/>
         <location filename="../ui_mainwindow.h" line="2123"/>
         <source>X</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="355"/>
@@ -83,37 +83,37 @@
         <location filename="../ui_mainwindow.h" line="2122"/>
         <location filename="../ui_mainwindow.h" line="2133"/>
         <source>Загрузить</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="442"/>
         <location filename="../ui_mainwindow.h" line="1904"/>
         <source>P2dcrynp</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="466"/>
         <location filename="../ui_mainwindow.h" line="1905"/>
         <source>Molgraph</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="514"/>
         <location filename="../ui_mainwindow.h" line="1907"/>
         <source>*.outp</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="538"/>
         <location filename="../ui_mainwindow.h" line="1908"/>
         <source>Trajgrad</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="592"/>
         <location filename="../ui_mainwindow.h" line="1910"/>
         <source>*.f25</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="616"/>
@@ -125,13 +125,13 @@
         <location filename="../ui_mainwindow.h" line="2035"/>
         <location filename="../ui_mainwindow.h" line="2044"/>
         <source>UHF</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="638"/>
         <location filename="../ui_mainwindow.h" line="1912"/>
         <source>Отрисовка</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="658"/>
@@ -147,7 +147,7 @@
         <location filename="../ui_mainwindow.h" line="2108"/>
         <location filename="../ui_mainwindow.h" line="2128"/>
         <source>Построить</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="682"/>
@@ -155,13 +155,13 @@
         <location filename="../ui_mainwindow.h" line="1914"/>
         <location filename="../ui_mainwindow.h" line="2129"/>
         <source>Скрыть оси</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="727"/>
         <location filename="../ui_mainwindow.h" line="1915"/>
         <source>Оси кегель</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="775"/>
@@ -173,7 +173,7 @@
         <location filename="../ui_mainwindow.h" line="2118"/>
         <location filename="../ui_mainwindow.h" line="2126"/>
         <source>Поворот на</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="802"/>
@@ -185,7 +185,7 @@
         <location filename="../ui_mainwindow.h" line="2097"/>
         <location filename="../ui_mainwindow.h" line="2131"/>
         <source>Шрифт</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="826"/>
@@ -217,7 +217,7 @@
         <location filename="../ui_mainwindow.h" line="2096"/>
         <location filename="../ui_mainwindow.h" line="2130"/>
         <source>Выбрать...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="848"/>
@@ -225,43 +225,43 @@
         <location filename="../ui_mainwindow.h" line="1919"/>
         <location filename="../ui_mainwindow.h" line="1995"/>
         <source>Настройка линий</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="868"/>
         <location filename="../ui_mainwindow.h" line="1920"/>
         <source>Линии Trajgrad</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="892"/>
         <location filename="../ui_mainwindow.h" line="1921"/>
         <source>Атомные Бассейны 1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="916"/>
         <location filename="../ui_mainwindow.h" line="1922"/>
         <source>Атомные Бассейны 2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="940"/>
         <location filename="../ui_mainwindow.h" line="1923"/>
         <source>Линии Связей</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="964"/>
         <location filename="../ui_mainwindow.h" line="1924"/>
         <source>Особые точки</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="988"/>
         <location filename="../ui_mainwindow.h" line="1925"/>
         <source>Атомы</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1123"/>
@@ -277,7 +277,7 @@
         <location filename="../ui_mainwindow.h" line="1930"/>
         <location filename="../ui_mainwindow.h" line="1931"/>
         <source>Цвет</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1267"/>
@@ -293,7 +293,7 @@
         <location filename="../ui_mainwindow.h" line="1938"/>
         <location filename="../ui_mainwindow.h" line="2124"/>
         <source>Толщина</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1363"/>
@@ -301,31 +301,31 @@
         <location filename="../ui_mainwindow.h" line="1936"/>
         <location filename="../ui_mainwindow.h" line="1937"/>
         <source>Размер</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1789"/>
         <location filename="../ui_mainwindow.h" line="1946"/>
         <source>Точность</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1813"/>
         <location filename="../ui_mainwindow.h" line="1947"/>
         <source>Отсечка</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1837"/>
         <location filename="../ui_mainwindow.h" line="1948"/>
         <source>0.1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1861"/>
         <location filename="../ui_mainwindow.h" line="1949"/>
         <source>0.001</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1915"/>
@@ -333,7 +333,7 @@
         <location filename="../ui_mainwindow.h" line="1950"/>
         <location filename="../ui_mainwindow.h" line="2127"/>
         <source>Делитель</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1942"/>
@@ -341,25 +341,25 @@
         <location filename="../ui_mainwindow.h" line="1951"/>
         <location filename="../ui_mainwindow.h" line="2125"/>
         <source>Цветные уровни</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1983"/>
         <location filename="../ui_mainwindow.h" line="1953"/>
         <source>∆ρ</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2007"/>
         <location filename="../ui_mainwindow.h" line="1954"/>
         <source>|Vb|/Gb&lt;1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2031"/>
         <location filename="../ui_mainwindow.h" line="1955"/>
         <source>ρ, ∆ρ, G, H, ∮</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2048"/>
@@ -417,13 +417,13 @@
         <location filename="../ui_mainwindow.h" line="2112"/>
         <location filename="../ui_mainwindow.h" line="2134"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2264"/>
         <location filename="../ui_mainwindow.h" line="2028"/>
         <source>E(k), N(E)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2289"/>
@@ -431,7 +431,7 @@
         <location filename="../ui_mainwindow.h" line="1969"/>
         <location filename="../ui_mainwindow.h" line="2029"/>
         <source>Зонная структура</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2311"/>
@@ -439,7 +439,7 @@
         <location filename="../ui_mainwindow.h" line="1970"/>
         <location filename="../ui_mainwindow.h" line="2009"/>
         <source>Построение</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2333"/>
@@ -453,7 +453,7 @@
         <location filename="../ui_mainwindow.h" line="2038"/>
         <location filename="../ui_mainwindow.h" line="2041"/>
         <source>Загрузить *.f25</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2399"/>
@@ -467,7 +467,7 @@
         <location filename="../ui_mainwindow.h" line="2078"/>
         <location filename="../ui_mainwindow.h" line="2109"/>
         <source>Y min/max</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2448"/>
@@ -475,25 +475,25 @@
         <location filename="../ui_mainwindow.h" line="1975"/>
         <location filename="../ui_mainwindow.h" line="2111"/>
         <source>k-точки ЗБ</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2530"/>
         <location filename="../ui_mainwindow.h" line="1978"/>
         <source>CheckBox</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2576"/>
         <location filename="../ui_mainwindow.h" line="1980"/>
         <source>Параметры построения</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2596"/>
         <location filename="../ui_mainwindow.h" line="1981"/>
         <source>Общие настройки</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2616"/>
@@ -501,7 +501,7 @@
         <location filename="../ui_mainwindow.h" line="1982"/>
         <location filename="../ui_mainwindow.h" line="2105"/>
         <source>Заголовок графика</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2658"/>
@@ -509,7 +509,7 @@
         <location filename="../ui_mainwindow.h" line="1983"/>
         <location filename="../ui_mainwindow.h" line="2100"/>
         <source>Подпись Oy</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2700"/>
@@ -517,7 +517,7 @@
         <location filename="../ui_mainwindow.h" line="1984"/>
         <location filename="../ui_mainwindow.h" line="2102"/>
         <source>Подпись Ox</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2791"/>
@@ -525,7 +525,7 @@
         <location filename="../ui_mainwindow.h" line="1987"/>
         <location filename="../ui_mainwindow.h" line="2094"/>
         <source>Уровень Ферми</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2843"/>
@@ -533,7 +533,7 @@
         <location filename="../ui_mainwindow.h" line="1989"/>
         <location filename="../ui_mainwindow.h" line="2099"/>
         <source>Цвет линии Ф</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2882"/>
@@ -541,13 +541,13 @@
         <location filename="../ui_mainwindow.h" line="1991"/>
         <location filename="../ui_mainwindow.h" line="2103"/>
         <source>Толщина линии Ф</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="2965"/>
         <location filename="../ui_mainwindow.h" line="1994"/>
         <source>Сдвиг в 0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3010"/>
@@ -555,7 +555,7 @@
         <location filename="../ui_mainwindow.h" line="1996"/>
         <location filename="../ui_mainwindow.h" line="2084"/>
         <source>Номер графика</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3052"/>
@@ -563,7 +563,7 @@
         <location filename="../ui_mainwindow.h" line="1997"/>
         <location filename="../ui_mainwindow.h" line="2085"/>
         <source>Толщина линий</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3100"/>
@@ -571,7 +571,7 @@
         <location filename="../ui_mainwindow.h" line="1998"/>
         <location filename="../ui_mainwindow.h" line="2086"/>
         <source>Тип линии</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3142"/>
@@ -579,7 +579,7 @@
         <location filename="../ui_mainwindow.h" line="1999"/>
         <location filename="../ui_mainwindow.h" line="2091"/>
         <source>Цвет линии</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3166"/>
@@ -587,7 +587,7 @@
         <location filename="../ui_mainwindow.h" line="2000"/>
         <location filename="../ui_mainwindow.h" line="2083"/>
         <source>Отобразить</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3211"/>
@@ -595,25 +595,25 @@
         <location filename="../ui_mainwindow.h" line="2002"/>
         <location filename="../ui_mainwindow.h" line="2087"/>
         <source>Множитель Oy</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3299"/>
         <location filename="../ui_mainwindow.h" line="2005"/>
         <source>HELP.  Номера функций PDOS.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3324"/>
         <location filename="../ui_mainwindow.h" line="2006"/>
         <source>Загрузить *.out</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3372"/>
         <location filename="../ui_mainwindow.h" line="2008"/>
         <source>DOS, COHP, COOP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3485"/>
@@ -621,19 +621,19 @@
         <location filename="../ui_mainwindow.h" line="2013"/>
         <location filename="../ui_mainwindow.h" line="2074"/>
         <source>X min/max</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3617"/>
         <location filename="../ui_mainwindow.h" line="2019"/>
         <source>Метки по оси Ox</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3665"/>
         <location filename="../ui_mainwindow.h" line="2021"/>
         <source>Метки по оси Oy</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3716"/>
@@ -641,19 +641,19 @@
         <location filename="../ui_mainwindow.h" line="2023"/>
         <location filename="../ui_mainwindow.h" line="2069"/>
         <source>Поворот</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3764"/>
         <location filename="../ui_mainwindow.h" line="2024"/>
         <source>F(X) -&gt; - F(X)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3852"/>
         <location filename="../ui_mainwindow.h" line="2027"/>
         <source>Help. Математические символы</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3864"/>
@@ -661,7 +661,7 @@
         <location filename="../ui_mainwindow.h" line="2066"/>
         <location filename="../ui_mainwindow.h" line="2115"/>
         <source>Конвертирование</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="3904"/>
@@ -669,79 +669,79 @@
         <location filename="../ui_mainwindow.h" line="2030"/>
         <location filename="../ui_mainwindow.h" line="2037"/>
         <source>Конвертирование в X, F(X)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4034"/>
         <location filename="../ui_mainwindow.h" line="2036"/>
         <source>DOS,COOP, COHP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4097"/>
         <location filename="../ui_mainwindow.h" line="2039"/>
         <source>Поверхности</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4117"/>
         <location filename="../ui_mainwindow.h" line="2040"/>
         <source>Конвертирование в X, Y, F(X,Y)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4158"/>
         <location filename="../ui_mainwindow.h" line="2042"/>
         <source>Загрузить Surf*</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4243"/>
         <location filename="../ui_mainwindow.h" line="2045"/>
         <source>Конвертирование плоскостей из *.outp</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4263"/>
         <location filename="../ui_mainwindow.h" line="2046"/>
         <source>CRYSTAL -&gt; TOPOND</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4284"/>
         <location filename="../ui_mainwindow.h" line="2047"/>
         <source>TOPOND -&gt; CRYSTAL</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4305"/>
         <location filename="../ui_mainwindow.h" line="2048"/>
         <source>RECTANGU</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4326"/>
         <location filename="../ui_mainwindow.h" line="2049"/>
         <source>обязателен!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4349"/>
         <location filename="../ui_mainwindow.h" line="2050"/>
         <source>Преобразование координат</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4369"/>
         <location filename="../ui_mainwindow.h" line="2051"/>
         <source>Исходные координаты атомов</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4408"/>
         <location filename="../ui_mainwindow.h" line="2052"/>
         <source>Матрица преобразования</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4428"/>
@@ -749,25 +749,25 @@
         <location filename="../ui_mainwindow.h" line="2053"/>
         <location filename="../ui_mainwindow.h" line="2064"/>
         <source>Получить</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4489"/>
         <location filename="../ui_mainwindow.h" line="2055"/>
         <source>Преобразование координат в формат ATOMS</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4509"/>
         <location filename="../ui_mainwindow.h" line="2056"/>
         <source>Атомы в элементарной ячейке (000)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4548"/>
         <location filename="../ui_mainwindow.h" line="2057"/>
         <source>Атомы заданы</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4568"/>
@@ -775,13 +775,13 @@
         <location filename="../ui_mainwindow.h" line="2058"/>
         <location filename="../ui_mainwindow.h" line="2059"/>
         <source>в векторах </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4613"/>
         <location filename="../ui_mainwindow.h" line="2060"/>
         <source>кристаллографической </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4634"/>
@@ -789,43 +789,43 @@
         <location filename="../ui_mainwindow.h" line="2061"/>
         <location filename="../ui_mainwindow.h" line="2062"/>
         <source>ячейки</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4676"/>
         <location filename="../ui_mainwindow.h" line="2063"/>
         <source>элементарной</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4745"/>
         <location filename="../ui_mainwindow.h" line="2136"/>
         <source>QE</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4765"/>
         <location filename="../ui_mainwindow.h" line="2067"/>
         <source>DOS (ph_DOS) построение</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4785"/>
         <location filename="../ui_mainwindow.h" line="2068"/>
         <source>Oy</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="4902"/>
         <location filename="../ui_mainwindow.h" line="2073"/>
         <source>Метки по осям:  Ox</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="5136"/>
         <location filename="../ui_mainwindow.h" line="2082"/>
         <source>Параметры построения ЗС, DOS</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="5710"/>
@@ -833,61 +833,61 @@
         <location filename="../ui_mainwindow.h" line="2101"/>
         <location filename="../ui_mainwindow.h" line="2135"/>
         <source>Сдвиг на</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="5905"/>
         <location filename="../ui_mainwindow.h" line="2106"/>
         <source>Зонная структура, фононный</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="5927"/>
         <location filename="../ui_mainwindow.h" line="2107"/>
         <source>спектр (*.dat, *.freq) построение </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="6133"/>
         <location filename="../ui_mainwindow.h" line="2114"/>
         <source>Загрузить </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="6185"/>
         <location filename="../ui_mainwindow.h" line="2116"/>
         <source>поверхностей в X, Y, F(X,Y)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="6205"/>
         <location filename="../ui_mainwindow.h" line="2117"/>
         <source>Загрузить *.dat</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="6273"/>
         <location filename="../ui_mainwindow.h" line="2119"/>
         <source>Построение поверхностей</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="6296"/>
         <location filename="../ui_mainwindow.h" line="2120"/>
         <source>*.dat</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="6672"/>
         <location filename="../ui_mainwindow.h" line="2132"/>
         <source>Конвертирование DOS в X, F(X)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="6746"/>
         <location filename="../ui_mainwindow.h" line="2173"/>
         <source>О программе</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="6758"/>
@@ -913,70 +913,70 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ФГБОУ ВО КемГУ&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;2020-2021, Все права не защищены!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="6831"/>
         <location filename="../ui_mainwindow.h" line="2168"/>
         <source>О среде Qt</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="6844"/>
         <location filename="../ui_mainwindow.h" line="2169"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="6870"/>
         <location filename="../ui_mainwindow.h" line="2170"/>
         <source>Соглашение</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="6883"/>
         <location filename="../ui_mainwindow.h" line="2171"/>
         <source>Изменения</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="6896"/>
         <location filename="../ui_mainwindow.h" line="2172"/>
         <source>English</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="6904"/>
         <location filename="../ui_mainwindow.h" line="1891"/>
         <source>Сборка</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="6909"/>
         <location filename="../ui_mainwindow.h" line="1892"/>
         <source>О фреймфорке Qt</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="6914"/>
         <location filename="../ui_mainwindow.h" line="1893"/>
         <source>Изображение</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../source/mainwindow.cpp" line="671"/>
         <source>f25 files (*.f25);;All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../source/mainwindow.cpp" line="875"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../source/mainwindow.cpp" line="1008"/>
         <source>Excel file (*.xlsx);;All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui_mainwindow.h" line="2137"/>
@@ -1002,7 +1002,7 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ФГБОУ ВО КемГУ&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;2020-2021, Все права не защищены!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1011,19 +1011,19 @@ p, li { white-space: pre-wrap; }
         <location filename="../ui/picturesettings.ui" line="31"/>
         <location filename="../ui_picturesettings.h" line="167"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/picturesettings.ui" line="92"/>
         <location filename="../ui_picturesettings.h" line="168"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/picturesettings.ui" line="105"/>
         <location filename="../ui_picturesettings.h" line="169"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/picturesettings.ui" line="155"/>
@@ -1031,7 +1031,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../ui_picturesettings.h" line="170"/>
         <location filename="../ui_picturesettings.h" line="176"/>
         <source>Меньше</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/picturesettings.ui" line="174"/>
@@ -1039,7 +1039,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../ui_picturesettings.h" line="171"/>
         <location filename="../ui_picturesettings.h" line="177"/>
         <source>Больше</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/picturesettings.ui" line="193"/>
@@ -1047,49 +1047,49 @@ p, li { white-space: pre-wrap; }
         <location filename="../ui_picturesettings.h" line="172"/>
         <location filename="../ui_picturesettings.h" line="175"/>
         <source>Х</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/picturesettings.ui" line="240"/>
         <location filename="../ui_picturesettings.h" line="173"/>
         <source>Качество (JPG)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/picturesettings.ui" line="262"/>
         <location filename="../ui_picturesettings.h" line="174"/>
         <source>Разрешение</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/picturesettings.ui" line="341"/>
         <location filename="../ui_picturesettings.h" line="178"/>
         <source>PNG</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/picturesettings.ui" line="360"/>
         <location filename="../ui_picturesettings.h" line="179"/>
         <source>JPG</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/picturesettings.ui" line="379"/>
         <location filename="../ui_picturesettings.h" line="180"/>
         <source>BMP</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/picturesettings.ui" line="398"/>
         <location filename="../ui_picturesettings.h" line="181"/>
         <source>Формат</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/picturesettings.ui" line="420"/>
         <location filename="../ui_picturesettings.h" line="182"/>
         <source>PDF</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1097,321 +1097,321 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../headers/constantsandstrings.h" line="12"/>
         <source>Ошибка парсинга</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="13"/>
         <source>Ошибка сохранения</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="14"/>
         <source>Ошибка загрузки</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="15"/>
         <source>Ошибка добавления</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="16"/>
         <source>Ошибка обработки</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="18"/>
         <source>Не указан ни один файл для построения!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="19"/>
         <source>Не указан файл построения!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="20"/>
         <source>Не указаны файлы с данными для построения!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="21"/>
         <source>Не указан файл *.outp, Molgrath/Trajgrad/P2dcrynp не будут построены!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="22"/>
         <source>В файле .outp отсутствуют необходимые данные или файл поврежден!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="23"/>
         <source>В файле Trajgrad.dat отсутствуют необходимые данные или файл поврежден!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="24"/>
         <location filename="../headers/constantsandstrings.h" line="25"/>
         <source>В файле Molgrapf.dat отсутствуют необходимые данные или файл поврежден!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="26"/>
         <source>Не указан файл *.outp!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="27"/>
         <source>&apos;%1&apos; не удается открыть для записи!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="28"/>
         <source>В предоставленном файле отсутствуют необходимые данные или файл поврежден!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="29"/>
         <source>Файл &apos;%1&apos; имеет нестандартное имя и не будет добавлен.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="30"/>
         <source>Не удалось сохранить изображение!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="31"/>
         <source>Атомы не найдены! Проверьте правильность ввода информации.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="32"/>
         <source>Нет данных для сохранения!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="34"/>
         <source>Данные обработаны</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="35"/>
         <source>Данные обработаны и сохранены!</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="37"/>
         <source>Открыть файл...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="38"/>
         <source>Сохранить файл как...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="40"/>
         <source>Список изменений</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="41"/>
         <location filename="../headers/constantsandstrings.h" line="89"/>
         <source>Настройки</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="42"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="44"/>
         <source>Зонная структура</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="45"/>
         <location filename="../headers/constantsandstrings.h" line="46"/>
         <source>График</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="47"/>
         <source>Ro</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="48"/>
         <source>RoDef</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="49"/>
         <source>Spin</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="50"/>
         <source>SpinDef</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="52"/>
         <source>№ атома</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="53"/>
         <source>Атом</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="54"/>
         <source>Тип</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="55"/>
         <source>Число ф-й</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="56"/>
         <source>Номера баз. ф-й</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="57"/>
         <source>N нач.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="58"/>
         <source>N кон.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="60"/>
         <source>№ исх. ат.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="61"/>
         <source>№ ат. в элм. яч.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="63"/>
         <source>№ Исходного атома</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="64"/>
         <source>№ Атома в эл. яч.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="65"/>
         <source>n1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="66"/>
         <source>n2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="67"/>
         <source>n3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="69"/>
         <source>Сплошная</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="70"/>
         <source>Тире</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="71"/>
         <location filename="../headers/constantsandstrings.h" line="77"/>
         <source>Точка</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="72"/>
         <source>Точка-тире</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="74"/>
         <source>Круг</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="75"/>
         <source>Плюс</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="76"/>
         <source>Звездочка</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="78"/>
         <source>Перекрестие</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="79"/>
         <source>Квадрат</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="80"/>
         <source>Ромб</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="81"/>
         <source>Верхнеор. треугольник</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="82"/>
         <source>Нижнеор. треугольник</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="84"/>
         <source>Нет</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="85"/>
         <source>По часовой</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="86"/>
         <source>Против часовой</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="88"/>
         <source>Сохранить график</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="91"/>
         <source>Лицензионное соглашение</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="92"/>
@@ -1424,22 +1424,22 @@ Copyright © 2020 КемГУ
 Указанное выше уведомление об авторском праве и данные условия должны быть включены во все копии или значимые части данного Программного Обеспечения.
 
 ДАННОЕ ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ПРЕДОСТАВЛЯЕТСЯ «КАК ЕСТЬ», БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, ЯВНО ВЫРАЖЕННЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ, ВКЛЮЧАЯ ГАРАНТИИ ТОВАРНОЙ ПРИГОДНОСТИ, СООТВЕТСТВИЯ ПО ЕГО КОНКРЕТНОМУ НАЗНАЧЕНИЮ И ОТСУТСТВИЯ НАРУШЕНИЙ, НО НЕ ОГРАНИЧИВАЯСЬ ИМИ. НИ В КАКОМ СЛУЧАЕ АВТОРЫ ИЛИ ПРАВООБЛАДАТЕЛИ НЕ НЕСУТ ОТВЕТСТВЕННОСТИ ПО КАКИМ-ЛИБО ИСКАМ, ЗА УЩЕРБ ИЛИ ПО ИНЫМ ТРЕБОВАНИЯМ, В ТОМ ЧИСЛЕ, ПРИ ДЕЙСТВИИ КОНТРАКТА, ДЕЛИКТЕ ИЛИ ИНОЙ СИТУАЦИИ, ВОЗНИКШИМ ИЗ-ЗА ИСПОЛЬЗОВАНИЯ ПРОГРАММНОГО ОБЕСПЕЧЕНИЯ ИЛИ ИНЫХ ДЕЙСТВИЙ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="104"/>
         <source>Дата сборки: %1, %2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="106"/>
         <source>Changing language</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../headers/constantsandstrings.h" line="107"/>
         <source>The application must be restarted to apply the language.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1447,12 +1447,12 @@ Copyright © 2020 КемГУ
     <message>
         <location filename="../ui/changelog.ui" line="26"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/changelog.ui" line="38"/>
         <source>Да понял я...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/changelog.ui" line="51"/>
@@ -1491,7 +1491,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;1.0 - La Grande Finale!&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Первый релиз&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

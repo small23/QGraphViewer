@@ -20,7 +20,10 @@ MainWindow::MainWindow(QWidget* parent)
 	auto a = QLibraryInfo::TranslationsPath;
 	qtTranslator.load(settings->lang, QCoreApplication::applicationDirPath() + "/translations");
 	qApp->installTranslator(&qtTranslator);
-	//qApp->installTranslator(&qtTranslator);
+	if (settings->lang == "qt_en")
+		this->locale = QLocale(QLocale::English);
+	else
+		this->locale = QLocale(QLocale::Russian);
 
 	ui->setupUi(this);
 	setupUiFields(ui);
@@ -139,7 +142,7 @@ MainWindow::MainWindow(QWidget* parent)
 		//connect(screen, SIGNAL(logicalDotsPerInchChanged(qreal)), this, SLOT(dotsPerInchChanged(qreal)));
 	}
 
-	resizeWidgets(QGuiApplication::screens().at(0)->logicalDotsPerInch() / 96.0);
+	resizeWidgets(this->screen()->logicalDotsPerInch() / 96.0);
 #endif
 
 	QSize targetWindowSize = this->size();
@@ -152,7 +155,7 @@ MainWindow::MainWindow(QWidget* parent)
 	this->show();
 	qreal displayScale = this->window()->windowHandle()->devicePixelRatio();
 #ifdef OWN_HIGHDPI_SCALE
-	QScreen* pScreen = QGuiApplication::screenAt(this->mapToGlobal({ this->width() / 2,this->height() / 2 }));
+	QScreen* pScreen = this->screen();
 	displayScale = pScreen->logicalDotsPerInch() / 96.0;
 #endif
 	connect(this->window()->windowHandle(), SIGNAL(screenChanged(QScreen*)), this, SLOT(screenChanged(QScreen*)));
@@ -189,7 +192,7 @@ void MainWindow::SetTab5TableCellSize(qreal scale)
 
 void MainWindow::resizeEvent(QResizeEvent* event)
 {
-	QScreen* screen = QGuiApplication::screenAt(this->mapToGlobal({ this->width() / 2,this->height() / 2 }));
+	QScreen* screen = this->screen();
 	//screenChanged(pScreen);
 	resizeWidgets(screen->logicalDotsPerInch() / 96.0);
 	imageInit(ui, screen->logicalDotsPerInch() / 96.0);
@@ -205,7 +208,7 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 
 void MainWindow::dotsPerInchChanged(qreal dpi)
 {
-	QScreen* pScreen = QGuiApplication::screenAt(this->mapToGlobal({ this->width() / 2,this->height() / 2 }));
+	QScreen* pScreen = this->screen();
 	screenChanged(pScreen);
 }
 
@@ -274,6 +277,7 @@ void MainWindow::resizeWidgets(qreal mratio) // https://stackoverflow.com/questi
 	
 			w->resize(params->geom.width() * mratio, params->geom.height() * mratio);
 			w->move(pos);
+			w->update();
 #ifdef DEBUG_PAINT
 			counter++;
 			w->update();
@@ -332,8 +336,14 @@ void MainWindow::showPictureSettings()
 void MainWindow::colorChangeButtonClicked(const int id) const
 {
 	QColorDialog colorPickerMenu;
-	const QRect windowLocation = geometry();
-	colorPickerMenu.setGeometry(windowLocation.x() + 100, windowLocation.y() + 50, 522, 393);
+	//const QRect windowLocation = geometry();
+	//colorPickerMenu.setGeometry(windowLocation.x() + 100, windowLocation.y() + 50, 522, 393);
+	colorPickerMenu.setLocale(this->locale);
+	//colorPickerMenu.wi
+	//colorPickerMenu.setAttribute(Qt::WA_SetFont, true);
+	colorPickerMenu.show();
+	//colorPickerMenu.window()->windowHandle()->reportContentOrientationChange(colorPickerMenu.window()->screen()->orientation());
+	colorPickerMenu.window()->windowHandle()->screenChanged(colorPickerMenu.screen());
 	colorPickerMenu.exec();
 	const QColor choosenColor = colorPickerMenu.selectedColor();
 	if (!choosenColor.isValid()) return;

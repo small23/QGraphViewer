@@ -162,7 +162,7 @@ private:
 	QeSurfData* qeSurfData;
 	QeZoneData* qeZoneData;
 	QColor MenuSelectedGraph = Qt::darkGreen;
-
+	QLocale locale;
 	CustomTableView* tab5tableView;
 
 #ifdef OWN_HIGHDPI_SCALE
